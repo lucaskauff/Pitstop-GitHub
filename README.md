@@ -1,3 +1,4 @@
 # Pitstop-GitHub
-GitHub officiel de la team Pitstop !
-Official GitHub of the Pitstop team !
+
+If you doubt, please work using the "develop" branch !
+Don't forget to !commit! after adding a feature or anything and to !fetch origin!. Thanks !
