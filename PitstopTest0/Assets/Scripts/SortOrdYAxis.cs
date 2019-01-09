@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Renderer))]
@@ -11,7 +10,7 @@ public class SortOrdYAxis : MonoBehaviour
 
     void Update()
     {
-        Renderer renderer = GetComponent<TilemapRenderer>();
+        Renderer renderer = GetComponent<SpriteRenderer>();
         renderer.sortingOrder = -(int)(transform.position.y * IsometricRangePerYUnit);
     }
 }
