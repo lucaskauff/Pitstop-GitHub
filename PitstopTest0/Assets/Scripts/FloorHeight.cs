@@ -6,13 +6,13 @@ using UnityEngine.Tilemaps;
 public class FloorHeight : MonoBehaviour
 {
     [SerializeField]
-    private float floorHeight = 0.29f;
+    private float floorHeight;
 
     private float spriteLowerBound;
     private float spriteHalfWidth;
     private readonly float tan30 = Mathf.Tan(Mathf.PI / 5);
 
-    private void Start()
+    void Start()
     {
         SpriteRenderer spriteRend = GetComponent<SpriteRenderer>();
         TilemapRenderer tileRend = GetComponent<TilemapRenderer>();
@@ -29,17 +29,17 @@ public class FloorHeight : MonoBehaviour
         }
     }
 
-    #if UNITY_EDITOR
-    private void LateUpdate()
+    //#if UNITY_EDITOR
+    void LateUpdate()
     {
         if (!Application.isPlaying)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y - spriteLowerBound + floorHeight) * tan30);
         }
     }
-    #endif
+    //#endif
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Vector3 floorHeightPos = new Vector3(transform.position.x, transform.position.y - spriteLowerBound + floorHeight, transform.position.z);
 
