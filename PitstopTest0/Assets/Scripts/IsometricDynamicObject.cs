@@ -7,16 +7,17 @@ public class IsometricDynamicObject : MonoBehaviour
     [SerializeField]
     private float floorHeight;
 
+    private SpriteRenderer myRend;
     private float spriteHalfHeight;
     private float spriteHalfWidth;
     private readonly float tan30 = Mathf.Tan(Mathf.PI / 5);
 
     void Start()
     {
-        SpriteRenderer spriteRend = GetComponent<SpriteRenderer>();
+        myRend = GetComponent<SpriteRenderer>();
 
-        spriteHalfWidth = spriteRend.sprite.bounds.size.x * 0.5f;
-        spriteHalfHeight = spriteRend.sprite.bounds.size.y * 0.5f;
+        spriteHalfWidth = myRend.bounds.size.x * 0.5f;
+        spriteHalfHeight = myRend.bounds.size.y * 0.5f;
     }
 
     void LateUpdate()

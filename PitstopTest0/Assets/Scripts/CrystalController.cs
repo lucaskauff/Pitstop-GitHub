@@ -101,6 +101,7 @@ public class CrystalController : MonoBehaviour
             fireRate = Time.time + fireSpeed;
 
             cloneProj = (GameObject)Instantiate(scannedObject, crystalOrigin, scannedObject.transform.rotation);
+            
             //not optimized at all
             if (scannedObject.name == "Apple")
             {
