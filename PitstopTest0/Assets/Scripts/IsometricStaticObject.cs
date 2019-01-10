@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+//using UnityEngine.Tilemaps;
 
-public class FloorHeight : MonoBehaviour
+public class IsometricStaticObject : MonoBehaviour
 {
-    [SerializeField]
-    private float floorHeight;
+    public float floorHeight;
 
     private float spriteLowerBound;
     private float spriteHalfWidth;
@@ -15,9 +14,12 @@ public class FloorHeight : MonoBehaviour
     void Start()
     {
         SpriteRenderer spriteRend = GetComponent<SpriteRenderer>();
-        TilemapRenderer tileRend = GetComponent<TilemapRenderer>();
+        spriteLowerBound = spriteRend.bounds.size.y * 0.5f;
+        spriteHalfWidth = spriteRend.bounds.size.x * 0.5f;
 
-        if (spriteRend != null)
+        //TilemapRenderer tileRend = GetComponent<TilemapRenderer>();
+
+        /*if (spriteRend != null)
         {
             spriteLowerBound = spriteRend.bounds.size.y * 0.5f;
             spriteHalfWidth = spriteRend.bounds.size.x * 0.5f;
@@ -26,10 +28,10 @@ public class FloorHeight : MonoBehaviour
         {
             spriteLowerBound = tileRend.bounds.size.y * 0.5f;
             spriteHalfWidth = tileRend.bounds.size.x * 0.5f;
-        }
+        }*/
     }
 
-    //#if UNITY_EDITOR
+    #if UNITY_EDITOR
     void LateUpdate()
     {
         if (!Application.isPlaying)
@@ -37,7 +39,7 @@ public class FloorHeight : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y - spriteLowerBound + floorHeight) * tan30);
         }
     }
-    //#endif
+    #endif
 
     void OnDrawGizmos()
     {
