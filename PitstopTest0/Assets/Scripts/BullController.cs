@@ -23,6 +23,7 @@ public class BullController : MonoBehaviour
     //Private
     private Rigidbody2D myRb;
 
+    bool isIdling = true;
     bool isWalking;
     Vector2 minWalkPoint;
     Vector2 maxWalkPoint;
@@ -30,6 +31,7 @@ public class BullController : MonoBehaviour
     float waitCounter;
     int WalkDirection;
     bool hasWalkZone;
+    Vector3 originPos;
 
     void Start()
     {
@@ -37,6 +39,7 @@ public class BullController : MonoBehaviour
 
         waitCounter = waitTime;
         walkCounter = walkTime;
+        originPos = transform.position;
 
         ChooseDirection();
 
@@ -50,7 +53,12 @@ public class BullController : MonoBehaviour
 
     void Update()
     {
-        if (target == null)
+        if (target != null)
+        {
+            isIdling = false;
+        }
+
+        if (isIdling)
         {            
             if (isWalking)
             {
@@ -127,14 +135,14 @@ public class BullController : MonoBehaviour
         }
         else
         {
-            StartCoroutine(Rush());            
-        }
-        
-        if (rushTime <= 0)
-        {
-            StopCoroutine(Rush());            
-            rushTime = 2;
-            HeadingBackHome();
+            StartCoroutine(Rush());
+
+            if (rushTime <= 0)
+            {
+                StopCoroutine(Rush());
+                
+                HeadingBackHome();
+            }
         }
     }
 
@@ -146,16 +154,24 @@ public class BullController : MonoBehaviour
     }
 
     public void HeadingBackHome()
-    {
-        target = walkZone;
-        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, rushSpeed * Time.deltaTime);
+    {        
+        transform.position = Vector2.MoveTowards(transform.position, originPos, walkSpeed * Time.deltaTime);
+
+        if (transform.position == originPos)
+        {
+            target = null;
+            rushTime = 2;
+            isIdling = true;
+        }
     }
 
     IEnumerator Rush()
     {
-        Debug.Log(rushTime);
-        yield return new WaitForSeconds(rushTime);
-        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, rushSpeed * Time.deltaTime);
-        rushTime--;
+        while (rushTime > 0)
+        {            
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, rushSpeed * Time.deltaTime);
+            yield return new WaitForSeconds(1);
+            rushTime--;
+        }        
     }
 }
