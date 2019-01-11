@@ -5,28 +5,31 @@ using UnityEngine;
 public class BullController : MonoBehaviour
 {
     //Public
-    public Collider2D walkZone;
-    public bool isWalking;
+    public GameObject walkZone;
+    public GameObject target;
 
     //SerializedField
     [SerializeField]
-    float moveSpeed = 1;
+    float walkSpeed = 1;
+    [SerializeField]
+    float rushSpeed = 3;
     [SerializeField]
     float walkTime = 1;
     [SerializeField]
     float waitTime = 1;
+    [SerializeField]
+    float rushTime = 2;
 
     //Private
     private Rigidbody2D myRb;
 
-    private Vector2 minWalkPoint;
-    private Vector2 maxWalkPoint;
-
-    private float walkCounter;
-    private float waitCounter;
-
-    private int WalkDirection;
-    private bool hasWalkZone;
+    bool isWalking;
+    Vector2 minWalkPoint;
+    Vector2 maxWalkPoint;
+    float walkCounter;
+    float waitCounter;
+    int WalkDirection;
+    bool hasWalkZone;
 
     void Start()
     {
@@ -39,85 +42,99 @@ public class BullController : MonoBehaviour
 
         if (walkZone != null)
         {
-            minWalkPoint = walkZone.bounds.min;
-            maxWalkPoint = walkZone.bounds.max;
+            minWalkPoint = walkZone.GetComponent<BoxCollider2D>().bounds.min;
+            maxWalkPoint = walkZone.GetComponent<BoxCollider2D>().bounds.max;
             hasWalkZone = true;
         }
     }
 
     void Update()
     {
-        if (isWalking)
-        {
-            walkCounter -= Time.deltaTime;
-
-            switch (WalkDirection)
+        if (target == null)
+        {            
+            if (isWalking)
             {
-                case 0:
-                    if (hasWalkZone && transform.position.y > maxWalkPoint.y)
-                    {
-                        isWalking = false;
-                        waitCounter = waitTime;
-                    }
-                    else
-                    {
-                        myRb.velocity = new Vector2(0, moveSpeed);
-                    }
-                    break;
+                walkCounter -= Time.deltaTime;
 
-                case 1:
-                    if (hasWalkZone && transform.position.x > maxWalkPoint.x)
-                    {
-                        isWalking = false;
-                        waitCounter = waitTime;
-                    }
-                    else
-                    {
-                        myRb.velocity = new Vector2(moveSpeed, 0);
-                    }
-                    break;
+                switch (WalkDirection)
+                {
+                    case 0:
+                        if (hasWalkZone && transform.position.y > maxWalkPoint.y)
+                        {
+                            isWalking = false;
+                            waitCounter = waitTime;
+                        }
+                        else
+                        {
+                            myRb.velocity = new Vector2(0, walkSpeed);
+                        }
+                        break;
 
-                case 2:
-                    if (hasWalkZone && transform.position.y < minWalkPoint.y)
-                    {
-                        isWalking = false;
-                        waitCounter = waitTime;
-                    }
-                    else
-                    {
-                        myRb.velocity = new Vector2(0, -moveSpeed);
-                    }
-                    break;
+                    case 1:
+                        if (hasWalkZone && transform.position.x > maxWalkPoint.x)
+                        {
+                            isWalking = false;
+                            waitCounter = waitTime;
+                        }
+                        else
+                        {
+                            myRb.velocity = new Vector2(walkSpeed, 0);
+                        }
+                        break;
 
-                case 3:
-                    if (hasWalkZone && transform.position.x < minWalkPoint.x)
-                    {
-                        isWalking = false;
-                        waitCounter = waitTime;
-                    }
-                    else
-                    {
-                        myRb.velocity = new Vector2(-moveSpeed, 0);
-                    }
-                    break;
+                    case 2:
+                        if (hasWalkZone && transform.position.y < minWalkPoint.y)
+                        {
+                            isWalking = false;
+                            waitCounter = waitTime;
+                        }
+                        else
+                        {
+                            myRb.velocity = new Vector2(0, -walkSpeed);
+                        }
+                        break;
+
+                    case 3:
+                        if (hasWalkZone && transform.position.x < minWalkPoint.x)
+                        {
+                            isWalking = false;
+                            waitCounter = waitTime;
+                        }
+                        else
+                        {
+                            myRb.velocity = new Vector2(-walkSpeed, 0);
+                        }
+                        break;
+                }
+
+                if (walkCounter < 0)
+                {
+                    isWalking = false;
+                    waitCounter = waitTime;
+                }
             }
-
-            if (walkCounter < 0)
+            else
             {
-                isWalking = false;
-                waitCounter = waitTime;
+                waitCounter -= Time.deltaTime;
+
+                myRb.velocity = Vector2.zero;
+
+                if (waitCounter < 0)
+                {
+                    ChooseDirection();
+                }
             }
         }
         else
         {
-            waitCounter -= Time.deltaTime;
-
-            myRb.velocity = Vector2.zero;
-
-            if (waitCounter < 0)
-            {
-                ChooseDirection();
-            }
+            StartCoroutine(Rush());            
+        }
+        
+        if (rushTime <= 0)
+        {
+            StopCoroutine(Rush());            
+            rushTime = 2;
+            HeadingBackHome();
         }
     }
 
@@ -126,5 +143,19 @@ public class BullController : MonoBehaviour
         WalkDirection = Random.Range(0, 4);
         isWalking = true;
         walkCounter = walkTime;
+    }
+
+    public void HeadingBackHome()
+    {
+        target = walkZone;
+        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, rushSpeed * Time.deltaTime);
+    }
+
+    IEnumerator Rush()
+    {
+        Debug.Log(rushTime);
+        yield return new WaitForSeconds(rushTime);
+        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, rushSpeed * Time.deltaTime);
+        rushTime--;
     }
 }
