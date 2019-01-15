@@ -9,6 +9,8 @@ public class Hieroglyphs_Activator1 : MonoBehaviour
     [SerializeField]
     DialogueTrigger diaTrig;
 
+    bool playerRead = false;
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.E))
@@ -19,6 +21,10 @@ public class Hieroglyphs_Activator1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        diaTrig.TriggerDialogue();
+        if(playerRead == false)
+        {
+            playerRead = true;
+            diaTrig.TriggerDialogue();
+        }        
     }
 }

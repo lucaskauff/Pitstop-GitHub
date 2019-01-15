@@ -15,6 +15,8 @@ public class PlayerControllerIso : MonoBehaviour
 
     Vector2 moveInput;
 
+    public bool canMove = true;
+
     void Start()
     {
         myRb = GetComponent<Rigidbody2D>();
@@ -23,6 +25,12 @@ public class PlayerControllerIso : MonoBehaviour
 
     void Update()
     {
+        if (!canMove)
+        {
+            myRb.velocity = Vector2.zero;
+            return;
+        }
+
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical") / 2).normalized;
 
         if(moveInput != Vector2.zero)

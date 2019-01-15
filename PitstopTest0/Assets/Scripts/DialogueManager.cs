@@ -6,8 +6,13 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    public GameObject diaBox;
     public GameObject nameText;
     public GameObject dialogueText;
+    public PlayerControllerIso playerControl;
+
+    [SerializeField]
+    float letterSpeed = 0;
 
     Queue<string> sentences;
 
@@ -18,6 +23,9 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue (Dialogue dialogue)
     {
+        playerControl.canMove = false;
+        diaBox.SetActive(true);
+
         nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;
 
         sentences.Clear();
@@ -54,12 +62,13 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.GetComponent<TextMeshProUGUI>().text += letter;
-            yield return null;
+            yield return new WaitForSeconds(letterSpeed);
         }
     }
 
     public void EndDialogue()
     {
-
+        diaBox.SetActive(false);
+        playerControl.canMove = true;
     }
 }
