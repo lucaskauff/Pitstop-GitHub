@@ -1,23 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+//using UnityEngine.Tilemaps;
 
-public class FloorHeight : MonoBehaviour
+public class IsometricStaticObject : MonoBehaviour
 {
-    [SerializeField]
-    private float floorHeight = 0.29f;
+    public float floorHeight;
 
     private float spriteLowerBound;
     private float spriteHalfWidth;
     private readonly float tan30 = Mathf.Tan(Mathf.PI / 5);
 
-    private void Start()
+    void Start()
     {
         SpriteRenderer spriteRend = GetComponent<SpriteRenderer>();
-        TilemapRenderer tileRend = GetComponent<TilemapRenderer>();
+        spriteLowerBound = spriteRend.bounds.size.y * 0.5f;
+        spriteHalfWidth = spriteRend.bounds.size.x * 0.5f;
 
-        if (spriteRend != null)
+        //TilemapRenderer tileRend = GetComponent<TilemapRenderer>();
+
+        /*if (spriteRend != null)
         {
             spriteLowerBound = spriteRend.bounds.size.y * 0.5f;
             spriteHalfWidth = spriteRend.bounds.size.x * 0.5f;
@@ -26,11 +28,11 @@ public class FloorHeight : MonoBehaviour
         {
             spriteLowerBound = tileRend.bounds.size.y * 0.5f;
             spriteHalfWidth = tileRend.bounds.size.x * 0.5f;
-        }
+        }*/
     }
 
     #if UNITY_EDITOR
-    private void LateUpdate()
+    void LateUpdate()
     {
         if (!Application.isPlaying)
         {
@@ -39,7 +41,7 @@ public class FloorHeight : MonoBehaviour
     }
     #endif
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Vector3 floorHeightPos = new Vector3(transform.position.x, transform.position.y - spriteLowerBound + floorHeight, transform.position.z);
 
