@@ -123,7 +123,9 @@ GameObject:
   - component: {fileID: 53800203}
   - component: {fileID: 53800202}
   - component: {fileID: 53800201}
-  m_Layer: 8
+  - component: {fileID: 53800205}
+  - component: {fileID: 53800204}
+  m_Layer: 5
   m_Name: SlotW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,6 +188,38 @@ RectTransform:
   m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &53800204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53800200}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ba2935dde5c6040b7746eb3d397701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMouseOver: 0
+--- !u!95 &53800205
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53800200}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &299847041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275,7 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 424082204}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: DialogueWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,6 +359,9 @@ MonoBehaviour:
   - {fileID: 1687747581}
   - {fileID: 1726140315}
   - {fileID: 53800200}
+  layerRaycast:
+    serializedVersion: 2
+    m_Bits: 32
 --- !u!224 &860682113 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4103987243383474960, guid: 0052aae6fdd217342a0bb8ccb337319f,
@@ -342,7 +379,9 @@ GameObject:
   - component: {fileID: 1327682818}
   - component: {fileID: 1327682820}
   - component: {fileID: 1327682819}
-  m_Layer: 8
+  - component: {fileID: 1327682822}
+  - component: {fileID: 1327682821}
+  m_Layer: 5
   m_Name: SlotN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,6 +444,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327682817}
   m_CullTransparentMesh: 0
+--- !u!114 &1327682821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327682817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ba2935dde5c6040b7746eb3d397701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMouseOver: 0
+--- !u!95 &1327682822
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327682817}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49c38acc232133f44b3b4ca3d4a12935, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1471264828 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4103987243383474964, guid: 0052aae6fdd217342a0bb8ccb337319f,
@@ -525,7 +596,9 @@ GameObject:
   - component: {fileID: 1687747582}
   - component: {fileID: 1687747584}
   - component: {fileID: 1687747583}
-  m_Layer: 8
+  - component: {fileID: 1687747586}
+  - component: {fileID: 1687747585}
+  m_Layer: 5
   m_Name: SlotE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,6 +661,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687747581}
   m_CullTransparentMesh: 0
+--- !u!114 &1687747585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687747581}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ba2935dde5c6040b7746eb3d397701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMouseOver: 0
+--- !u!95 &1687747586
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687747581}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1694812604
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +770,9 @@ GameObject:
   - component: {fileID: 1726140316}
   - component: {fileID: 1726140318}
   - component: {fileID: 1726140317}
-  m_Layer: 8
+  - component: {fileID: 1726140320}
+  - component: {fileID: 1726140319}
+  m_Layer: 5
   m_Name: SlotS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,6 +835,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726140315}
   m_CullTransparentMesh: 0
+--- !u!114 &1726140319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726140315}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ba2935dde5c6040b7746eb3d397701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMouseOver: 0
+--- !u!95 &1726140320
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726140315}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1734211350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -738,7 +877,7 @@ PrefabInstance:
     - target: {fileID: 4103987243383474964, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 4103987243383474960, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
@@ -871,7 +1010,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2112412515}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: DW1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

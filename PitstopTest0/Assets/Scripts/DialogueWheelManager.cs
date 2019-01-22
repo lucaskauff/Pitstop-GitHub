@@ -5,16 +5,22 @@ using UnityEngine;
 public class DialogueWheelManager : MonoBehaviour
 {
     public GameObject[] dialogueWheelSlotsV1;
+    public LayerMask layerRaycast;
 
     private void Update()
     {
         Vector2 playerPos = transform.position;
-        Vector2 wheelDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        Vector2 wheelOrigin = playerPos + wheelDirection.normalized;
+        Vector2 cursorDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
-        RaycastHit2D hit = Physics2D.Raycast(wheelOrigin, wheelDirection, 10);
-        Debug.DrawRay(wheelOrigin, wheelDirection, Color.red);
-        
+        RaycastHit2D hit = Physics2D.Raycast(playerPos, cursorDirection, 10, layerRaycast);
+        Debug.DrawRay(playerPos, cursorDirection, Color.red);
+
+        if (hit.transform != null)
+        {
+            Debug.Log("touche");
+        }
+
+        //Show dialogue wheel slots on space maintained pressed
         if (Input.GetKey(KeyCode.Space))
         {
             for (int i = 0; i < dialogueWheelSlotsV1.Length; i++)
