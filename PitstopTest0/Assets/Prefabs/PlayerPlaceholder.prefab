@@ -112,7 +112,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5702566046700201003}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: c0d990f986d859444af0d2676b47de4e, type: 2}
   m_IsTrigger: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
   levels:
   - Level1
   - Level2
+  canMove: 1
 --- !u!114 &5702566046700200993
 MonoBehaviour:
   m_ObjectHideFlags: 0
