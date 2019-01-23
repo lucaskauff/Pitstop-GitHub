@@ -9,16 +9,13 @@ public class DialogueWheelManager : MonoBehaviour
 
     private void Update()
     {
+        /*
         Vector2 playerPos = transform.position;
         Vector2 cursorDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         RaycastHit2D hit = Physics2D.Raycast(playerPos, cursorDirection, 10, layerRaycast);
         Debug.DrawRay(playerPos, cursorDirection, Color.red);
-
-        if (hit.transform != null)
-        {
-            Debug.Log("touche");
-        }
+        */
 
         //Show dialogue wheel slots on space maintained pressed
         if (Input.GetKey(KeyCode.Space))

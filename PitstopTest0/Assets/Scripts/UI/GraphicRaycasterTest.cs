@@ -52,6 +52,7 @@ public class GraphicRaycasterTest : MonoBehaviour
             foreach (RaycastResult result in results)
             {
                 Debug.Log("Hit " + result.gameObject.name);
+
             }
         }
     }
