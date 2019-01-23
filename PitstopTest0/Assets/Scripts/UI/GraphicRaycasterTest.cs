@@ -14,6 +14,8 @@ public class GraphicRaycasterTest : MonoBehaviour
     public GameObject player;
     private float distancePlayerCursor;
 
+    public GameObject native;
+
     void Start()
     {
         //Fetch the raycaster from the GameObject (the Canvas)
@@ -52,7 +54,7 @@ public class GraphicRaycasterTest : MonoBehaviour
             foreach (RaycastResult result in results)
             {
                 Debug.Log("Hit " + result.gameObject.name);
-
+                native.GetComponent<NativeBehaviour>().whereToShoot = result.gameObject.name;
             }
         }
     }
