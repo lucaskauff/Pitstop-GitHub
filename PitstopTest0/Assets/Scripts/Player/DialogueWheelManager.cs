@@ -5,7 +5,7 @@ using UnityEngine;
 public class DialogueWheelManager : MonoBehaviour
 {
     public GameObject[] dialogueWheelSlotsV1;
-    public LayerMask layerRaycast;
+    //public LayerMask layerRaycast;
 
     private void Update()
     {
