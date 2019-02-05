@@ -31,23 +31,35 @@ public class CrystalController : MonoBehaviour
     public int scanProgress = 0;
     public GameObject scannedObject;
     public UIManager uiMan;
+    public GameObject circularRange;
+
+    private void Start()
+    {
+        circularRange.transform.localScale *= maxScanRange;
+    }
 
     void Update()
     {
         Vector2 playerPos = transform.position;
+        Vector2 playerPosGround = circularRange.transform.position;
         Vector2 crystalDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        Vector2 crystalOrigin = playerPos + crystalDirection.normalized;
+        Vector2 crystalOrigin = playerPosGround + crystalDirection.normalized;
         Vector2 crystalScanTarget = Vector2.ClampMagnitude(crystalDirection, maxScanRange);
+
+        //Debug.Log(crystalScanTarget);
+        isoVectorTwo(crystalScanTarget);
+        //Debug.Log(crystalScanTarget);
+
         Vector2 crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
         float scanRange = Vector2.Distance(crystalOrigin, playerPos + crystalScanTarget);
 
         RaycastHit2D hit = Physics2D.Raycast(crystalOrigin, crystalDirection, scanRange); //raycast's definition
-        Debug.DrawRay(crystalOrigin, crystalScanTarget, Color.red); //draws the line in scene/debug BUGGÉ PUT1
+        Debug.DrawRay(playerPosGround, crystalScanTarget, Color.red); //draws the line in scene/debug BUGGÉ PUT1
 
         //SCAN
         if (hit.collider != null && Input.GetKey("mouse 1"))
         {
-            if (hit.collider.gameObject.GetComponent<AppleBehaviour>().isScannable && hit.collider.gameObject != scannedObject && hit.collider.isTrigger)
+            if (hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>().isScannable && hit.collider.gameObject != scannedObject && hit.collider.isTrigger)
             {
                 objectHittedBefore = objectHitted;            
                 objectHitted = hit.transform.gameObject;
@@ -71,7 +83,7 @@ public class CrystalController : MonoBehaviour
                     if (scanProgress == 5)
                     {
                         scannedObject = GameObject.FindWithTag(objectOnScan.tag);
-                        uiMan.SendMessage("ChangeImageInCrystalSlot");
+                        uiMan.SendMessage("ChangeImageInCrystalSlot", scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
                         StopAllCoroutines();                        
                         scanProgress = 0;
                     }
@@ -101,7 +113,12 @@ public class CrystalController : MonoBehaviour
             fireRate = Time.time + fireSpeed;
 
             cloneProj = (GameObject)Instantiate(scannedObject, crystalOrigin, scannedObject.transform.rotation);
-            
+
+            cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
+            cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = projSpeed;
+            cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
+            cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
+
             //not optimized at all
             if (scannedObject.name == "Apple")
             {
@@ -118,6 +135,11 @@ public class CrystalController : MonoBehaviour
                 cloneProj.GetComponent<ShroomBehaviour>().isFired = true;
             }
         }
+    }
+
+    void isoVectorTwo(Vector2 vector)
+    {
+        vector = new Vector2(vector.x, vector.y / 2);
     }
 
     IEnumerator Scan()
