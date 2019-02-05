@@ -32,9 +32,9 @@ public class UIManager : MonoBehaviour
         */
     }
 
-    public void ChangeImageInCrystalSlot()
+    public void ChangeImageInCrystalSlot(Sprite sprite)
     {
         crystalSlot.GetComponent<Image>().color = Color.white;
-        crystalSlot.GetComponent<Image>().sprite = crystalControl.scannedObject.GetComponent<SpriteRenderer>().sprite;
+        crystalSlot.GetComponent<Image>().sprite = sprite;
     }
 }
