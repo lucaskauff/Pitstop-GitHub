@@ -31,6 +31,7 @@ public class CrystalController : MonoBehaviour
     public int scanProgress = 0;
     public GameObject scannedObject;
     public UIManager uiMan;
+    public GameObject circularRange;
 
     void Update()
     {
@@ -43,6 +44,8 @@ public class CrystalController : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(crystalOrigin, crystalDirection, scanRange); //raycast's definition
         Debug.DrawRay(crystalOrigin, crystalScanTarget, Color.red); //draws the line in scene/debug BUGGÉ PUT1
+
+
 
         //SCAN
         if (hit.collider != null && Input.GetKey("mouse 1"))
