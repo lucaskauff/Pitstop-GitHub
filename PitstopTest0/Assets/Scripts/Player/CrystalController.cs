@@ -20,9 +20,9 @@ public class CrystalController : MonoBehaviour
     float maxShootRange = 5;
 
     //Private
-    bool hitting = false;
+    public bool hitting = false;
     GameObject objectHittedBefore;
-    GameObject objectHitted;
+    public GameObject objectHitted;
     GameObject objectOnScan;    
     float fireRate = 0;
     GameObject cloneProj;

@@ -6,6 +6,7 @@ public class RootBehaviour : MonoBehaviour
 {
     public LineRenderer liana;
     public GameObject player;
+    GameObject target;
 
     [SerializeField]
     float lifeInSeconds;
@@ -20,20 +21,31 @@ public class RootBehaviour : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit2D trip = Physics2D.Raycast(player.transform.position, scannableObjBeh.targetPos);
-         
+
 
         if (scannableObjBeh.isFired)
         {
-            Debug.DrawLine(player.transform.position, scannableObjBeh.targetPos, Color.blue);
-            liana.enabled = true;
-            liana.SetPosition(0, player.transform.position);
-            liana.SetPosition(1, scannableObjBeh.targetPos);
+            /*RaycastHit2D hitPoint = Physics2D.Raycast(player.transform.position, scannableObjBeh.targetPos);
+            Debug.DrawLine(player.transform.position, scannableObjBeh.targetPos, Color.blue);*/
+
+            //if (hitPoint == true && hitPoint.collider.gameObject.tag == ("HookPoint"))
+            //{
+                RaycastHit2D trip = Physics2D.Raycast(player.transform.position, scannableObjBeh.targetPos);
+                liana.enabled = true;
+                liana.SetPosition(0, player.transform.position);
+                liana.SetPosition(1, scannableObjBeh.targetPos);
+            /*}
+
+            else
+            {
+                Debug.Log("Nope Rope !");
+            }*/
         }
 
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (scannableObjBeh.isArrived)
         {
+            
             StartCoroutine(Life());
         }
     }
