@@ -13,16 +13,26 @@ public class RootBehaviour : MonoBehaviour
     public ScannableObjectBehaviour scannableObjBeh;
     private bool living;
 
+    private void Awake()
+    {
+        liana = this.GetComponent<LineRenderer>();
+    }
+
     private void Update()
     {
+        RaycastHit2D trip = Physics2D.Raycast(player.transform.position, scannableObjBeh.targetPos);
+         
+
         if (scannableObjBeh.isFired)
         {
+            Debug.DrawLine(player.transform.position, scannableObjBeh.targetPos, Color.blue);
             liana.enabled = true;
             liana.SetPosition(0, player.transform.position);
             liana.SetPosition(1, scannableObjBeh.targetPos);
         }
 
-        if (scannableObjBeh.isArrived)
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             StartCoroutine(Life());
         }
@@ -35,6 +45,8 @@ public class RootBehaviour : MonoBehaviour
             yield return new WaitForSeconds(1);
             lifeInSeconds--;
             Debug.Log("dead");
+            liana.enabled = false;
+            Destroy(gameObject);
         }
     }
 }
