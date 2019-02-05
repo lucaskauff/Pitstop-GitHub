@@ -129,10 +129,12 @@ public class CrystalController : MonoBehaviour
             }
             else if (scannedObject.name == "Shroom")
             {
+                /*
                 cloneProj.GetComponent<ShroomBehaviour>().targetPos = playerPos + crystalShootTarget;
                 cloneProj.GetComponent<ShroomBehaviour>().projectileSpeed = projSpeed;
                 cloneProj.GetComponent<ShroomBehaviour>().isScannable = false;
                 cloneProj.GetComponent<ShroomBehaviour>().isFired = true;
+                */
             }
         }
     }
