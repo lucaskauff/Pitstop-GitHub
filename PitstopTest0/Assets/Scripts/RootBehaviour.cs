@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RootBehaviour : MonoBehaviour
 {
+    public LineRenderer liana;
+    public GameObject player;
+
     [SerializeField]
     float lifeInSeconds;
 
@@ -12,6 +15,13 @@ public class RootBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (scannableObjBeh.isFired)
+        {
+            liana.enabled = true;
+            liana.SetPosition(0, player.transform.position);
+            liana.SetPosition(1, scannableObjBeh.targetPos);
+        }
+
         if (scannableObjBeh.isArrived)
         {
             StartCoroutine(Life());
