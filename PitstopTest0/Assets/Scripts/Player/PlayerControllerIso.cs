@@ -10,21 +10,26 @@ public class PlayerControllerIso : MonoBehaviour
 
     SpriteRenderer myRend;
     Rigidbody2D myRb;
+    Animator myAnim;
 
     public List<string> levels = new List<string>(2);
 
     Vector2 moveInput;
-
     public bool canMove = true;
+    bool isMoving = false;
+    Vector2 lastMove = new Vector2(1, 0);
 
     void Start()
     {
-        myRb = GetComponent<Rigidbody2D>();
         myRend = GetComponent<SpriteRenderer>();
+        myRb = GetComponent<Rigidbody2D>();
+        myAnim = GetComponent<Animator>();
     }
 
     void Update()
     {
+        isMoving = false;
+
         if (!canMove)
         {
             myRb.velocity = Vector2.zero;
@@ -36,11 +41,19 @@ public class PlayerControllerIso : MonoBehaviour
         if(moveInput != Vector2.zero)
         {
             myRb.velocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
+            isMoving = true;
+            lastMove = moveInput;
         }
         else
         {
             myRb.velocity = Vector2.zero;
-        }        
+        }
+
+        myAnim.SetBool("IsMoving", isMoving);
+        myAnim.SetFloat("LastMoveX", lastMove.x);
+        myAnim.SetFloat("LastMoveY", lastMove.y);
+        myAnim.SetFloat("MoveX", moveInput.x);
+        myAnim.SetFloat("MoveY", moveInput.y);
     }
 
     private void LateUpdate()

@@ -28,7 +28,7 @@ public class ScannableObjectBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isFired)
+        if (isFired && other.gameObject.name != "Player")
         {
             col = true;
         }

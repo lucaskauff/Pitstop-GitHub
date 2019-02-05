@@ -42,26 +42,30 @@ public class CrystalController : MonoBehaviour
     {
         Vector2 playerPos = transform.position;
         Vector2 playerPosGround = circularRange.transform.position;
-        Vector2 crystalDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        Vector2 crystalOrigin = playerPosGround + crystalDirection.normalized;
+        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        //Vector2 test1 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Vector2 test2 = new Vector2(test1.x, test1.y / 2);
+        //Vector2 crystalDir = test2 - playerPosGround;
+
+        Vector2 crystalDirection = cursorPos - playerPosGround;
+        //Vector2 crystalOrigin = playerPosGround + crystalDirection.normalized;
+
+
         Vector2 crystalScanTarget = Vector2.ClampMagnitude(crystalDirection, maxScanRange);
-
-        //Debug.Log(crystalScanTarget);
-        isoVectorTwo(crystalScanTarget);
-        //Debug.Log(crystalScanTarget);
-
         Vector2 crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
-        float scanRange = Vector2.Distance(crystalOrigin, playerPos + crystalScanTarget);
 
-        RaycastHit2D hit = Physics2D.Raycast(crystalOrigin, crystalDirection, scanRange); //raycast's definition
-        Debug.DrawRay(playerPosGround, crystalScanTarget, Color.red); //draws the line in scene/debug BUGGÉ PUT1
+        float scanRange = Vector2.Distance(playerPosGround, playerPos + crystalScanTarget);
+
+        RaycastHit2D hit = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange); //raycast's definition
+        Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
 
         //SCAN
         if (hit.collider != null && Input.GetKey("mouse 1"))
         {
             if (hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>().isScannable && hit.collider.gameObject != scannedObject && hit.collider.isTrigger)
             {
-                objectHittedBefore = objectHitted;            
+                objectHittedBefore = objectHitted;
                 objectHitted = hit.transform.gameObject;
 
                 //If no registred objectOnScan
@@ -112,7 +116,7 @@ public class CrystalController : MonoBehaviour
         {
             fireRate = Time.time + fireSpeed;
 
-            cloneProj = (GameObject)Instantiate(scannedObject, crystalOrigin, scannedObject.transform.rotation);
+            cloneProj = (GameObject)Instantiate(scannedObject, transform.position, scannedObject.transform.rotation);
 
             cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
             cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = projSpeed;
