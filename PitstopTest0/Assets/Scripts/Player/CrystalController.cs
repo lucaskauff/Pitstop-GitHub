@@ -14,8 +14,8 @@ public class CrystalController : MonoBehaviour
     float scanSpeed = 1;
     [SerializeField]
     float descanSpeed = 1;
-    [Range(1, 10), SerializeField]
-    float maxScanRange = 5;
+    [Range(1, 10)]
+    public float maxScanRange = 5;
     [Range(1, 10), SerializeField]
     float maxShootRange = 5;
 

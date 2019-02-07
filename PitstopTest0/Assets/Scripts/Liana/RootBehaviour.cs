@@ -6,11 +6,12 @@ public class RootBehaviour : MonoBehaviour
 {
     public LineRenderer liana;
     public GameObject player;
-    GameObject target;
+    public GameObject target;
 
     [SerializeField]
     float lifeInSeconds;
 
+    public CrystalController crys;
     public ScannableObjectBehaviour scannableObjBeh;
     private bool living;
 
@@ -21,25 +22,25 @@ public class RootBehaviour : MonoBehaviour
 
     private void Update()
     {
+        RaycastHit2D hitPoint = Physics2D.Raycast(player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), crys.maxScanRange);
+        Debug.DrawLine(player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Color.blue);
 
 
         if (scannableObjBeh.isFired)
         {
-            /*RaycastHit2D hitPoint = Physics2D.Raycast(player.transform.position, scannableObjBeh.targetPos);
-            Debug.DrawLine(player.transform.position, scannableObjBeh.targetPos, Color.blue);*/
-
-            //if (hitPoint == true && hitPoint.collider.gameObject.tag == ("HookPoint"))
-            //{
-                RaycastHit2D trip = Physics2D.Raycast(player.transform.position, scannableObjBeh.targetPos);
+            
+            if (target != null && target.tag == "HookPoint") { 
+            RaycastHit2D trip = Physics2D.Raycast(player.transform.position, target.transform.position);
+                Debug.DrawLine(player.transform.position, target.transform.position, Color.green);
                 liana.enabled = true;
                 liana.SetPosition(0, player.transform.position);
-                liana.SetPosition(1, scannableObjBeh.targetPos);
-            /*}
+                liana.SetPosition(1, target.transform.position);
+            }
 
             else
             {
                 Debug.Log("Nope Rope !");
-            }*/
+            }
         }
 
 
