@@ -7,10 +7,12 @@ public class RootBehaviour : MonoBehaviour
     public LineRenderer liana;
     public GameObject player;
     public GameObject target;
+    int layer_mask;
 
     [SerializeField]
     float lifeInSeconds;
 
+    public EnemyHealthManager bossHealth;
     public CrystalController crys;
     public ScannableObjectBehaviour scannableObjBeh;
     private bool living;
@@ -18,29 +20,39 @@ public class RootBehaviour : MonoBehaviour
     private void Awake()
     {
         liana = this.GetComponent<LineRenderer>();
+        layer_mask = LayerMask.GetMask("Bear");
     }
 
     private void Update()
     {
         RaycastHit2D hitPoint = Physics2D.Raycast(player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), crys.maxScanRange);
         Debug.DrawLine(player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Color.blue);
-
+        
 
         if (scannableObjBeh.isFired)
         {
             
             if (target != null && target.tag == "HookPoint") { 
-            RaycastHit2D trip = Physics2D.Raycast(player.transform.position, target.transform.position);
+            RaycastHit2D trip = Physics2D.Raycast(player.transform.position, target.transform.position, layer_mask);
                 Debug.DrawLine(player.transform.position, target.transform.position, Color.green);
                 liana.enabled = true;
                 liana.SetPosition(0, player.transform.position);
                 liana.SetPosition(1, target.transform.position);
+
+                if (trip)
+                {
+                    GetComponent<EnemyHealthManager>().HurtEnemy(1);
+                   
+                }
             }
 
             else
             {
                 Debug.Log("Nope Rope !");
             }
+
+            
+
         }
 
 
