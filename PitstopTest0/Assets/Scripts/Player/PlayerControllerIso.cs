@@ -12,7 +12,11 @@ public class PlayerControllerIso : MonoBehaviour
     Rigidbody2D myRb;
     Animator myAnim;
 
-    public List<string> levels = new List<string>(2);
+    public float dashSpeed;
+    private float dashTime;
+    public float startDashTime;
+
+    //public List<string> levels = new List<string>(2);
 
     Vector2 moveInput;
     public bool canMove = true;
@@ -24,6 +28,8 @@ public class PlayerControllerIso : MonoBehaviour
         myRend = GetComponent<SpriteRenderer>();
         myRb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
+
+        dashTime = startDashTime;
     }
 
     void Update()
@@ -49,6 +55,21 @@ public class PlayerControllerIso : MonoBehaviour
             myRb.velocity = Vector2.zero;
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            //Dash();
+            if (dashTime <= 0)
+            {
+                dashTime = startDashTime;
+                myRb.velocity = Vector2.zero;
+            }
+            else
+            {
+                dashTime -= Time.deltaTime;
+                myRb.velocity = lastMove * dashSpeed;
+            }
+        }
+
         myAnim.SetBool("IsMoving", isMoving);
         myAnim.SetFloat("LastMoveX", lastMove.x);
         myAnim.SetFloat("LastMoveY", lastMove.y);
@@ -56,9 +77,15 @@ public class PlayerControllerIso : MonoBehaviour
         myAnim.SetFloat("MoveY", moveInput.y);
     }
 
+    void Dash()
+    {
+
+    }
+
+    /*
     private void LateUpdate()
     {
-        //myRend.sortingOrder = -(int)(transform.position.y * 100);
+        myRend.sortingOrder = -(int)(transform.position.y * 100);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -94,4 +121,5 @@ public class PlayerControllerIso : MonoBehaviour
             }
         }
     }
+    */
 }

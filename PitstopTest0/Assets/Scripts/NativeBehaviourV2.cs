@@ -8,8 +8,8 @@ public class NativeBehaviourV2 : MonoBehaviour
     float moveSpeed;
 
     public GameObject[] interestPoints;
-    Transform whereToGo;
-    bool hasToMove = false;
+    public Transform whereToGo;
+    public bool hasToMove = false;
 
     private void Update()
     {
