@@ -25,7 +25,7 @@ public class LUD_TestButton : MonoBehaviour
 
     public void WhenClicked ()
     {
-        Debug.Log("Click");
-        //FindObjectOfType<LUD_DialogueManagement>().AddAWordToTheSentence(valueOfTheWord);
+        //Debug.Log("Click");
+        FindObjectOfType<LUD_DialogueManagement>().AddAWordToTheSentence(valueOfTheWord);
     }
 }

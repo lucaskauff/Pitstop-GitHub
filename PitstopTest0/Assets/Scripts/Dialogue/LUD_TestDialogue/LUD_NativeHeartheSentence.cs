@@ -10,6 +10,7 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
     bool isCaptivated = true;
 
 
+
     //Private
 
     //Public
@@ -24,22 +25,22 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
 
             if (sumOfSentence == 3)
             {
-                NativeAnswer("BETTERAVE !!");
+                NativeAnswer("BEET !!");
             }
 
             else if (sumOfSentence == 9 || sumOfSentence == 27)
             {
-                NativeAnswer("POMME !!");
+                NativeAnswer("APPLE !!");
             }
 
             else if (sumOfSentence == 15 || sumOfSentence == 11)
             {
-                NativeAnswer("CHAMPIGNON !!");
+                NativeAnswer("MUSHROOMS !!");
             }
 
             else
             {
-                NativeAnswer("Il n'y a rien !");
+                NativeAnswer("There is nothing !");
             }
         }
         
@@ -47,7 +48,8 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
 
     void NativeAnswer(string answer)
     {
-        Debug.Log("Le natif répond : " + answer);
+        //Debug.Log("Le natif répond : " + answer);
+        GetComponent<LUD_DialogueAppearance>().ReactionAppearance(answer);
     }
 
     int ValueOfTheSentence (List<int> listOfInt)
@@ -59,7 +61,7 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
             sum = sum * item;
         }
 
-        Debug.Log("sum = " + sum.ToString());
+        //Debug.Log("sum = " + sum.ToString());
 
         return sum;
     }
