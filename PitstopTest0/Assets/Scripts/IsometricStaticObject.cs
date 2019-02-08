@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.Tilemaps;
 
 public class IsometricStaticObject : MonoBehaviour
 {
@@ -16,19 +15,6 @@ public class IsometricStaticObject : MonoBehaviour
         SpriteRenderer spriteRend = GetComponent<SpriteRenderer>();
         spriteLowerBound = spriteRend.bounds.size.y * 0.5f;
         spriteHalfWidth = spriteRend.bounds.size.x * 0.5f;
-
-        //TilemapRenderer tileRend = GetComponent<TilemapRenderer>();
-
-        /*if (spriteRend != null)
-        {
-            spriteLowerBound = spriteRend.bounds.size.y * 0.5f;
-            spriteHalfWidth = spriteRend.bounds.size.x * 0.5f;
-        }
-        else
-        {
-            spriteLowerBound = tileRend.bounds.size.y * 0.5f;
-            spriteHalfWidth = tileRend.bounds.size.x * 0.5f;
-        }*/
     }
 
     #if UNITY_EDITOR
