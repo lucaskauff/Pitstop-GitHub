@@ -2,14 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(UIManager))]
+[RequireComponent(typeof(SceneLoader))]
 [RequireComponent(typeof(InputManager))]
-public class Singleton<GameManager> : MonoBehaviour 
+[RequireComponent(typeof(UIManager))]
+public class GameManager : Singleton<GameManager>
 {
+    protected GameManager() { }
 
+    public SceneLoader sceneLoader;
+    public InputManager inputManager;
+    public UIManager uIManager;
 
-    public void Awake()
+    void Awake()
     {
-        
+        sceneLoader = GetComponent<SceneLoader>();
+        inputManager = GetComponent<InputManager>();
+        uIManager = GetComponent<UIManager>();
     }
 }

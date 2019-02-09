@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class CrystalController : MonoBehaviour
 {
+    InputManager inputManager;
+    UIManager uIManager;
+
     //SerializedField
     [SerializeField]
     float fireSpeed = 1;
@@ -35,6 +38,9 @@ public class CrystalController : MonoBehaviour
 
     private void Start()
     {
+        inputManager = GameManager.Instance.inputManager;
+        uIManager = GameManager.Instance.uIManager;
+
         circularRange.transform.localScale *= maxScanRange;
     }
 
@@ -87,7 +93,8 @@ public class CrystalController : MonoBehaviour
                     if (scanProgress == 5)
                     {
                         scannedObject = GameObject.FindWithTag(objectOnScan.tag);
-                        uiMan.SendMessage("ChangeImageInCrystalSlot", scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
+                        //uiMan.SendMessage("ChangeImageInCrystalSlot", scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
+                        
                         StopAllCoroutines();                        
                         scanProgress = 0;
                     }
@@ -130,15 +137,6 @@ public class CrystalController : MonoBehaviour
                 cloneProj.GetComponent<AppleBehaviour>().projectileSpeed = projSpeed;
                 cloneProj.GetComponent<AppleBehaviour>().isScannable = false;
                 cloneProj.GetComponent<AppleBehaviour>().isFired = true;
-            }
-            else if (scannedObject.name == "Shroom")
-            {
-                /*
-                cloneProj.GetComponent<ShroomBehaviour>().targetPos = playerPos + crystalShootTarget;
-                cloneProj.GetComponent<ShroomBehaviour>().projectileSpeed = projSpeed;
-                cloneProj.GetComponent<ShroomBehaviour>().isScannable = false;
-                cloneProj.GetComponent<ShroomBehaviour>().isFired = true;
-                */
             }
         }
     }

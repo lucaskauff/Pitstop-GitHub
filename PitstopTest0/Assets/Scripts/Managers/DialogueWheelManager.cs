@@ -1,20 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class DialogueWheelManager : MonoBehaviour
+public class DialogueWheelManager : UIManager
 {
     public GameObject[] dialogueWheelSlotsV1;
 
-    private void Update()
+    void Update()
     {
-        //Show dialogue wheel slots on space maintained pressed
-        if (Input.GetKey(KeyCode.Space))
+        //Show dialogue wheel slots
+        if (inputManager.displayDialogueWheelKey)
         {
             for (int i = 0; i < dialogueWheelSlotsV1.Length; i++)
             {
                 dialogueWheelSlotsV1[i].SetActive(true);
-            }            
+            }
         }
         else
         {

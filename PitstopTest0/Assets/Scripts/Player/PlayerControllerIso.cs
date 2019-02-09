@@ -6,11 +6,13 @@ using UnityEngine.Tilemaps;
 
 public class PlayerControllerIso : MonoBehaviour
 {
-    public float moveSpeed;
-
-    SpriteRenderer myRend;
+    InputManager inputManager;
+    
+    //My components
     Rigidbody2D myRb;
     Animator myAnim;
+
+    public float moveSpeed;
 
     public float dashSpeed;
     private float dashTime;
@@ -25,7 +27,8 @@ public class PlayerControllerIso : MonoBehaviour
 
     void Start()
     {
-        myRend = GetComponent<SpriteRenderer>();
+        inputManager = GameManager.Instance.inputManager;
+
         myRb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
 
@@ -55,21 +58,12 @@ public class PlayerControllerIso : MonoBehaviour
             myRb.velocity = Vector2.zero;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (inputManager.dashKey)
         {
-            //Dash();
-            if (dashTime <= 0)
-            {
-                dashTime = startDashTime;
-                myRb.velocity = Vector2.zero;
-            }
-            else
-            {
-                dashTime -= Time.deltaTime;
-                myRb.velocity = lastMove * dashSpeed;
-            }
+            Dash();            
         }
 
+        //Infos to animator
         myAnim.SetBool("IsMoving", isMoving);
         myAnim.SetFloat("LastMoveX", lastMove.x);
         myAnim.SetFloat("LastMoveY", lastMove.y);
@@ -79,47 +73,15 @@ public class PlayerControllerIso : MonoBehaviour
 
     void Dash()
     {
-
-    }
-
-    /*
-    private void LateUpdate()
-    {
-        myRend.sortingOrder = -(int)(transform.position.y * 100);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Stairs")
+        if (dashTime <= 0)
         {
-            int stairsLevel = levels.IndexOf(collision.gameObject.GetComponent<TilemapRenderer>().sortingLayerName);
-
-            if ((collision.gameObject.name == "StairsLvl1L" && (moveInput.y > 0 || moveInput.x < 0)) || (collision.gameObject.name == "StairsLvl1R" && (moveInput.y > 0 || moveInput.x > 0)))
-            {                
-                myRend.sortingLayerName = levels[stairsLevel + 1];
-            }
+            dashTime = startDashTime;
+            myRb.velocity = Vector2.zero;
+        }
+        else
+        {
+            dashTime -= Time.deltaTime;
+            myRb.velocity = lastMove * dashSpeed;
         }
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Stairs" && moveInput != Vector2.zero)
-        {
-            GetComponent<CinemachineImpulseSource>().GenerateImpulse();
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Stairs")
-        {
-            int stairsLevel = levels.IndexOf(collision.gameObject.GetComponent<TilemapRenderer>().sortingLayerName);
-
-            if ((collision.gameObject.name == "StairsLvl1L" && (moveInput.y < 0 || moveInput.x > 0)) || (collision.gameObject.name == "StairsLvl1R" && (moveInput.y < 0 || moveInput.x < 0)))
-            {
-                myRend.sortingLayerName = levels[stairsLevel];
-            }
-        }
-    }
-    */
 }

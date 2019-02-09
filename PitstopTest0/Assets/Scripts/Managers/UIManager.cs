@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public InputManager inputManager;
+
+    //Crystal
     public Image scanProgressBar;
     public Image crystalSlot;
     public CrystalController crystalControl;
@@ -16,7 +19,12 @@ public class UIManager : MonoBehaviour
     /*
     public Slider enemyHealthBar;
     public EnemyHealthManager enemyHealth;
-    */    
+    */
+
+    void Start()
+    {
+        inputManager = GameManager.Instance.inputManager;
+    }
 
     void Update()
     {
