@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CrystalController : MonoBehaviour
 {
     InputManager inputManager;
-    UIManager uIManager;
+    //UIManager uIManager;
 
     //SerializedField
     [SerializeField]
@@ -39,7 +39,7 @@ public class CrystalController : MonoBehaviour
     private void Start()
     {
         inputManager = GameManager.Instance.inputManager;
-        uIManager = GameManager.Instance.uIManager;
+        //uIManager = GameManager.Instance.uIManager;
 
         circularRange.transform.localScale *= maxScanRange;
     }

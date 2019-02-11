@@ -12,9 +12,8 @@ public class UIManager : MonoBehaviour
     public Image crystalSlot;
     public CrystalController crystalControl;
 
-    //public Slider playerHealthBar;
-    public Image playerHearts;
-    public PlayerHealthManager playerHealth;
+    public Image playerLifes;
+    public PlayerHealthManager playerHealthMan;
 
     /*
     public Slider enemyHealthBar;
@@ -29,7 +28,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalControl.scanProgress);
-        playerHearts.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealth.playerCurrentHealth);
+        playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
 
         /*
         playerHealthBar.maxValue = playerHealth.playerMaxHealth;

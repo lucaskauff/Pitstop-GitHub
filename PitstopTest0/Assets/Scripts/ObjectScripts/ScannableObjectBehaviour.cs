@@ -11,7 +11,7 @@ public class ScannableObjectBehaviour : MonoBehaviour
     public float projectileSpeed = 3;
     public Vector2 targetPos;
 
-    private bool col = false;
+    public bool col = false;
 
     private void Update()
     {
