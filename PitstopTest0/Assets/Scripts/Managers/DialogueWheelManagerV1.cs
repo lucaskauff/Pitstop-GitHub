@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueWheelManager : UIManager
+public class DialogueWheelManagerV1 : MonoBehaviour
 {
     public GameObject[] dialogueWheelSlotsV1;
+    InputManager inputManager;
+    UIManager uIManager;
+
+    private void Start()
+    {
+        inputManager = GameManager.Instance.inputManager;
+        uIManager = GameManager.Instance.uIManager;
+    }
 
     void Update()
     {
@@ -24,5 +32,10 @@ public class DialogueWheelManager : UIManager
                 dialogueWheelSlotsV1[i].SetActive(false);
             }
         }
+    }
+
+    public void SendNativeTo()
+    {
+
     }
 }

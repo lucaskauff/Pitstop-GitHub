@@ -26,6 +26,7 @@ public class GorillaBehaviour : MonoBehaviour
     public GameObject walkZone;
     public Transform viewRange;
     public GameObject target;
+    public GameObject player;
 
     //Private
     Rigidbody2D myRb;
@@ -204,7 +205,7 @@ public class GorillaBehaviour : MonoBehaviour
 
         if (other.gameObject.name == "Zayn" || other.gameObject.name == "Native")
         {
-            other.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealing);
+            player.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealing);
         }
     }
 

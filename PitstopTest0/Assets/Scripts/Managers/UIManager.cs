@@ -15,6 +15,9 @@ public class UIManager : MonoBehaviour
     public Image playerLifes;
     public PlayerHealthManager playerHealthMan;
 
+    //DialogueWheel
+    public GameObject[] dialogueWheelSlotsV1;
+
     /*
     public Slider enemyHealthBar;
     public EnemyHealthManager enemyHealth;
@@ -29,6 +32,22 @@ public class UIManager : MonoBehaviour
     {
         scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalControl.scanProgress);
         playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
+
+        //Show dialogue wheel slots
+        /*if (inputManager.displayDialogueWheelKey)
+        {
+            for (int i = 0; i < dialogueWheelSlotsV1.Length; i++)
+            {
+                dialogueWheelSlotsV1[i].SetActive(true);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < dialogueWheelSlotsV1.Length; i++)
+            {
+                dialogueWheelSlotsV1[i].SetActive(false);
+            }
+        }*/
 
         /*
         playerHealthBar.maxValue = playerHealth.playerMaxHealth;
