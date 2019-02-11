@@ -202,7 +202,7 @@ public class GorillaBehaviour : MonoBehaviour
     {
         col = true;
 
-        if (other.gameObject.name == "Zayn")
+        if (other.gameObject.name == "Zayn" || other.gameObject.name == "Native")
         {
             other.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealing);
         }

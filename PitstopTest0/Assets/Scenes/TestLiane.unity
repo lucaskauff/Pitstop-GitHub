@@ -416,20 +416,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4856945915129332101, guid: 2ddc993ed3684b34e96a1680ed946953,
+    - target: {fileID: 5702566046700201003, guid: 2ddc993ed3684b34e96a1680ed946953,
         type: 3}
-      propertyPath: playerCurrentHealth
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5702566046700200996, guid: 2ddc993ed3684b34e96a1680ed946953,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5702566046700200998, guid: 2ddc993ed3684b34e96a1680ed946953,
-        type: 3}
-      propertyPath: m_SpriteSortPoint
-      value: 1
+      propertyPath: m_Name
+      value: PlayerPlaceholder
       objectReference: {fileID: 0}
     - target: {fileID: 5702566046700200999, guid: 2ddc993ed3684b34e96a1680ed946953,
         type: 3}
@@ -486,10 +476,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5702566046700201003, guid: 2ddc993ed3684b34e96a1680ed946953,
+    - target: {fileID: 4856945915129332101, guid: 2ddc993ed3684b34e96a1680ed946953,
         type: 3}
-      propertyPath: m_Name
-      value: PlayerPlaceholder
+      propertyPath: playerCurrentHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702566046700200996, guid: 2ddc993ed3684b34e96a1680ed946953,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702566046700200998, guid: 2ddc993ed3684b34e96a1680ed946953,
+        type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8099706951261798463, guid: 2ddc993ed3684b34e96a1680ed946953,
         type: 3}
@@ -597,8 +597,8 @@ MonoBehaviour:
   scanProgressBar: {fileID: 0}
   crystalSlot: {fileID: 0}
   crystalControl: {fileID: 0}
-  playerHearts: {fileID: 0}
-  playerHealth: {fileID: 0}
+  playerLifes: {fileID: 0}
+  playerHealthMan: {fileID: 0}
   dialogueWheelSlotsV1:
   - {fileID: 1327682817}
   - {fileID: 1687747581}
@@ -955,7 +955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4335230949645454, guid: 0f2045bc9592573448950fa6352b1830, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4335230949645454, guid: 0f2045bc9592573448950fa6352b1830, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1104,6 +1104,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1512340528326257551, guid: 6c2a7c2344beb0141abaffd893326f6f,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Camera
+      objectReference: {fileID: 0}
     - target: {fileID: 1512340528326257548, guid: 6c2a7c2344beb0141abaffd893326f6f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1158,11 +1163,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512340528326257551, guid: 6c2a7c2344beb0141abaffd893326f6f,
-        type: 3}
-      propertyPath: m_Name
-      value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 1512340528493220346, guid: 6c2a7c2344beb0141abaffd893326f6f,
         type: 3}
@@ -1370,10 +1370,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038f0b4d472e08444bc8e88fb9503279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedIcon: {fileID: 0}
+  isScannable: 1
+  isFired: 0
+  isArrived: 0
+  projectileSpeed: 3
+  targetPos: {x: 0, y: 0}
+  col: 0
   liana: {fileID: 1583250979}
   player: {fileID: 691503565}
   lifeInSeconds: 1
-  scannableObjBeh: {fileID: 1583250974}
 --- !u!114 &1583250974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1392,6 +1398,7 @@ MonoBehaviour:
   isArrived: 0
   projectileSpeed: 3
   targetPos: {x: 0, y: 0}
+  col: 0
 --- !u!61 &1583250975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8107,36 +8114,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4103987242077215592, guid: 0052aae6fdd217342a0bb8ccb337319f,
+    - target: {fileID: 4103987243383474964, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_Name
+      value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 4103987242298499693, guid: 0052aae6fdd217342a0bb8ccb337319f,
+    - target: {fileID: 4103987243383474963, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4103987242936754471, guid: 0052aae6fdd217342a0bb8ccb337319f,
+    - target: {fileID: 4103987243383474963, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4103987242936754471, guid: 0052aae6fdd217342a0bb8ccb337319f,
+      propertyPath: crystalControl
+      value: 
+      objectReference: {fileID: 691503574}
+    - target: {fileID: 4103987243383474963, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4103987243279327086, guid: 0052aae6fdd217342a0bb8ccb337319f,
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 691503569}
+    - target: {fileID: 4103987243383474963, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4103987243279327086, guid: 0052aae6fdd217342a0bb8ccb337319f,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: playerHearts
+      value: 
+      objectReference: {fileID: 1106413767}
     - target: {fileID: 4103987243383474960, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8175,7 +8177,7 @@ PrefabInstance:
     - target: {fileID: 4103987243383474960, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4103987243383474960, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
@@ -8242,6 +8244,36 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4103987242077215592, guid: 0052aae6fdd217342a0bb8ccb337319f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103987242298499693, guid: 0052aae6fdd217342a0bb8ccb337319f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103987242936754471, guid: 0052aae6fdd217342a0bb8ccb337319f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103987242936754471, guid: 0052aae6fdd217342a0bb8ccb337319f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103987243279327086, guid: 0052aae6fdd217342a0bb8ccb337319f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103987243279327086, guid: 0052aae6fdd217342a0bb8ccb337319f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4103987243383474961, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
       propertyPath: m_Camera
@@ -8251,31 +8283,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayerID
       value: 220017747
-      objectReference: {fileID: 0}
-    - target: {fileID: 4103987243383474963, guid: 0052aae6fdd217342a0bb8ccb337319f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4103987243383474963, guid: 0052aae6fdd217342a0bb8ccb337319f,
-        type: 3}
-      propertyPath: crystalControl
-      value: 
-      objectReference: {fileID: 691503574}
-    - target: {fileID: 4103987243383474963, guid: 0052aae6fdd217342a0bb8ccb337319f,
-        type: 3}
-      propertyPath: playerHealth
-      value: 
-      objectReference: {fileID: 691503569}
-    - target: {fileID: 4103987243383474963, guid: 0052aae6fdd217342a0bb8ccb337319f,
-        type: 3}
-      propertyPath: playerHearts
-      value: 
-      objectReference: {fileID: 1106413767}
-    - target: {fileID: 4103987243383474964, guid: 0052aae6fdd217342a0bb8ccb337319f,
-        type: 3}
-      propertyPath: m_Name
-      value: UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0052aae6fdd217342a0bb8ccb337319f, type: 3}
