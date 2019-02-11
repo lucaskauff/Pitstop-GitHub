@@ -12,6 +12,8 @@ public class RootBehaviour : MonoBehaviour
     [SerializeField]
     float lifeInSeconds;
 
+    public float damageDealing = 1;
+
     public EnemyHealthManager bossHealth;
     public CrystalController crys;
     public ScannableObjectBehaviour scannableObjBeh;
@@ -39,9 +41,9 @@ public class RootBehaviour : MonoBehaviour
                 liana.SetPosition(0, player.transform.position);
                 liana.SetPosition(1, target.transform.position);
 
-                if (trip)
+                if (trip && /*trip.collider.gameObject.name = "Bear"*/)
                 {
-                    GetComponent<EnemyHealthManager>().HurtEnemy(1);
+                    bossHealth.SendMessage("HurtEnemy", damageDealing);
                    
                 }
             }
