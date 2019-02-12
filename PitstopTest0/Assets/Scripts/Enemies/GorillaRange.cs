@@ -8,7 +8,6 @@ public class GorillaRange : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider)
     {
-        //Add Native as potential target here !
         if (!gorillaBeh.isArrived && gorillaBeh.target == null && (collider.gameObject.name == "Zayn" || collider.gameObject.name == "Native"))
         {
             gorillaBeh.target = collider.gameObject;

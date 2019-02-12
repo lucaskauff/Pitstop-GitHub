@@ -7,7 +7,7 @@ public class NativeBehaviourV2 : MonoBehaviour
     [SerializeField]
     float moveSpeed;
 
-    public GameObject[] interestPoints;
+    //public GameObject[] interestPoints;
     public Transform whereToGo;
     public bool hasToMove = false;
 

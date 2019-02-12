@@ -5,13 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public string activeScene;
+
+    public void Start()
+    {
+        activeScene = SceneManager.GetActiveScene().name;
+    }
+
     public void LoadNewScene(string sceneToLoad)
     {
+        activeScene = sceneToLoad;
         SceneManager.LoadScene(sceneToLoad);
     }
 
     public void ReloadScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(activeScene);
     }
 }
