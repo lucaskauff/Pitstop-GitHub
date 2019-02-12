@@ -35,6 +35,7 @@ public class CrystalController : MonoBehaviour
     public GameObject scannedObject;
     public UIManager uiMan;
     public GameObject circularRange;
+    public LayerMask whereToRaycast;
 
     private void Start()
     {
@@ -63,50 +64,53 @@ public class CrystalController : MonoBehaviour
 
         float scanRange = Vector2.Distance(playerPosGround, playerPos + crystalScanTarget);
 
-        RaycastHit2D hit = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange); //raycast's definition
+        RaycastHit2D hit = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange, ); //raycast's definition
         Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
 
         //SCAN
         if (hit.collider != null && Input.GetKey("mouse 1"))
         {
-            if (hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>().isScannable && hit.collider.gameObject != scannedObject && hit.collider.isTrigger)
+            if (hit.collider.isTrigger && hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>() != null && hit.collider.gameObject != scannedObject)
             {
-                objectHittedBefore = objectHitted;
-                objectHitted = hit.transform.gameObject;
-
-                //If no registred objectOnScan
-                if (objectOnScan == null)
+                if (hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>().isScannable)
                 {
-                    StopAllCoroutines();
+                    objectHittedBefore = objectHitted;
+                    objectHitted = hit.transform.gameObject;
 
-                    //If it's a different object than the last one scanned => Reinitialise scanProgress
-                    if (objectHittedBefore.tag != objectHitted.tag)
+                    //If no registred objectOnScan
+                    if (objectOnScan == null)
+                    {
+                        StopAllCoroutines();
+
+                        //If it's a different object than the last one scanned => Reinitialise scanProgress
+                        if (objectHittedBefore.tag != objectHitted.tag)
+                        {
+                            scanProgress = 0;
+                        }
+
+                        StartCoroutine(Scan());
+                    }
+                    //If hit object is the same as the registered one
+                    else if (objectOnScan.tag == objectHitted.tag)
+                    {
+                        if (scanProgress == 5)
+                        {
+                            scannedObject = GameObject.FindWithTag(objectOnScan.tag);
+                            //uiMan.SendMessage("ChangeImageInCrystalSlot", scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
+
+                            StopAllCoroutines();
+                            scanProgress = 0;
+                        }
+                    }
+                    //If new object hitted directly => Reinitialise scanProgress
+                    else
                     {
                         scanProgress = 0;
                     }
 
-                    StartCoroutine(Scan());
-                }
-                //If hit object is the same as the registered one
-                else if (objectOnScan.tag == objectHitted.tag)
-                {
-                    if (scanProgress == 5)
-                    {
-                        scannedObject = GameObject.FindWithTag(objectOnScan.tag);
-                        //uiMan.SendMessage("ChangeImageInCrystalSlot", scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
-                        
-                        StopAllCoroutines();                        
-                        scanProgress = 0;
-                    }
-                }
-                //If new object hitted directly => Reinitialise scanProgress
-                else
-                {
-                    scanProgress = 0;
-                }
-
-                hitting = true;
-                objectOnScan = objectHitted;
+                    hitting = true;
+                    objectOnScan = objectHitted;
+                }                
             }
         }
         //No object hit => DESCAN

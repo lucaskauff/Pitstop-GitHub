@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RootBehaviour : ScannableObjectBehaviour
+public class RootBehaviour : MonoBehaviour
 {
+    public ScannableObjectBehaviour scannableObjBeh;
+
     public LineRenderer liana;
     public GameObject player;
     GameObject target;
@@ -20,17 +22,17 @@ public class RootBehaviour : ScannableObjectBehaviour
 
     private void Update()
     {
-        if (isFired)
+        if (scannableObjBeh.isFired)
         {
             /*RaycastHit2D hitPoint = Physics2D.Raycast(player.transform.position, scannableObjBeh.targetPos);
             Debug.DrawLine(player.transform.position, scannableObjBeh.targetPos, Color.blue);*/
 
             //if (hitPoint == true && hitPoint.collider.gameObject.tag == ("HookPoint"))
             //{
-                RaycastHit2D trip = Physics2D.Raycast(player.transform.position, targetPos);
+                RaycastHit2D trip = Physics2D.Raycast(player.transform.position, scannableObjBeh.targetPos);
                 liana.enabled = true;
                 liana.SetPosition(0, player.transform.position);
-                liana.SetPosition(1, targetPos);
+                liana.SetPosition(1, scannableObjBeh.targetPos);
             /*}
 
             else
@@ -40,7 +42,7 @@ public class RootBehaviour : ScannableObjectBehaviour
         }
 
 
-        if (isArrived)
+        if (scannableObjBeh.isArrived)
         {
             StartCoroutine(Life());
         }
