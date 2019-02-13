@@ -15,6 +15,8 @@ public class InputManager : MonoBehaviour
     public Vector2 cursorPosition;
 
     //Player keys
+    public float horizontalInput;
+    public float verticalInput;
     public bool dashKey;
 
     //Crystal keys
@@ -29,6 +31,9 @@ public class InputManager : MonoBehaviour
         displayDialogueWheelKey = Input.GetKey(KeyCode.Space);
 
         cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
 
         dashKey = Input.GetKeyDown(KeyCode.LeftShift);
 

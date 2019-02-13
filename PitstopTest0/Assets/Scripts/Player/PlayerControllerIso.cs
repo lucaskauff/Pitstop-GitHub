@@ -15,8 +15,9 @@ public class PlayerControllerIso : MonoBehaviour
     public float moveSpeed;
 
     public float dashSpeed;
-    private float dashTime;
-    public float startDashTime;
+    public float dashTime;
+    private float dashRate = 0;
+    //public float startDashTime;
 
     //public List<string> levels = new List<string>(2);
 
@@ -32,7 +33,7 @@ public class PlayerControllerIso : MonoBehaviour
         myRb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
 
-        dashTime = startDashTime;
+        //dashTime = startDashTime;
     }
 
     void Update()
@@ -45,7 +46,7 @@ public class PlayerControllerIso : MonoBehaviour
             return;
         }
 
-        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical") / 2).normalized;
+        moveInput = new Vector2(inputManager.horizontalInput, inputManager.verticalInput / 2).normalized;
 
         if(moveInput != Vector2.zero)
         {
@@ -72,6 +73,11 @@ public class PlayerControllerIso : MonoBehaviour
     }
 
     void Dash()
+    {
+
+    }
+
+    void DashTest()
     {
         if (dashTime <= 0)
         {

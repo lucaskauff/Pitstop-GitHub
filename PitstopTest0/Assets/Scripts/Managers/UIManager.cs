@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public InputManager inputManager;
+    InputManager inputManager;
 
     //Crystal
     public Image scanProgressBar;

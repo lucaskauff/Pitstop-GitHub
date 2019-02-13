@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class CrystalController : MonoBehaviour
 {
     InputManager inputManager;
-    //UIManager uIManager;
 
     //SerializedField
     [SerializeField]
@@ -31,16 +30,15 @@ public class CrystalController : MonoBehaviour
     GameObject cloneProj;
 
     //Public
+    public UIManager uIManager;
     public int scanProgress = 0;
     public GameObject scannedObject;
-    public UIManager uiMan;
     public GameObject circularRange;
     public LayerMask raycastLayerMask;
 
     private void Start()
     {
         inputManager = GameManager.Instance.inputManager;
-        //uIManager = GameManager.Instance.uIManager;
 
         circularRange.transform.localScale *= maxScanRange;
     }
@@ -67,7 +65,7 @@ public class CrystalController : MonoBehaviour
         Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
 
         //SCAN
-        if (hit.collider != null && Input.GetKey("mouse 1"))
+        if (hit.collider != null && inputManager.scanKey)
         {
             if (hit.collider.isTrigger && hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>() != null && hit.collider.gameObject != scannedObject)
             {
@@ -95,7 +93,7 @@ public class CrystalController : MonoBehaviour
                         if (scanProgress == 5)
                         {
                             scannedObject = GameObject.FindWithTag(objectOnScan.tag);
-                            //uiMan.SendMessage("ChangeImageInCrystalSlot", scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
+                            uIManager.SendMessage("ChangeImageInCrystalSlot", scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
 
                             StopAllCoroutines();
                             scanProgress = 0;
@@ -122,7 +120,7 @@ public class CrystalController : MonoBehaviour
         }
 
         //SHOOT the scanned object
-        if (Input.GetKeyDown("mouse 0") && Time.time > fireRate)
+        if (inputManager.shootKey && Time.time > fireRate)
         {
             fireRate = Time.time + fireSpeed;
 

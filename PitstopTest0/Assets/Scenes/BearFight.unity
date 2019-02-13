@@ -274,6 +274,80 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &75921355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 75921356}
+  - component: {fileID: 75921357}
+  - component: {fileID: 75921358}
+  m_Layer: 5
+  m_Name: CrystalSlotIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &75921356
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75921355}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1487064835}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 11.5, y: 11.5}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &75921357
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75921355}
+  m_CullTransparentMesh: 0
+--- !u!114 &75921358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75921355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
 --- !u!1 &130897234
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -597, y: -48}
+  m_AnchoredPosition: {x: -597, y: -13}
   m_SizeDelta: {x: 53, y: 342}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &340392872
@@ -2047,265 +2121,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 671427562}
-    m_ColliderPaths:
-    - - X: 0
-        Y: 5000000
-      - X: -490676
-        Y: 4993977
-      - X: -980171
-        Y: 4975923
-      - X: -1467304
-        Y: 4945882
-      - X: -1950903
-        Y: 4903926
-      - X: -2429802
-        Y: 4850156
-      - X: -2902846
-        Y: 4784702
-      - X: -3368898
-        Y: 4707720
-      - X: -3826834
-        Y: 4619398
-      - X: -4275550
-        Y: 4519946
-      - X: -4713967
-        Y: 4409606
-      - X: -5141027
-        Y: 4288643
-      - X: -5555702
-        Y: 4157348
-      - X: -5956993
-        Y: 4016037
-      - X: -6343933
-        Y: 3865052
-      - X: -6715590
-        Y: 3704755
-      - X: -7071068
-        Y: 3535533
-      - X: -7409512
-        Y: 3357794
-      - X: -7730105
-        Y: 3171966
-      - X: -8032076
-        Y: 2978496
-      - X: -8314697
-        Y: 2777850
-      - X: -8577287
-        Y: 2570513
-      - X: -8819214
-        Y: 2356982
-      - X: -9039894
-        Y: 2137774
-      - X: -9238796
-        Y: 1913416
-      - X: -9415442
-        Y: 1684448
-      - X: -9569404
-        Y: 1451422
-      - X: -9700313
-        Y: 1214899
-      - X: -9807854
-        Y: 975450
-      - X: -9891766
-        Y: 733650
-      - X: -9951848
-        Y: 490083
-      - X: -9987954
-        Y: 245336
-      - X: -10000000
-        Y: -2
-      - X: -9987954
-        Y: -245340
-      - X: -9951847
-        Y: -490087
-      - X: -9891765
-        Y: -733654
-      - X: -9807852
-        Y: -975454
-      - X: -9700311
-        Y: -1214903
-      - X: -9569402
-        Y: -1451425
-      - X: -9415439
-        Y: -1684451
-      - X: -9238793
-        Y: -1913419
-      - X: -9039891
-        Y: -2137777
-      - X: -8819211
-        Y: -2356985
-      - X: -8577285
-        Y: -2570515
-      - X: -8314695
-        Y: -2777851
-      - X: -8032075
-        Y: -2978496
-      - X: -7730105
-        Y: -3171966
-      - X: -7409512
-        Y: -3357794
-      - X: -7071069
-        Y: -3535533
-      - X: -6715592
-        Y: -3704754
-      - X: -6343936
-        Y: -3865051
-      - X: -5956997
-        Y: -4016036
-      - X: -5555708
-        Y: -4157346
-      - X: -5141033
-        Y: -4288641
-      - X: -4713974
-        Y: -4409604
-      - X: -4275559
-        Y: -4519944
-      - X: -3826843
-        Y: -4619395
-      - X: -3368909
-        Y: -4707718
-      - X: -2902858
-        Y: -4784700
-      - X: -2429814
-        Y: -4850154
-      - X: -1950917
-        Y: -4903925
-      - X: -1467319
-        Y: -4945881
-      - X: -980187
-        Y: -4975922
-      - X: -490693
-        Y: -4993977
-      - X: -18
-        Y: -5000000
-      - X: 490657
-        Y: -4993978
-      - X: 980151
-        Y: -4975924
-      - X: 1467283
-        Y: -4945884
-      - X: 1950881
-        Y: -4903928
-      - X: 2429779
-        Y: -4850159
-      - X: 2902823
-        Y: -4784705
-      - X: 3368874
-        Y: -4707724
-      - X: 3826810
-        Y: -4619402
-      - X: 4275526
-        Y: -4519952
-      - X: 4713942
-        Y: -4409613
-      - X: 5141002
-        Y: -4288650
-      - X: 5555677
-        Y: -4157356
-      - X: 5956968
-        Y: -4016046
-      - X: 6343908
-        Y: -3865062
-      - X: 6715565
-        Y: -3704766
-      - X: 7071044
-        Y: -3535546
-      - X: 7409488
-        Y: -3357807
-      - X: 7730083
-        Y: -3171979
-      - X: 8032056
-        Y: -2978509
-      - X: 8314678
-        Y: -2777864
-      - X: 8577271
-        Y: -2570526
-      - X: 8819199
-        Y: -2356996
-      - X: 9039881
-        Y: -2137787
-      - X: 9238786
-        Y: -1913428
-      - X: 9415433
-        Y: -1684460
-      - X: 9569397
-        Y: -1451434
-      - X: 9700307
-        Y: -1214911
-      - X: 9807849
-        Y: -975461
-      - X: 9891762
-        Y: -733661
-      - X: 9951845
-        Y: -490094
-      - X: 9987954
-        Y: -245346
-      - X: 10000000
-        Y: -7
-      - X: 9987955
-        Y: 245331
-      - X: 9951848
-        Y: 490080
-      - X: 9891766
-        Y: 733647
-      - X: 9807854
-        Y: 975447
-      - X: 9700314
-        Y: 1214897
-      - X: 9569405
-        Y: 1451420
-      - X: 9415442
-        Y: 1684447
-      - X: 9238796
-        Y: 1913415
-      - X: 9039894
-        Y: 2137774
-      - X: 8819213
-        Y: 2356983
-      - X: 8577285
-        Y: 2570514
-      - X: 8314695
-        Y: 2777852
-      - X: 8032073
-        Y: 2978498
-      - X: 7730101
-        Y: 3171968
-      - X: 7409507
-        Y: 3357797
-      - X: 7071062
-        Y: 3535536
-      - X: 6715582
-        Y: 3704759
-      - X: 6343924
-        Y: 3865055
-      - X: 5956983
-        Y: 4016041
-      - X: 5555691
-        Y: 4157351
-      - X: 5141014
-        Y: 4288647
-      - X: 4713953
-        Y: 4409610
-      - X: 4275534
-        Y: 4519950
-      - X: 3826816
-        Y: 4619401
-      - X: 3368879
-        Y: 4707724
-      - X: 2902825
-        Y: 4784704
-      - X: 2429779
-        Y: 4850159
-      - X: 1950879
-        Y: 4903929
-      - X: 1467278
-        Y: 4945884
-      - X: 980144
-        Y: 4975925
-      - X: 490647
-        Y: 4993978
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 0.0490657, y: -0.4993978}
@@ -2646,7 +2462,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1052579953
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 1af2ed88d3ccf31408d2683e0cb22af5, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.39215687}
@@ -8363,6 +8179,117 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1484659727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1484659728}
+  - component: {fileID: 1484659730}
+  - component: {fileID: 1484659729}
+  m_Layer: 5
+  m_Name: CrystalSlotCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1484659728
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484659727}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1487064835}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 120, y: 120}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1484659729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484659727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 4edab589f37a1914080ae7a507e57a56, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1484659730
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484659727}
+  m_CullTransparentMesh: 0
+--- !u!1 &1487064834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1487064835}
+  m_Layer: 5
+  m_Name: CrystalSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1487064835
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487064834}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1484659728}
+  - {fileID: 75921356}
+  m_Father: {fileID: 860682113}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 189, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1001 &1503428282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8454,6 +8381,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Lens.OrthographicSize
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512340528326257546, guid: 6c2a7c2344beb0141abaffd893326f6f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1512340529304469786, guid: 6c2a7c2344beb0141abaffd893326f6f, type: 3}
@@ -8549,7 +8481,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1052579953
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: da5b82acd978fc542b39543a8a252df9, type: 3}
   m_Color: {r: 0.07075471, g: 1, b: 0.21611322, a: 1}
@@ -8661,7 +8593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1564327646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8772,7 +8704,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1052579953
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: da5b82acd978fc542b39543a8a252df9, type: 3}
   m_Color: {r: 1, g: 0.2216981, b: 0.2216981, a: 1}
@@ -8953,7 +8885,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1052579953
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: da5b82acd978fc542b39543a8a252df9, type: 3}
   m_Color: {r: 0.09812211, g: 0.4245283, b: 0.16082609, a: 1}
@@ -9142,7 +9074,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -985832523
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -14425,6 +14357,16 @@ PrefabInstance:
       propertyPath: enemyHealthBar
       value: 
       objectReference: {fileID: 1847339156}
+    - target: {fileID: 4103987243383474963, guid: 0052aae6fdd217342a0bb8ccb337319f,
+        type: 3}
+      propertyPath: scanProgressBar
+      value: 
+      objectReference: {fileID: 1781189903}
+    - target: {fileID: 4103987243383474963, guid: 0052aae6fdd217342a0bb8ccb337319f,
+        type: 3}
+      propertyPath: crystalSlot
+      value: 
+      objectReference: {fileID: 75921358}
     - target: {fileID: 4103987243383474960, guid: 0052aae6fdd217342a0bb8ccb337319f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14626,6 +14568,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c48e1dc8e5e14994788ebe77d27759df, type: 2}
+    - target: {fileID: 4103987243253687614, guid: 0052aae6fdd217342a0bb8ccb337319f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0052aae6fdd217342a0bb8ccb337319f, type: 3}
 --- !u!1 &1781189901
@@ -14639,6 +14586,7 @@ GameObject:
   - component: {fileID: 1781189902}
   - component: {fileID: 1781189904}
   - component: {fileID: 1781189903}
+  - component: {fileID: 1781189905}
   m_Layer: 5
   m_Name: ScanProgress
   m_TagString: Untagged
@@ -14663,7 +14611,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 190, y: 190}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1781189903
 MonoBehaviour:
@@ -14702,6 +14650,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189901}
   m_CullTransparentMesh: 0
+--- !u!95 &1781189905
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781189901}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c48e1dc8e5e14994788ebe77d27759df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1847339156 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4103987242298499695, guid: 0052aae6fdd217342a0bb8ccb337319f,
@@ -15089,6 +15056,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zayn
       objectReference: {fileID: 0}
+    - target: {fileID: 1140505191146978034, guid: cb904d02083b667428abc6b8cf885945,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1140505191146978046, guid: cb904d02083b667428abc6b8cf885945,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15146,6 +15118,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691503574, guid: cb904d02083b667428abc6b8cf885945, type: 3}
       propertyPath: uiMan
+      value: 
+      objectReference: {fileID: 133687076}
+    - target: {fileID: 691503574, guid: cb904d02083b667428abc6b8cf885945, type: 3}
+      propertyPath: uIManager
       value: 
       objectReference: {fileID: 133687076}
     - target: {fileID: 217864139, guid: cb904d02083b667428abc6b8cf885945, type: 3}
