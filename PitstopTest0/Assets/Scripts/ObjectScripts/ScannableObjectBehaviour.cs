@@ -17,7 +17,10 @@ public class ScannableObjectBehaviour : MonoBehaviour
     {
         if (isFired)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+            if (this.name != "ScannableRoot")
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+            }
         }
 
         if (col || new Vector2(transform.position.x, transform.position.y) == targetPos)

@@ -12,7 +12,7 @@ public class RootBehaviour : MonoBehaviour
     [SerializeField]
     float lifeInSeconds;
 
-    public float damageDealing = 1;
+    public int damageDealing = 1;
 
     public EnemyHealthManager bossHealth;
     public CrystalController crys;
@@ -27,32 +27,33 @@ public class RootBehaviour : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit2D hitPoint = Physics2D.Raycast(player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), crys.maxScanRange);
-        Debug.DrawLine(player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Color.blue);
+        //RaycastHit2D hitPoint = Physics2D.Raycast(player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), crys.maxScanRange);
+        //Debug.DrawLine(player.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Color.blue);
         
-
         if (scannableObjBeh.isFired)
         {
-            
-            if (target != null && target.tag == "HookPoint") { 
-            RaycastHit2D trip = Physics2D.Raycast(player.transform.position, target.transform.position, layer_mask);
+            if (target != null && target.tag == "HookPoint")
+            {
+                RaycastHit2D trip = Physics2D.Raycast(player.transform.position, target.transform.position, layer_mask);
+                if (trip.collider.gameObject.name == "Gorilla")
+                {
+                    Debug.Log("HIT");
+                    bossHealth.HurtEnemy(damageDealing);
+                }
                 Debug.DrawLine(player.transform.position, target.transform.position, Color.green);
                 liana.enabled = true;
                 liana.SetPosition(0, player.transform.position);
                 liana.SetPosition(1, target.transform.position);
             }
 
-            else
+            else 
             {
                 Debug.Log("Nope Rope !");
-            }                  
-
+            }
         }
-
 
         if (scannableObjBeh.isArrived)
         {
-            
             StartCoroutine(Life());
         }
     }
