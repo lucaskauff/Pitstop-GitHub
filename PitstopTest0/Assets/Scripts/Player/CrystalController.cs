@@ -35,7 +35,7 @@ public class CrystalController : MonoBehaviour
     public GameObject scannedObject;
     public UIManager uiMan;
     public GameObject circularRange;
-    public LayerMask whereToRaycast;
+    public LayerMask raycastLayerMask;
 
     private void Start()
     {
@@ -58,13 +58,12 @@ public class CrystalController : MonoBehaviour
         Vector2 crystalDirection = cursorPos - playerPosGround;
         //Vector2 crystalOrigin = playerPosGround + crystalDirection.normalized;
 
-
         Vector2 crystalScanTarget = Vector2.ClampMagnitude(crystalDirection, maxScanRange);
         Vector2 crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
 
         float scanRange = Vector2.Distance(playerPosGround, playerPos + crystalScanTarget);
 
-        RaycastHit2D hit = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange, ); //raycast's definition
+        RaycastHit2D hit = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange); //raycast's definition
         Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
 
         //SCAN
