@@ -54,8 +54,6 @@ public class ImpulseApple_Behavior : MonoBehaviour
             {
                 Vector2 target = collision.gameObject.transform.position;
                 Vector2 Apple = gameObject.transform.position;
-
-                Vector2 
             }
         }
     }
