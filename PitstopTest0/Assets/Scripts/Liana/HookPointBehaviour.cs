@@ -6,6 +6,7 @@ public class HookPointBehaviour : MonoBehaviour
 {
     public RootBehaviour root;
 
+    
     private void OnMouseOver()
     {
         root.target = this.gameObject;

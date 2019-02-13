@@ -440,13 +440,19 @@ Transform:
   m_Father: {fileID: 916569285}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &225203358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4816876112790863935, guid: 76dcb4e089bd04f4faa21b8386a9017a,
+    type: 3}
+  m_PrefabInstance: {fileID: 792426706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &225203360 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4816876112790863934, guid: 76dcb4e089bd04f4faa21b8386a9017a,
     type: 3}
   m_PrefabInstance: {fileID: 792426706}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 225203358}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 038f0b4d472e08444bc8e88fb9503279, type: 3}
@@ -15482,6 +15488,10 @@ PrefabInstance:
       propertyPath: uIManager
       value: 
       objectReference: {fileID: 133687076}
+    - target: {fileID: 691503574, guid: cb904d02083b667428abc6b8cf885945, type: 3}
+      propertyPath: scannedObject
+      value: 
+      objectReference: {fileID: 225203358}
     - target: {fileID: 217864139, guid: cb904d02083b667428abc6b8cf885945, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
