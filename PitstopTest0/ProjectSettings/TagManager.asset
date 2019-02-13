@@ -7,6 +7,7 @@ TagManager:
   - Stairs
   - ObjectApple
   - ObjectRoot
+  - HookPoint
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Detection
   - 
   - 
   - 
@@ -44,11 +45,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Level1
-    uniqueID: 685028533
+  - name: Ground
+    uniqueID: 3309134773
     locked: 0
-  - name: Level2
-    uniqueID: 3144872761
+  - name: Detection
+    uniqueID: 3996372453
+    locked: 0
+  - name: Elements
+    uniqueID: 1052579953
     locked: 0
   - name: UI
     uniqueID: 220017747

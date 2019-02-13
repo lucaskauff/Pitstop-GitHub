@@ -24,7 +24,8 @@ public class BetteraveBehaviour : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             lifeInSeconds--;
-            Debug.Log("dead");            
+            Debug.Log("dead");
+            Destroy(gameObject);
         }
     }
 }
