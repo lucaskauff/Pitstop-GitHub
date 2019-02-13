@@ -81,7 +81,7 @@ public class PlayerControllerIso : MonoBehaviour
     {
         if (dashTime <= 0)
         {
-            dashTime = startDashTime;
+            //dashTime = startDashTime;
             myRb.velocity = Vector2.zero;
         }
         else

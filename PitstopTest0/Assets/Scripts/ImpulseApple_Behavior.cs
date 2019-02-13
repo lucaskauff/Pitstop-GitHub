@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ImpulseApple_Behavior : MonoBehaviour
 {
+    public ScannableObjectBehaviour scannableObjectBehaviour;
+
     public float Explosion_Delay = 1.0f;
     public float Explosion_Rate = 1.0f;
     public float Explosion_MaxSize = 10.0f;
@@ -23,23 +25,33 @@ public class ImpulseApple_Behavior : MonoBehaviour
     void Update()
     {
         Explosion_Delay -= Time.deltaTime;
-        if (Explosion_Delay <0)
+
+        if (scannableObjectBehaviour.isArrived)
         {
             Exploded = true;
         }
+
+        /*if (Explosion_Delay <= 0)
+        {
+            Exploded = true;
+        }*/
     }
 
     void FixedUpdate()
     {
         if (Exploded == true)
         {
-            if (Current_Radius<Explosion_MaxSize)
+            Debug.Log("Explosion");
+
+            if (Current_Radius < Explosion_MaxSize)
             {
                 Current_Radius += Explosion_Rate;
             }
             else
             {
-                Object.Destroy(this.gameObject.transform.parent.gameObject);
+                Debug.Log("Gone");
+                //Object.Destroy(this.gameObject.transform.parent.gameObject);
+                Object.Destroy(this.gameObject);
             }
 
             Explosion_Radius.radius = Current_Radius;
@@ -52,10 +64,11 @@ public class ImpulseApple_Behavior : MonoBehaviour
         {
             if(collision.gameObject.GetComponent<Rigidbody2D>() !=null)
             {
-                Vector2 target = collision.gameObject.transform.position;
+                Vector2 Target = collision.gameObject.transform.position;
                 Vector2 Apple = gameObject.transform.position;
 
-                Vector2 
+                Vector2 direction = 1000f * (Target - Apple);
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(direction);
             }
         }
     }
