@@ -40,20 +40,12 @@ public class RootBehaviour : MonoBehaviour
                 liana.enabled = true;
                 liana.SetPosition(0, player.transform.position);
                 liana.SetPosition(1, target.transform.position);
-
-                if (trip && /*trip.collider.gameObject.name = "Bear"*/)
-                {
-                    bossHealth.SendMessage("HurtEnemy", damageDealing);
-                   
-                }
             }
 
             else
             {
                 Debug.Log("Nope Rope !");
-            }
-
-            
+            }                  
 
         }
 
