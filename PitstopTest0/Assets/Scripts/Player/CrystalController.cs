@@ -137,7 +137,7 @@ public class CrystalController : MonoBehaviour
             if (scannedObject.name == "ScannableRoot")
             {
                 cloneProj.GetComponent<SpriteRenderer>().enabled = false;
-                cloneProj.GetComponent<BoxCollider2D>().enabled = false;
+                //cloneProj.GetComponent<BoxCollider2D>().enabled = false;
             }
 
             //not optimized at all
