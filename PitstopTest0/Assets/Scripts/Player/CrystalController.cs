@@ -16,8 +16,8 @@ public class CrystalController : MonoBehaviour
     float scanSpeed = 1;
     [SerializeField]
     float descanSpeed = 1;
-    [Range(1, 10), SerializeField]
-    float maxScanRange = 5;
+    [Range(1, 10)]
+    public float maxScanRange = 5;
     [Range(1, 10), SerializeField]
     float maxShootRange = 5;
 
@@ -80,9 +80,12 @@ public class CrystalController : MonoBehaviour
                         StopAllCoroutines();
 
                         //If it's a different object than the last one scanned => Reinitialise scanProgress
-                        if (objectHittedBefore.tag != objectHitted.tag)
+                        if (objectHittedBefore != null)
                         {
-                            scanProgress = 0;
+                            if (objectHittedBefore.tag != objectHitted.tag)
+                            {
+                                scanProgress = 0;
+                            }
                         }
 
                         StartCoroutine(Scan());
@@ -130,6 +133,12 @@ public class CrystalController : MonoBehaviour
             cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = projSpeed;
             cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
             cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
+
+            if (scannedObject.name == "ScannableRoot")
+            {
+                cloneProj.GetComponent<SpriteRenderer>().enabled = false;
+                //cloneProj.GetComponent<BoxCollider2D>().enabled = false;
+            }
 
             //not optimized at all
             if (scannedObject.name == "Apple")
