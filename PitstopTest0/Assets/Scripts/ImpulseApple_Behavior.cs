@@ -5,7 +5,17 @@ using UnityEngine;
 public class ImpulseApple_Behavior : MonoBehaviour
 {
     public ScannableObjectBehaviour scannableObjectBehaviour;
+    public GameObject schockwave;
 
+    private void Update()
+    {
+        if (scannableObjectBehaviour.isArrived)
+        {
+            schockwave.SetActive(true);
+        }
+    }
+
+    /*
     public float Explosion_Delay = 1.0f;
     public float Explosion_Rate = 1.0f;
     public float Explosion_MaxSize = 10.0f;
@@ -34,7 +44,7 @@ public class ImpulseApple_Behavior : MonoBehaviour
         /*if (Explosion_Delay <= 0)
         {
             Exploded = true;
-        }*/
+        }
     }
 
     void FixedUpdate()
@@ -71,5 +81,5 @@ public class ImpulseApple_Behavior : MonoBehaviour
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(direction);
             }
         }
-    }
+    }*/
 }
