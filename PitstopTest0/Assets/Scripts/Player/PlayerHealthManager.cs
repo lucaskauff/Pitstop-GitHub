@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerHealthManager : MonoBehaviour
 {
+    SceneLoader sceneLoader;
+
     //Public
     public int playerMaxHealth = 3;
     public int playerCurrentHealth;
 
     void Start()
     {
+        sceneLoader = GameManager.Instance.sceneLoader;
+
         playerCurrentHealth = playerMaxHealth;
     }
 
@@ -17,7 +21,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         if (playerCurrentHealth <= 0)
         {
-            gameObject.SetActive(false);
+            sceneLoader.ReloadScene();
         }
     }
 
