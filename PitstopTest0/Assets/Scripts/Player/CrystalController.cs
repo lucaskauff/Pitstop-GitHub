@@ -80,9 +80,12 @@ public class CrystalController : MonoBehaviour
                         StopAllCoroutines();
 
                         //If it's a different object than the last one scanned => Reinitialise scanProgress
-                        if (objectHittedBefore.tag != objectHitted.tag)
+                        if (objectHittedBefore != null)
                         {
-                            scanProgress = 0;
+                            if (objectHittedBefore.tag != objectHitted.tag)
+                            {
+                                scanProgress = 0;
+                            }
                         }
 
                         StartCoroutine(Scan());

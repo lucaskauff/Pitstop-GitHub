@@ -76,7 +76,7 @@ public class PlayerControllerIso : MonoBehaviour
     void Dash()
     {
         dashRate = Time.time + dashTime;
-
+        //Debug.Log(dashRate);
         myRb.velocity = lastMove * dashSpeed;
     }
 }

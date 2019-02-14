@@ -13,6 +13,13 @@ public class ScannableObjectBehaviour : MonoBehaviour
 
     public bool col = false;
 
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     private void Update()
     {
         if (isFired)

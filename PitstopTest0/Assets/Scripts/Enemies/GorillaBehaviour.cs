@@ -20,6 +20,8 @@ public class GorillaBehaviour : MonoBehaviour
     [SerializeField]
     float rushTime = 2;
     [SerializeField]
+    float rushRatio = 1.25f;
+    [SerializeField]
     float stunTime = 3;
 
     //Public
@@ -178,7 +180,7 @@ public class GorillaBehaviour : MonoBehaviour
                 if (!followTargetCheck)
                 {
                     StartCoroutine(RushTimeDecount());
-                    targetPos = target.transform.position;
+                    targetPos = (target.transform.position - this.transform.position) * rushRatio;
                     followTargetCheck = true;
                 }
 

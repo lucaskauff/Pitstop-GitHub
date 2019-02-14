@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public Image scanProgressBar;
     public Image crystalSlot;
     public CrystalController crystalControl;
+    public Animator crystalSlotCanvasAnim;
 
     public Image playerLifes;
     public PlayerHealthManager playerHealthMan;
@@ -37,5 +38,7 @@ public class UIManager : MonoBehaviour
     {
         crystalSlot.GetComponent<Image>().color = Color.white;
         crystalSlot.GetComponent<Image>().sprite = sprite;
+        crystalSlot.GetComponent<Image>().SetNativeSize();
+        crystalSlotCanvasAnim.SetTrigger("GoBlue");
     }
 }
