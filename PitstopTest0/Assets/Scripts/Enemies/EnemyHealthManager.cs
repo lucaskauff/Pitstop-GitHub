@@ -10,7 +10,8 @@ public class EnemyHealthManager : MonoBehaviour
 
     void Start()
     {
-        enemyCurrentHealth = enemyMaxHealth;
+        //enemyCurrentHealth = enemyMaxHealth;
+        ResetHealth();
     }
 
     void Update()

@@ -12,19 +12,22 @@ public class PlayerControllerIso : MonoBehaviour
     Rigidbody2D myRb;
     Animator myAnim;
 
-    public float moveSpeed;
-
-    public float dashSpeed;
-    public float dashTime;
-    private float dashRate = 0;
-    //public float startDashTime;
-
-    //public List<string> levels = new List<string>(2);
-
-    Vector2 moveInput;
+    //Public
     public bool canMove = true;
+
+    //Serializable
+    [SerializeField]
+    float moveSpeed;
+    [SerializeField]
+    float dashSpeed;
+    [SerializeField]
+    float dashTime = 1;
+
+    //Private
+    Vector2 moveInput;
     bool isMoving = false;
     Vector2 lastMove = new Vector2(1, 0);
+    float dashRate = 0;
 
     void Start()
     {
@@ -32,8 +35,6 @@ public class PlayerControllerIso : MonoBehaviour
 
         myRb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
-
-        //dashTime = startDashTime;
     }
 
     void Update()
@@ -59,7 +60,7 @@ public class PlayerControllerIso : MonoBehaviour
             myRb.velocity = Vector2.zero;
         }
 
-        if (inputManager.dashKey)
+        if (inputManager.dashKey && Time.time > dashRate)
         {
             Dash();            
         }
@@ -74,20 +75,8 @@ public class PlayerControllerIso : MonoBehaviour
 
     void Dash()
     {
-
-    }
-
-    void DashTest()
-    {
-        if (dashTime <= 0)
-        {
-            dashTime = startDashTime;
-            myRb.velocity = Vector2.zero;
-        }
-        else
-        {
-            dashTime -= Time.deltaTime;
-            myRb.velocity = lastMove * dashSpeed;
-        }
+        dashRate = Time.time + dashTime;
+        //Debug.Log(dashRate);
+        myRb.velocity = lastMove * dashSpeed;
     }
 }

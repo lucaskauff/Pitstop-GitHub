@@ -13,11 +13,21 @@ public class ScannableObjectBehaviour : MonoBehaviour
 
     public bool col = false;
 
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     private void Update()
     {
         if (isFired)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+            if (this.name != "ScannableRoot")
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+            }
         }
 
         if (col || new Vector2(transform.position.x, transform.position.y) == targetPos)
