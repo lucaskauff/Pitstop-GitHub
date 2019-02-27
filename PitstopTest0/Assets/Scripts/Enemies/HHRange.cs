@@ -6,8 +6,10 @@ public class HHRange : MonoBehaviour
 {
     public HHBehaviour hammerheadBeh;
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerStay2D(Collider2D collider)
     {
+        Debug.Log(collider.gameObject);
+
         //condition not perfect !!!
         if (!hammerheadBeh.isArrived && hammerheadBeh.target == null && (collider.gameObject.name == "Zayn" || collider.gameObject.name == "Native"))
         {

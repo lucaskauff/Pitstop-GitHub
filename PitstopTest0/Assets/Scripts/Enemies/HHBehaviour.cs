@@ -183,7 +183,7 @@ public class HHBehaviour : MonoBehaviour
                 {
                     StartCoroutine(RushTimeDecount());
                     //targetPos = (target.transform.position - this.transform.position) * rushRatio;
-                    targetPos = this.transform.position + target.transform.position;
+                    targetPos = target.transform.position;
                     followTargetCheck = true;
                 }
 
@@ -208,6 +208,7 @@ public class HHBehaviour : MonoBehaviour
     {
         col = true;
 
+        //condition not perfect !!
         if (other.gameObject.name == "Zayn" || other.gameObject.name == "Native")
         {
             player.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealing);
