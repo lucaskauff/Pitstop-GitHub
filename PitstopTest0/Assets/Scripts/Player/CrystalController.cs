@@ -123,7 +123,7 @@ public class CrystalController : MonoBehaviour
         }
 
         //SHOOT the scanned object
-        if (inputManager.shootKey && Time.time > fireRate)
+        if (inputManager.shootKey && scannedObject != null && Time.time > fireRate)
         {
             fireRate = Time.time + fireSpeed;
 
