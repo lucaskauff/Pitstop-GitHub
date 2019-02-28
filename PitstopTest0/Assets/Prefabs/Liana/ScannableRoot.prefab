@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 4816876112790863873}
   - component: {fileID: 4816876112790863874}
   - component: {fileID: 4816876112790863875}
-  - component: {fileID: 4816876112790863932}
   - component: {fileID: 4816876112790863933}
-  - component: {fileID: 4816876112790863934}
   - component: {fileID: 4816876112790863872}
+  - component: {fileID: 3466213904368604523}
   m_Layer: 0
   m_Name: ScannableRoot
   m_TagString: ObjectRoot
@@ -71,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 685028533
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: da5b82acd978fc542b39543a8a252df9, type: 3}
   m_Color: {r: 0.09812211, g: 0.4245283, b: 0.16082609, a: 1}
@@ -105,32 +104,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &4816876112790863932
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4816876112790863935}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &4816876112790863933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,26 +122,7 @@ MonoBehaviour:
   isArrived: 0
   projectileSpeed: 3
   targetPos: {x: 0, y: 0}
---- !u!114 &4816876112790863934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4816876112790863935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 038f0b4d472e08444bc8e88fb9503279, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liana: {fileID: 4816876112790863872}
-  player: {fileID: 0}
-  target: {fileID: 0}
-  lifeInSeconds: 1
-  damageDealing: 1
-  bossHealth: {fileID: 0}
-  crys: {fileID: 0}
-  scannableObjBeh: {fileID: 4816876112790863933}
+  col: 0
 --- !u!120 &4816876112790863872
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -204,7 +158,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 15200, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 220017747
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -264,3 +218,29 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &3466213904368604523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4816876112790863935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f3ca7111a645743afa0639271732ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  liana: {fileID: 4816876112790863872}
+  player: {fileID: 0}
+  target: {fileID: 0}
+  test: 0
+  hookpoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  pointSelect: 0
+  lifeInSeconds: 0
+  damageDealing: 1
+  crys: {fileID: 0}
+  scannableObjBeh: {fileID: 4816876112790863933}
