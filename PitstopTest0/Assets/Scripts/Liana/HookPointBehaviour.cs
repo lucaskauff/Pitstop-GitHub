@@ -6,18 +6,7 @@ public class HookPointBehaviour : MonoBehaviour
 {
     public RootBehaviour root;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     private void OnMouseOver()
     {
         root.target = this.gameObject;
@@ -27,5 +16,4 @@ public class HookPointBehaviour : MonoBehaviour
     {
         root.target = null;
     }
-
 }
