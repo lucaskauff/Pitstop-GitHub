@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayerControllerIso : MonoBehaviour
 {
+    SceneLoader sceneLoader;
     InputManager inputManager;
     
     //My components
@@ -31,10 +32,13 @@ public class PlayerControllerIso : MonoBehaviour
 
     void Start()
     {
+        sceneLoader = GameManager.Instance.sceneLoader;
         inputManager = GameManager.Instance.inputManager;
 
         myRb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
+
+        transform.position = sceneLoader.activeStartingPoint.transform.position;
     }
 
     void Update()
@@ -62,7 +66,7 @@ public class PlayerControllerIso : MonoBehaviour
 
         if (inputManager.dashKey && Time.time > dashRate)
         {
-            Dash();            
+            Dash();     
         }
 
         //Infos to animator

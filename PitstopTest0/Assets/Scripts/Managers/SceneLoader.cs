@@ -6,10 +6,17 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public string activeScene;
+    public GameObject activeStartingPoint;
 
-    public void Start()
+    public void Awake()
     {
         activeScene = SceneManager.GetActiveScene().name;
+        activeStartingPoint = GameObject.Find("StartingPoint0");
+    }
+
+    public void SaveStartingPoint(GameObject newStartingPoint)
+    {
+        activeStartingPoint = newStartingPoint;
     }
 
     public void LoadNewScene(string sceneToLoad)
