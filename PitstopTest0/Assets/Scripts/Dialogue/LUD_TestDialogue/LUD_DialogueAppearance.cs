@@ -32,7 +32,7 @@ public class LUD_DialogueAppearance : MonoBehaviour
             if (timer>=delay)
             {
                 dialogueSpace.SetActive(false);
-                timer = 0f;
+                //timer = 0f;
                 isDialogueSpaceActive = false;
 
             }
@@ -53,7 +53,7 @@ public class LUD_DialogueAppearance : MonoBehaviour
         }
 
         dialogueSpace.GetComponentInChildren<Text>().text = wrotenSentence;
-
+        timer = 0f;
     }
 
 

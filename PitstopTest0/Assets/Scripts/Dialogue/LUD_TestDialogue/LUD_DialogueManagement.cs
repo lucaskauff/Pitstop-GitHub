@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LUD_DialogueManagement : MonoBehaviour
 {
     //SerializeField
     [SerializeField]
     GameObject dialogueWheel;
+    [SerializeField]
+    Image[] displayedSentence;
+    
+
 
     [Header("Sentence Parameters")]
 
