@@ -9,8 +9,10 @@ public class SimpleSave : MonoBehaviour
     public void Save()
     {
         EasySaveManager script = managerScript.GetComponent<EasySaveManager>();
+        /*
         ES2.Save(script.ammo, "ammo");
         ES2.Save(script.magazines, "magazines");
         ES2.Save(script.brokenArm, "brokenArm");
+        */
     }
 }

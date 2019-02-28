@@ -10,6 +10,8 @@ public class Glade1Cinematic : MonoBehaviour
     public GameObject virtualCameraGlade;
     public GameObject associatedStartingPoint;
 
+    public EnemySpawner hHSpawner;
+
     private static bool playerCheck;
 
     private void Start()
@@ -17,13 +19,22 @@ public class Glade1Cinematic : MonoBehaviour
         sceneLoader = GameManager.Instance.sceneLoader;
     }
 
-    void OnTriggerStay2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.name == "Zayn" && !playerCheck)
         {
             virtualCameraPlayer.SetActive(false);
+
             sceneLoader.SaveStartingPoint(associatedStartingPoint);
+
+            //hHSpawner.SpawnTheThing();
+
             playerCheck = true;
         }
+    }
+
+    public void SendInformationToHHSpawner()
+    {
+        
     }
 }
