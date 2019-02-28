@@ -42,7 +42,7 @@ public class LUD_DialogueAppearance : MonoBehaviour
     }
 
 
-    public void ReactionAppearance (string wrotenSentence)
+    public void ReactionAppearance (Sprite sign1, Sprite sign2, Sprite sign3)
     {
         //Faire apparaitre pendant un temps la bulle
         if (!isDialogueSpaceActive)
@@ -52,7 +52,12 @@ public class LUD_DialogueAppearance : MonoBehaviour
 
         }
 
-        dialogueSpace.GetComponentInChildren<Text>().text = wrotenSentence;
+        //dialogueSpace.GetComponentInChildren<Text>().text = wrotenSentence;
+        dialogueSpace.transform.Find("AnswerWord1").GetComponent<Image>().sprite = sign1;
+        dialogueSpace.transform.Find("AnswerWord2").GetComponent<Image>().sprite = sign2;
+        dialogueSpace.transform.Find("AnswerWord3").GetComponent<Image>().sprite = sign3;
+
+
         timer = 0f;
     }
 
