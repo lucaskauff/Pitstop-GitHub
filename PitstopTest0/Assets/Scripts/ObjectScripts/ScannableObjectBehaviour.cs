@@ -36,7 +36,7 @@ public class ScannableObjectBehaviour : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (isFired && other.gameObject.name != "Player")
         {
