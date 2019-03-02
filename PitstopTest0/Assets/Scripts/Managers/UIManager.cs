@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    SceneLoader sceneLoader;
     InputManager inputManager;
 
     //Crystal
@@ -22,6 +23,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        sceneLoader = GameManager.Instance.sceneLoader;
         inputManager = GameManager.Instance.inputManager;
     }
 
@@ -40,5 +42,10 @@ public class UIManager : MonoBehaviour
         crystalSlot.GetComponent<Image>().sprite = sprite;
         crystalSlot.GetComponent<Image>().SetNativeSize();
         crystalSlotCanvasAnim.SetTrigger("GoBlue");
+    }
+
+    public void MakeUIElementAppear(GameObject whatToReveal)
+    {
+        whatToReveal.SetActive(true);
     }
 }

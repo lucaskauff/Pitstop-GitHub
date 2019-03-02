@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public string activeScene;
     public GameObject activeStartingPoint;
+    //public int sceneIndex = 0;
 
     public void Awake()
     {
@@ -22,6 +23,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadNewScene(string sceneToLoad)
     {
         activeScene = sceneToLoad;
+        //sceneIndex += 1;
         SceneManager.LoadScene(sceneToLoad);
     }
 

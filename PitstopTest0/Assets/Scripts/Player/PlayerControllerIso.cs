@@ -26,7 +26,7 @@ public class PlayerControllerIso : MonoBehaviour
 
     //Private
     Vector2 moveInput;
-    bool isMoving = false;
+    public bool isMoving = false;
     Vector2 lastMove = new Vector2(1, 0);
     float dashRate = 0;
 
@@ -48,6 +48,7 @@ public class PlayerControllerIso : MonoBehaviour
         if (!canMove)
         {
             myRb.velocity = Vector2.zero;
+            myAnim.SetBool("IsMoving", isMoving);
             return;
         }
 
