@@ -29,8 +29,8 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalControl.scanProgress);
-        playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
+        /*scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalControl.scanProgress);
+        playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);*/
 
         /*enemyHealthBar.maxValue = enemyHealthMan.enemyMaxHealth;
         enemyHealthBar.value = enemyHealthMan.enemyCurrentHealth;*/

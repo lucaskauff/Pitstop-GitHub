@@ -15,6 +15,7 @@ public class PlayerControllerIso : MonoBehaviour
 
     //Public
     public bool canMove = true;
+    public float isometricRatio = 2;
 
     //Serializable
     [SerializeField]
@@ -52,7 +53,7 @@ public class PlayerControllerIso : MonoBehaviour
             return;
         }
 
-        moveInput = new Vector2(inputManager.horizontalInput, inputManager.verticalInput / 2).normalized;
+        moveInput = new Vector2(inputManager.horizontalInput, inputManager.verticalInput / isometricRatio).normalized;
 
         if(moveInput != Vector2.zero)
         {
