@@ -17,6 +17,8 @@ public class LUD_DialogueManagement : MonoBehaviour
 
     [SerializeField]
     private List<int> sentence = new List<int>();
+    [SerializeField]
+    private List<Image> spriteSentenceUI = new List<Image>();
 
     [Header("Natives Parameters")]
 
@@ -78,17 +80,24 @@ public class LUD_DialogueManagement : MonoBehaviour
             //Debug.Log("word = " + valueOfTheWord.ToString());
         }
 
+        Sprite spriteSelected = IntToSprite(valueOfTheWord);
+
+        spriteSentenceUI[sentence.Count - 1].sprite = spriteSelected;
+
     }
 
     public void DeleteLastWord ()
     {
         if (sentence.Count > 0)
         {
+
+            spriteSentenceUI[sentence.Count - 1].sprite = Resources.Load<Sprite>("LUD_Sprites_Word/emptySprite");
+
             sentence.RemoveAt(sentence.Count - 1);
             //Debug.Log("Word remove");
+            
         }
 
-        
     }
 
     void SentenceIsPrononced()
@@ -100,7 +109,41 @@ public class LUD_DialogueManagement : MonoBehaviour
         
 
         sentence.Clear();
-        //Debug.Log("Sentence Clear");
-    }
 
+        foreach (Image image in spriteSentenceUI)
+        {
+            image.sprite = Resources.Load<Sprite>("LUD_Sprites_Word/emptySprite");
+        }
+    }
+        
+        
+    
+
+    private Sprite IntToSprite (int value)
+    {
+        if (value == 3)
+        {
+            return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Nord");
+        }
+
+        else if (value == 5)
+        {
+            return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Est");
+        }
+
+        else if (value == 7)
+        {
+            return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Sud");
+        }
+
+        else if (value == 11)
+        {
+            return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Ouest");
+        }
+
+        else
+        {
+            return Resources.Load<Sprite>("LUD_Sprites_Word/interrogationSprite");
+        }
+    }
 }
