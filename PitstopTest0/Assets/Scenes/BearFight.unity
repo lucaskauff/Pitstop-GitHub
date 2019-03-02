@@ -466,7 +466,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225203358}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -503,22 +503,76 @@ CompositeCollider2D:
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
-  - m_Collider: {fileID: 225203365}
+  - m_Collider: {fileID: 225203367}
     m_ColliderPaths:
-    - - X: 7656250
+    - - X: 5781250
+        Y: -7031250
+      - X: 6718750
+        Y: -2031250
+      - X: 4843750
+        Y: -1093750
+      - X: 156250
+        Y: -156250
+      - X: -781250
+        Y: 4531250
+      - X: 1406250
+        Y: 7343750
+      - X: -1718750
+        Y: 9531250
+      - X: -3593750
+        Y: 12656250
+      - X: -6406250
         Y: 12656250
       - X: -7656250
-        Y: 12656250
+        Y: 11718750
       - X: -7656250
+        Y: 2343750
+      - X: -7343750
+        Y: 1093750
+      - X: -7343750
+        Y: -4843750
+      - X: -3906250
+        Y: -7656250
+      - X: 1093750
+        Y: -7031250
+      - X: 1093750
+        Y: -8906250
+      - X: 2968750
         Y: -12656250
+      - X: 4218750
+        Y: -12656250
+      - X: 4531250
+        Y: -12343750
+      - X: 7343750
+        Y: -11406250
       - X: 7656250
-        Y: -12656250
+        Y: -11093750
+      - X: 7656250
+        Y: -9843750
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.765625, y: 1.265625}
-      - {x: -0.765625, y: 1.265625}
-      - {x: -0.765625, y: -1.265625}
-      - {x: 0.765625, y: -1.265625}
+    - - {x: 0.453125, y: -1.234375}
+      - {x: 0.734375, y: -1.140625}
+      - {x: 0.765625, y: -1.109375}
+      - {x: 0.765625, y: -0.984375}
+      - {x: 0.578125, y: -0.703125}
+      - {x: 0.671875, y: -0.203125}
+      - {x: 0.484375, y: -0.109375}
+      - {x: 0.015625, y: -0.015625}
+      - {x: -0.078125, y: 0.453125}
+      - {x: 0.140625, y: 0.734375}
+      - {x: -0.171875, y: 0.953125}
+      - {x: -0.359375, y: 1.265625}
+      - {x: -0.640625, y: 1.265625}
+      - {x: -0.765625, y: 1.171875}
+      - {x: -0.765625, y: 0.234375}
+      - {x: -0.734375, y: 0.109375}
+      - {x: -0.734375, y: -0.484375}
+      - {x: -0.390625, y: -0.765625}
+      - {x: 0.109375, y: -0.703125}
+      - {x: 0.109375, y: -0.890625}
+      - {x: 0.296875, y: -1.265625}
+      - {x: 0.421875, y: -1.265625}
   m_VertexDistance: 0.0005
 --- !u!60 &225203367
 PolygonCollider2D:
@@ -527,7 +581,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225203358}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -10382,7 +10436,7 @@ PrefabInstance:
     - target: {fileID: 1512340528326257548, guid: 6c2a7c2344beb0141abaffd893326f6f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.354241
+      value: -2.3514848
       objectReference: {fileID: 0}
     - target: {fileID: 1512340528326257548, guid: 6c2a7c2344beb0141abaffd893326f6f,
         type: 3}
@@ -10447,7 +10501,7 @@ PrefabInstance:
     - target: {fileID: 1512340528493220346, guid: 6c2a7c2344beb0141abaffd893326f6f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.115759
+      value: -2.118515
       objectReference: {fileID: 0}
     - target: {fileID: 1512340528493220346, guid: 6c2a7c2344beb0141abaffd893326f6f,
         type: 3}

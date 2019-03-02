@@ -80,13 +80,16 @@ public class RootBehaviour2 : MonoBehaviour
                     liana.enabled = true;
                     liana.SetPosition(0, hookpoints[0].transform.position);
                     liana.SetPosition(1, hookpoints[1].transform.position);
+                    
+
 
                     if (hookpoints[2] != null)
                     {
                         liana.SetPosition(2, hookpoints[2].transform.position);
+                        
                     }
                 }
             }        
-        }
+        }       
     }
 }
