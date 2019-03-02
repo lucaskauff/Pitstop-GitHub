@@ -7,21 +7,28 @@ public class HookPointBehaviour : MonoBehaviour
     public RootBehaviour2 root;
     public GameObject thisOne;
 
+    [SerializeField]
+    bool canContinue = true;
 
     private void Start()
     {
         thisOne = this.gameObject;
     }
 
-    bool canContinue = true;
+    private void Update()
+    {    
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            canContinue = true;
+        }
+    }
 
     private void OnMouseOver()
     {
         if (root.pointSelect)
-        {       
-
+        {
             Debug.Log("Selecting");
-
+                        
             for (int x = 0; x < 3; x++)
             {
                 if (root.hookpoints[x] == null && canContinue == true)
