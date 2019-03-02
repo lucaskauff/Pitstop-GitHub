@@ -30,8 +30,8 @@ public class UIManager : MonoBehaviour
         scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalControl.scanProgress);
         playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
 
-        enemyHealthBar.maxValue = enemyHealthMan.enemyMaxHealth;
-        enemyHealthBar.value = enemyHealthMan.enemyCurrentHealth;
+        /*enemyHealthBar.maxValue = enemyHealthMan.enemyMaxHealth;
+        enemyHealthBar.value = enemyHealthMan.enemyCurrentHealth;*/
     }
 
     public void ChangeImageInCrystalSlot(Sprite sprite)
