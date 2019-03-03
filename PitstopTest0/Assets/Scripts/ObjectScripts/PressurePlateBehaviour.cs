@@ -6,7 +6,7 @@ public class PressurePlateBehaviour : MonoBehaviour
 {
     Animator myAnim;
 
-    bool plateDown = false;
+    public bool plateDown = false;
     GameObject objectOnPlate; 
 
     private void Start()
