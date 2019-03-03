@@ -127,17 +127,26 @@ public class CrystalController : MonoBehaviour
         {
             fireRate = Time.time + fireSpeed;
 
-            cloneProj = (GameObject)Instantiate(scannedObject, transform.position, scannedObject.transform.rotation);
+            if (scannedObject.tag == "ObjectRock")
+            {
+                cloneProj = (GameObject)Instantiate(scannedObject, playerPos + crystalShootTarget + new Vector2(0, scannedObject.GetComponent<RockBehaviour>().heightWhereToSpawn), scannedObject.transform.rotation);
 
-            cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
-            cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = projSpeed;
-            cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
-            cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
+                cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
+                cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = projSpeed;
+                cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
+                cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
+            }
 
             if (scannedObject.name == "ScannableRoot")
             {
+                cloneProj = (GameObject)Instantiate(scannedObject, transform.position, scannedObject.transform.rotation);
+
+                cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
+                cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = projSpeed;
+                cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
+                cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
+
                 cloneProj.GetComponent<SpriteRenderer>().enabled = false;
-                //cloneProj.GetComponent<BoxCollider2D>().enabled = false;
             }
 
             //not optimized at all
