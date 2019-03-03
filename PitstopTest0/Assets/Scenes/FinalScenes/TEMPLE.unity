@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 236121490}
   - component: {fileID: 236121489}
   - component: {fileID: 236121488}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PressurePlate2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17232,7 +17232,7 @@ GameObject:
   - component: {fileID: 1892925522}
   - component: {fileID: 1892925525}
   - component: {fileID: 1892925526}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PressurePlate1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17539,12 +17539,12 @@ PrefabInstance:
     - target: {fileID: 2459715086813374802, guid: c4dc7dde115dad243ae9703e81f6d4c0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.18
+      value: 27.04
       objectReference: {fileID: 0}
     - target: {fileID: 2459715086813374802, guid: c4dc7dde115dad243ae9703e81f6d4c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.55
+      value: 4.97
       objectReference: {fileID: 0}
     - target: {fileID: 2459715086813374802, guid: c4dc7dde115dad243ae9703e81f6d4c0,
         type: 3}
@@ -17594,12 +17594,12 @@ PrefabInstance:
     - target: {fileID: 2459715086813374799, guid: c4dc7dde115dad243ae9703e81f6d4c0,
         type: 3}
       propertyPath: isArrived
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2459715086813374799, guid: c4dc7dde115dad243ae9703e81f6d4c0,
         type: 3}
       propertyPath: isFired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2459715086813374801, guid: c4dc7dde115dad243ae9703e81f6d4c0,
         type: 3}
@@ -17614,13 +17614,18 @@ PrefabInstance:
     - target: {fileID: 2459715086813374801, guid: c4dc7dde115dad243ae9703e81f6d4c0,
         type: 3}
       propertyPath: impulseDuration
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2459715086813374801, guid: c4dc7dde115dad243ae9703e81f6d4c0,
         type: 3}
       propertyPath: rockDetection
       value: 
       objectReference: {fileID: 1570186296}
+    - target: {fileID: 2459715086813374801, guid: c4dc7dde115dad243ae9703e81f6d4c0,
+        type: 3}
+      propertyPath: fallSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2459715086247270473, guid: c4dc7dde115dad243ae9703e81f6d4c0,
         type: 3}
       propertyPath: m_IsActive

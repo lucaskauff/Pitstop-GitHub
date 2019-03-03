@@ -6,36 +6,42 @@ using Cinemachine;
 public class RockBehaviour : MonoBehaviour
 {
     public float heightWhereToSpawn;
+    public float fallSpeed;
 
+    [SerializeField]
+    float impulseDuration;
     [SerializeField]
     GameObject rockDetection;
     [SerializeField]
     ScannableObjectBehaviour scannableObjectBehaviour;
     [SerializeField]
     CinemachineImpulseSource playerImpulseSource;
-    [SerializeField]
-    float impulseDuration;
 
     private bool impulseGenerated = false;
     private bool arrivalCheck = false;
 
     private void Update()
     {
-        if (scannableObjectBehaviour.isArrived && !arrivalCheck)
+        if (scannableObjectBehaviour.isFired)
+        {
+            rockDetection.SetActive(false);
+            return;
+        }
+        else
         {
             rockDetection.SetActive(true);
+        }
 
-            if (scannableObjectBehaviour.isFired)
+        if (scannableObjectBehaviour.isArrived && !arrivalCheck)
+        {
+            if (impulseGenerated)
             {
-                if (impulseGenerated)
-                {
-                    StopCoroutine(CameraShake());
-                    arrivalCheck = true;
-                    return;
-                }
-
-                StartCoroutine(CameraShake());
+                StopCoroutine(CameraShake());
+                arrivalCheck = true;
+                return;
             }
+
+            StartCoroutine(CameraShake());
         }
     }
 

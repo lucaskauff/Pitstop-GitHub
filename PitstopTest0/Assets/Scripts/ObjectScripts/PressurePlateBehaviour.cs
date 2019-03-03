@@ -6,29 +6,34 @@ public class PressurePlateBehaviour : MonoBehaviour
 {
     Animator myAnim;
 
-    private bool plateDown = false;
+    bool plateDown = false;
+    GameObject objectOnPlate; 
 
     private void Start()
     {
         myAnim = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        Debug.Log("enter");
-        if (collision.gameObject.name == "Zayn" || collision.gameObject.tag == "ObjectRock")
-        {            
+        myAnim.SetBool("PlateDown", plateDown);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if ((collision.gameObject.name == "Zayn" || collision.gameObject.tag == "ObjectRock") && objectOnPlate == null)
+        {
+            objectOnPlate = collision.gameObject;
             plateDown = true;
-            myAnim.SetBool("PlateDown", plateDown);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Zayn" || collision.gameObject.tag == "ObjectRock")
+        if (collision.gameObject == objectOnPlate)
         {
+            objectOnPlate = null;
             plateDown = false;
-            myAnim.SetBool("PlateDown", plateDown);
         }
     }
 }

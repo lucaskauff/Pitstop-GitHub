@@ -132,7 +132,7 @@ public class CrystalController : MonoBehaviour
                 cloneProj = (GameObject)Instantiate(scannedObject, playerPos + crystalShootTarget + new Vector2(0, scannedObject.GetComponent<RockBehaviour>().heightWhereToSpawn), scannedObject.transform.rotation);
 
                 cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
-                cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = projSpeed;
+                cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = cloneProj.GetComponent<RockBehaviour>().fallSpeed;
                 cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
                 cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
             }
@@ -150,7 +150,7 @@ public class CrystalController : MonoBehaviour
             }
 
             //not optimized at all
-            if (scannedObject.name == "Apple")
+            if (scannedObject.tag == "ObjectApple")
             {
                 cloneProj.GetComponent<AppleBehaviour>().targetPos = playerPos + crystalShootTarget;
                 cloneProj.GetComponent<AppleBehaviour>().projectileSpeed = projSpeed;
