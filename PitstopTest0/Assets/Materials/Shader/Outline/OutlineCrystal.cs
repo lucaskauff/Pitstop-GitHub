@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Outline : MonoBehaviour
+public class OutlineCrystal : MonoBehaviour
 {
 
     Renderer myRenderer;
@@ -12,17 +12,6 @@ public class Outline : MonoBehaviour
     void Start()
     {
         myRenderer = GetComponent<Renderer>();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            color = myRenderer.material.GetColor("_ColorOutline");
-            color.a = 255;
-            myRenderer.material.SetColor("_ColorOutline", color);
-
-        }
     }
 
 

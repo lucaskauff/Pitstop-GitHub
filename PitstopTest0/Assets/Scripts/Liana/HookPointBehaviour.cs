@@ -8,12 +8,16 @@ public class HookPointBehaviour : MonoBehaviour
     public GameObject thisOne;
     public bool markSign;
 
+    Renderer myRenderer;
+    [SerializeField]
+    Color color;
     [SerializeField]
     bool canContinue = true;
 
     private void Start()
     {
         thisOne = this.gameObject;
+        myRenderer = GetComponent<Renderer>();
     }
 
     private void Update()
@@ -33,9 +37,6 @@ public class HookPointBehaviour : MonoBehaviour
     {
         if (root.pointSelect)
         {
-
-            Debug.Log("Selecting");
-                        
             for (int x = 0; x < 3; x++)
             {
                 if (root.hookpoints[x] == null && canContinue == true)
@@ -46,5 +47,20 @@ public class HookPointBehaviour : MonoBehaviour
                 }        
             }
         }
+
+        if (root.crys.scannedObject.name == "ScannableRoot")
+        {
+            color = myRenderer.material.GetColor("_ColorOutline");
+            color.a = 255;
+            myRenderer.material.SetColor("_ColorOutline", color);
+        }              
+    }
+
+    private void OnMouseExit()
+    {
+        color = myRenderer.material.GetColor("_ColorOutline");
+        color.a = 0;
+        myRenderer.material.SetColor("_ColorOutline", color);
+
     }
 }
