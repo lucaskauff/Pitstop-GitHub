@@ -125,6 +125,11 @@ public class CrystalController : MonoBehaviour
         //SHOOT the scanned object
         if (inputManager.shootKey && Time.time > fireRate)
         {
+            if (scannedObject.name == "ScannableRoot")
+            {
+                return;
+            }
+
             fireRate = Time.time + fireSpeed;
 
             cloneProj = (GameObject)Instantiate(scannedObject, transform.position, scannedObject.transform.rotation);
@@ -134,11 +139,7 @@ public class CrystalController : MonoBehaviour
             cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
             cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
 
-            if (scannedObject.name == "ScannableRoot")
-            {
-                cloneProj.GetComponent<SpriteRenderer>().enabled = false;
-                //cloneProj.GetComponent<BoxCollider2D>().enabled = false;
-            }
+            
 
             //not optimized at all
             if (scannedObject.name == "Apple")

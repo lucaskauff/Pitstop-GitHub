@@ -32,7 +32,6 @@ public class RootBehaviour2 : MonoBehaviour
     {
         if (crys.scannedObject.name == "ScannableRoot")
         {
-
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 for (int x = 0; x < 3; x++)

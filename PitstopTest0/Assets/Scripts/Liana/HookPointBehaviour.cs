@@ -6,6 +6,7 @@ public class HookPointBehaviour : MonoBehaviour
 {
     public RootBehaviour2 root;
     public GameObject thisOne;
+    public bool markSign;
 
     [SerializeField]
     bool canContinue = true;
@@ -21,12 +22,18 @@ public class HookPointBehaviour : MonoBehaviour
         {
             canContinue = true;
         }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            markSign = false;
+        }
     }
 
     private void OnMouseOver()
     {
         if (root.pointSelect)
         {
+
             Debug.Log("Selecting");
                         
             for (int x = 0; x < 3; x++)
@@ -35,7 +42,8 @@ public class HookPointBehaviour : MonoBehaviour
                 {
                     root.hookpoints[x] = thisOne;
                     canContinue = false;
-                }
+                    markSign = true;
+                }        
             }
         }
     }
