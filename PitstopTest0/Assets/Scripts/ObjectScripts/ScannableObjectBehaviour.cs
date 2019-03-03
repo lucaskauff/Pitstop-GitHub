@@ -43,9 +43,4 @@ public class ScannableObjectBehaviour : MonoBehaviour
             col = true;
         }
     }
-
-    private void OnMouseOver()
-    {
-        
-    }
 }
