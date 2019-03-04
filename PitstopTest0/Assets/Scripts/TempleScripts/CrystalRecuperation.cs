@@ -7,16 +7,16 @@ public class CrystalRecuperation : MonoBehaviour
     [SerializeField]
     UIManager uIManager;
     [SerializeField]
-    GameObject scanProgress;
-    [SerializeField]
-    GameObject crystalSlot;
+    GameObject[] whatElementsShouldAppear;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Zayn")
         {
-            uIManager.MakeUIElementAppear(scanProgress);
-            uIManager.MakeUIElementAppear(crystalSlot);
+            foreach (var element in whatElementsShouldAppear)
+            {
+                uIManager.MakeUIElementAppear(element);
+            }
         }
     }
 
