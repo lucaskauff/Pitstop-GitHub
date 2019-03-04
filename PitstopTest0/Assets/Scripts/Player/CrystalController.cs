@@ -142,8 +142,6 @@ public class CrystalController : MonoBehaviour
                 cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
             }
 
-            
-
             //not optimized at all
             if (scannedObject.tag == "ObjectApple")
             {
