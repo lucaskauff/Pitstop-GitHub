@@ -5,6 +5,9 @@ using Cinemachine;
 
 public class RockBehaviour : MonoBehaviour
 {
+    Animator myAnim;
+    Renderer myRend;
+
     public float heightWhereToSpawn;
     public float fallSpeed;
 
@@ -19,11 +22,30 @@ public class RockBehaviour : MonoBehaviour
 
     private bool impulseGenerated = false;
     private bool arrivalCheck = false;
+    private bool fallCheck = false;
+
+    private void Start()
+    {
+        myAnim = GetComponent<Animator>();
+        myRend = GetComponent<Renderer>();
+
+        if (scannableObjectBehaviour.isFired)
+        {
+            myRend.enabled = false;
+        }
+    }
 
     private void Update()
     {
         if (scannableObjectBehaviour.isFired)
         {
+            if (!fallCheck)
+            {
+                myAnim.SetTrigger("FallAnim");
+                myRend.enabled = true;
+                fallCheck = true;
+            }
+
             rockDetection.SetActive(false);
             return;
         }
@@ -34,15 +56,20 @@ public class RockBehaviour : MonoBehaviour
 
         if (scannableObjectBehaviour.isArrived && !arrivalCheck)
         {
-            if (impulseGenerated)
-            {
-                StopCoroutine(CameraShake());
-                arrivalCheck = true;
-                return;
-            }
-
-            StartCoroutine(CameraShake());
+            RockApparition();
         }
+    }
+
+    void RockApparition()
+    {
+        if (impulseGenerated)
+        {
+            StopCoroutine(CameraShake());
+            arrivalCheck = true;
+            return;
+        }
+
+        StartCoroutine(CameraShake());
     }
 
     IEnumerator CameraShake()

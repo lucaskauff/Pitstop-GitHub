@@ -36,8 +36,6 @@ public class ActivitableDoor : MonoBehaviour
 
     void CheckPressurePlates()
     {
-
-
         foreach (var pressurePlate in neededPressurePlatesToOpen)
         {
             if (!pressurePlate.plateDown)
