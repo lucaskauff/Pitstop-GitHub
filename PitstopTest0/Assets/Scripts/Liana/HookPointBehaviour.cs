@@ -13,24 +13,33 @@ public class HookPointBehaviour : MonoBehaviour
     Color color;
     [SerializeField]
     bool canContinue = true;
+    Animator anim;
 
     private void Start()
     {
         thisOne = this.gameObject;
         myRenderer = GetComponent<Renderer>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {    
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            markSign = false;
             canContinue = true;
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            markSign = false;
+            if(root.hookpoints[1] == null)
+            {
+                markSign = false;
+            }
         }
+
+
+        anim.SetBool("Marked", markSign);
     }
 
     private void OnMouseOver()

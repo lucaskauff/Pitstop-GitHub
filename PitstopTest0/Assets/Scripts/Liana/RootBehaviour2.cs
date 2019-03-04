@@ -12,7 +12,7 @@ public class RootBehaviour2 : MonoBehaviour
     public CrystalController crys;
     public int damageDealing = 1;
 
-    int layer_mask;
+    int layerMask;
     [SerializeField]
     float lifeInSeconds; 
     private bool living;
@@ -20,11 +20,13 @@ public class RootBehaviour2 : MonoBehaviour
     private void Awake()
     {
         liana = this.GetComponent<LineRenderer>();
-        layer_mask = LayerMask.GetMask("Bear");
+        layerMask = LayerMask.GetMask("HookPoints");
     }
 
     private void Update()
     {
+        LianaCollider();
+
         if (crys.scannedObject.name == "ScannableRoot")
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -84,28 +86,36 @@ public class RootBehaviour2 : MonoBehaviour
 
                 }      
             }
-        }
+        }        
+    }
 
-        /*if (liana.enabled == true)
+    private void FixedUpdate()
+    {
+        //LianaCollider();
+    }
+
+    public void LianaCollider()
+    {
+        if (liana.enabled == true)
         {
-            RaycastHit2D trip = Physics2D.Raycast(hookpoints[0].transform.position, hookpoints[1].transform.position, layer_mask);
+            RaycastHit2D trip = Physics2D.Raycast(hookpoints[0].transform.position, hookpoints[1].transform.position, Vector2.Distance(hookpoints[0].transform.position, hookpoints[1].transform.position), ~layerMask);
             Debug.DrawLine(hookpoints[0].transform.position, hookpoints[1].transform.position, Color.green);
 
-            if (trip.collider.gameObject.name == "Bear")
+            if (trip.collider.gameObject.tag.Equals("Player"))
             {
-                Debug.Log("Detect1");
+                Debug.Log(trip.collider.name);
             }
 
             if (liana.positionCount == 3)
             {
-                RaycastHit2D trip2 = Physics2D.Raycast(hookpoints[1].transform.position, hookpoints[2].transform.position, layer_mask);
+                RaycastHit2D trip2 = Physics2D.Raycast(hookpoints[1].transform.position, hookpoints[2].transform.position, Vector2.Distance(hookpoints[1].transform.position, hookpoints[2].transform.position), ~layerMask);
                 Debug.DrawLine(hookpoints[1].transform.position, hookpoints[2].transform.position, Color.blue);
 
-                if (trip2.collider.gameObject.name == "Bear")
+                if (trip2.collider.tag.Equals("Player"))
                 {
-                    Debug.Log("Detect1");
+                    Debug.Log(trip.collider.name + "2");
                 }
             }
-        }*/
+        }
     }
 }
