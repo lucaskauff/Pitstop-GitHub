@@ -6,8 +6,15 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
 {
 
     //SerializeField
+    
+    [SerializeField]
+    GameObject exclamationPointUI;
+    [SerializeField]
+    float delayBeforeExclamationDisapperance = 1f;
 
     //Private
+    bool isExclamationPointActive;
+    float timerForExclamation;
 
     //Public
     public bool isCaptivated = true;
@@ -16,7 +23,30 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
     private void Awake()
     {
         isCaptivated = false;
+
+        exclamationPointUI.SetActive(false);
+        isExclamationPointActive = false;
+        timerForExclamation = 0f;
+
+
         
+    }
+
+    private void Update()
+    {
+        if (isExclamationPointActive)
+        {
+            if (timerForExclamation >= delayBeforeExclamationDisapperance)
+            {
+                exclamationPointUI.SetActive(false);
+                isExclamationPointActive = false;
+                timerForExclamation = 0f;
+            }
+            else
+            {
+                timerForExclamation += Time.deltaTime;
+            }
+        }
     }
 
     public void HearASentence(List<int> heardSentence)
@@ -32,40 +62,59 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
 
             while (answerFound == false)
             {
-                
 
-                //Debug.Log("Index = " + index);
-
-                if (index > FindObjectOfType<LUD_CsvToDataConvertor>().nativeReactionList.Count-1)    //s'il ne trouve rien aucun match
+                if (index > FindObjectOfType<LUD_CsvToDataConvertor>().nativeReactionList.Count - 1)    //s'il ne trouve aucun match
                 {
                     currentTestReaction = FindObjectOfType<LUD_CsvToDataConvertor>().nativeReactionList[0];     //il prend la première réponse qui est un "? . ."
                     NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3);
                     answerFound = true;
-                    //Debug.Log("Answer found");
                 }
 
                 else
                 {
                     currentTestReaction = FindObjectOfType<LUD_CsvToDataConvertor>().nativeReactionList[index];
+                    bool isThisReactionTriggered = false;
 
-                    if (currentTestReaction.valueOfPlayerSentence == sumOfSentence)
+                    if (currentTestReaction.testOperation == "divide")
                     {
-                        NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3);
-                        answerFound = true;
-                        //Debug.Log("Answer found");
+                        if ((sumOfSentence % currentTestReaction.valueOfPlayerSentence) == 0)
+                        {
+                            isThisReactionTriggered = true;
+                        }
+                        
+                    }
+                    else
+                    {
+                        if (sumOfSentence == currentTestReaction.valueOfPlayerSentence)
+                        {
+                            isThisReactionTriggered = true;
+                        }
+                    }
 
+                    if (isThisReactionTriggered)
+                    {
+                        DisplayingExclamationPoint((currentTestReaction.willTriggeredExclamation));
+                        bool isSentenceTriggered = NotDialogueReaction(currentTestReaction.codeForReaction);
+
+                        if (isSentenceTriggered)
+                        {
+                            NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3);
+                            
+                        }
+                        else
+                        {
+                            index += 1;
+                        }
+                        answerFound = true;
                     }
                     else
                     {
                         index += 1;
                     }
+
                 }
 
-
-                
-                
             }
-
         }
     }
 
@@ -83,12 +132,34 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
         {
             sum = sum * item;
         }
-
-        //Debug.Log("sum = " + sum.ToString());
-
+        
         return sum;
     }
 
+    void DisplayingExclamationPoint(bool isDisplayed)
+    {
+        if (isDisplayed)
+        {
+            //display le point d'exclamation
+            exclamationPointUI.SetActive(true);
+            isExclamationPointActive = true;
+        }
+
+    }
+
+    bool NotDialogueReaction (string code)  //renvoie un bool qui dit si oui ou non une phrase est quand même display
+    {
+        if (code == "go_down")
+        {
+            Debug.Log("Go Down reaction activate");
+            return false;
+        }
+        else
+        {
+            
+            return true;
+        }
+    }
 
     
 }

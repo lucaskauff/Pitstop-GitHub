@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class NativeReaction
 {
-
+    public string testOperation;    
     public int valueOfPlayerSentence;
+
+    public bool willTriggeredExclamation; //pas assigné
+    public string codeForReaction;  //pas assigné
 
     public Sprite answerWord1;
     public Sprite answerWord2;
@@ -16,15 +19,22 @@ public class NativeReaction
     public NativeReaction(string rowToConvert)
     {
         string[] data = rowToConvert.Split(';');
+        
 
-        valueOfPlayerSentence = int.Parse(data[0]);
+        testOperation = data[0];
 
-        answerWord1 = StringToImage(data[1]);
+        valueOfPlayerSentence = int.Parse(data[1]);
 
-        answerWord2 = StringToImage(data[2]);
+        willTriggeredExclamation = (data[2] == "true");
+        //Debug.Log("willTriggeredExclamation = " + (data[2] == "true"));
 
-        answerWord3 = StringToImage(data[3]);
+        codeForReaction = data[3];
 
+        answerWord1 = StringToImage(data[4]);
+
+        answerWord2 = StringToImage(data[5]);
+
+        answerWord3 = StringToImage(data[6]);
 
 
     }
