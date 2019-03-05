@@ -34,7 +34,7 @@ public class LUD_CsvToDataConvertor : MonoBehaviour
             //Debug.Log(nativeReactionList[nativeReactionList.Count - 1].valueOfPlayerSentence);
         }
 
-        Debug.Log("nativeReactionList.Count = " + nativeReactionList.Count);
+        //Debug.Log("nativeReactionList.Count = " + nativeReactionList.Count);
     }
 
     

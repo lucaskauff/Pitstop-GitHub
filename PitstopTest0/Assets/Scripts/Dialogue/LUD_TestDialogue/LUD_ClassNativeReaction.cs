@@ -26,6 +26,7 @@ public class NativeReaction
         valueOfPlayerSentence = int.Parse(data[1]);
 
         willTriggeredExclamation = (data[2] == "true");
+        //Debug.Log("willTriggeredExclamation = " + (data[2] == "true"));
 
         codeForReaction = data[3];
 

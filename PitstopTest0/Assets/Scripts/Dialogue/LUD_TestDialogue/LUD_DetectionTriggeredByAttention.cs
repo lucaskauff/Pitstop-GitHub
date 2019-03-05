@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class LUD_DetectionTriggeredByAttention : MonoBehaviour
 {
-    [SerializeField]
-    GameObject exclamationPoint;
-
     
-    void Start()
-    {
-        exclamationPoint.SetActive(false);
-    }
+    
     
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +13,7 @@ public class LUD_DetectionTriggeredByAttention : MonoBehaviour
         if (collision.gameObject.tag == "AttentionZone")
         {
             GetComponentInParent<LUD_NativeHeartheSentence>().isCaptivated = true;
-            exclamationPoint.SetActive(true);
+            GetComponentInParent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
         }
     }
 
@@ -28,7 +22,8 @@ public class LUD_DetectionTriggeredByAttention : MonoBehaviour
         if (collision.gameObject.tag == "AttentionZone")
         {
             GetComponentInParent<LUD_NativeHeartheSentence>().isCaptivated = false;
-            exclamationPoint.SetActive(false);
+            GetComponentInParent<SpriteRenderer>().color = new Color(0.6f, 0.6f, 0.6f);
+
         }
     }
 }

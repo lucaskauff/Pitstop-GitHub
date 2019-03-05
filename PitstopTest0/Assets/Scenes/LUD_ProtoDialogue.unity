@@ -118,6 +118,12 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1504461130}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &624557960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2350236440129030835, guid: 77bf5f2f8c88de94fbc24dcfee1f9784,
+    type: 3}
+  m_PrefabInstance: {fileID: 2350236441469916650}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1504461130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -295,6 +301,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 65099849}
+    - target: {fileID: 2350236441843232398, guid: 77bf5f2f8c88de94fbc24dcfee1f9784,
+        type: 3}
+      propertyPath: exclamationPointUI
+      value: 
+      objectReference: {fileID: 624557960}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77bf5f2f8c88de94fbc24dcfee1f9784, type: 3}
 --- !u!1001 &4341883324817751859
@@ -362,6 +373,16 @@ PrefabInstance:
     - target: {fileID: 4341883325254114749, guid: bd219b329a353594d91bcd823ecd1d38,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7254744547810540539, guid: bd219b329a353594d91bcd823ecd1d38,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.047058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341883324720780186, guid: bd219b329a353594d91bcd823ecd1d38,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
