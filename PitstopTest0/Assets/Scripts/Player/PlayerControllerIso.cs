@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayerControllerIso : MonoBehaviour
 {
+    SceneLoader sceneLoader;
     InputManager inputManager;
     
     //My components
@@ -14,6 +15,7 @@ public class PlayerControllerIso : MonoBehaviour
 
     //Public
     public bool canMove = true;
+    public float isometricRatio = 2;
 
     //Serializable
     [SerializeField]
@@ -25,16 +27,19 @@ public class PlayerControllerIso : MonoBehaviour
 
     //Private
     Vector2 moveInput;
-    bool isMoving = false;
+    public bool isMoving = false;
     Vector2 lastMove = new Vector2(1, 0);
     float dashRate = 0;
 
     void Start()
     {
+        sceneLoader = GameManager.Instance.sceneLoader;
         inputManager = GameManager.Instance.inputManager;
 
         myRb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
+
+        transform.position = sceneLoader.activeStartingPoint.transform.position;
     }
 
     void Update()
@@ -44,10 +49,11 @@ public class PlayerControllerIso : MonoBehaviour
         if (!canMove)
         {
             myRb.velocity = Vector2.zero;
+            myAnim.SetBool("IsMoving", isMoving);
             return;
         }
 
-        moveInput = new Vector2(inputManager.horizontalInput, inputManager.verticalInput / 2).normalized;
+        moveInput = new Vector2(inputManager.horizontalInput, inputManager.verticalInput / isometricRatio).normalized;
 
         if(moveInput != Vector2.zero)
         {
@@ -62,7 +68,7 @@ public class PlayerControllerIso : MonoBehaviour
 
         if (inputManager.dashKey && Time.time > dashRate)
         {
-            Dash();            
+            Dash();     
         }
 
         //Infos to animator
@@ -76,7 +82,6 @@ public class PlayerControllerIso : MonoBehaviour
     void Dash()
     {
         dashRate = Time.time + dashTime;
-        //Debug.Log(dashRate);
         myRb.velocity = lastMove * dashSpeed;
     }
 }

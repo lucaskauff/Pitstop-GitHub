@@ -25,7 +25,7 @@ public class CrystalController : MonoBehaviour
     public bool hitting = false;
     GameObject objectHittedBefore;
     public GameObject objectHitted;
-    GameObject objectOnScan;    
+    GameObject objectOnScan;
     float fireRate = 0;
     GameObject cloneProj;
 
@@ -123,7 +123,7 @@ public class CrystalController : MonoBehaviour
         }
 
         //SHOOT the scanned object
-        if (inputManager.shootKey && Time.time > fireRate)
+        if (inputManager.shootKey && scannedObject != null && Time.time > fireRate)
         {
             if (scannedObject.name == "ScannableRoot")
             {
@@ -132,17 +132,18 @@ public class CrystalController : MonoBehaviour
 
             fireRate = Time.time + fireSpeed;
 
-            cloneProj = (GameObject)Instantiate(scannedObject, transform.position, scannedObject.transform.rotation);
+            if (scannedObject.tag == "ObjectRock")
+            {
+                cloneProj = (GameObject)Instantiate(scannedObject, playerPos + crystalShootTarget + new Vector2(0, scannedObject.GetComponent<RockBehaviour>().heightWhereToSpawn), scannedObject.transform.rotation);
 
-            cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
-            cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = projSpeed;
-            cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
-            cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
-
-            
+                cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
+                cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = cloneProj.GetComponent<RockBehaviour>().fallSpeed;
+                cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
+                cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
+            }
 
             //not optimized at all
-            if (scannedObject.name == "Apple")
+            if (scannedObject.tag == "ObjectApple")
             {
                 cloneProj.GetComponent<AppleBehaviour>().targetPos = playerPos + crystalShootTarget;
                 cloneProj.GetComponent<AppleBehaviour>().projectileSpeed = projSpeed;

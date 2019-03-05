@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue (Dialogue dialogue)
     {
         playerControl.canMove = false;
+        //playerControl.
         diaBox.SetActive(true);
 
         nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;
@@ -47,9 +48,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-
-        //Displays the whole sentence
-        //dialogueText.GetComponent<TextMeshProUGUI>().text = sentence;
 
         //Displays letter by letter
         StopAllCoroutines();
