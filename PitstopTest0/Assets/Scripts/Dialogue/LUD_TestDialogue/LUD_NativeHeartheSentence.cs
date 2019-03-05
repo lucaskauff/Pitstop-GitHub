@@ -21,7 +21,7 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
 
     public void HearASentence(List<int> heardSentence)
     {
-        
+        /*
         if (isCaptivated)
         {
             int sumOfSentence = ValueOfTheSentence(heardSentence);
@@ -67,6 +67,33 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
             }
 
         }
+        */
+
+        
+        if (isCaptivated)
+        {
+            int sumOfSentence = ValueOfTheSentence(heardSentence);
+
+            bool answerFound = false;
+            int index = 0;
+            NativeReaction currentTestReaction;
+
+            while (answerFound == false)
+            {
+
+                if (index > FindObjectOfType<LUD_CsvToDataConvertor>().nativeReactionList.Count - 1)    //s'il ne trouve aucun match
+                {
+                    currentTestReaction = FindObjectOfType<LUD_CsvToDataConvertor>().nativeReactionList[0];     //il prend la première réponse qui est un "? . ."
+                    NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3);
+                    answerFound = true;
+                    //Debug.Log("Answer found");
+                }
+
+                else
+                {
+                    //protocole de réponse
+                }
+        
     }
 
     void NativeAnswer(Sprite word1, Sprite word2, Sprite word3)
