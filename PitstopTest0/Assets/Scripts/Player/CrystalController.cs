@@ -25,7 +25,7 @@ public class CrystalController : MonoBehaviour
     public bool hitting = false;
     GameObject objectHittedBefore;
     public GameObject objectHitted;
-    GameObject objectOnScan;    
+    GameObject objectOnScan;
     float fireRate = 0;
     GameObject cloneProj;
 
