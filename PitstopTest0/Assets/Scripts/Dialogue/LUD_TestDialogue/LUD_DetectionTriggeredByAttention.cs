@@ -22,7 +22,7 @@ public class LUD_DetectionTriggeredByAttention : MonoBehaviour
         if (collision.gameObject.tag == "AttentionZone")
         {
             GetComponentInParent<LUD_NativeHeartheSentence>().isCaptivated = false;
-            GetComponentInParent<SpriteRenderer>().color = new Color(0.6f, 0.6f, 0.6f);
+            GetComponentInParent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f);
 
         }
     }
