@@ -15,6 +15,7 @@ public class PlayerControllerIso : MonoBehaviour
 
     //Public
     public bool canMove = true;
+    public float isometricRatio = 2;
 
     //Serializable
     [SerializeField]
@@ -26,7 +27,7 @@ public class PlayerControllerIso : MonoBehaviour
 
     //Private
     Vector2 moveInput;
-    bool isMoving = false;
+    public bool isMoving = false;
     Vector2 lastMove = new Vector2(1, 0);
     float dashRate = 0;
 
@@ -48,10 +49,11 @@ public class PlayerControllerIso : MonoBehaviour
         if (!canMove)
         {
             myRb.velocity = Vector2.zero;
+            myAnim.SetBool("IsMoving", isMoving);
             return;
         }
 
-        moveInput = new Vector2(inputManager.horizontalInput, inputManager.verticalInput / 2).normalized;
+        moveInput = new Vector2(inputManager.horizontalInput, inputManager.verticalInput / isometricRatio).normalized;
 
         if(moveInput != Vector2.zero)
         {

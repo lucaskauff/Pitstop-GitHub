@@ -16,7 +16,7 @@ public class RootBehaviour : MonoBehaviour
 
     public int damageDealing = 1;
 
-    public EnemyHealthManager bossHealth;
+    //public EnemyHealthManager bossHealth;
     public CrystalController crys;
     public ScannableObjectBehaviour scannableObjBeh;
     private bool living;
@@ -42,14 +42,14 @@ public class RootBehaviour : MonoBehaviour
                 liana.SetPosition(0, player.transform.position);
                 liana.SetPosition(1, target.transform.position);
 
-                if (trip.collider.gameObject.name == "Gorilla")
+                /*if (trip.collider.gameObject.name == "Gorilla")
                 {
                     Debug.Log("HIT");
                     bossHealth.HurtEnemy(damageDealing);
                     Debug.Log("dead");
                     liana.enabled = false;
                     Destroy(gameObject);
-                }
+                }*/
             }
 
             else 

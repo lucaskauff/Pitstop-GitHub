@@ -24,7 +24,7 @@ public class ScannableObjectBehaviour : MonoBehaviour
     {
         if (isFired)
         {
-            if (this.name != "ScannableRoot")
+            if (gameObject.tag != "ObjectRoot")
             {
                 transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
             }
@@ -33,6 +33,7 @@ public class ScannableObjectBehaviour : MonoBehaviour
         if (col || new Vector2(transform.position.x, transform.position.y) == targetPos)
         {
             isArrived = true;
+            isFired = false;
         }
     }
 
@@ -42,10 +43,5 @@ public class ScannableObjectBehaviour : MonoBehaviour
         {
             col = true;
         }
-    }
-
-    private void OnMouseOver()
-    {
-        
     }
 }

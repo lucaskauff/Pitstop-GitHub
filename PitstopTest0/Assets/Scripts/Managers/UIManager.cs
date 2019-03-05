@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    SceneLoader sceneLoader;
     InputManager inputManager;
 
     //Crystal
@@ -22,13 +23,14 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        sceneLoader = GameManager.Instance.sceneLoader;
         inputManager = GameManager.Instance.inputManager;
     }
 
     void Update()
     {
-        scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalControl.scanProgress);
-        playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
+        /*scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalControl.scanProgress);
+        playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);*/
 
         /*enemyHealthBar.maxValue = enemyHealthMan.enemyMaxHealth;
         enemyHealthBar.value = enemyHealthMan.enemyCurrentHealth;*/
@@ -40,5 +42,10 @@ public class UIManager : MonoBehaviour
         crystalSlot.GetComponent<Image>().sprite = sprite;
         crystalSlot.GetComponent<Image>().SetNativeSize();
         crystalSlotCanvasAnim.SetTrigger("GoBlue");
+    }
+
+    public void MakeUIElementAppear(GameObject whatToReveal)
+    {
+        whatToReveal.SetActive(true);
     }
 }
