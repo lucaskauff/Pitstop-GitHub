@@ -11362,16 +11362,16 @@ MonoBehaviour:
   viewRangeRad: 4.73
   damageDealing: 1
   walkSpeed: 1
-  rushSpeed: 3
   walkTime: 2
   waitTime: 1
-  rushTime: 2
   rushRatio: 1.25
   stunTime: 3
   walkZone: {fileID: 922962616}
   viewRange: {fileID: 671427559}
   target: {fileID: 0}
   player: {fileID: 691503565}
+  rushSpeed: 3
+  rushTime: 2
   isArrived: 0
 --- !u!60 &1564327647
 PolygonCollider2D:
@@ -17816,6 +17816,10 @@ PrefabInstance:
     - target: {fileID: 691503574, guid: cb904d02083b667428abc6b8cf885945, type: 3}
       propertyPath: scannedObject
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 691503574, guid: cb904d02083b667428abc6b8cf885945, type: 3}
+      propertyPath: scanSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 217864139, guid: cb904d02083b667428abc6b8cf885945, type: 3}
       propertyPath: m_LocalPosition.y
