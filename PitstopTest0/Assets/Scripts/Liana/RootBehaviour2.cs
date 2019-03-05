@@ -8,19 +8,22 @@ public class RootBehaviour2 : MonoBehaviour
     public GameObject player;
     public GameObject[] hookpoints;
     public bool pointSelect;
-    public HookPointBehaviour hookBeh;
     public CrystalController crys;
     public int damageDealing = 1;
+    public EnemyHealthManager bossHealth;
+    public bool mark;
 
     int layerMask;
     [SerializeField]
     float lifeInSeconds; 
     private bool living;
+    GorillaBehaviour rush;
 
     private void Awake()
     {
         liana = this.GetComponent<LineRenderer>();
         layerMask = LayerMask.GetMask("Liana");
+        mark = false;
     }
 
     private void Update()
@@ -88,13 +91,10 @@ public class RootBehaviour2 : MonoBehaviour
                 liana.SetPosition(0, hookpoints[0].transform.position);
                 liana.SetPosition(1, hookpoints[1].transform.position);
 
-
                 if (hookpoints[2] != null)
                 {
                     liana.SetPosition(2, hookpoints[2].transform.position);
-
                 }
-
             }
         }
     }
@@ -109,6 +109,8 @@ public class RootBehaviour2 : MonoBehaviour
             if (trip.collider != null)
             {
                 Debug.Log(trip.collider.name);
+                rush = trip.collider.gameObject.GetComponent<GorillaBehaviour>();
+                StartCoroutine (EnemyDamage());
             }
 
             if (liana.positionCount == 3)
@@ -119,6 +121,8 @@ public class RootBehaviour2 : MonoBehaviour
                 if (trip2.collider != null)
                 {
                     Debug.Log(trip2.collider.name + "2");
+                    rush = trip2.collider.gameObject.GetComponent<GorillaBehaviour>();
+                    StartCoroutine(EnemyDamage());
                 }
 
                 else
@@ -127,5 +131,17 @@ public class RootBehaviour2 : MonoBehaviour
                 }
             }                                              
         }
+    }
+
+    IEnumerator EnemyDamage()
+    {
+        bossHealth.HurtEnemy(damageDealing);
+        liana.enabled = false;
+        mark = true;
+        rush.rushSpeed = -(rush.rushSpeed);
+        rush.rushTime = 0.1f;
+        yield return new WaitForSeconds(1f);
+        rush.rushSpeed = -(rush.rushSpeed);
+
     }
 }

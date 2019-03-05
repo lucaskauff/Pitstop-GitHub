@@ -23,11 +23,12 @@ public class HookPointBehaviour : MonoBehaviour
     }
 
     private void Update()
-    {    
+    {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             markSign = false;
             canContinue = true;
+            root.mark = false;
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -36,6 +37,11 @@ public class HookPointBehaviour : MonoBehaviour
             {
                 markSign = false;
             }
+        }
+
+        if (root.mark == true)
+        {
+            markSign = false;
         }
 
         anim.SetBool("Marked", markSign);
@@ -69,6 +75,5 @@ public class HookPointBehaviour : MonoBehaviour
         color = myRenderer.material.GetColor("_ColorOutline");
         color.a = 0;
         myRenderer.material.SetColor("_ColorOutline", color);
-
     }
 }

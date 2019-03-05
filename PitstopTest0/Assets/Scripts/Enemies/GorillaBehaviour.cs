@@ -12,13 +12,11 @@ public class GorillaBehaviour : MonoBehaviour
     [SerializeField]
     float walkSpeed = 1;
     [SerializeField]
-    float rushSpeed = 3;
-    [SerializeField]
     float walkTime = 1;
     [SerializeField]
     float waitTime = 1;
-    [SerializeField]
-    float rushTime = 2;
+    /*[SerializeField]
+    float rushTime = 2;*/
     [SerializeField]
     float rushRatio = 1.25f;
     [SerializeField]
@@ -29,6 +27,9 @@ public class GorillaBehaviour : MonoBehaviour
     public Transform viewRange;
     public GameObject target;
     public GameObject player;
+    //[SerializeField]
+    public float rushSpeed = 3;
+    public float rushTime = 2;
 
     //Private
     Rigidbody2D myRb;
@@ -180,7 +181,7 @@ public class GorillaBehaviour : MonoBehaviour
                 if (!followTargetCheck)
                 {
                     StartCoroutine(RushTimeDecount());
-                    targetPos = (target.transform.position - this.transform.position) * rushRatio;
+                    targetPos = target.transform.position;
                     followTargetCheck = true;
                 }
 
