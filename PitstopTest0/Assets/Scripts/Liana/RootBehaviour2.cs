@@ -20,102 +20,112 @@ public class RootBehaviour2 : MonoBehaviour
     private void Awake()
     {
         liana = this.GetComponent<LineRenderer>();
-        layerMask = LayerMask.GetMask("HookPoints");
+        layerMask = LayerMask.GetMask("Liana");
     }
 
     private void Update()
-    {
-        LianaCollider();
-
+    {        
         if (crys.scannedObject.name == "ScannableRoot")
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            ResetHookpoints();
+
+            LineGestion();
+
+            LianaCollider();
+        }        
+    }
+
+    public void ResetHookpoints()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            for (int x = 0; x < 3; x++)
             {
-                for (int x = 0; x < 3; x++)
-                {
-                    if (hookpoints[x] == null)
-                    {
-                        return;
-                    }
-
-                    else if (hookpoints[x] != null)
-                    {
-                        hookpoints = new GameObject[3];
-                    }
-                }
-            }
-
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                pointSelect = true;
-                liana.enabled = false;
-            }
-
-
-            if (Input.GetKeyUp(KeyCode.Mouse0))
-            {
-                pointSelect = false;
-
-                if (hookpoints[2] == null)
-                {
-                    liana.positionCount = 2;
-                }
-
-                else
-                {
-                    liana.positionCount = 3;
-                }
-
-                if (hookpoints[1] == null)
+                if (hookpoints[x] == null)
                 {
                     return;
                 }
 
-                else
+                else if (hookpoints[x] != null)
                 {
-                    liana.enabled = true;
-                    liana.SetPosition(0, hookpoints[0].transform.position);
-                    liana.SetPosition(1, hookpoints[1].transform.position);
-
-
-                    if (hookpoints[2] != null)
-                    {
-                        liana.SetPosition(2, hookpoints[2].transform.position);
-
-                    }
-
-                }      
+                    hookpoints = new GameObject[3];
+                }
             }
-        }        
+        }
     }
 
-    private void FixedUpdate()
+    public void LineGestion()
     {
-        //LianaCollider();
-    }
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            pointSelect = true;
+            liana.enabled = false;
+        }
 
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            pointSelect = false;
+
+            if (hookpoints[2] == null)
+            {
+                liana.positionCount = 2;
+            }
+
+            else
+            {
+                liana.positionCount = 3;
+            }
+
+            if (hookpoints[1] == null)
+            {
+                return;
+            }
+
+            else
+            {
+                liana.enabled = true;
+                liana.SetPosition(0, hookpoints[0].transform.position);
+                liana.SetPosition(1, hookpoints[1].transform.position);
+
+
+                if (hookpoints[2] != null)
+                {
+                    liana.SetPosition(2, hookpoints[2].transform.position);
+
+                }
+
+            }
+        }
+    }
+    
     public void LianaCollider()
     {
         if (liana.enabled == true)
         {
-            RaycastHit2D trip = Physics2D.Raycast(hookpoints[0].transform.position, hookpoints[1].transform.position, Vector2.Distance(hookpoints[0].transform.position, hookpoints[1].transform.position), ~layerMask);
+            RaycastHit2D trip = Physics2D.Raycast(hookpoints[0].transform.position, hookpoints[1].transform.position - hookpoints[0].transform.position, Vector2.Distance(hookpoints[0].transform.position, hookpoints[1].transform.position), layerMask);
             Debug.DrawLine(hookpoints[0].transform.position, hookpoints[1].transform.position, Color.green);
 
-            if (trip.collider.gameObject.tag.Equals("Player"))
+            if (trip.collider != null)
             {
                 Debug.Log(trip.collider.name);
             }
 
             if (liana.positionCount == 3)
             {
-                RaycastHit2D trip2 = Physics2D.Raycast(hookpoints[1].transform.position, hookpoints[2].transform.position, Vector2.Distance(hookpoints[1].transform.position, hookpoints[2].transform.position), ~layerMask);
+                RaycastHit2D trip2 = Physics2D.Raycast(hookpoints[1].transform.position, hookpoints[2].transform.position - hookpoints[1].transform.position, Vector2.Distance(hookpoints[1].transform.position, hookpoints[2].transform.position), layerMask);
                 Debug.DrawLine(hookpoints[1].transform.position, hookpoints[2].transform.position, Color.blue);
 
-                if (trip2.collider.tag.Equals("Player"))
+                if (trip2.collider != null)
                 {
-                    Debug.Log(trip.collider.name + "2");
+                    Debug.Log(trip2.collider.name + "2");
                 }
-            }
+
+                else
+                {
+                    return;
+                }
+            }                                              
         }
     }
 }

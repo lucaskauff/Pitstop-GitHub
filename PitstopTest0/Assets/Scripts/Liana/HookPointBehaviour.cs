@@ -38,7 +38,6 @@ public class HookPointBehaviour : MonoBehaviour
             }
         }
 
-
         anim.SetBool("Marked", markSign);
     }
 
