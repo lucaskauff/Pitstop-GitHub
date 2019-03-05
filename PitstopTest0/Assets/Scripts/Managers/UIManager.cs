@@ -39,8 +39,11 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        /*scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalControl.scanProgress);
-        playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);*/
+        if (sceneLoader.activeScene != "TEMPLE")
+        {
+            scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalController.scanProgress);
+            playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
+        }        
 
         aiguilleNewRotation = Quaternion.Euler(0, 0, -(((aiguilleOrientation5 - aiguilleOrientation0) / 5) * crystalController.scanProgress));
         aiguille.rotation = Quaternion.Lerp(aiguille.rotation, aiguilleNewRotation, Time.time * aiguilleRotationSpeed);
