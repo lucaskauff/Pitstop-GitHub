@@ -6,17 +6,19 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
 {
 
     //SerializeField
-    
+    [SerializeField]
+    GameObject dialogueSpace;
+
     [SerializeField]
     GameObject exclamationPointUI;
-    [SerializeField]
-    float delayBeforeExclamationDisapperance = 1f;
+    
 
     //Private
     bool isExclamationPointActive;
     float timerForExclamation;
 
     //Public
+    public float delayBeforeExclamationDisapperance = 1f;
     public bool isCaptivated = true;
 
 
@@ -96,7 +98,7 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
                         DisplayingExclamationPoint((currentTestReaction.willTriggeredExclamation));
                         bool isSentenceTriggered = NotDialogueReaction(currentTestReaction.codeForReaction);
 
-                        if (isSentenceTriggered)
+                        if (isSentenceTriggered)    //because after Exclamation the sentence can not being triggered
                         {
                             NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3);
                             
@@ -104,6 +106,8 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
                         else
                         {
                             index += 1;
+                            dialogueSpace.SetActive(false);
+                            FindObjectOfType<LUD_DialogueAppearance>().isDialogueSpaceActive = false;
                         }
                         answerFound = true;
                     }
