@@ -13,24 +13,38 @@ public class HookPointBehaviour : MonoBehaviour
     Color color;
     [SerializeField]
     bool canContinue = true;
+    Animator anim;
 
     private void Start()
     {
         thisOne = this.gameObject;
         myRenderer = GetComponent<Renderer>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
-    {    
+    {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            markSign = false;
             canContinue = true;
+            root.mark = false;
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            if(root.hookpoints[1] == null)
+            {
+                markSign = false;
+            }
+        }
+
+        if (root.mark == true)
+        {
             markSign = false;
         }
+
+        anim.SetBool("Marked", markSign);
     }
 
     private void OnMouseOver()
@@ -61,6 +75,5 @@ public class HookPointBehaviour : MonoBehaviour
         color = myRenderer.material.GetColor("_ColorOutline");
         color.a = 0;
         myRenderer.material.SetColor("_ColorOutline", color);
-
     }
 }

@@ -8,6 +8,8 @@ public class CrystalRecuperation : MonoBehaviour
     UIManager uIManager;
     [SerializeField]
     GameObject[] whatElementsShouldAppear;
+    [SerializeField]
+    GameObject whatElementShouldDisappear;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,6 +18,7 @@ public class CrystalRecuperation : MonoBehaviour
             foreach (var element in whatElementsShouldAppear)
             {
                 uIManager.MakeUIElementAppear(element);
+                whatElementShouldDisappear.SetActive(false);
             }
         }
     }

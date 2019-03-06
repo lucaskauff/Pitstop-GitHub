@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class ActivitableDoor : MonoBehaviour
 {
-    Animator myAnim;
+    //Animator myAnim;
 
     [SerializeField]
     GameObject doorCollision;
+    [SerializeField]
+    GameObject door1;
+    [SerializeField]
+    GameObject door2;
     [SerializeField]
     PressurePlateBehaviour[] neededPressurePlatesToOpen;
 
@@ -15,7 +19,7 @@ public class ActivitableDoor : MonoBehaviour
 
     private void Start()
     {
-        myAnim = GetComponent<Animator>();
+        //myAnim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -25,13 +29,17 @@ public class ActivitableDoor : MonoBehaviour
         if (allPressurePlatesOk)
         {
             doorCollision.SetActive(false);
+            door1.SetActive(false);
+            door2.SetActive(false);
         }
         else
         {
             doorCollision.SetActive(true);
+            door1.SetActive(true);
+            door2.SetActive(true);
         }
 
-        myAnim.SetBool("DoorOpen", allPressurePlatesOk);
+        //myAnim.SetBool("DoorOpen", allPressurePlatesOk);
     }
 
     void CheckPressurePlates()

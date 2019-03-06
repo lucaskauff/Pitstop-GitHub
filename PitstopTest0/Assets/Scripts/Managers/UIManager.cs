@@ -11,8 +11,18 @@ public class UIManager : MonoBehaviour
     //Crystal
     public Image scanProgressBar;
     public Image crystalSlot;
-    public CrystalController crystalControl;
+    public CrystalController crystalController;
     public Animator crystalSlotCanvasAnim;
+
+    public Image scanBarFill;
+    public float fillPercentage = 0.821f;
+    //private int scanBarAmount = 0;
+
+    public RectTransform aiguille;
+    public float aiguilleRotationSpeed = 1;
+    private Quaternion aiguilleNewRotation;
+    public float aiguilleOrientation0 = 40;
+    public float aiguilleOrientation5 = 217;
 
     public Image playerLifes;
     public PlayerHealthManager playerHealthMan;
@@ -29,18 +39,29 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        /*scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalControl.scanProgress);
-        playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);*/
+        if (sceneLoader.activeScene != "TEMPLE")
+        {
+            scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalController.scanProgress);
+            playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
+        }        
 
-        /*enemyHealthBar.maxValue = enemyHealthMan.enemyMaxHealth;
-        enemyHealthBar.value = enemyHealthMan.enemyCurrentHealth;*/
+        aiguilleNewRotation = Quaternion.Euler(0, 0, -(((aiguilleOrientation5 - aiguilleOrientation0) / 5) * crystalController.scanProgress));
+        aiguille.rotation = Quaternion.Lerp(aiguille.rotation, aiguilleNewRotation, Time.time * aiguilleRotationSpeed);
+
+        scanBarFill.fillAmount = (fillPercentage / 5) * crystalController.scanProgress;
+
+        if (sceneLoader.activeScene == "NathanLianaScene")
+        {
+            enemyHealthBar.maxValue = enemyHealthMan.enemyMaxHealth;
+            enemyHealthBar.value = enemyHealthMan.enemyCurrentHealth;
+        }        
     }
 
     public void ChangeImageInCrystalSlot(Sprite sprite)
     {
         crystalSlot.GetComponent<Image>().color = Color.white;
         crystalSlot.GetComponent<Image>().sprite = sprite;
-        crystalSlot.GetComponent<Image>().SetNativeSize();
+        //crystalSlot.GetComponent<Image>().SetNativeSize();
         crystalSlotCanvasAnim.SetTrigger("GoBlue");
     }
 

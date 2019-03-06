@@ -25,6 +25,7 @@ public class SceneLoader : MonoBehaviour
         activeScene = sceneToLoad;
         //sceneIndex += 1;
         SceneManager.LoadScene(sceneToLoad);
+        activeStartingPoint = GameObject.Find("StartingPoint0");
     }
 
     public void ReloadScene()
