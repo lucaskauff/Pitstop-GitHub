@@ -47,15 +47,15 @@ public class NativeReaction
         }
         else if (code=="Beet")
         {
-            return Resources.Load<Sprite>("LUD_Sprites_Word/BeetSprite");
+            return Resources.Load<Sprite>("LUD_Sprites_Word/Old/BeetSprite");
         }
         else if (code == "Mushroom")
         {
-            return Resources.Load<Sprite>("LUD_Sprites_Word/MushroomSprite");
+            return Resources.Load<Sprite>("LUD_Sprites_Word/Old/MushroomSprite");
         }
         else if (code == "Apple")
         {
-            return Resources.Load<Sprite>("LUD_Sprites_Word/AppleSprite");
+            return Resources.Load<Sprite>("LUD_Sprites_Word/Old/AppleSprite");
         }
         else
         {

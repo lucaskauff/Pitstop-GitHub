@@ -27,15 +27,18 @@ public class RootBehaviour2 : MonoBehaviour
     }
 
     private void Update()
-    {        
-        if (crys.scannedObject.name == "ScannableRoot")
+    {
+        if (crys.scannedObject != null)
         {
-            ResetHookpoints();
+            if (crys.scannedObject.name == "ScannableRoot")
+            {
+                ResetHookpoints();
 
-            LineGestion();
+                LineGestion();
 
-            LianaCollider();
-        }        
+                LianaCollider();
+            }
+        }              
     }
 
     public void ResetHookpoints()

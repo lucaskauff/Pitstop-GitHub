@@ -58,12 +58,12 @@ public class LUD_DialogueManagement : MonoBehaviour
     }
 
 
-    void WheelAppearance()
+    public void WheelAppearance()
     {
         dialogueWheel.SetActive(true);
     }
     
-    void WheelDisappearance()
+    public void WheelDisappearance()
     {
         dialogueWheel.SetActive(false);
 
@@ -78,6 +78,10 @@ public class LUD_DialogueManagement : MonoBehaviour
         {
             sentence.Add(valueOfTheWord);
             //Debug.Log("word = " + valueOfTheWord.ToString());
+        }
+        else
+        {
+            sentence[2] = valueOfTheWord;
         }
 
         Sprite spriteSelected = IntToSprite(valueOfTheWord);
