@@ -68,7 +68,7 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
                 if (index > FindObjectOfType<LUD_CsvToDataConvertor>().nativeReactionList.Count - 1)    //s'il ne trouve aucun match
                 {
                     currentTestReaction = FindObjectOfType<LUD_CsvToDataConvertor>().nativeReactionList[0];     //il prend la première réponse qui est un "? . ."
-                    NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3);
+                    NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3,false);
                     answerFound = true;
                 }
 
@@ -100,14 +100,12 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
 
                         if (isSentenceTriggered)    //because after Exclamation the sentence can not being triggered
                         {
-                            NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3);
+                            NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3,currentTestReaction.willTriggeredExclamation);
                             
                         }
                         else
                         {
                             index += 1;
-                            dialogueSpace.SetActive(false);
-                            FindObjectOfType<LUD_DialogueAppearance>().isDialogueSpaceActive = false;
                         }
                         answerFound = true;
                     }
@@ -122,10 +120,10 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
         }
     }
 
-    void NativeAnswer(Sprite word1, Sprite word2, Sprite word3)
+    void NativeAnswer(Sprite word1, Sprite word2, Sprite word3, bool wasExclamationTriggered)
     {
         
-        GetComponent<LUD_DialogueAppearance>().ReactionAppearance(word1,word2,word3);
+        GetComponent<LUD_DialogueAppearance>().ReactionAppearance(word1,word2,word3,wasExclamationTriggered);
     }
 
     int ValueOfTheSentence (List<int> listOfInt)
@@ -142,6 +140,9 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
 
     void DisplayingExclamationPoint(bool isDisplayed)
     {
+        dialogueSpace.SetActive(false);
+        FindObjectOfType<LUD_DialogueAppearance>().isDialogueSpaceActive = false;
+
         if (isDisplayed)
         {
             //display le point d'exclamation
@@ -164,6 +165,6 @@ public class LUD_NativeHeartheSentence : MonoBehaviour
             return true;
         }
     }
-
     
+
 }
