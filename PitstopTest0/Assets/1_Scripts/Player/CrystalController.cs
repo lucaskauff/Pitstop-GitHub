@@ -22,6 +22,10 @@ namespace Pitstop
         public float maxScanRange = 5;
         [Range(1, 10), SerializeField]
         float maxShootRange = 5;
+        [SerializeField]
+        int maxObjectOnScene = 1;
+        [SerializeField]
+        int[] objectCountOnScene;        
 
         //Private
         public bool hitting = false;
@@ -127,8 +131,11 @@ namespace Pitstop
             //SHOOT the scanned object
             if (inputManager.shootKey && scannedObject != null && Time.time > fireRate)
             {
+
+
                 if (scannedObject.name == "ScannableRoot")
                 {
+
                     return;
                 }
 
@@ -136,6 +143,9 @@ namespace Pitstop
 
                 if (scannedObject.tag == "ObjectRock")
                 {
+
+                    objectCountOnScene[0] += 1;
+
                     cloneProj = (GameObject)Instantiate(scannedObject, playerPos + crystalShootTarget + new Vector2(0, scannedObject.GetComponent<RockBehaviour>().heightWhereToSpawn), scannedObject.transform.rotation);
 
                     cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
