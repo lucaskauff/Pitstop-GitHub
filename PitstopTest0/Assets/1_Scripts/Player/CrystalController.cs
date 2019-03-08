@@ -24,8 +24,6 @@ namespace Pitstop
         float maxShootRange = 5;
         [SerializeField]
         int maxObjectOnScene = 1;
-        [SerializeField]
-        int[] objectCountOnScene;        
 
         //Private
         public bool hitting = false;
@@ -34,6 +32,8 @@ namespace Pitstop
         GameObject objectOnScan;
         float fireRate = 0;
         GameObject cloneProj;
+        List<GameObject> gameObjectsOnScene = new List<GameObject>();
+        int objectCountOnScene;
 
         //Public
         public UIManager uIManager;
@@ -131,11 +131,8 @@ namespace Pitstop
             //SHOOT the scanned object
             if (inputManager.shootKey && scannedObject != null && Time.time > fireRate)
             {
-
-
                 if (scannedObject.name == "ScannableRoot")
                 {
-
                     return;
                 }
 
@@ -143,10 +140,23 @@ namespace Pitstop
 
                 if (scannedObject.tag == "ObjectRock")
                 {
+                    if (objectCountOnScene == maxObjectOnScene)
+                    {
+                        foreach (var obj in gameObjectsOnScene)
+                        {
+                            Destroy(obj);
+                        }
+                        objectCountOnScene = 0;
+                        gameObjectsOnScene.Clear();
+                        //re-able the following line of script for the player having to re-click to spawn the thing
+                        //return;
+                    }
 
-                    objectCountOnScene[0] += 1;
-
+                    //spawns the rock !
                     cloneProj = (GameObject)Instantiate(scannedObject, playerPos + crystalShootTarget + new Vector2(0, scannedObject.GetComponent<RockBehaviour>().heightWhereToSpawn), scannedObject.transform.rotation);
+
+                    objectCountOnScene += 1;
+                    gameObjectsOnScene.Add(cloneProj);
 
                     cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
                     cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = cloneProj.GetComponent<RockBehaviour>().fallSpeed;
