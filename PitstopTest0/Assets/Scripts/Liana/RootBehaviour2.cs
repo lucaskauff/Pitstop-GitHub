@@ -18,6 +18,8 @@ public class RootBehaviour2 : MonoBehaviour
     float lifeInSeconds; 
     private bool living;
     GorillaBehaviour rush;
+    private Vector2 mousePos;
+    bool preview = true;
 
     private void Awake()
     {
@@ -38,7 +40,9 @@ public class RootBehaviour2 : MonoBehaviour
 
                 LianaCollider();
             }
-        }              
+        }
+        
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     public void ResetHookpoints()
@@ -66,11 +70,50 @@ public class RootBehaviour2 : MonoBehaviour
         {
             pointSelect = true;
             liana.enabled = false;
+
+            if (hookpoints[0] == null)
+            {
+                return;
+            }
+
+            else if (hookpoints[1] == null)
+            {
+                liana.positionCount = 2;
+                liana.enabled = true;
+                preview = true;
+                liana.SetPosition(0, hookpoints[0].transform.position);
+                liana.SetPosition(1, mousePos);
+            }
+
+            else if (hookpoints[2] == null)
+            {
+                liana.positionCount = 3;
+                liana.enabled = true;
+                preview = true;
+                liana.SetPosition(0, hookpoints[0].transform.position);
+                liana.SetPosition(1, hookpoints[1].transform.position);
+                liana.SetPosition(2, mousePos);
+            }
+
+            else
+            {
+                for (int x = 0; x < 3; x++)
+                {
+                    preview = true;
+                    liana.enabled = true;
+                    if (hookpoints[x] != null)
+                    liana.SetPosition(0, hookpoints[0].transform.position);
+                    liana.SetPosition(1, hookpoints[1].transform.position);
+                    liana.SetPosition(2, hookpoints[2].transform.position);
+                }
+            }
         }
 
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            preview = false;
+
             pointSelect = false;
 
             if (hookpoints[2] == null)
@@ -85,6 +128,8 @@ public class RootBehaviour2 : MonoBehaviour
 
             if (hookpoints[1] == null)
             {
+                preview = false;
+                liana.enabled = false;
                 return;
             }
 
@@ -104,7 +149,7 @@ public class RootBehaviour2 : MonoBehaviour
     
     public void LianaCollider()
     {
-        if (liana.enabled == true)
+        if (liana.enabled == true && preview == false && hookpoints[1] != null)
         {
             RaycastHit2D trip = Physics2D.Raycast(hookpoints[0].transform.position, hookpoints[1].transform.position - hookpoints[0].transform.position, Vector2.Distance(hookpoints[0].transform.position, hookpoints[1].transform.position), layerMask);
             Debug.DrawLine(hookpoints[0].transform.position, hookpoints[1].transform.position, Color.green);
