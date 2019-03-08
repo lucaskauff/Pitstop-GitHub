@@ -13,8 +13,6 @@ namespace Pitstop
         [SerializeField]
         float fireSpeed = 1;
         [SerializeField]
-        float projSpeed = 3;
-        [SerializeField]
         float scanSpeed = 1;
         [SerializeField]
         float descanSpeed = 1;
@@ -24,16 +22,26 @@ namespace Pitstop
         float maxShootRange = 5;
         [SerializeField]
         int maxObjectOnScene = 1;
+        [SerializeField]
+        SpriteRenderer previsualisation;
+        [SerializeField]
+        PrevizContact previsualisationContact;
 
         //Private
+        List<GameObject> gameObjectsOnScene = new List<GameObject>();
+        int objectCountOnScene;
         public bool hitting = false;
         GameObject objectHittedBefore;
         public GameObject objectHitted;
         GameObject objectOnScan;
         float fireRate = 0;
         GameObject cloneProj;
-        List<GameObject> gameObjectsOnScene = new List<GameObject>();
-        int objectCountOnScene;
+
+        Vector2 playerPosGround;
+        Vector2 cursorPos;
+        Vector2 crystalDirection;
+        Vector2 crystalShootTarget;
+        bool canShoot = false;
 
         //Public
         public UIManager uIManager;
@@ -51,21 +59,16 @@ namespace Pitstop
 
         void Update()
         {
-            Vector2 playerPos = transform.position;
-            Vector2 playerPosGround = circularRange.transform.position;
-            Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            playerPosGround = circularRange.transform.position;
+            cursorPos = inputManager.cursorPosition;
 
-            //Vector2 test1 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //Vector2 test2 = new Vector2(test1.x, test1.y / 2);
-            //Vector2 crystalDir = test2 - playerPosGround;
-
-            Vector2 crystalDirection = cursorPos - playerPosGround;
+            crystalDirection = cursorPos - playerPosGround;
             //Vector2 crystalOrigin = playerPosGround + crystalDirection.normalized;
 
             Vector2 crystalScanTarget = Vector2.ClampMagnitude(crystalDirection, maxScanRange);
-            Vector2 crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
+            crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
 
-            float scanRange = Vector2.Distance(playerPosGround, playerPos + crystalScanTarget);
+            float scanRange = Vector2.Distance(playerPosGround, (Vector2)transform.position + crystalScanTarget);
 
             RaycastHit2D hit = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange); //raycast's definition
             Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
@@ -128,56 +131,75 @@ namespace Pitstop
                 objectOnScan = null;
             }
 
-            //SHOOT the scanned object
-            if (inputManager.shootKey && scannedObject != null && Time.time > fireRate)
+            //conditions for shoot
+            if (canShoot && inputManager.shootKey && scannedObject != null && Time.time > fireRate)
             {
-                if (scannedObject.name == "ScannableRoot")
-                {
-                    return;
-                }
+                Shoot();
+            }
 
-                fireRate = Time.time + fireSpeed;
-
-                if (scannedObject.tag == "ObjectRock")
-                {
-                    if (objectCountOnScene == maxObjectOnScene)
-                    {
-                        foreach (var obj in gameObjectsOnScene)
-                        {
-                            Destroy(obj);
-                        }
-                        objectCountOnScene = 0;
-                        gameObjectsOnScene.Clear();
-                        //re-able the following line of script for the player having to re-click to spawn the thing
-                        //return;
-                    }
-
-                    //spawns the rock !
-                    cloneProj = (GameObject)Instantiate(scannedObject, playerPos + crystalShootTarget + new Vector2(0, scannedObject.GetComponent<RockBehaviour>().heightWhereToSpawn), scannedObject.transform.rotation);
-
-                    objectCountOnScene += 1;
-                    gameObjectsOnScene.Add(cloneProj);
-
-                    cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
-                    cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = cloneProj.GetComponent<RockBehaviour>().fallSpeed;
-                    cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
-                    cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
-                }
-
-                //not optimized at all
-                if (scannedObject.tag == "ObjectApple")
-                {
-                    cloneProj.GetComponent<AppleBehaviour>().targetPos = playerPos + crystalShootTarget;
-                    cloneProj.GetComponent<AppleBehaviour>().projectileSpeed = projSpeed;
-                    cloneProj.GetComponent<AppleBehaviour>().isScannable = false;
-                    cloneProj.GetComponent<AppleBehaviour>().isFired = true;
-                }
+            if (scannedObject != null)
+            {
+                Previsualisation(scannedObject.GetComponent<SpriteRenderer>());
             }
         }
 
-        void isoVectorTwo(Vector2 vector)
+        void Shoot()
         {
-            vector = new Vector2(vector.x, vector.y / 2);
+            switch (scannedObject.tag)
+            {
+                case "ObjectLiana":
+                    return;
+
+                case "ObjectRock":
+                    ShootableObject((Vector2)transform.position + crystalShootTarget + new Vector2(0, scannedObject.GetComponent<RockBehaviour>().heightWhereToSpawn), scannedObject.GetComponent<RockBehaviour>().fallSpeed);
+                    break;
+
+                case "ObjectApple":
+                    //do stuff
+                    break;
+            }
+        }
+
+        void ShootableObject(Vector2 objectSpawnPoint, float projSpeed)
+        {
+            if (objectCountOnScene == maxObjectOnScene)
+            {
+                foreach (var obj in gameObjectsOnScene)
+                {
+                    Destroy(obj);
+                }
+
+                objectCountOnScene = 0;
+                gameObjectsOnScene.Clear();
+            }
+
+            cloneProj = Instantiate(scannedObject, objectSpawnPoint, scannedObject.transform.rotation);
+
+            cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = (Vector2)transform.position + crystalShootTarget;
+            cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = projSpeed;
+            cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
+            cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
+
+            objectCountOnScene += 1;
+            gameObjectsOnScene.Add(cloneProj);
+            fireRate = Time.time + fireSpeed;
+        }
+
+        void Previsualisation(SpriteRenderer whatToPreviz)
+        {
+            previsualisation.gameObject.transform.position = inputManager.cursorPosition;
+            previsualisation.sprite = whatToPreviz.sprite;
+
+            if (previsualisationContact.objectShootable)
+            {
+                canShoot = true;
+                //previsualisation.color = new Color();
+            }
+            else
+            {
+                canShoot = false;
+                previsualisation.color = Color.red;
+            }
         }
 
         IEnumerator Scan()

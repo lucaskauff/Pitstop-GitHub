@@ -13,14 +13,9 @@ namespace Pitstop
         public float projectileSpeed = 3;
         public Vector2 targetPos;
 
+        public ScanData entity;
+
         public bool col = false;
-
-        private SpriteRenderer spriteRenderer;
-
-        private void Start()
-        {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        }
 
         private void Update()
         {

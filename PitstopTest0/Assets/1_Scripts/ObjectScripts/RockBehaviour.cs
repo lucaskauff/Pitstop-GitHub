@@ -7,11 +7,14 @@ namespace Pitstop
 {
     public class RockBehaviour : MonoBehaviour
     {
+        //components
         Animator myAnim;
         Renderer myRend;
 
         public float heightWhereToSpawn;
         public float fallSpeed;
+
+        public ScanData data;
 
         [SerializeField]
         float impulseDuration;
