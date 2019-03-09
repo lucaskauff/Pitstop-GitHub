@@ -6,14 +6,21 @@ namespace Pitstop
 {
     public class DialogueTrigger : MonoBehaviour
     {
+        InputManager inputManager;
+
         public DialogueManager dialogueManager;
         public Dialogue dialogue;
 
         bool playerReading = false;
 
+        private void Start()
+        {
+            inputManager = GameManager.Instance.inputManager;
+        }
+
         private void Update()
         {
-            if (playerReading && Input.GetKeyDown(KeyCode.E))
+            if (playerReading && inputManager.anyKeyPressed && inputManager.horizontalInput == 0 && inputManager.verticalInput == 0)
             {
                 dialogueManager.DisplayNextSentence();
             }

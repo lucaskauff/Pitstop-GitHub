@@ -76,7 +76,7 @@ namespace Pitstop
             Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
 
             //SCAN
-            if (hit.collider != null && inputManager.scanKey)
+            if (hit.collider != null && inputManager.rightClickBeingPressed)
             {
                 if (hit.collider.isTrigger && hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>() != null && hit.collider.gameObject != scannedObject)
                 {
@@ -134,7 +134,7 @@ namespace Pitstop
             }
 
             //conditions for shoot
-            if (canShoot && inputManager.shootKey && scannedObject != null && Time.time > fireRate)
+            if (canShoot && inputManager.onLeftClick && scannedObject != null && Time.time > fireRate)
             {
                 Shoot();
             }

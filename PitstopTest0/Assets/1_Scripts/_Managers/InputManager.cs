@@ -6,6 +6,9 @@ namespace Pitstop
 {
     public class InputManager : MonoBehaviour
     {
+        //General
+        public bool anyKeyPressed;
+
         //Menu keys
         public bool escKey;
         public bool pauseKey;
@@ -13,34 +16,37 @@ namespace Pitstop
         //UI keys
         public bool displayDialogueWheelKey;
 
-        //Mouse inputs
-        public Vector2 cursorPosition;
-
         //Player keys
         public float horizontalInput;
         public float verticalInput;
         public bool dashKey;
 
-        //Crystal keys
-        public bool scanKey;
-        public bool shootKey;
+        //Mouse inputs
+        public Vector2 cursorPosition;
+        public bool onLeftClick;
+        public bool leftClickBeingPressed;
+        public bool onRightClick;
+        public bool rightClickBeingPressed;
 
         void Update()
         {
+            anyKeyPressed = Input.anyKeyDown;
+
             escKey = Input.GetKeyDown(KeyCode.Escape);
             pauseKey = Input.GetKeyDown(KeyCode.P);
 
             displayDialogueWheelKey = Input.GetKey(KeyCode.Space);
-
-            cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             horizontalInput = Input.GetAxisRaw("Horizontal");
             verticalInput = Input.GetAxisRaw("Vertical");
 
             dashKey = Input.GetKeyDown(KeyCode.LeftShift);
 
-            scanKey = Input.GetKey("mouse 1");
-            shootKey = Input.GetKeyDown("mouse 0");
+            cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            onLeftClick = Input.GetKeyDown("mouse 0");
+            leftClickBeingPressed = Input.GetKey("mouse 0");
+            onRightClick = Input.GetKeyDown("mouse 1");
+            rightClickBeingPressed = Input.GetKey("mouse 1");
         }
     }
 }

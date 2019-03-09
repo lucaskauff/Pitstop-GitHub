@@ -18,6 +18,11 @@ namespace Pitstop
             {
                 objectShootable = false;
             }
+
+            if (collision.gameObject.tag == "Player")
+            {
+                Debug.Log("ok");
+            }
         }
     }
 }
