@@ -10,7 +10,7 @@ namespace Pitstop
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.gameObject.name == "ShootableArea")
+            if (collision.gameObject.name == "ShootableArea" || collision.gameObject.tag == "PressurePlate")
             {
                 objectShootable = true;
             }

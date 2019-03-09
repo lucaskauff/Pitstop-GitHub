@@ -26,6 +26,8 @@ namespace Pitstop
         SpriteRenderer previsualisation;
         [SerializeField]
         PrevizContact previsualisationContact;
+        [SerializeField]
+        float previzAlphaRatio = 0.2f;
 
         //Private
         List<GameObject> gameObjectsOnScene = new List<GameObject>();
@@ -193,12 +195,12 @@ namespace Pitstop
             if (previsualisationContact.objectShootable)
             {
                 canShoot = true;
-                //previsualisation.color = new Color();
+                previsualisation.color = new Color(0, 1, 0, previzAlphaRatio);
             }
             else
             {
                 canShoot = false;
-                previsualisation.color = Color.red;
+                previsualisation.color = new Color(1, 0, 0, previzAlphaRatio);
             }
         }
 
