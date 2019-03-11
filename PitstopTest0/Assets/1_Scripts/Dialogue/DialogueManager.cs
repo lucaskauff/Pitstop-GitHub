@@ -8,13 +8,22 @@ namespace Pitstop
 {
     public class DialogueManager : MonoBehaviour
     {
-        public GameObject diaBox;
-        public GameObject nameText;
-        public GameObject dialogueText;
-        public PlayerControllerIso playerControl;
-
         [SerializeField]
         float letterSpeed = 0;
+        [SerializeField]
+        float positionOut;
+        [SerializeField]
+        float popInSpeed;
+        [SerializeField]
+        float popOutSpeed;
+        [SerializeField]
+        Animator diaBox;
+        [SerializeField]
+        GameObject nameText;
+        [SerializeField]
+        GameObject dialogueText;
+        [SerializeField]
+        PlayerControllerIso playerController;
 
         Queue<string> sentences;
 
@@ -25,9 +34,7 @@ namespace Pitstop
 
         public void StartDialogue(Dialogue dialogue)
         {
-            playerControl.canMove = false;
-            //playerControl.
-            diaBox.SetActive(true);
+            playerController.canMove = false;
 
             nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;
 
@@ -37,6 +44,9 @@ namespace Pitstop
             {
                 sentences.Enqueue(sentence);
             }
+
+            //dialogueBox apparition
+            DialogueBoxPopIn();
 
             DisplayNextSentence();
         }
@@ -68,8 +78,20 @@ namespace Pitstop
 
         public void EndDialogue()
         {
-            diaBox.SetActive(false);
-            playerControl.canMove = true;
+            //dialogueBox disapparition
+            DialogueBoxPopOut();
+
+            playerController.canMove = true;
+        }
+
+        void DialogueBoxPopIn()
+        {
+            diaBox.SetTrigger("PopIn");
+        }
+
+        void DialogueBoxPopOut()
+        {
+            diaBox.SetTrigger("PopOut");
         }
     }
 }

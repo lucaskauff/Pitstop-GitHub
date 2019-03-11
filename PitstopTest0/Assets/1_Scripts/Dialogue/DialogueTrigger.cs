@@ -8,7 +8,10 @@ namespace Pitstop
     {
         InputManager inputManager;
 
-        public DialogueManager dialogueManager;
+        Collider2D myCollider;
+
+        [SerializeField]
+        DialogueManager dialogueManager;
         public Dialogue dialogue;
 
         bool playerReading = false;
@@ -28,16 +31,16 @@ namespace Pitstop
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.name == "Zayn" && playerReading == false)
+            if (collision.gameObject.name == "Zayn")
             {
-                playerReading = true;
                 TriggerDialogue();
+                playerReading = true;
             }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.gameObject.name == "Zayn" && playerReading == true)
+            if (collision.gameObject.name == "Zayn")
             {
                 playerReading = false;
             }
@@ -45,7 +48,7 @@ namespace Pitstop
 
         public void TriggerDialogue()
         {
-            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            dialogueManager.StartDialogue(dialogue);
         }
     }
 }
