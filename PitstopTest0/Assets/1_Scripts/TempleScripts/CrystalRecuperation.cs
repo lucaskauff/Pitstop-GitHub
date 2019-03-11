@@ -6,8 +6,6 @@ namespace Pitstop
 {
     public class CrystalRecuperation : MonoBehaviour
     {
-        Collider2D myCollider;
-
         [SerializeField]
         UIManager uIManager;
         [SerializeField]
@@ -15,14 +13,11 @@ namespace Pitstop
         [SerializeField]
         GameObject whatElementShouldDisappear;
 
-        private void Start()
-        {
-            myCollider = GetComponent<CompositeCollider2D>();
-        }
+        bool triggerOnceCheck = false;
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.name == "Zayn")
+            if (collision.gameObject.name == "Zayn" && !triggerOnceCheck)
             {
                 whatElementShouldDisappear.SetActive(false);
 
@@ -30,14 +25,8 @@ namespace Pitstop
                 {
                     uIManager.MakeUIElementAppear(element);
                 }
-            }
-        }
 
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.gameObject.name == "Zayn")
-            {
-                myCollider.isTrigger = false;
+                triggerOnceCheck = true;
             }
         }
     }

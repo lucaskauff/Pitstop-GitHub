@@ -6,43 +6,25 @@ namespace Pitstop
 {
     public class DialogueTrigger : MonoBehaviour
     {
-        InputManager inputManager;
-
-        Collider2D myCollider;
-
         [SerializeField]
         DialogueManager dialogueManager;
-        public Dialogue dialogue;
+        [SerializeField]
+        Dialogue dialogue;
+        [SerializeField]
+        bool onlyActivatableOnce;
 
-        bool playerReading = false;
+        bool activationCheck = false;
 
-        private void Start()
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            inputManager = GameManager.Instance.inputManager;
-        }
-
-        private void Update()
-        {
-            if (playerReading && inputManager.anyKeyPressed && inputManager.horizontalInput == 0 && inputManager.verticalInput == 0)
-            {
-                dialogueManager.DisplayNextSentence();
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.gameObject.name == "Zayn")
+            if (collision.gameObject.name == "Zayn" && !dialogueManager.playerReading && !activationCheck)
             {
                 TriggerDialogue();
-                playerReading = true;
-            }
-        }
 
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.gameObject.name == "Zayn")
-            {
-                playerReading = false;
+                if (onlyActivatableOnce)
+                {
+                    activationCheck = true;
+                }
             }
         }
 

@@ -8,6 +8,8 @@ namespace Pitstop
 {
     public class DialogueManager : MonoBehaviour
     {
+        InputManager inputManager;
+
         [SerializeField]
         float letterSpeed = 0;
         [SerializeField]
@@ -26,15 +28,27 @@ namespace Pitstop
         PlayerControllerIso playerController;
 
         Queue<string> sentences;
+        public bool playerReading = false;
 
         void Start()
         {
+            inputManager = GameManager.Instance.inputManager;
+
             sentences = new Queue<string>();
+        }
+
+        private void Update()
+        {
+            if (playerReading && inputManager.anyKeyPressed && inputManager.horizontalInput == 0 && inputManager.verticalInput == 0)
+            {
+                DisplayNextSentence();
+            }
         }
 
         public void StartDialogue(Dialogue dialogue)
         {
             playerController.canMove = false;
+            playerReading = true;
 
             nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;
 
@@ -82,6 +96,7 @@ namespace Pitstop
             DialogueBoxPopOut();
 
             playerController.canMove = true;
+            playerReading = false;
         }
 
         void DialogueBoxPopIn()
