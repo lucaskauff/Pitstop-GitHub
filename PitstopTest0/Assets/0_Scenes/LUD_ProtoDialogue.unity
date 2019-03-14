@@ -777,6 +777,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueSystemTest_orga12_5_ExploreWithMouseWheel
       objectReference: {fileID: 0}
+    - target: {fileID: 2123915118, guid: d798561de66f1054da1aaab1009a46c8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2123915119, guid: d798561de66f1054da1aaab1009a46c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5265827
@@ -819,6 +823,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2123915119, guid: d798561de66f1054da1aaab1009a46c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456952630, guid: d798561de66f1054da1aaab1009a46c8, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2594,11 +2602,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 6878430871286986062, guid: 8e7bbbc5263765f499c68380fb4fbdba,
-        type: 3}
-      propertyPath: orthographic size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6878430871726005667, guid: 8e7bbbc5263765f499c68380fb4fbdba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2664,6 +2667,11 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 864701}
+    - target: {fileID: 6878430871286986062, guid: 8e7bbbc5263765f499c68380fb4fbdba,
+        type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6878430871726005666, guid: 8e7bbbc5263765f499c68380fb4fbdba,
         type: 3}
       propertyPath: orthographic size
