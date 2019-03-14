@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LUD_TestExploreWithMouseWheel : MonoBehaviour
 {
-    //SerializeField
+   
     [SerializeField]
     GameObject dialogueWheel;
     [SerializeField]
@@ -25,14 +25,20 @@ public class LUD_TestExploreWithMouseWheel : MonoBehaviour
     [SerializeField]
     GameObject[] nativesList;
 
+    [Header("Dialogue Wheel Button")]
+
     [SerializeField]
     List<Button> dialogueWheelButtons = new List<Button>();
+     
+    public Sprite unSelectedButton;
+    public Sprite selectedButton;
+
     private int actualIndex = 0;
+    private float decimalOfActualIndex = 0f;
+    [SerializeField, Range(0.1f,1f)]        //if we go further than 1, some sign would be avoid (and we don't want this to happen)
+    private float sensibilityOfMouseWheel = 1f;
 
 
-
-
-    //Private
 
 
 
@@ -67,6 +73,11 @@ public class LUD_TestExploreWithMouseWheel : MonoBehaviour
         if (mouseScrollwheelValue != 0)
         {
             ModifyIndexDialogueWheelSign(mouseScrollwheelValue);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse2))
+        {
+            dialogueWheelButtons[actualIndex].GetComponent<LUD_TestButton>().WhenClicked();
         }
 
     }
@@ -167,29 +178,55 @@ public class LUD_TestExploreWithMouseWheel : MonoBehaviour
 
     private void ModifyIndexDialogueWheelSign (float value)
     {
-        int modificator = 0;
+
+        UnLightOldUiSign(dialogueWheelButtons[actualIndex]); ////
+
+        float modificator = 0;
 
         if (value < 0)
         {
-            modificator = -1;
+            modificator = -sensibilityOfMouseWheel;
         }
        else if (value > 0)
         {
-            modificator = 1;
+            modificator = sensibilityOfMouseWheel;
         }
         else
         {
             modificator = 0;
         }
+        
 
-        actualIndex += modificator;
+        decimalOfActualIndex += modificator;
+
+        actualIndex += (int)decimalOfActualIndex;
+        decimalOfActualIndex -= (int)decimalOfActualIndex;
+
+
+        //Debug.Log("decimalOfActualIndex.int = " + (int) decimalOfActualIndex);
+
 
         if (actualIndex <0)
         {
             actualIndex = dialogueWheelButtons.Count - 1;
         }
+        else if (actualIndex >= dialogueWheelButtons.Count)
+        {
+            actualIndex = 0;
+        }
 
+        HighLightNewUiSign(dialogueWheelButtons[actualIndex]);
 
+    }
+
+    void UnLightOldUiSign(Button uiSign) //unlight the previous highlighted sign
+    {
+        uiSign.GetComponent<Image>().sprite = unSelectedButton;
+    }
+
+    void HighLightNewUiSign (Button uiSign)
+    {
+        uiSign.GetComponent<Image>().sprite = selectedButton;
     }
 
 }
