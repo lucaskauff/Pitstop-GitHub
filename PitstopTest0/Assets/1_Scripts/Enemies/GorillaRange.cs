@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GorillaRange : MonoBehaviour
+namespace Pitstop
 {
-    public GorillaBehaviour gorillaBeh;
-
-    void OnTriggerStay2D(Collider2D collider)
+    public class GorillaRange : MonoBehaviour
     {
-        if (!gorillaBeh.isArrived && gorillaBeh.target == null && (collider.gameObject.name == "Zayn" || collider.gameObject.name == "Native"))
+        public GorillaBehaviour gorillaBeh;
+
+        void OnTriggerStay2D(Collider2D collider)
         {
-            gorillaBeh.target = collider.gameObject;
-        }        
+            if (!gorillaBeh.isArrived && gorillaBeh.target == null && (collider.gameObject.name == "Zayn" || collider.gameObject.name == "Native"))
+            {
+                gorillaBeh.target = collider.gameObject;
+            }
+        }
     }
 }

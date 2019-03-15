@@ -2,27 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDialogueManager : MonoBehaviour
+namespace Pitstop
 {
-    //SerializedField
-    [SerializeField]
-    float raycastDistance = 10;
-
-    public bool spaceHold = false;
-
-    private void Update()
+    public class PlayerDialogueManager : MonoBehaviour
     {
-        Vector2 playerPos = transform.position;
-        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        Vector2 raycastOrigin = playerPos + cursorPos.normalized;
+        //SerializedField
+        [SerializeField]
+        float raycastDistance = 10;
 
-        if (Input.GetKey("space"))
+        public bool spaceHold = false;
+
+        private void Update()
         {
-            spaceHold = true;
-        }
-        else
-        {
-            spaceHold = false;
+            Vector2 playerPos = transform.position;
+            Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            Vector2 raycastOrigin = playerPos + cursorPos.normalized;
+
+            if (Input.GetKey("space"))
+            {
+                spaceHold = true;
+            }
+            else
+            {
+                spaceHold = false;
+            }
         }
     }
 }

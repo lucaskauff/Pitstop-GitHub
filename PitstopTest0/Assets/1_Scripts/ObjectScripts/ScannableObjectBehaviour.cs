@@ -2,46 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScannableObjectBehaviour : MonoBehaviour
+namespace Pitstop
 {
-    public Sprite associatedIcon;
-    public bool isScannable = true;
-    public bool isFired = false;
-    public bool isArrived = false;
-    public float projectileSpeed = 3;
-    public Vector2 targetPos;
-
-    public bool col = false;
-
-    private SpriteRenderer spriteRenderer;
-
-    private void Start()
+    public class ScannableObjectBehaviour : MonoBehaviour
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+        public Sprite associatedIcon;
+        public bool isScannable = true;
+        public bool isFired = false;
+        public bool isArrived = false;
+        public float projectileSpeed = 3;
+        public Vector2 targetPos;
 
-    private void Update()
-    {
-        if (isFired)
+        public ScanData entity;
+
+        public bool col = false;
+
+        private void Update()
         {
-            if (gameObject.tag != "ObjectRoot")
+            if (isFired)
             {
-                transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+                if (gameObject.tag != "ObjectRoot")
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+                }
+            }
+
+            if (col || new Vector2(transform.position.x, transform.position.y) == targetPos)
+            {
+                isArrived = true;
+                isFired = false;
             }
         }
 
-        if (col || new Vector2(transform.position.x, transform.position.y) == targetPos)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            isArrived = true;
-            isFired = false;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (isFired && other.gameObject.name != "Zayn")
-        {
-            col = true;
+            if (isFired && other.gameObject.name != "Zayn")
+            {
+                col = true;
+            }
         }
     }
 }

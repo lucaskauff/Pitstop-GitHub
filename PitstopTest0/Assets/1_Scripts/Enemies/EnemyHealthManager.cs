@@ -2,43 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealthManager : MonoBehaviour
+namespace Pitstop
 {
-    //Public
-    public int enemyMaxHealth = 3;
-    public int enemyCurrentHealth;
-
-    void Start()
+    public class EnemyHealthManager : MonoBehaviour
     {
-        //enemyCurrentHealth = enemyMaxHealth;
-        ResetHealth();
-    }
+        //Public
+        public int enemyMaxHealth = 3;
+        public int enemyCurrentHealth;
 
-    void Update()
-    {
-        if (enemyCurrentHealth <= 0)
+        void Start()
         {
-            gameObject.SetActive(false);
+            //enemyCurrentHealth = enemyMaxHealth;
+            ResetHealth();
         }
 
-        if (enemyCurrentHealth > enemyMaxHealth)
+        void Update()
+        {
+            if (enemyCurrentHealth <= 0)
+            {
+                gameObject.SetActive(false);
+            }
+
+            if (enemyCurrentHealth > enemyMaxHealth)
+            {
+                enemyCurrentHealth = enemyMaxHealth;
+            }
+        }
+
+        public void HurtEnemy(int damageToGive)
+        {
+            enemyCurrentHealth -= damageToGive;
+        }
+
+        public void HealEnemy(int healToGive)
+        {
+            enemyCurrentHealth += healToGive;
+        }
+
+        public void ResetHealth()
         {
             enemyCurrentHealth = enemyMaxHealth;
         }
-    }
-
-    public void HurtEnemy(int damageToGive)
-    {
-        enemyCurrentHealth -= damageToGive;
-    }
-
-    public void HealEnemy(int healToGive)
-    {
-        enemyCurrentHealth += healToGive;
-    }
-
-    public void ResetHealth()
-    {
-        enemyCurrentHealth = enemyMaxHealth;
     }
 }

@@ -3,178 +3,225 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CrystalController : MonoBehaviour
+namespace Pitstop
 {
-    InputManager inputManager;
-
-    //SerializedField
-    [SerializeField]
-    float fireSpeed = 1;
-    [SerializeField]
-    float projSpeed = 3;
-    [SerializeField]
-    float scanSpeed = 1;
-    [SerializeField]
-    float descanSpeed = 1;
-    [Range(1, 10)]
-    public float maxScanRange = 5;
-    [Range(1, 10), SerializeField]
-    float maxShootRange = 5;
-
-    //Private
-    public bool hitting = false;
-    GameObject objectHittedBefore;
-    public GameObject objectHitted;
-    GameObject objectOnScan;
-    float fireRate = 0;
-    GameObject cloneProj;
-
-    //Public
-    public UIManager uIManager;
-    public int scanProgress = 0;
-    public GameObject scannedObject;
-    public GameObject circularRange;
-    public LayerMask raycastLayerMask;
-
-    private void Start()
+    public class CrystalController : MonoBehaviour
     {
-        inputManager = GameManager.Instance.inputManager;
+        InputManager inputManager;
 
-        circularRange.transform.localScale *= maxScanRange;
-    }
+        //SerializedField
+        [SerializeField]
+        float fireSpeed = 1;
+        [SerializeField]
+        float scanSpeed = 1;
+        [SerializeField]
+        float descanSpeed = 1;
+        [Range(1, 10)]
+        public float maxScanRange = 5;
+        [Range(1, 10), SerializeField]
+        float maxShootRange = 5;
+        [SerializeField]
+        int maxObjectOnScene = 1;
+        [SerializeField]
+        SpriteRenderer previsualisation;
+        [SerializeField]
+        PrevizContact previsualisationContact;
+        [SerializeField]
+        float previzAlphaRatio = 0.2f;
 
-    void Update()
-    {
-        Vector2 playerPos = transform.position;
-        Vector2 playerPosGround = circularRange.transform.position;
-        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Private
+        List<GameObject> gameObjectsOnScene = new List<GameObject>();
+        int objectCountOnScene;
+        public bool hitting = false;
+        GameObject objectHittedBefore;
+        public GameObject objectHitted;
+        GameObject objectOnScan;
+        float fireRate = 0;
+        GameObject cloneProj;
 
-        //Vector2 test1 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //Vector2 test2 = new Vector2(test1.x, test1.y / 2);
-        //Vector2 crystalDir = test2 - playerPosGround;
+        Vector2 playerPosGround;
+        Vector2 cursorPos;
+        Vector2 crystalDirection;
+        Vector2 crystalShootTarget;
+        bool canShoot = false;
 
-        Vector2 crystalDirection = cursorPos - playerPosGround;
-        //Vector2 crystalOrigin = playerPosGround + crystalDirection.normalized;
+        //Public
+        public UIManager uIManager;
+        public int scanProgress = 0;
+        public GameObject scannedObject;
+        public GameObject circularRange;
+        public LayerMask raycastLayerMask;
 
-        Vector2 crystalScanTarget = Vector2.ClampMagnitude(crystalDirection, maxScanRange);
-        Vector2 crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
-
-        float scanRange = Vector2.Distance(playerPosGround, playerPos + crystalScanTarget);
-
-        RaycastHit2D hit = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange); //raycast's definition
-        Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
-
-        //SCAN
-        if (hit.collider != null && inputManager.scanKey)
+        private void Start()
         {
-            if (hit.collider.isTrigger && hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>() != null && hit.collider.gameObject != scannedObject)
+            inputManager = GameManager.Instance.inputManager;
+
+            circularRange.transform.localScale *= maxScanRange;
+        }
+
+        void Update()
+        {
+            playerPosGround = circularRange.transform.position;
+            cursorPos = inputManager.cursorPosition;
+
+            crystalDirection = cursorPos - playerPosGround;
+            //Vector2 crystalOrigin = playerPosGround + crystalDirection.normalized;
+
+            Vector2 crystalScanTarget = Vector2.ClampMagnitude(crystalDirection, maxScanRange);
+            crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
+
+            float scanRange = Vector2.Distance(playerPosGround, (Vector2)transform.position + crystalScanTarget);
+
+            RaycastHit2D hit = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange); //raycast's definition
+            Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
+
+            //SCAN
+            if (hit.collider != null && inputManager.rightClickBeingPressed)
             {
-                if (hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>().isScannable)
+                if (hit.collider.isTrigger && hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>() != null && hit.collider.gameObject != scannedObject)
                 {
-                    objectHittedBefore = objectHitted;
-                    objectHitted = hit.transform.gameObject;
-
-                    //If no registred objectOnScan
-                    if (objectOnScan == null)
+                    if (hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>().isScannable)
                     {
-                        StopAllCoroutines();
+                        objectHittedBefore = objectHitted;
+                        objectHitted = hit.transform.gameObject;
 
-                        //If it's a different object than the last one scanned => Reinitialise scanProgress
-                        if (objectHittedBefore != null)
+                        //If no registred objectOnScan
+                        if (objectOnScan == null)
                         {
-                            if (objectHittedBefore.tag != objectHitted.tag)
+                            StopAllCoroutines();
+
+                            //If it's a different object than the last one scanned => Reinitialise scanProgress
+                            if (objectHittedBefore != null)
                             {
+                                if (objectHittedBefore.tag != objectHitted.tag)
+                                {
+                                    scanProgress = 0;
+                                }
+                            }
+
+                            StartCoroutine(Scan());
+                        }
+                        //If hit object is the same as the registered one
+                        else if (objectOnScan.tag == objectHitted.tag)
+                        {
+                            if (scanProgress == 5)
+                            {
+                                scannedObject = GameObject.FindWithTag(objectOnScan.tag);
+                                uIManager.SendMessage("ChangeImageInCrystalSlot", scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
+
+                                StopAllCoroutines();
                                 scanProgress = 0;
                             }
                         }
-
-                        StartCoroutine(Scan());
-                    }
-                    //If hit object is the same as the registered one
-                    else if (objectOnScan.tag == objectHitted.tag)
-                    {
-                        if (scanProgress == 5)
+                        //If new object hitted directly => Reinitialise scanProgress
+                        else
                         {
-                            scannedObject = GameObject.FindWithTag(objectOnScan.tag);
-                            uIManager.SendMessage("ChangeImageInCrystalSlot", scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
-
-                            StopAllCoroutines();
                             scanProgress = 0;
                         }
-                    }
-                    //If new object hitted directly => Reinitialise scanProgress
-                    else
-                    {
-                        scanProgress = 0;
-                    }
 
-                    hitting = true;
-                    objectOnScan = objectHitted;
-                }                
+                        hitting = true;
+                        objectOnScan = objectHitted;
+                    }
+                }
             }
-        }
-        //No object hit => DESCAN
-        else if (hitting)
-        {
-            StopAllCoroutines();
-            StartCoroutine(DeScan());
-            hitting = false;
-            objectOnScan = null;           
-        }
-
-        //SHOOT the scanned object
-        if (inputManager.shootKey && scannedObject != null && Time.time > fireRate)
-        {
-            if (scannedObject.name == "ScannableRoot")
+            //No object hit => DESCAN
+            else if (hitting)
             {
-                return;
+                StopAllCoroutines();
+                StartCoroutine(DeScan());
+                hitting = false;
+                objectOnScan = null;
             }
 
+            //conditions for shoot
+            if (canShoot && inputManager.onLeftClick && scannedObject != null && Time.time > fireRate)
+            {
+                Shoot();
+            }
+
+            if (scannedObject != null)
+            {
+                Previsualisation(scannedObject.GetComponent<SpriteRenderer>());
+            }
+        }
+
+        void Shoot()
+        {
+            switch (scannedObject.tag)
+            {
+                case "ObjectLiana":
+                    return;
+
+                case "ObjectRock":
+                    ShootableObject((Vector2)transform.position + crystalShootTarget + new Vector2(0, scannedObject.GetComponent<RockBehaviour>().heightWhereToSpawn), scannedObject.GetComponent<RockBehaviour>().fallSpeed);
+                    break;
+
+                case "ObjectApple":
+                    //do stuff
+                    break;
+            }
+        }
+
+        void ShootableObject(Vector2 objectSpawnPoint, float projSpeed)
+        {
+            if (objectCountOnScene == maxObjectOnScene)
+            {
+                foreach (var obj in gameObjectsOnScene)
+                {
+                    Destroy(obj);
+                }
+
+                objectCountOnScene = 0;
+                gameObjectsOnScene.Clear();
+            }
+
+            cloneProj = Instantiate(scannedObject, objectSpawnPoint, scannedObject.transform.rotation);
+
+            cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = (Vector2)transform.position + crystalShootTarget;
+            cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = projSpeed;
+            cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
+            cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
+
+            objectCountOnScene += 1;
+            gameObjectsOnScene.Add(cloneProj);
             fireRate = Time.time + fireSpeed;
+        }
 
-            if (scannedObject.tag == "ObjectRock")
+        void Previsualisation(SpriteRenderer whatToPreviz)
+        {
+            previsualisation.gameObject.transform.position = inputManager.cursorPosition;
+            previsualisation.sprite = whatToPreviz.sprite;
+
+            if (previsualisationContact.objectShootable)
             {
-                cloneProj = (GameObject)Instantiate(scannedObject, playerPos + crystalShootTarget + new Vector2(0, scannedObject.GetComponent<RockBehaviour>().heightWhereToSpawn), scannedObject.transform.rotation);
-
-                cloneProj.GetComponent<ScannableObjectBehaviour>().targetPos = playerPos + crystalShootTarget;
-                cloneProj.GetComponent<ScannableObjectBehaviour>().projectileSpeed = cloneProj.GetComponent<RockBehaviour>().fallSpeed;
-                cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
-                cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
+                canShoot = true;
+                previsualisation.color = new Color(0, 1, 0, previzAlphaRatio);
             }
-
-            //not optimized at all
-            if (scannedObject.tag == "ObjectApple")
+            else
             {
-                cloneProj.GetComponent<AppleBehaviour>().targetPos = playerPos + crystalShootTarget;
-                cloneProj.GetComponent<AppleBehaviour>().projectileSpeed = projSpeed;
-                cloneProj.GetComponent<AppleBehaviour>().isScannable = false;
-                cloneProj.GetComponent<AppleBehaviour>().isFired = true;
+                canShoot = false;
+                previsualisation.color = new Color(1, 0, 0, previzAlphaRatio);
+            }
+        }
+
+        IEnumerator Scan()
+        {
+            while (scanProgress < 5)
+            {
+                Debug.Log(scanProgress);
+                yield return new WaitForSeconds(scanSpeed);
+                scanProgress++;
+            }
+        }
+
+        IEnumerator DeScan()
+        {
+            while (scanProgress > 0)
+            {
+                Debug.Log(scanProgress);
+                yield return new WaitForSeconds(descanSpeed);
+                scanProgress--;
             }
         }
     }
-
-    void isoVectorTwo(Vector2 vector)
-    {
-        vector = new Vector2(vector.x, vector.y / 2);
-    }
-
-    IEnumerator Scan()
-    {
-        while (scanProgress < 5)
-        {
-            Debug.Log(scanProgress);
-            yield return new WaitForSeconds(scanSpeed);
-            scanProgress++;
-        }       
-    }
-
-    IEnumerator DeScan()
-    {
-        while (scanProgress > 0)
-        {
-            Debug.Log(scanProgress);
-            yield return new WaitForSeconds(descanSpeed);
-            scanProgress--;            
-        }
-    }    
 }

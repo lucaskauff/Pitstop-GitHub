@@ -2,40 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueTrigger : MonoBehaviour
+namespace Pitstop
 {
-    public DialogueManager dialogueManager;
-    public Dialogue dialogue;
-
-    bool playerReading = false;
-
-    private void Update()
+    public class DialogueTrigger : MonoBehaviour
     {
-        if (playerReading && Input.GetKeyDown(KeyCode.E))
+        [SerializeField]
+        DialogueManager dialogueManager;
+        [SerializeField]
+        Dialogue dialogue;
+        [SerializeField]
+        bool onlyActivatableOnce;
+
+        bool activationCheck = false;
+
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            dialogueManager.DisplayNextSentence();
-        }
-    }
+            if (collision.gameObject.name == "Zayn" && !dialogueManager.playerReading && !activationCheck)
+            {
+                TriggerDialogue();
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Zayn" && playerReading == false)
+                if (onlyActivatableOnce)
+                {
+                    activationCheck = true;
+                }
+            }
+        }
+
+        public void TriggerDialogue()
         {
-            playerReading = true;
-            TriggerDialogue();
+            dialogueManager.StartDialogue(dialogue);
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Zayn" && playerReading == true)
-        {
-            playerReading = false;
-        }
-    }
-
-    public void TriggerDialogue()
-    {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }

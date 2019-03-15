@@ -2,32 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrystalRecuperation : MonoBehaviour
+namespace Pitstop
 {
-    [SerializeField]
-    UIManager uIManager;
-    [SerializeField]
-    GameObject[] whatElementsShouldAppear;
-    [SerializeField]
-    GameObject whatElementShouldDisappear;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class CrystalRecuperation : MonoBehaviour
     {
-        if (collision.gameObject.name == "Zayn")
+        [SerializeField]
+        UIManager uIManager;
+        [SerializeField]
+        GameObject[] whatElementsShouldAppear;
+        [SerializeField]
+        GameObject whatElementShouldDisappear;
+
+        bool triggerOnceCheck = false;
+
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            foreach (var element in whatElementsShouldAppear)
+            if (collision.gameObject.name == "Zayn" && !triggerOnceCheck)
             {
-                uIManager.MakeUIElementAppear(element);
                 whatElementShouldDisappear.SetActive(false);
-            }
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Zayn")
-        {
-            Destroy(gameObject);
+                foreach (var element in whatElementsShouldAppear)
+                {
+                    uIManager.MakeUIElementAppear(element);
+                }
+
+                triggerOnceCheck = true;
+            }
         }
     }
 }

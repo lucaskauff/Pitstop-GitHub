@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeSceneTilemap : MonoBehaviour
+namespace Pitstop
 {
-    SceneLoader sceneLoader;
-
-    [SerializeField]
-    string nextSceneName;
-
-    private void Start()
+    public class ChangeSceneTilemap : MonoBehaviour
     {
-        sceneLoader = GameManager.Instance.sceneLoader;
-    }
+        SceneLoader sceneLoader;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Zayn")
+        [SerializeField]
+        string nextSceneName;
+
+        private void Start()
         {
-            sceneLoader.LoadNewScene(nextSceneName);
+            sceneLoader = GameManager.Instance.sceneLoader;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.name == "Zayn")
+            {
+                sceneLoader.LoadNewScene(nextSceneName);
+            }
         }
     }
 }

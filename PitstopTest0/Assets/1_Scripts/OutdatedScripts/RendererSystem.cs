@@ -2,26 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RendererSystem : MonoBehaviour
+namespace Pitstop
 {
-    [Range(-10, 10), SerializeField]
-    private float offsetValue = 0;
-
-    [SerializeField]
-    private bool runOnlyOnceForStaticObjects = false;
-
-    void Update()
+    public class RendererSystem : MonoBehaviour
     {
-        OrderingLayers();
-    }
+        [SerializeField]
+        private float offsetValue = 0;
 
-    public void OrderingLayers()
-    {
-        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, (transform.position.y + offsetValue));
+        [SerializeField]
+        private bool runOnlyOnceForStaticObjects = false;
 
-        if (runOnlyOnceForStaticObjects == true)
+        void Update()
         {
-            Destroy(this);
+            OrderingLayers();
+        }
+
+        public void OrderingLayers()
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.y + offsetValue));
+
+            if (runOnlyOnceForStaticObjects == true)
+            {
+                Destroy(this);
+            }
         }
     }
 }

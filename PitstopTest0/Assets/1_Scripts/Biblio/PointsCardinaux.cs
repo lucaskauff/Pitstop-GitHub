@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PointsCardinaux
+namespace Pitstop
 {
-    North,
-    East,
-    South,
-    West
-};
+    public enum PointsCardinaux
+    {
+        North,
+        East,
+        South,
+        West
+    }
+}

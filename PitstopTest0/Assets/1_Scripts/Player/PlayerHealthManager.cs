@@ -2,41 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealthManager : MonoBehaviour
+namespace Pitstop
 {
-    SceneLoader sceneLoader;
-
-    //Public
-    public int playerMaxHealth = 3;
-    public int playerCurrentHealth;
-
-    void Start()
+    public class PlayerHealthManager : MonoBehaviour
     {
-        sceneLoader = GameManager.Instance.sceneLoader;
+        SceneLoader sceneLoader;
 
-        playerCurrentHealth = playerMaxHealth;
-    }
+        //Public
+        public int playerMaxHealth = 3;
+        public int playerCurrentHealth;
 
-    void Update()
-    {
-        if (playerCurrentHealth <= 0)
+        void Start()
         {
-            sceneLoader.ReloadScene();
+            sceneLoader = GameManager.Instance.sceneLoader;
+
+            playerCurrentHealth = playerMaxHealth;
         }
-    }
 
-    public void HurtPlayer(int damageToGive)
-    {
-        playerCurrentHealth -= damageToGive;
-    }
+        void Update()
+        {
+            if (playerCurrentHealth <= 0)
+            {
+                sceneLoader.ReloadScene();
+            }
+        }
 
-    public void HealPlayer(int healToGive)
-    {
-        playerCurrentHealth += healToGive;
-    }
+        public void HurtPlayer(int damageToGive)
+        {
+            playerCurrentHealth -= damageToGive;
+        }
 
-    public void ResetHealth()
-    {
-        playerCurrentHealth = playerMaxHealth;
+        public void HealPlayer(int healToGive)
+        {
+            playerCurrentHealth += healToGive;
+        }
+
+        public void ResetHealth()
+        {
+            playerCurrentHealth = playerMaxHealth;
+        }
     }
 }

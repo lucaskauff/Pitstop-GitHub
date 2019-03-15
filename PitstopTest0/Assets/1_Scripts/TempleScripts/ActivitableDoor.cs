@@ -2,57 +2,60 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivitableDoor : MonoBehaviour
+namespace Pitstop
 {
-    //Animator myAnim;
-
-    [SerializeField]
-    GameObject doorCollision;
-    [SerializeField]
-    GameObject door1;
-    [SerializeField]
-    GameObject door2;
-    [SerializeField]
-    PressurePlateBehaviour[] neededPressurePlatesToOpen;
-
-    private bool allPressurePlatesOk = false;
-
-    private void Start()
+    public class ActivitableDoor : MonoBehaviour
     {
-        //myAnim = GetComponent<Animator>();
-    }
+        //Animator myAnim;
 
-    private void Update()
-    {
-        CheckPressurePlates();
+        [SerializeField]
+        GameObject doorCollision;
+        [SerializeField]
+        GameObject door1;
+        [SerializeField]
+        GameObject door2;
+        [SerializeField]
+        PressurePlateBehaviour[] neededPressurePlatesToOpen;
 
-        if (allPressurePlatesOk)
+        private bool allPressurePlatesOk = false;
+
+        private void Start()
         {
-            doorCollision.SetActive(false);
-            door1.SetActive(false);
-            door2.SetActive(false);
-        }
-        else
-        {
-            doorCollision.SetActive(true);
-            door1.SetActive(true);
-            door2.SetActive(true);
+            //myAnim = GetComponent<Animator>();
         }
 
-        //myAnim.SetBool("DoorOpen", allPressurePlatesOk);
-    }
-
-    void CheckPressurePlates()
-    {
-        foreach (var pressurePlate in neededPressurePlatesToOpen)
+        private void Update()
         {
-            if (!pressurePlate.plateDown)
+            CheckPressurePlates();
+
+            if (allPressurePlatesOk)
             {
-                allPressurePlatesOk = false;
-                return;
+                doorCollision.SetActive(false);
+                door1.SetActive(false);
+                door2.SetActive(false);
+            }
+            else
+            {
+                doorCollision.SetActive(true);
+                door1.SetActive(true);
+                door2.SetActive(true);
             }
 
-            allPressurePlatesOk = true;
+            //myAnim.SetBool("DoorOpen", allPressurePlatesOk);
+        }
+
+        void CheckPressurePlates()
+        {
+            foreach (var pressurePlate in neededPressurePlatesToOpen)
+            {
+                if (!pressurePlate.plateDown)
+                {
+                    allPressurePlatesOk = false;
+                    return;
+                }
+
+                allPressurePlatesOk = true;
+            }
         }
     }
 }

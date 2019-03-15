@@ -2,25 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ImpulseAppleBehaviour : MonoBehaviour
+namespace Pitstop
 {
-    [SerializeField]
-    float shockwaveLength;
-
-    public ScannableObjectBehaviour scannableObjectBehaviour;
-    public GameObject shockwave;
-
-    private void Start()
+    public class ImpulseAppleBehaviour : MonoBehaviour
     {
-        shockwave.transform.localScale *= shockwaveLength;
-    }
+        [SerializeField]
+        float shockwaveLength;
 
-    private void Update()
-    {
-        if (scannableObjectBehaviour.isArrived)
+        public ScannableObjectBehaviour scannableObjectBehaviour;
+        public GameObject shockwave;
+
+        private void Start()
         {
-            shockwave.GetComponent<PolygonCollider2D>().enabled = true;
-            //Destroy(gameObject);
+            shockwave.transform.localScale *= shockwaveLength;
+        }
+
+        private void Update()
+        {
+            if (scannableObjectBehaviour.isArrived)
+            {
+                shockwave.GetComponent<PolygonCollider2D>().enabled = true;
+                //Destroy(gameObject);
+            }
         }
     }
 }

@@ -2,30 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BetteraveBehaviour : MonoBehaviour
+namespace Pitstop
 {
-    [SerializeField]
-    float lifeInSeconds;
-
-    public ScannableObjectBehaviour scannableObjBeh;
-    private bool living;
-
-    private void Update()
+    public class BetteraveBehaviour : MonoBehaviour
     {
-        if (scannableObjBeh.isArrived)
+        [SerializeField]
+        float lifeInSeconds;
+
+        public ScannableObjectBehaviour scannableObjBeh;
+        private bool living;
+
+        private void Update()
         {
-            StartCoroutine(Life());
+            if (scannableObjBeh.isArrived)
+            {
+                StartCoroutine(Life());
+            }
         }
-    }
 
-    IEnumerator Life()
-    {
-        while (lifeInSeconds > 0)
+        IEnumerator Life()
         {
-            yield return new WaitForSeconds(1);
-            lifeInSeconds--;
-            Debug.Log("dead");
-            Destroy(gameObject);
+            while (lifeInSeconds > 0)
+            {
+                yield return new WaitForSeconds(1);
+                lifeInSeconds--;
+                Debug.Log("dead");
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HHRange : MonoBehaviour
+namespace Pitstop
 {
-    public HHBehaviour hammerheadBeh;
-
-    void OnTriggerStay2D(Collider2D collider)
+    public class HHRange : MonoBehaviour
     {
-        Debug.Log(collider.gameObject);
+        public HHBehaviour hammerheadBeh;
 
-        //condition not perfect !!!
-        if (!hammerheadBeh.isArrived && hammerheadBeh.target == null && (collider.gameObject.name == "Zayn" || collider.gameObject.name == "Native"))
+        void OnTriggerStay2D(Collider2D collider)
         {
-            hammerheadBeh.target = collider.gameObject;
+            Debug.Log(collider.gameObject);
+
+            //condition not perfect !!!
+            if (!hammerheadBeh.isArrived && hammerheadBeh.target == null && (collider.gameObject.name == "Zayn" || collider.gameObject.name == "Native"))
+            {
+                hammerheadBeh.target = collider.gameObject;
+            }
         }
     }
 }

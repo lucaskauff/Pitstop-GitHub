@@ -2,38 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePlateBehaviour : MonoBehaviour
+namespace Pitstop
 {
-    Animator myAnim;
-
-    public bool plateDown = false;
-    GameObject objectOnPlate; 
-
-    private void Start()
+    public class PressurePlateBehaviour : MonoBehaviour
     {
-        myAnim = GetComponent<Animator>();
-    }
+        Animator myAnim;
 
-    private void Update()
-    {
-        myAnim.SetBool("PlateDown", plateDown);
-    }
+        public bool plateDown = false;
+        GameObject objectOnPlate;
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if ((collision.gameObject.name == "Zayn" || collision.gameObject.tag == "ObjectRock") && objectOnPlate == null)
+        private void Start()
         {
-            objectOnPlate = collision.gameObject;
-            plateDown = true;
+            myAnim = GetComponent<Animator>();
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject == objectOnPlate)
+        private void Update()
         {
-            objectOnPlate = null;
-            plateDown = false;
+            myAnim.SetBool("PlateDown", plateDown);
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if ((collision.gameObject.name == "Zayn" || collision.gameObject.tag == "ObjectRock") && objectOnPlate == null)
+            {
+                objectOnPlate = collision.gameObject;
+                plateDown = true;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject == objectOnPlate)
+            {
+                objectOnPlate = null;
+                plateDown = false;
+            }
         }
     }
 }

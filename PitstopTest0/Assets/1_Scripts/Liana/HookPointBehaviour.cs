@@ -2,78 +2,81 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HookPointBehaviour : MonoBehaviour
+namespace Pitstop
 {
-    public RootBehaviour2 root;
-    public GameObject thisOne;
-    public bool markSign;
-
-    Renderer myRenderer;
-    [SerializeField]
-    Color color;
-    [SerializeField]
-    bool canContinue = true;
-    Animator anim;
-
-    private void Start()
+    public class HookPointBehaviour : MonoBehaviour
     {
-        thisOne = this.gameObject;
-        myRenderer = GetComponent<Renderer>();
-        anim = GetComponent<Animator>();
-    }
+        public RootBehaviour2 root;
+        public GameObject thisOne;
+        public bool markSign;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        Renderer myRenderer;
+        [SerializeField]
+        Color color;
+        [SerializeField]
+        bool canContinue = true;
+        Animator anim;
+
+        private void Start()
         {
-            markSign = false;
-            canContinue = true;
-            root.mark = false;
+            thisOne = this.gameObject;
+            myRenderer = GetComponent<Renderer>();
+            anim = GetComponent<Animator>();
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        private void Update()
         {
-            if(root.hookpoints[1] == null)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                markSign = false;
+                canContinue = true;
+                root.mark = false;
+            }
+
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                if (root.hookpoints[1] == null)
+                {
+                    markSign = false;
+                }
+            }
+
+            if (root.mark == true)
             {
                 markSign = false;
             }
+
+            anim.SetBool("Marked", markSign);
         }
 
-        if (root.mark == true)
+        private void OnMouseOver()
         {
-            markSign = false;
-        }
-
-        anim.SetBool("Marked", markSign);
-    }
-
-    private void OnMouseOver()
-    {
-        if (root.pointSelect)
-        {
-            for (int x = 0; x < 3; x++)
+            if (root.pointSelect)
             {
-                if (root.hookpoints[x] == null && canContinue == true)
+                for (int x = 0; x < 3; x++)
                 {
-                    root.hookpoints[x] = thisOne;
-                    canContinue = false;
-                    markSign = true;
-                }        
+                    if (root.hookpoints[x] == null && canContinue == true)
+                    {
+                        root.hookpoints[x] = thisOne;
+                        canContinue = false;
+                        markSign = true;
+                    }
+                }
+            }
+
+            if (root.crys.scannedObject.name == "ScannableRoot")
+            {
+                color = myRenderer.material.GetColor("_ColorOutline");
+                color.a = 255;
+                myRenderer.material.SetColor("_ColorOutline", color);
             }
         }
 
-        if (root.crys.scannedObject.name == "ScannableRoot")
+        private void OnMouseExit()
         {
             color = myRenderer.material.GetColor("_ColorOutline");
-            color.a = 255;
+            color.a = 0;
             myRenderer.material.SetColor("_ColorOutline", color);
-        }              
-    }
-
-    private void OnMouseExit()
-    {
-        color = myRenderer.material.GetColor("_ColorOutline");
-        color.a = 0;
-        myRenderer.material.SetColor("_ColorOutline", color);
+        }
     }
 }

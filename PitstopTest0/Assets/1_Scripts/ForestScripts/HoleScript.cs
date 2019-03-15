@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoleScript : MonoBehaviour
+namespace Pitstop
 {
-    SceneLoader sceneLoader;
-
-    private void Start()
+    public class HoleScript : MonoBehaviour
     {
-        sceneLoader = GameManager.Instance.sceneLoader;
-    }
+        SceneLoader sceneLoader;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Zayn")
+        private void Start()
         {
-            sceneLoader.ReloadScene();
+            sceneLoader = GameManager.Instance.sceneLoader;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.name == "Zayn")
+            {
+                sceneLoader.ReloadScene();
+            }
         }
     }
 }

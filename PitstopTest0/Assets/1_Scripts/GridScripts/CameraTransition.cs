@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraTransition : MonoBehaviour
+namespace Pitstop
 {
-    [SerializeField]
-    GameObject virtualCameraPlayer;
-    [SerializeField]
-    GameObject virtualCameraGlade;
-
-    void OnTriggerStay2D(Collider2D collider)
+    public class CameraTransition : MonoBehaviour
     {
-        if (collider.gameObject.name == "Zayn")
+        [SerializeField]
+        GameObject virtualCameraPlayer;
+        [SerializeField]
+        GameObject virtualCameraGlade;
+
+        void OnTriggerStay2D(Collider2D collider)
         {
-            virtualCameraGlade.SetActive(true);
-            virtualCameraPlayer.SetActive(false);
+            if (collider.gameObject.name == "Zayn")
+            {
+                virtualCameraGlade.SetActive(true);
+                virtualCameraPlayer.SetActive(false);
+            }
         }
-    }
 
-    void OnTriggerExit2D(Collider2D collider)
-    {
-        if (collider.gameObject.name == "Zayn")
+        void OnTriggerExit2D(Collider2D collider)
         {
-            virtualCameraPlayer.SetActive(true);
-            virtualCameraGlade.SetActive(false);
+            if (collider.gameObject.name == "Zayn")
+            {
+                virtualCameraPlayer.SetActive(true);
+                virtualCameraGlade.SetActive(false);
+            }
         }
     }
 }

@@ -2,39 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Glade1Cinematic : MonoBehaviour
+namespace Pitstop
 {
-    SceneLoader sceneLoader;
-
-    public GameObject virtualCameraPlayer;
-    public GameObject virtualCameraGlade;
-    public GameObject associatedStartingPoint;
-
-    public EnemySpawner hHSpawner;
-
-    private static bool playerCheck;
-
-    private void Start()
+    public class Glade1Cinematic : MonoBehaviour
     {
-        sceneLoader = GameManager.Instance.sceneLoader;
-    }
+        SceneLoader sceneLoader;
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.name == "Zayn" && !playerCheck)
+        public GameObject virtualCameraPlayer;
+        public GameObject virtualCameraGlade;
+        public GameObject associatedStartingPoint;
+
+        public EnemySpawner hHSpawner;
+
+        private static bool playerCheck;
+
+        private void Start()
         {
-            virtualCameraPlayer.SetActive(false);
-
-            sceneLoader.SaveStartingPoint(associatedStartingPoint);
-
-            //hHSpawner.SpawnTheThing();
-
-            playerCheck = true;
+            sceneLoader = GameManager.Instance.sceneLoader;
         }
-    }
 
-    public void SendInformationToHHSpawner()
-    {
-        
+        void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (collider.gameObject.name == "Zayn" && !playerCheck)
+            {
+                virtualCameraPlayer.SetActive(false);
+
+                sceneLoader.SaveStartingPoint(associatedStartingPoint);
+
+                //hHSpawner.SpawnTheThing();
+
+                playerCheck = true;
+            }
+        }
+
+        public void SendInformationToHHSpawner()
+        {
+
+        }
     }
 }

@@ -4,69 +4,109 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DialogueManager : MonoBehaviour
+namespace Pitstop
 {
-    public GameObject diaBox;
-    public GameObject nameText;
-    public GameObject dialogueText;
-    public PlayerControllerIso playerControl;
-
-    [SerializeField]
-    float letterSpeed = 0;
-
-    Queue<string> sentences;
-
-    void Start()
+    public class DialogueManager : MonoBehaviour
     {
-        sentences = new Queue<string>();
-    }
+        InputManager inputManager;
 
-    public void StartDialogue (Dialogue dialogue)
-    {
-        playerControl.canMove = false;
-        //playerControl.
-        diaBox.SetActive(true);
+        [SerializeField]
+        float letterSpeed = 0;
+        [SerializeField]
+        float positionOut;
+        [SerializeField]
+        float popInSpeed;
+        [SerializeField]
+        float popOutSpeed;
+        [SerializeField]
+        Animator diaBox;
+        [SerializeField]
+        GameObject nameText;
+        [SerializeField]
+        GameObject dialogueText;
+        [SerializeField]
+        PlayerControllerIso playerController;
 
-        nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;
+        Queue<string> sentences;
+        public bool playerReading = false;
 
-        sentences.Clear();
-
-        foreach (string sentence in dialogue.sentences)
+        void Start()
         {
-            sentences.Enqueue(sentence);
+            inputManager = GameManager.Instance.inputManager;
+
+            sentences = new Queue<string>();
         }
 
-        DisplayNextSentence();
-    }
-
-    public void DisplayNextSentence()
-    {
-        if (sentences.Count == 0)
+        private void Update()
         {
-            EndDialogue();
-            return;
+            if (playerReading && inputManager.anyKeyPressed && inputManager.horizontalInput == 0 && inputManager.verticalInput == 0)
+            {
+                DisplayNextSentence();
+            }
         }
 
-        string sentence = sentences.Dequeue();
-
-        //Displays letter by letter
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
-    }
-
-    IEnumerator TypeSentence (string sentence)
-    {
-        dialogueText.GetComponent<TextMeshProUGUI>().text = "";
-        foreach (char letter in sentence.ToCharArray())
+        public void StartDialogue(Dialogue dialogue)
         {
-            dialogueText.GetComponent<TextMeshProUGUI>().text += letter;
-            yield return new WaitForSeconds(letterSpeed);
-        }
-    }
+            playerController.canMove = false;
+            playerReading = true;
 
-    public void EndDialogue()
-    {
-        diaBox.SetActive(false);
-        playerControl.canMove = true;
+            nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;
+
+            sentences.Clear();
+
+            foreach (string sentence in dialogue.sentences)
+            {
+                sentences.Enqueue(sentence);
+            }
+
+            //dialogueBox apparition
+            DialogueBoxPopIn();
+
+            DisplayNextSentence();
+        }
+
+        public void DisplayNextSentence()
+        {
+            if (sentences.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
+
+            string sentence = sentences.Dequeue();
+
+            //Displays letter by letter
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(sentence));
+        }
+
+        IEnumerator TypeSentence(string sentence)
+        {
+            dialogueText.GetComponent<TextMeshProUGUI>().text = "";
+            foreach (char letter in sentence.ToCharArray())
+            {
+                dialogueText.GetComponent<TextMeshProUGUI>().text += letter;
+                yield return new WaitForSeconds(letterSpeed);
+            }
+        }
+
+        public void EndDialogue()
+        {
+            //dialogueBox disapparition
+            DialogueBoxPopOut();
+
+            playerController.canMove = true;
+            playerReading = false;
+        }
+
+        void DialogueBoxPopIn()
+        {
+            diaBox.SetTrigger("PopIn");
+        }
+
+        void DialogueBoxPopOut()
+        {
+            diaBox.SetTrigger("PopOut");
+        }
     }
 }

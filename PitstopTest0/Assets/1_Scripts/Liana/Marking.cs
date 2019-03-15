@@ -2,27 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Marking : MonoBehaviour
+namespace Pitstop
 {
-    public HookPointBehaviour hookPoint;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Marking : MonoBehaviour
     {
-        
-    }
+        public HookPointBehaviour hookPoint;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (hookPoint.markSign == true)
+        // Start is called before the first frame update
+        void Start()
         {
-            this.GetComponent<SpriteRenderer>().enabled = true;
+
         }
 
-        else
+        // Update is called once per frame
+        void Update()
         {
-            this.GetComponent<SpriteRenderer>().enabled = false;
+            if (hookPoint.markSign == true)
+            {
+                this.GetComponent<SpriteRenderer>().enabled = true;
+            }
+
+            else
+            {
+                this.GetComponent<SpriteRenderer>().enabled = false;
+            }
         }
     }
 }

@@ -3,30 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class Stairs : MonoBehaviour
+namespace Pitstop
 {
-    Collider2D myCollider;
-    public float stairsIsometricRatio = 0.8f;
-
-    private void Start()
+    public class Stairs : MonoBehaviour
     {
-        myCollider = GetComponent<Collider2D>();
-    }
+        Collider2D myCollider;
+        [SerializeField]
+        CinemachineImpulseSource myImpulseSource;
+        [SerializeField]
+        float stairsIsometricRatio = 0.8f;
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Zayn" && collision.gameObject.GetComponent<PlayerControllerIso>().isMoving)
+        private void Start()
         {
-            collision.gameObject.GetComponent<PlayerControllerIso>().isometricRatio = stairsIsometricRatio;
-            collision.gameObject.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+            myCollider = GetComponent<Collider2D>();
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Zayn")
+        //Sets up a new isometric ratio for the player + generates light impulse
+        private void OnTriggerStay2D(Collider2D collision)
         {
-            collision.gameObject.GetComponent<PlayerControllerIso>().isometricRatio = 2;
+            if (collision.gameObject.name == "Zayn" && collision.gameObject.GetComponent<PlayerControllerIso>().isMoving)
+            {
+                collision.gameObject.GetComponent<PlayerControllerIso>().isometricRatio = stairsIsometricRatio;
+                myImpulseSource.GenerateImpulse();
+            }
+        }
+
+        //Resets the player's regular isometric ratio
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.name == "Zayn")
+            {
+                collision.gameObject.GetComponent<PlayerControllerIso>().isometricRatio = 2;
+            }
         }
     }
 }

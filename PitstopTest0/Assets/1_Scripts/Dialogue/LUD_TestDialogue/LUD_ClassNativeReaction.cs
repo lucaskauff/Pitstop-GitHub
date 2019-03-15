@@ -3,64 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NativeReaction
+namespace Pitstop
 {
-    public string testOperation;    
-    public int valueOfPlayerSentence;
-
-    public bool willTriggeredExclamation; //pas assigné
-    public string codeForReaction;  //pas assigné
-
-    public Sprite answerWord1;
-    public Sprite answerWord2;
-    public Sprite answerWord3;
-
-
-    public NativeReaction(string rowToConvert)
+    public class NativeReaction
     {
-        string[] data = rowToConvert.Split(';');
-        
+        public string testOperation;
+        public int valueOfPlayerSentence;
 
-        testOperation = data[0];
+        public bool willTriggeredExclamation; //pas assigné
+        public string codeForReaction;  //pas assigné
 
-        valueOfPlayerSentence = int.Parse(data[1]);
+        public Sprite answerWord1;
+        public Sprite answerWord2;
+        public Sprite answerWord3;
 
-        willTriggeredExclamation = (data[2] == "true");
-        //Debug.Log("willTriggeredExclamation = " + (data[2] == "true"));
 
-        codeForReaction = data[3];
+        public NativeReaction(string rowToConvert)
+        {
+            string[] data = rowToConvert.Split(';');
 
-        answerWord1 = StringToImage(data[4]);
 
-        answerWord2 = StringToImage(data[5]);
+            testOperation = data[0];
 
-        answerWord3 = StringToImage(data[6]);
+            valueOfPlayerSentence = int.Parse(data[1]);
 
+            willTriggeredExclamation = (data[2] == "true");
+            //Debug.Log("willTriggeredExclamation = " + (data[2] == "true"));
+
+            codeForReaction = data[3];
+
+            answerWord1 = StringToImage(data[4]);
+
+            answerWord2 = StringToImage(data[5]);
+
+            answerWord3 = StringToImage(data[6]);
+
+
+        }
+
+        private Sprite StringToImage(string code)
+        {
+            if (code == "?")
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/interrogationSprite");
+            }
+            else if (code == "Beet")
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Old/BeetSprite");
+            }
+            else if (code == "Mushroom")
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Old/MushroomSprite");
+            }
+            else if (code == "Apple")
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Old/AppleSprite");
+            }
+            else
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/emptySprite");
+            }
+        }
 
     }
-
-    private Sprite StringToImage(string code)
-    {
-        if (code == "?")
-        {
-            return Resources.Load<Sprite>("LUD_Sprites_Word/interrogationSprite");
-        }
-        else if (code=="Beet")
-        {
-            return Resources.Load<Sprite>("LUD_Sprites_Word/Old/BeetSprite");
-        }
-        else if (code == "Mushroom")
-        {
-            return Resources.Load<Sprite>("LUD_Sprites_Word/Old/MushroomSprite");
-        }
-        else if (code == "Apple")
-        {
-            return Resources.Load<Sprite>("LUD_Sprites_Word/Old/AppleSprite");
-        }
-        else
-        {
-            return Resources.Load<Sprite>("LUD_Sprites_Word/emptySprite");
-        }
-    }
-
 }

@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndOfGlade : MonoBehaviour
+namespace Pitstop
 {
-    public GameObject virtualCameraPlayer;
-    public GameObject virtualCameraGlade;
-
-    void OnTriggerStay2D(Collider2D collider)
+    public class EndOfGlade : MonoBehaviour
     {
-        if (collider.gameObject.name == "Zayn")
+        public GameObject virtualCameraPlayer;
+        public GameObject virtualCameraGlade;
+
+        void OnTriggerStay2D(Collider2D collider)
         {
-            virtualCameraPlayer.SetActive(true);
-            virtualCameraGlade.SetActive(false);
+            if (collider.gameObject.name == "Zayn")
+            {
+                virtualCameraPlayer.SetActive(true);
+                virtualCameraGlade.SetActive(false);
+            }
         }
     }
 }

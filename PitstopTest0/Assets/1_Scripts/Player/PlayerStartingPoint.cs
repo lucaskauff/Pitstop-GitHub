@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStartingPoint : MonoBehaviour
+namespace Pitstop
 {
-    private PlayerControllerIso thePlayer;
-
-    void Start()
+    public class PlayerStartingPoint : MonoBehaviour
     {
-        thePlayer = FindObjectOfType<PlayerControllerIso>();
-        thePlayer.transform.position = transform.position;
+        private PlayerControllerIso thePlayer;
+
+        void Start()
+        {
+            thePlayer = FindObjectOfType<PlayerControllerIso>();
+            thePlayer.transform.position = transform.position;
+        }
     }
 }

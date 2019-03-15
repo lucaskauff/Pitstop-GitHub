@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShroomBehaviour : MonoBehaviour
+namespace Pitstop
 {
-    //Public
-    public bool isScannable = true;
-    public bool isFired = false;
-    public float projectileSpeed = 3;
-    public Vector2 targetPos;
-
-    void Update()
+    public class ShroomBehaviour : MonoBehaviour
     {
-        if (isFired)
+        //Public
+        public bool isScannable = true;
+        public bool isFired = false;
+        public float projectileSpeed = 3;
+        public Vector2 targetPos;
+
+        void Update()
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+            if (isFired)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+            }
         }
     }
 }

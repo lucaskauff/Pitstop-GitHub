@@ -2,231 +2,234 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GorillaBehaviour : MonoBehaviour
+namespace Pitstop
 {
-    //SerializedField
-    [SerializeField]
-    float viewRangeRad;
-    [SerializeField]
-    int damageDealing = 1;
-    [SerializeField]
-    float walkSpeed = 1;
-    [SerializeField]
-    float walkTime = 1;
-    [SerializeField]
-    float waitTime = 1;
-    /*[SerializeField]
-    float rushTime = 2;*/
-    [SerializeField]
-    float rushRatio = 1.25f;
-    [SerializeField]
-    float stunTime = 3;
-
-    //Public
-    public GameObject walkZone;
-    public Transform viewRange;
-    public GameObject target;
-    public GameObject player;
-    //[SerializeField]
-    public float rushSpeed = 3;
-    public float rushTime = 2;
-
-    //Private
-    Rigidbody2D myRb;
-
-    public bool isArrived;
-    bool isWalking;
-    Vector2 minWalkPoint;
-    Vector2 maxWalkPoint;
-    float walkCounter;
-    float waitCounter;
-    int WalkDirection;
-    bool hasWalkZone;
-
-    bool col = false;
-    Vector3 targetPos;
-    bool followTargetCheck = false;
-    float originalRushTime;
-    bool stunCheck = false;
-    float originalStunTime;
-
-    void Start()
+    public class GorillaBehaviour : MonoBehaviour
     {
-        myRb = GetComponent<Rigidbody2D>();
+        //SerializedField
+        [SerializeField]
+        float viewRangeRad;
+        [SerializeField]
+        int damageDealing = 1;
+        [SerializeField]
+        float walkSpeed = 1;
+        [SerializeField]
+        float walkTime = 1;
+        [SerializeField]
+        float waitTime = 1;
+        /*[SerializeField]
+        float rushTime = 2;*/
+        [SerializeField]
+        float rushRatio = 1.25f;
+        [SerializeField]
+        float stunTime = 3;
 
-        viewRange.localScale *= viewRangeRad;
-        originalRushTime = rushTime;
-        originalStunTime = stunTime;
+        //Public
+        public GameObject walkZone;
+        public Transform viewRange;
+        public GameObject target;
+        public GameObject player;
+        //[SerializeField]
+        public float rushSpeed = 3;
+        public float rushTime = 2;
 
-        waitCounter = waitTime;
-        walkCounter = walkTime;
+        //Private
+        Rigidbody2D myRb;
 
-        ChooseDirection();
+        public bool isArrived;
+        bool isWalking;
+        Vector2 minWalkPoint;
+        Vector2 maxWalkPoint;
+        float walkCounter;
+        float waitCounter;
+        int WalkDirection;
+        bool hasWalkZone;
 
-        if (walkZone != null)
+        bool col = false;
+        Vector3 targetPos;
+        bool followTargetCheck = false;
+        float originalRushTime;
+        bool stunCheck = false;
+        float originalStunTime;
+
+        void Start()
         {
-            minWalkPoint = walkZone.GetComponent<CompositeCollider2D>().bounds.min;
-            maxWalkPoint = walkZone.GetComponent<CompositeCollider2D>().bounds.max;
-            hasWalkZone = true;
-        }
-    }
+            myRb = GetComponent<Rigidbody2D>();
 
-    void Update()
-    {
-        if (isArrived)
-        {
-            myRb.velocity = Vector2.zero;
+            viewRange.localScale *= viewRangeRad;
+            originalRushTime = rushTime;
+            originalStunTime = stunTime;
 
-            if (!stunCheck)
+            waitCounter = waitTime;
+            walkCounter = walkTime;
+
+            ChooseDirection();
+
+            if (walkZone != null)
             {
-                followTargetCheck = false;
-                target = null;
-                col = false;
-
-                StopAllCoroutines();
-                rushTime = originalRushTime;
-
-                StartCoroutine(Stunned());
-                stunCheck = true;
-            }
-
-            if (stunTime <= 0)
-            {
-                stunCheck = false;
-                StopCoroutine(Stunned());
-                stunTime = originalStunTime;
-
-                isArrived = false;
+                minWalkPoint = walkZone.GetComponent<CompositeCollider2D>().bounds.min;
+                maxWalkPoint = walkZone.GetComponent<CompositeCollider2D>().bounds.max;
+                hasWalkZone = true;
             }
         }
-        else
+
+        void Update()
         {
-            if (target == null)
+            if (isArrived)
             {
-                if (isWalking)
+                myRb.velocity = Vector2.zero;
+
+                if (!stunCheck)
                 {
-                    walkCounter -= Time.deltaTime;
+                    followTargetCheck = false;
+                    target = null;
+                    col = false;
 
-                    switch (WalkDirection)
-                    {
-                        case 0:
-                            if (hasWalkZone && transform.position.y > maxWalkPoint.y)
-                            {
-                                isWalking = false;
-                                waitCounter = waitTime;
-                            }
-                            else
-                            {
-                                myRb.velocity = new Vector2(0, walkSpeed);
-                            }
-                            break;
+                    StopAllCoroutines();
+                    rushTime = originalRushTime;
 
-                        case 1:
-                            if (hasWalkZone && transform.position.x > maxWalkPoint.x)
-                            {
-                                isWalking = false;
-                                waitCounter = waitTime;
-                            }
-                            else
-                            {
-                                myRb.velocity = new Vector2(walkSpeed, 0);
-                            }
-                            break;
-
-                        case 2:
-                            if (hasWalkZone && transform.position.y < minWalkPoint.y)
-                            {
-                                isWalking = false;
-                                waitCounter = waitTime;
-                            }
-                            else
-                            {
-                                myRb.velocity = new Vector2(0, -walkSpeed);
-                            }
-                            break;
-
-                        case 3:
-                            if (hasWalkZone && transform.position.x < minWalkPoint.x)
-                            {
-                                isWalking = false;
-                                waitCounter = waitTime;
-                            }
-                            else
-                            {
-                                myRb.velocity = new Vector2(-walkSpeed, 0);
-                            }
-                            break;
-                    }
-
-                    if (walkCounter < 0)
-                    {
-                        isWalking = false;
-                        waitCounter = waitTime;
-                    }
+                    StartCoroutine(Stunned());
+                    stunCheck = true;
                 }
-                else
+
+                if (stunTime <= 0)
                 {
-                    waitCounter -= Time.deltaTime;
+                    stunCheck = false;
+                    StopCoroutine(Stunned());
+                    stunTime = originalStunTime;
 
-                    myRb.velocity = Vector2.zero;
-
-                    if (waitCounter < 0)
-                    {
-                        ChooseDirection();
-                    }
+                    isArrived = false;
                 }
             }
             else
             {
-                if (!followTargetCheck)
+                if (target == null)
                 {
-                    StartCoroutine(RushTimeDecount());
-                    targetPos = target.transform.position;
-                    followTargetCheck = true;
+                    if (isWalking)
+                    {
+                        walkCounter -= Time.deltaTime;
+
+                        switch (WalkDirection)
+                        {
+                            case 0:
+                                if (hasWalkZone && transform.position.y > maxWalkPoint.y)
+                                {
+                                    isWalking = false;
+                                    waitCounter = waitTime;
+                                }
+                                else
+                                {
+                                    myRb.velocity = new Vector2(0, walkSpeed);
+                                }
+                                break;
+
+                            case 1:
+                                if (hasWalkZone && transform.position.x > maxWalkPoint.x)
+                                {
+                                    isWalking = false;
+                                    waitCounter = waitTime;
+                                }
+                                else
+                                {
+                                    myRb.velocity = new Vector2(walkSpeed, 0);
+                                }
+                                break;
+
+                            case 2:
+                                if (hasWalkZone && transform.position.y < minWalkPoint.y)
+                                {
+                                    isWalking = false;
+                                    waitCounter = waitTime;
+                                }
+                                else
+                                {
+                                    myRb.velocity = new Vector2(0, -walkSpeed);
+                                }
+                                break;
+
+                            case 3:
+                                if (hasWalkZone && transform.position.x < minWalkPoint.x)
+                                {
+                                    isWalking = false;
+                                    waitCounter = waitTime;
+                                }
+                                else
+                                {
+                                    myRb.velocity = new Vector2(-walkSpeed, 0);
+                                }
+                                break;
+                        }
+
+                        if (walkCounter < 0)
+                        {
+                            isWalking = false;
+                            waitCounter = waitTime;
+                        }
+                    }
+                    else
+                    {
+                        waitCounter -= Time.deltaTime;
+
+                        myRb.velocity = Vector2.zero;
+
+                        if (waitCounter < 0)
+                        {
+                            ChooseDirection();
+                        }
+                    }
                 }
-
-                transform.position = Vector2.MoveTowards(transform.position, targetPos, rushSpeed * Time.deltaTime);
-
-                if (col || this.transform.position == targetPos || rushTime <= 0)
+                else
                 {
-                    isArrived = true;
+                    if (!followTargetCheck)
+                    {
+                        StartCoroutine(RushTimeDecount());
+                        targetPos = target.transform.position;
+                        followTargetCheck = true;
+                    }
+
+                    transform.position = Vector2.MoveTowards(transform.position, targetPos, rushSpeed * Time.deltaTime);
+
+                    if (col || this.transform.position == targetPos || rushTime <= 0)
+                    {
+                        isArrived = true;
+                    }
                 }
             }
         }
-    }
 
-    public void ChooseDirection()
-    {
-        WalkDirection = Random.Range(0, 4);
-        isWalking = true;
-        walkCounter = walkTime;
-    }
-
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        col = true;
-
-        if (other.gameObject.name == "Zayn" || other.gameObject.name == "Native")
+        public void ChooseDirection()
         {
-            player.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealing);
+            WalkDirection = Random.Range(0, 4);
+            isWalking = true;
+            walkCounter = walkTime;
         }
-    }
 
-    IEnumerator Stunned()
-    {
-        while (stunTime > 0)
+        public void OnCollisionEnter2D(Collision2D other)
         {
-            yield return new WaitForSeconds(1);
-            stunTime--;
+            col = true;
+
+            if (other.gameObject.name == "Zayn" || other.gameObject.name == "Native")
+            {
+                player.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealing);
+            }
         }
-    }
 
-    IEnumerator RushTimeDecount()
-    {
-        while (rushTime > 0)
+        IEnumerator Stunned()
         {
-            yield return new WaitForSeconds(1);
-            rushTime--;
+            while (stunTime > 0)
+            {
+                yield return new WaitForSeconds(1);
+                stunTime--;
+            }
+        }
+
+        IEnumerator RushTimeDecount()
+        {
+            while (rushTime > 0)
+            {
+                yield return new WaitForSeconds(1);
+                rushTime--;
+            }
         }
     }
 }
