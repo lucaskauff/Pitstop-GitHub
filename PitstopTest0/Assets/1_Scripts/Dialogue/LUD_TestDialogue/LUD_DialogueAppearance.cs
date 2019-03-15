@@ -47,7 +47,7 @@ namespace Pitstop
         }
 
 
-        public void ReactionAppearance(Sprite sign1, Sprite sign2, Sprite sign3)
+        public void ReactionAppearance(Sprite sign1, Sprite sign2, Sprite sign3, bool wasExclamationTriggered)
         {
             /*
             //Faire apparaitre pendant un temps la bulle
@@ -64,16 +64,21 @@ namespace Pitstop
             dialogueSpace.transform.Find("AnswerWord3").GetComponent<Image>().sprite = sign3;
 
             */
-            StartCoroutine(ReactionAppearWithDelay(sign1, sign2, sign3));
+            StartCoroutine(ReactionAppearWithDelay(sign1, sign2, sign3, wasExclamationTriggered));
 
             timer = 0f;
         }
 
-        IEnumerator ReactionAppearWithDelay(Sprite _sign1, Sprite _sign2, Sprite _sign3)
+        IEnumerator ReactionAppearWithDelay(Sprite _sign1, Sprite _sign2, Sprite _sign3, bool _wasExclamationTriggered)
         {
-            yield return new WaitForSeconds(FindObjectOfType<LUD_NativeHeartheSentence>().delayBeforeExclamationDisapperance);
-
-            //yield return new WaitForSeconds(1f);
+            if (_wasExclamationTriggered)
+            {
+                yield return new WaitForSeconds(FindObjectOfType<LUD_NativeHeartheSentence>().delayBeforeExclamationDisapperance);
+            }
+            else
+            {
+                yield return null;
+            }
 
             if (!isDialogueSpaceActive)
             {

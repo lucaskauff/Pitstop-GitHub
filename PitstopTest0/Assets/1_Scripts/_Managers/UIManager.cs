@@ -43,7 +43,7 @@ namespace Pitstop
         {
             if (sceneLoader.activeScene != "TEMPLE")
             {
-                scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalController.scanProgress);
+                //scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalController.scanProgress);
                 playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
             }
 
