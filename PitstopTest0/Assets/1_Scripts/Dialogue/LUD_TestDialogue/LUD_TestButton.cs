@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Pitstop
 {
@@ -33,8 +34,16 @@ namespace Pitstop
             }
             else
             {
-                //Debug.Log("Click");
-                FindObjectOfType<LUD_DialogueManagement>().AddAWordToTheSentence(valueOfTheWord);
+
+                if (this.GetComponent<Button>().interactable)
+                {
+                    FindObjectOfType<LUD_DialogueManagement>().AddAWordToTheSentence(valueOfTheWord);
+                }
+                else
+                {
+                    FindObjectOfType<LUD_TestExploreWithMouseWheel>().AddAWordToTheSentence(valueOfTheWord);
+                }
+
             }
 
         }
