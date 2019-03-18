@@ -42,6 +42,7 @@ namespace Pitstop
         Vector2 playerPosGround;
         Vector2 cursorPos;
         Vector2 crystalDirection;
+        Vector2 crystalScanTarget;
         Vector2 crystalShootTarget;
         bool canShoot = false;
 
@@ -67,8 +68,13 @@ namespace Pitstop
             crystalDirection = cursorPos - playerPosGround;
             //Vector2 crystalOrigin = playerPosGround + crystalDirection.normalized;
 
-            Vector2 crystalScanTarget = Vector2.ClampMagnitude(crystalDirection, maxScanRange);
+            crystalScanTarget = Vector2.ClampMagnitude(crystalDirection, maxScanRange);
             crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
+
+            if (crystalDirection != crystalShootTarget)
+            {
+                crystalShootTarget = new Vector2(crystalShootTarget.x, crystalShootTarget.y / 2);
+            }
 
             float scanRange = Vector2.Distance(playerPosGround, (Vector2)transform.position + crystalScanTarget);
 
@@ -189,7 +195,7 @@ namespace Pitstop
 
         void Previsualisation(SpriteRenderer whatToPreviz)
         {
-            previsualisation.gameObject.transform.position = inputManager.cursorPosition;
+            previsualisation.gameObject.transform.position = playerPosGround + crystalShootTarget;
             previsualisation.sprite = whatToPreviz.sprite;
 
             if (previsualisationContact.objectShootable)

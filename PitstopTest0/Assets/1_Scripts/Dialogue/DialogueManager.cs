@@ -39,7 +39,7 @@ namespace Pitstop
 
         private void Update()
         {
-            if (playerReading && inputManager.anyKeyPressed && inputManager.horizontalInput == 0 && inputManager.verticalInput == 0)
+            if (playerReading && inputManager.anyKeyPressed)
             {
                 DisplayNextSentence();
             }
