@@ -8,35 +8,30 @@ namespace Pitstop
     public class UIManager : MonoBehaviour
     {
         SceneLoader sceneLoader;
-        InputManager inputManager;
 
-        //Crystal
-        public Image scanProgressBar;
+        [Header("Crystal UI"), SerializeField]
         public Image crystalSlot;
-        public CrystalController crystalController;
         public Animator crystalSlotCanvasAnim;
 
         public Image scanBarFill;
         public float fillPercentage = 0.821f;
-        //private int scanBarAmount = 0;
-
         public RectTransform aiguille;
-        public float aiguilleRotationSpeed = 1;
-        private Quaternion aiguilleNewRotation;
+        public float aiguilleRotationSpeed = 1;        
         public float aiguilleOrientation0 = 40;
         public float aiguilleOrientation5 = 217;
 
-        public Image playerLifes;
-        public PlayerHealthManager playerHealthMan;
+        [Header("Player Related"), SerializeField]
+        CrystalController crystalController;
+        [SerializeField]
+        PlayerHealthManager playerHealthMan;
+        [SerializeField]
+        Image playerLifes;
 
-        //Enemy
-        public Slider enemyHealthBar;
-        public EnemyHealthManager enemyHealthMan;
+        private Quaternion aiguilleNewRotation;
 
         void Start()
         {
             sceneLoader = GameManager.Instance.sceneLoader;
-            inputManager = GameManager.Instance.inputManager;
         }
 
         void Update()
@@ -57,10 +52,7 @@ namespace Pitstop
                     playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
                     break;
 
-                case "2_1_MINIBOSS":
-                    //will not be the case anymore
-                    enemyHealthBar.maxValue = enemyHealthMan.enemyMaxHealth;
-                    enemyHealthBar.value = enemyHealthMan.enemyCurrentHealth;
+                case "2_1_MINIBOSS":                    
                     break;
 
                 case "3_VILLAGE":
