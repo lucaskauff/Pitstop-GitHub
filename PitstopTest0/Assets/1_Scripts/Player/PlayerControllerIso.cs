@@ -35,6 +35,8 @@ namespace Pitstop
 
         void Start()
         {
+            canMove = true;
+
             sceneLoader = GameManager.Instance.sceneLoader;
             inputManager = GameManager.Instance.inputManager;
 

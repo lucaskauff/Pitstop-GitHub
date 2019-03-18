@@ -8,6 +8,8 @@ namespace Pitstop
     {
         SceneLoader sceneLoader;
 
+        SpriteRenderer myRenderer;
+
         //Public
         public int playerMaxHealth = 3;
         public int playerCurrentHealth;
@@ -15,6 +17,8 @@ namespace Pitstop
         void Start()
         {
             sceneLoader = GameManager.Instance.sceneLoader;
+
+            myRenderer = GetComponent<SpriteRenderer>();
 
             playerCurrentHealth = playerMaxHealth;
         }

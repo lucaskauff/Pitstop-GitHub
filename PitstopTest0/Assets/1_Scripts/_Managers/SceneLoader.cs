@@ -9,7 +9,6 @@ namespace Pitstop
     {
         public string activeScene;
         public GameObject activeStartingPoint;
-        //public int sceneIndex = 0;
 
         public void Awake()
         {
@@ -24,9 +23,8 @@ namespace Pitstop
 
         public void LoadNewScene(string sceneToLoad)
         {
-            activeScene = sceneToLoad;
-            //sceneIndex += 1;
             SceneManager.LoadScene(sceneToLoad);
+            activeScene = sceneToLoad;
             activeStartingPoint = GameObject.Find("StartingPoint0");
         }
 
