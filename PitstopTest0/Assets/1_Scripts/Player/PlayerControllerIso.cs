@@ -17,6 +17,7 @@ namespace Pitstop
 
         //Public
         public bool canMove = true;
+        public bool isBeingRepulsed;
         public float isometricRatio = 2;
 
         //Serializable

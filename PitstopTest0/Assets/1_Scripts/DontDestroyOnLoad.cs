@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DontDestroyOnLoad : MonoBehaviour
+namespace Pitstop
 {
-    private static bool elementExists;
-
-    void Start()
+    public class DontDestroyOnLoad : MonoBehaviour
     {
-        if (!elementExists)
+        public static DontDestroyOnLoad Instance { get; private set; }
+
+        private void Awake()
         {
-            elementExists = true;
-            DontDestroyOnLoad(transform.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            DontDestroyOnLoad(gameObject);
         }
     }
 }

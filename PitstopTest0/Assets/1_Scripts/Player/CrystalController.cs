@@ -141,7 +141,7 @@ namespace Pitstop
 
             //conditions for shoot
             if (canShoot && inputManager.onLeftClick && scannedObject != null && Time.time > fireRate)
-            {
+            {   
                 Shoot();
             }
 
@@ -192,7 +192,7 @@ namespace Pitstop
             gameObjectsOnScene.Add(cloneProj);
             fireRate = Time.time + fireSpeed;
         }
-
+        
         void Previsualisation(SpriteRenderer whatToPreviz)
         {
             previsualisation.gameObject.transform.position = playerPosGround + crystalShootTarget;

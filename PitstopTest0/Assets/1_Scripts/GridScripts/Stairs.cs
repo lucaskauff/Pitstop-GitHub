@@ -8,6 +8,7 @@ namespace Pitstop
     public class Stairs : MonoBehaviour
     {
         Collider2D myCollider;
+
         [SerializeField]
         CinemachineImpulseSource myImpulseSource;
         [SerializeField]

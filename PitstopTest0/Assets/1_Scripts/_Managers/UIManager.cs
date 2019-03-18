@@ -41,22 +41,39 @@ namespace Pitstop
 
         void Update()
         {
-            if (sceneLoader.activeScene != "TEMPLE")
-            {
-                //scanProgressBar.GetComponent<Animator>().SetInteger("ScanProgress", crystalController.scanProgress);
-                playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
-            }
+            SpecificScenesEvents();
 
+            ScanProgressEvents();
+        }
+
+        public void SpecificScenesEvents()
+        {
+            switch (sceneLoader.activeScene)
+            {
+                case "1_TEMPLE":
+                    break;
+
+                case "2_FOREST":
+                    playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
+                    break;
+
+                case "2_1_MINIBOSS":
+                    //will not be the case anymore
+                    enemyHealthBar.maxValue = enemyHealthMan.enemyMaxHealth;
+                    enemyHealthBar.value = enemyHealthMan.enemyCurrentHealth;
+                    break;
+
+                case "3_VILLAGE":
+                    break;
+            }
+        }
+
+        public void ScanProgressEvents()
+        {
             aiguilleNewRotation = Quaternion.Euler(0, 0, -(((aiguilleOrientation5 - aiguilleOrientation0) / 5) * crystalController.scanProgress));
             aiguille.rotation = Quaternion.Lerp(aiguille.rotation, aiguilleNewRotation, Time.time * aiguilleRotationSpeed);
 
             scanBarFill.fillAmount = (fillPercentage / 5) * crystalController.scanProgress;
-
-            if (sceneLoader.activeScene == "NathanLianaScene")
-            {
-                enemyHealthBar.maxValue = enemyHealthMan.enemyMaxHealth;
-                enemyHealthBar.value = enemyHealthMan.enemyCurrentHealth;
-            }
         }
 
         public void ChangeImageInCrystalSlot(Sprite sprite)
