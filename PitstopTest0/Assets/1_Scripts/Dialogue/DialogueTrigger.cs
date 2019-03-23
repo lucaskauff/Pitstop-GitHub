@@ -7,13 +7,25 @@ namespace Pitstop
     public class DialogueTrigger : MonoBehaviour
     {
         [SerializeField]
+        bool onlyActivatableOnce = false;
+        [SerializeField]
+        bool triggerDialogueOnStart = false;
+        [SerializeField]
         DialogueManager dialogueManager;
         [SerializeField]
         Dialogue dialogue;
-        [SerializeField]
-        bool onlyActivatableOnce;
 
         bool activationCheck = false;
+
+        private void Update()
+        {
+            if (triggerDialogueOnStart && !activationCheck && dialogueManager.readyToDisplay)
+            {
+                TriggerDialogue();
+
+                activationCheck = true;
+            }
+        }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {

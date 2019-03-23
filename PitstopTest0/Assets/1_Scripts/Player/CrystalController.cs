@@ -76,20 +76,25 @@ namespace Pitstop
                 crystalShootTarget = new Vector2(crystalShootTarget.x, crystalShootTarget.y / 2);
             }
 
+            if (scannedObject != null)
+            {
+                Previsualisation(scannedObject.GetComponent<SpriteRenderer>());
+            }
+
             float scanRange = Vector2.Distance(playerPosGround, (Vector2)transform.position + crystalScanTarget);
 
-            RaycastHit2D hit = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange); //raycast's definition
+            RaycastHit2D scanRay = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange); //raycast's definition
             Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
 
             //SCAN
-            if (hit.collider != null && inputManager.rightClickBeingPressed)
+            if (scanRay.collider != null && inputManager.rightClickBeingPressed)
             {
-                if (hit.collider.isTrigger && hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>() != null && hit.collider.gameObject != scannedObject)
+                if (scanRay.collider.isTrigger && scanRay.collider.gameObject.GetComponent<ScannableObjectBehaviour>() != null && scanRay.collider.gameObject != scannedObject)
                 {
-                    if (hit.collider.gameObject.GetComponent<ScannableObjectBehaviour>().isScannable)
+                    if (scanRay.collider.gameObject.GetComponent<ScannableObjectBehaviour>().isScannable)
                     {
                         objectHittedBefore = objectHitted;
-                        objectHitted = hit.transform.gameObject;
+                        objectHitted = scanRay.transform.gameObject;
 
                         //If no registred objectOnScan
                         if (objectOnScan == null)
@@ -144,11 +149,6 @@ namespace Pitstop
             {   
                 Shoot();
             }
-
-            if (scannedObject != null)
-            {
-                Previsualisation(scannedObject.GetComponent<SpriteRenderer>());
-            }
         }
 
         void Shoot()
@@ -201,12 +201,12 @@ namespace Pitstop
             if (previsualisationContact.objectShootable)
             {
                 canShoot = true;
-                previsualisation.color = new Color(0, 1, 0, previzAlphaRatio);
+                previsualisation.color = new Color(0, 1, 0, previzAlphaRatio); //if he can shoot the scannedObject : color of the previz = green
             }
             else
             {
                 canShoot = false;
-                previsualisation.color = new Color(1, 0, 0, previzAlphaRatio);
+                previsualisation.color = new Color(1, 0, 0, previzAlphaRatio); //if he can't shoot the scannedObject : color of the previz = red
             }
         }
 

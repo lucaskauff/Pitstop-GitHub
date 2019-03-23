@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 9127097305669116843}
   - component: {fileID: 9127097305669116840}
   - component: {fileID: 9127097305669116842}
+  - component: {fileID: 8830600641502868250}
   m_Layer: 0
   m_Name: LevelChanger
   m_TagString: Untagged
@@ -141,6 +142,24 @@ MonoBehaviour:
   myAnim: {fileID: 9127097305669116840}
   nextSceneName: 
   playerControllerIso: {fileID: 0}
+--- !u!114 &8830600641502868250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9127097305669116841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 0}
+  dialogue:
+    name: 
+    sentences: []
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 1
 --- !u!1 &9127097306074284302
 GameObject:
   m_ObjectHideFlags: 0
