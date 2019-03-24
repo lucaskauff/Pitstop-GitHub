@@ -11,7 +11,7 @@ namespace Pitstop
         [SerializeField]
         GameObject[] whatElementsShouldAppear;
         [SerializeField]
-        GameObject whatElementShouldDisappear;
+        GameObject[] whatElementShouldDisappear;
 
         bool triggerOnceCheck = false;
 
@@ -19,11 +19,14 @@ namespace Pitstop
         {
             if (collision.gameObject.name == "Zayn" && !triggerOnceCheck)
             {
-                whatElementShouldDisappear.SetActive(false);
-
                 foreach (var element in whatElementsShouldAppear)
                 {
                     uIManager.MakeUIElementAppear(element);
+                }
+
+                foreach (var element in whatElementShouldDisappear)
+                {
+                    element.SetActive(false);
                 }
 
                 triggerOnceCheck = true;

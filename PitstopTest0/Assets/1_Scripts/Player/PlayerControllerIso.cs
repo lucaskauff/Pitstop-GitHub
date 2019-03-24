@@ -29,6 +29,7 @@ namespace Pitstop
         float dashTime = 1;
 
         //Private
+        bool playerSpawnedCheck = false;
         Vector2 moveInput;
         public bool isMoving = false;
         Vector2 lastMove = new Vector2(1, 0);
@@ -43,12 +44,15 @@ namespace Pitstop
 
             myRb = GetComponent<Rigidbody2D>();
             myAnim = GetComponent<Animator>();
-
-            transform.position = sceneLoader.activeStartingPoint.transform.position;
         }
 
         void Update()
         {
+            if (sceneLoader.startingPointFound && !playerSpawnedCheck)
+            {
+                Spawn();
+            }
+
             isMoving = false;
 
             if (!canMove)
@@ -84,10 +88,16 @@ namespace Pitstop
             myAnim.SetFloat("MoveY", moveInput.y);
         }
 
-        void Dash()
+        private void Dash()
         {
             dashRate = Time.time + dashTime;
             myRb.velocity = lastMove * dashSpeed;
+        }
+
+        private void Spawn()
+        {
+            transform.position = sceneLoader.activeStartingPoint.transform.position;
+            playerSpawnedCheck = true;
         }
     }
 }

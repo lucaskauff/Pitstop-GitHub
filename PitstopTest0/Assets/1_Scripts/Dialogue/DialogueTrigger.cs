@@ -6,6 +6,8 @@ namespace Pitstop
 {
     public class DialogueTrigger : MonoBehaviour
     {
+        GameManager gameManager;
+        
         [SerializeField]
         bool onlyActivatableOnce = false;
         [SerializeField]
@@ -13,12 +15,29 @@ namespace Pitstop
         [SerializeField]
         DialogueManager dialogueManager;
         [SerializeField]
-        Dialogue dialogue;
+        Dialogue dialogueInEnglish;
+        [SerializeField]
+        Dialogue dialogueInFrench;
 
+        Dialogue activeDialogue;
         bool activationCheck = false;
+
+        private void Start()
+        {
+            gameManager = GameManager.Instance;
+        }
 
         private void Update()
         {
+            if (gameManager.languageSetToEnglish)
+            {
+                activeDialogue = dialogueInEnglish;
+            }
+            else
+            {
+                activeDialogue = dialogueInFrench;
+            }
+
             if (triggerDialogueOnStart && !activationCheck && dialogueManager.readyToDisplay)
             {
                 TriggerDialogue();
@@ -42,7 +61,7 @@ namespace Pitstop
 
         public void TriggerDialogue()
         {
-            dialogueManager.StartDialogue(dialogue);
+            dialogueManager.StartDialogue(activeDialogue);
         }
     }
 }

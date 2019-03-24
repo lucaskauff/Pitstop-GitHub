@@ -8,12 +8,31 @@ namespace Pitstop
     public class SceneLoader : MonoBehaviour
     {
         public string activeScene;
-        public GameObject activeStartingPoint;
+        public GameObject activeStartingPoint = null;
+        public bool startingPointFound = false;
 
         public void Awake()
         {
             activeScene = SceneManager.GetActiveScene().name;
-            activeStartingPoint = GameObject.Find("StartingPoint0");
+
+            //Add all proper levels names
+            if (activeScene == "1_TEMPLE" || activeScene == "2_FOREST" || activeScene == "3_VILLAGE")
+            {
+                activeStartingPoint = GameObject.Find("StartingPoint0");
+            }
+        }
+
+        public void Update()
+        {
+            if (activeStartingPoint == null)
+            {
+                startingPointFound = false;
+                activeStartingPoint = GameObject.Find("StartingPoint0");
+            }
+            else
+            {
+                startingPointFound = true;
+            }
         }
 
         public void SaveStartingPoint(GameObject newStartingPoint)
@@ -23,14 +42,20 @@ namespace Pitstop
 
         public void LoadNewScene(string sceneToLoad)
         {
+            activeStartingPoint = null;
             SceneManager.LoadScene(sceneToLoad);
-            activeScene = sceneToLoad;
-            activeStartingPoint = GameObject.Find("StartingPoint0");
+            activeScene = sceneToLoad;            
         }
 
         public void ReloadScene()
         {
             SceneManager.LoadScene(activeScene);
+        }
+
+        public void QuitGame()
+        {
+            Debug.Log("Game leaved.");
+            Application.Quit();
         }
     }
 }
