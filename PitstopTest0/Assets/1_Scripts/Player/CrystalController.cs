@@ -118,7 +118,7 @@ namespace Pitstop
                             if (scanProgress == 5)
                             {
                                 scannedObject = GameObject.FindWithTag(objectOnScan.tag);
-                                uIManager.SendMessage("ChangeImageInCrystalSlot", scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
+                                uIManager.ChangeImageInCrystalSlot(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
 
                                 StopAllCoroutines();
                                 scanProgress = 0;

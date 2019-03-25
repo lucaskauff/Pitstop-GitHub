@@ -8,7 +8,6 @@ namespace Pitstop
 {
     public class PlayerControllerIso : MonoBehaviour
     {
-        SceneLoader sceneLoader;
         InputManager inputManager;
 
         //My components
@@ -17,19 +16,22 @@ namespace Pitstop
 
         //Public
         public bool canMove = true;
-        public bool isBeingRepulsed;
+        public bool isBeingRepulsed = false;
         public float isometricRatio = 2;
 
         //Serializable
         [SerializeField]
-        float moveSpeed;
+        Transform sceneStartingPoint = null;
         [SerializeField]
-        float dashSpeed;
+        float moveSpeed = 3;
+        [SerializeField]
+        float dashSpeed = 30;
         [SerializeField]
         float dashTime = 1;
+        [SerializeField]
+        float dashLength = 0.5f;
 
         //Private
-        bool playerSpawnedCheck = false;
         Vector2 moveInput;
         public bool isMoving = false;
         Vector2 lastMove = new Vector2(1, 0);
@@ -37,22 +39,18 @@ namespace Pitstop
 
         void Start()
         {
-            canMove = true;
-
-            sceneLoader = GameManager.Instance.sceneLoader;
             inputManager = GameManager.Instance.inputManager;
 
             myRb = GetComponent<Rigidbody2D>();
             myAnim = GetComponent<Animator>();
+
+            Spawn();
+
+            canMove = true;
         }
 
         void Update()
         {
-            if (sceneLoader.startingPointFound && !playerSpawnedCheck)
-            {
-                Spawn();
-            }
-
             isMoving = false;
 
             if (!canMove)
@@ -80,6 +78,15 @@ namespace Pitstop
                 Dash();
             }
 
+            if (isBeingRepulsed)
+            {
+                StartCoroutine(ComeOnAndDash());
+            }
+            else
+            {
+                StopCoroutine(ComeOnAndDash());
+            }
+
             //Infos to animator
             myAnim.SetBool("IsMoving", isMoving);
             myAnim.SetFloat("LastMoveX", lastMove.x);
@@ -90,14 +97,20 @@ namespace Pitstop
 
         private void Dash()
         {
+            isBeingRepulsed = true;
             dashRate = Time.time + dashTime;
             myRb.velocity = lastMove * dashSpeed;
         }
 
         private void Spawn()
         {
-            transform.position = sceneLoader.activeStartingPoint.transform.position;
-            playerSpawnedCheck = true;
+            transform.position = sceneStartingPoint.position;
+        }
+
+        IEnumerator ComeOnAndDash()
+        {
+            yield return new WaitForSeconds(dashLength);
+            isBeingRepulsed = false;
         }
     }
 }

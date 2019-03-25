@@ -25,9 +25,11 @@ namespace Pitstop
         [SerializeField]
         PlayerHealthManager playerHealthMan;
         [SerializeField]
-        Image playerLifes;
+        Animator playerLifes;
 
+        //Private
         private Quaternion aiguilleNewRotation;
+        private bool playerLifesAppearedCheck = false;
 
         void Start()
         {
@@ -49,7 +51,13 @@ namespace Pitstop
                     break;
 
                 case "2_FOREST":
-                    playerLifes.GetComponent<Animator>().SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
+                    if (!playerLifesAppearedCheck)
+                    {
+                        playerLifes.SetTrigger("Appear");
+                        playerLifesAppearedCheck = true;
+                    }
+
+                    playerLifes.SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
                     break;
 
                 case "2_1_MINIBOSS":                    

@@ -27,7 +27,7 @@ namespace Pitstop
             {
                 virtualCameraPlayer.SetActive(false);
 
-                sceneLoader.SaveStartingPoint(associatedStartingPoint);
+                //sceneLoader.SaveStartingPoint(associatedStartingPoint);
 
                 //hHSpawner.SpawnTheThing();
 
