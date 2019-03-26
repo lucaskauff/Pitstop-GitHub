@@ -2,22 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IMP_Apple : MonoBehaviour
+namespace Pitstop
 {
-    [SerializeField]
-    GameObject explosionRange;
-    [SerializeField]
-    int timer;
-
-    void Start()
+    public class IMP_Apple : MonoBehaviour
     {
-        StartCoroutine(Explosion());
-    }
+        [SerializeField]
+        ScannableObjectBehaviour scannableObjectBehaviour;
+        public float appleProjectionSpeed;
+        [SerializeField]
+        GameObject explosionRange;
+        [SerializeField]
+        int timer;
 
-    IEnumerator Explosion()
-    {
-        yield return new WaitForSeconds(timer);
-        explosionRange.SetActive(true);
-        Destroy(gameObject,0.1f);
+        private void Update()
+        {
+            if (scannableObjectBehaviour.isArrived)
+            {
+                Explode();
+                //StartCoroutine(Explosion());
+            }
+        }
+
+        public void Explode()
+        {
+            explosionRange.SetActive(true);
+            Destroy(gameObject, 0.1f);
+        }
+
+        IEnumerator Explosion()
+        {
+            yield return new WaitForSeconds(timer);
+            explosionRange.SetActive(true);
+            Destroy(gameObject, 0.1f);
+        }
     }
 }

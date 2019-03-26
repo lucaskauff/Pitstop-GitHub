@@ -63,5 +63,10 @@ namespace Pitstop
         {
             dialogueManager.StartDialogue(activeDialogue);
         }
+
+        public void ChangeActiveDialogue()
+        {
+
+        }
     }
 }
