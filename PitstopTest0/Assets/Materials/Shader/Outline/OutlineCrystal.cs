@@ -2,31 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OutlineCrystal : MonoBehaviour
+namespace Pitstop
 {
+    public class OutlineCrystal : MonoBehaviour
+    {
+        Renderer myRenderer;
+        [SerializeField] Color color;
+        [SerializeField] ScannableObjectBehaviour scannableObjectBehaviour;
 
-    Renderer myRenderer;
-    [SerializeField] Color color;
-
-    // Start is called before the first frame update
     void Start()
-    {
-        myRenderer = GetComponent<Renderer>();
-    }
+        {
+            myRenderer = GetComponent<Renderer>();
+        }
 
+        private void OnMouseOver()
+        {
+            if (scannableObjectBehaviour.isScannable)
+            {
+                SetOutline(255);
+            }
+        }
 
-    private void OnMouseOver()
-    {
+        private void OnMouseExit()
+        {
+            SetOutline(0);
+        }
+
+        void SetOutline(int alphaAmount)
+        {
             color = myRenderer.material.GetColor("_ColorOutline");
-            color.a = 255;
+            color.a = alphaAmount;
             myRenderer.material.SetColor("_ColorOutline", color);
-    }
-
-    private void OnMouseExit()
-    {
-            color = myRenderer.material.GetColor("_ColorOutline");
-            color.a = 0;
-            myRenderer.material.SetColor("_ColorOutline", color);
-
+        }
     }
 }
