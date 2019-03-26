@@ -71,11 +71,6 @@ namespace Pitstop
             crystalScanTarget = Vector2.ClampMagnitude(crystalDirection, maxScanRange);
             crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
 
-            if (crystalDirection != crystalShootTarget)
-            {
-                crystalShootTarget = new Vector2(crystalShootTarget.x, crystalShootTarget.y / 2);
-            }
-
             if (scannedObject != null)
             {
                 Previsualisation(scannedObject.GetComponent<SpriteRenderer>());
@@ -153,6 +148,11 @@ namespace Pitstop
 
         void Previsualisation(SpriteRenderer whatToPreviz)
         {
+            if (crystalDirection != crystalShootTarget)
+            {
+                crystalShootTarget = new Vector2(crystalShootTarget.x, crystalShootTarget.y / 2);
+            }
+
             switch (scannedObject.tag)
             {
                 case "ObjectLiana":

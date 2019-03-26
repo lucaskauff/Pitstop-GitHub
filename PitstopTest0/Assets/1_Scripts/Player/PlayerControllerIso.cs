@@ -82,11 +82,11 @@ namespace Pitstop
 
             if (isBeingRepulsed)
             {
-                StartCoroutine(ComeOnAndDash());
+                StartCoroutine(ComeOnAndDash(dashLength));
             }
             else
             {
-                StopCoroutine(ComeOnAndDash());
+                StopCoroutine(ComeOnAndDash(dashLength));
             }
 
             //Infos to animator
@@ -97,12 +97,12 @@ namespace Pitstop
             myAnim.SetFloat("MoveY", moveInput.y);
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "ObjectApple")
             {
                 Debug.Log("Apple touched !");
-
+                isBeingRepulsed = true;
             }
         }
 
@@ -118,9 +118,9 @@ namespace Pitstop
             transform.position = sceneStartingPoint.position;
         }
 
-        IEnumerator ComeOnAndDash()
+        IEnumerator ComeOnAndDash(float length)
         {
-            yield return new WaitForSeconds(dashLength);
+            yield return new WaitForSeconds(length);
             isBeingRepulsed = false;
         }
     }
