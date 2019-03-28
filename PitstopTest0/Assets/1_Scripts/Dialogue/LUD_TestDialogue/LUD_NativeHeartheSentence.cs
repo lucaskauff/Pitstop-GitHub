@@ -7,19 +7,18 @@ namespace Pitstop
     public class LUD_NativeHeartheSentence : MonoBehaviour
     {
 
-        //SerializeField
-        [SerializeField]
-        GameObject dialogueSpace;
+        
+        
 
-        [SerializeField]
-        GameObject exclamationPointUI;
-
-
-        //Private
+        
         bool isExclamationPointActive;
         float timerForExclamation;
 
-        //Public
+        public GameObject dialogueSpace;
+
+
+        public GameObject exclamationPointUI;
+
         public float delayBeforeExclamationDisapperance = 1f;
         public bool isCaptivated = true;
 

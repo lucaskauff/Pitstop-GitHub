@@ -7,9 +7,11 @@ namespace Pitstop
 {
     public class LUD_CsvToDataConvertor : MonoBehaviour
     {
+        /*
         //SerializeField
         [SerializeField]
         Image imageTest;
+        */
 
         //Private
         TextAsset csvFile;

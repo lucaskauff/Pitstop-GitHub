@@ -40,9 +40,7 @@ namespace Pitstop
         [SerializeField, Range(0.1f, 1f)]        //if we go further than 1, some sign would be avoid (and we don't want this to happen)
         private float sensibilityOfMouseWheel = 1f;
 
-
-
-
+        
 
         void Start()
         {
