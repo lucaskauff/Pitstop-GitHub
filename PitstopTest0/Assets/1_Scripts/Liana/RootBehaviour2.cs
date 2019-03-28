@@ -14,6 +14,7 @@ namespace Pitstop
         public int damageDealing = 1;
         public EnemyHealthManager bossHealth;
         public bool mark;
+        public IMP_Apple appleScript;
 
         int layerMask;
         [SerializeField]
@@ -22,6 +23,8 @@ namespace Pitstop
         GorillaBehaviour rush;
         private Vector2 mousePos;
         bool preview = true;
+        [SerializeField]
+        float Angle1;
 
         private void Awake()
         {
@@ -158,9 +161,22 @@ namespace Pitstop
 
                 if (trip.collider != null)
                 {
-                    Debug.Log(trip.collider.name);
-                    rush = trip.collider.gameObject.GetComponent<GorillaBehaviour>();
-                    StartCoroutine(EnemyDamage());
+                    if (trip.collider.tag == "Enemy")
+                    {
+                        Debug.Log(trip.collider.name);
+                        rush = trip.collider.gameObject.GetComponent<GorillaBehaviour>();
+                        StartCoroutine(EnemyDamage());
+                    }
+
+                    if (trip.collider.tag == "ObjectApple")
+                    {
+                        Transform impactPos = (trip.collider.transform);
+                        Vector2 shootVect = new Vector2(impactPos.position.x - appleScript.playerPos.x, impactPos.position.y - appleScript.transform.position.y);
+                        Vector2 pillarVect = new Vector2(hookpoints[1].transform.position.x - hookpoints[0].transform.position.x, hookpoints[1].transform.position.y - hookpoints[0].transform.position.y);
+                        Angle1 = Vector2.Angle(pillarVect, shootVect);
+                        Debug.Log("Angle is" + Angle1);
+                    }
+
                 }
 
                 if (liana.positionCount == 3)
@@ -170,9 +186,15 @@ namespace Pitstop
 
                     if (trip2.collider != null)
                     {
-                        Debug.Log(trip2.collider.name + "2");
-                        rush = trip2.collider.gameObject.GetComponent<GorillaBehaviour>();
-                        StartCoroutine(EnemyDamage());
+                        if (trip.collider.tag == "Enemy")
+                        {
+                            Debug.Log(trip2.collider.name + "2");
+                            rush = trip2.collider.gameObject.GetComponent<GorillaBehaviour>();
+                            StartCoroutine(EnemyDamage());
+                        }
+
+
+
                     }
 
                     else
