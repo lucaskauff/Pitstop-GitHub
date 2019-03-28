@@ -12,6 +12,7 @@ namespace Pitstop
 
         //My components
         Rigidbody2D myRb;
+        Collider2D myCollider;
         Animator myAnim;
 
         //Public
@@ -42,6 +43,7 @@ namespace Pitstop
             inputManager = GameManager.Instance.inputManager;
 
             myRb = GetComponent<Rigidbody2D>();
+            myCollider = GetComponent<Collider2D>();
             myAnim = GetComponent<Animator>();
 
             Spawn();
@@ -93,6 +95,15 @@ namespace Pitstop
             myAnim.SetFloat("LastMoveY", lastMove.y);
             myAnim.SetFloat("MoveX", moveInput.x);
             myAnim.SetFloat("MoveY", moveInput.y);
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "ObjectApple")
+            {
+                Debug.Log("Apple touched !");
+
+            }
         }
 
         private void Dash()

@@ -151,6 +151,47 @@ namespace Pitstop
             }
         }
 
+        void Previsualisation(SpriteRenderer whatToPreviz)
+        {
+            switch (scannedObject.tag)
+            {
+                case "ObjectLiana":
+                    return;
+
+                case "ObjectRock":
+                    previsualisation.gameObject.transform.position = playerPosGround + crystalShootTarget;
+                    previsualisation.sprite = whatToPreviz.sprite;
+
+                    if (previsualisationContact.objectShootable)
+                    {
+                        canShoot = true;
+                        previsualisation.color = new Color(0, 1, 0, previzAlphaRatio); //if he can shoot the scannedObject : color of the previz = green
+                    }
+                    else
+                    {
+                        canShoot = false;
+                        previsualisation.color = new Color(1, 0, 0, previzAlphaRatio); //if he can't shoot the scannedObject : color of the previz = red
+                    }
+                    break;
+
+                case "ObjectApple":
+                    previsualisation.gameObject.transform.position = playerPosGround + crystalShootTarget;
+                    previsualisation.sprite = whatToPreviz.sprite;
+
+                    if (previsualisationContact.objectShootable)
+                    {
+                        canShoot = true;
+                        previsualisation.color = new Color(0, 1, 0, previzAlphaRatio); //if he can shoot the scannedObject : color of the previz = green
+                    }
+                    else
+                    {
+                        canShoot = false;
+                        previsualisation.color = new Color(1, 0, 0, previzAlphaRatio); //if he can't shoot the scannedObject : color of the previz = red
+                    }
+                    break;
+            }
+        }
+
         void Shoot()
         {
             switch (scannedObject.tag)
@@ -163,7 +204,7 @@ namespace Pitstop
                     break;
 
                 case "ObjectApple":
-                    //do stuff
+                    ShootableObject((Vector2)transform.position, scannedObject.GetComponent<IMP_Apple>().appleProjectionSpeed);
                     break;
             }
         }
@@ -191,23 +232,6 @@ namespace Pitstop
             objectCountOnScene += 1;
             gameObjectsOnScene.Add(cloneProj);
             fireRate = Time.time + fireSpeed;
-        }
-        
-        void Previsualisation(SpriteRenderer whatToPreviz)
-        {
-            previsualisation.gameObject.transform.position = playerPosGround + crystalShootTarget;
-            previsualisation.sprite = whatToPreviz.sprite;
-
-            if (previsualisationContact.objectShootable)
-            {
-                canShoot = true;
-                previsualisation.color = new Color(0, 1, 0, previzAlphaRatio); //if he can shoot the scannedObject : color of the previz = green
-            }
-            else
-            {
-                canShoot = false;
-                previsualisation.color = new Color(1, 0, 0, previzAlphaRatio); //if he can't shoot the scannedObject : color of the previz = red
-            }
         }
 
         IEnumerator Scan()
