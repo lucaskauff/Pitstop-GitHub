@@ -7,9 +7,7 @@ namespace Pitstop
     public class CrystalRecuperation : MonoBehaviour
     {
         [SerializeField]
-        UIManager uIManager;
-        [SerializeField]
-        GameObject[] whatElementsShouldAppear;
+        Animator whatElementShouldAppear;
         [SerializeField]
         GameObject whatElementShouldDisappear;
 
@@ -19,12 +17,9 @@ namespace Pitstop
         {
             if (collision.gameObject.name == "Zayn" && !triggerOnceCheck)
             {
-                whatElementShouldDisappear.SetActive(false);
+                whatElementShouldAppear.SetTrigger("Appear");
 
-                foreach (var element in whatElementsShouldAppear)
-                {
-                    uIManager.MakeUIElementAppear(element);
-                }
+                whatElementShouldDisappear.SetActive(false);
 
                 triggerOnceCheck = true;
             }

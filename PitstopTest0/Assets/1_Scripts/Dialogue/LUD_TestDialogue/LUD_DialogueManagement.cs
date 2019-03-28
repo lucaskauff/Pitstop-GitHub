@@ -127,17 +127,17 @@ namespace Pitstop
 
         private Sprite IntToSprite(int value)
         {
-            if (value == 3)
+            if (value == 5)
             {
                 return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Nord");
             }
 
-            else if (value == 5)
+            else if (value == 7)
             {
                 return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Est");
             }
 
-            else if (value == 7)
+            else if (value == 13)
             {
                 return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Sud");
             }
@@ -147,9 +147,49 @@ namespace Pitstop
                 return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Ouest");
             }
 
+            else if (value == 17)
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/me_square");
+            }
+
+            else if (value == 19)
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/you_square");
+            }
+            else if (value == 23)
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/see_square");
+            }
+            else if (value == 29)
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/photo_square");
+            }
+            else if (value == 31)
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/gniack_square");
+            }
+            else if (value == 37)
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/no_square");
+            }
+            else if (value == 41)
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/repair_square");
+            }
+            else if (value == 43)
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/danger_square");
+            }
+            else if (value == 47)
+            {
+                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/child_square");
+            }
+
+
+
             else
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/interrogationSprite");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/interrogation_square");
             }
         }
     }

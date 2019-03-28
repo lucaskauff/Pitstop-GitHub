@@ -9,7 +9,7 @@ namespace Pitstop
         [SerializeField]
         float floatingSpeed;
         [SerializeField]
-        float floatingRatio;
+        float floatingRatio = 4;
 
         float minPos;
         float maxPos;

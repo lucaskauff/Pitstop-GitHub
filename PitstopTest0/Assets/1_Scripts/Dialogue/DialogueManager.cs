@@ -10,6 +10,8 @@ namespace Pitstop
     {
         InputManager inputManager;
 
+        public bool readyToDisplay = false;
+
         [SerializeField]
         float letterSpeed = 0;
         [SerializeField]
@@ -21,9 +23,9 @@ namespace Pitstop
         [SerializeField]
         Animator diaBox;
         [SerializeField]
-        GameObject nameText;
+        GameObject nameText = default;
         [SerializeField]
-        GameObject dialogueText;
+        GameObject dialogueText = default;
         [SerializeField]
         PlayerControllerIso playerController;
 
@@ -35,11 +37,13 @@ namespace Pitstop
             inputManager = GameManager.Instance.inputManager;
 
             sentences = new Queue<string>();
+
+            readyToDisplay = true;
         }
 
         private void Update()
         {
-            if (playerReading && inputManager.anyKeyPressed && inputManager.horizontalInput == 0 && inputManager.verticalInput == 0)
+            if (playerReading && inputManager.anyKeyPressed)
             {
                 DisplayNextSentence();
             }

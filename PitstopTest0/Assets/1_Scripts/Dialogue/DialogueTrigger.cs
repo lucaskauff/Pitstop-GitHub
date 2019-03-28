@@ -6,14 +6,45 @@ namespace Pitstop
 {
     public class DialogueTrigger : MonoBehaviour
     {
+        GameManager gameManager;
+        
+        [SerializeField]
+        bool onlyActivatableOnce = false;
+        [SerializeField]
+        bool triggerDialogueOnStart = false;
         [SerializeField]
         DialogueManager dialogueManager;
         [SerializeField]
-        Dialogue dialogue;
+        Dialogue dialogueInEnglish;
         [SerializeField]
-        bool onlyActivatableOnce;
+        Dialogue dialogueInFrench;
 
+        Dialogue activeDialogue;
         bool activationCheck = false;
+
+        private void Start()
+        {
+            gameManager = GameManager.Instance;
+        }
+
+        private void Update()
+        {
+            if (gameManager.languageSetToEnglish)
+            {
+                activeDialogue = dialogueInEnglish;
+            }
+            else
+            {
+                activeDialogue = dialogueInFrench;
+            }
+
+            if (triggerDialogueOnStart && !activationCheck && dialogueManager.readyToDisplay)
+            {
+                TriggerDialogue();
+
+                activationCheck = true;
+            }
+        }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -30,7 +61,12 @@ namespace Pitstop
 
         public void TriggerDialogue()
         {
-            dialogueManager.StartDialogue(dialogue);
+            dialogueManager.StartDialogue(activeDialogue);
+        }
+
+        public void ChangeActiveDialogue()
+        {
+
         }
     }
 }

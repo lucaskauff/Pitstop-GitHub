@@ -10,8 +10,7 @@ namespace Pitstop
         //Serializeield
         [SerializeField]
         GameObject dialogueSpace;
-        [SerializeField]
-        float delay = 7f;
+        public float delay = 7f;
 
 
         //Private
