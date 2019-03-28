@@ -28,9 +28,17 @@ namespace Pitstop
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                markSign = false;
-                canContinue = true;
-                root.mark = false;
+                if (root.crys.scannedObject.name == "ScannableRoot")
+                {
+                    markSign = false;
+                    canContinue = true;
+                    root.mark = false;
+                }
+                
+                else
+                {
+                    return;
+                }
             }
 
             if (Input.GetKeyUp(KeyCode.Mouse0))

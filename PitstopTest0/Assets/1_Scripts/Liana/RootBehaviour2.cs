@@ -14,7 +14,6 @@ namespace Pitstop
         public int damageDealing = 1;
         public EnemyHealthManager bossHealth;
         public bool mark;
-        public IMP_Apple appleScript;
 
         int layerMask;
         [SerializeField]
@@ -22,11 +21,14 @@ namespace Pitstop
         private bool living;
         GorillaBehaviour rush;
         private Vector2 mousePos;
+        [SerializeField]
         bool preview = true;
         [SerializeField]
         float Angle1;
+        [SerializeField]
+        Vector2 playerPos;
 
-        private void Awake()
+        private void Start()
         {
             liana = this.GetComponent<LineRenderer>();
             layerMask = LayerMask.GetMask("Liana");
@@ -42,8 +44,13 @@ namespace Pitstop
                     ResetHookpoints();
 
                     LineGestion();
+                }
 
-                    LianaCollider();
+                LianaCollider();
+
+                if (crys.scannedObject.tag == "ObjectApple" && Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    playerPos = player.transform.position;
                 }
             }
 
@@ -71,48 +78,48 @@ namespace Pitstop
 
         public void LineGestion()
         {
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                pointSelect = true;
-                liana.enabled = false;
-
-                if (hookpoints[0] == null)
+                if (Input.GetKey(KeyCode.Mouse0))
                 {
-                    return;
-                }
+                    pointSelect = true;
+                    liana.enabled = false;
 
-                else if (hookpoints[1] == null)
-                {
-                    liana.positionCount = 2;
-                    liana.enabled = true;
-                    preview = true;
-                    liana.SetPosition(0, hookpoints[0].transform.position);
-                    liana.SetPosition(1, mousePos);
-                }
-
-                else if (hookpoints[2] == null)
-                {
-                    liana.positionCount = 3;
-                    liana.enabled = true;
-                    preview = true;
-                    liana.SetPosition(0, hookpoints[0].transform.position);
-                    liana.SetPosition(1, hookpoints[1].transform.position);
-                    liana.SetPosition(2, mousePos);
-                }
-
-                else
-                {
-                    for (int x = 0; x < 3; x++)
+                    if (hookpoints[0] == null)
                     {
-                        preview = true;
+                        return;
+                    }
+
+                    else if (hookpoints[1] == null)
+                    {
+                        liana.positionCount = 2;
                         liana.enabled = true;
-                        if (hookpoints[x] != null)
-                            liana.SetPosition(0, hookpoints[0].transform.position);
+                        preview = true;
+                        liana.SetPosition(0, hookpoints[0].transform.position);
+                        liana.SetPosition(1, mousePos);
+                    }
+
+                    else if (hookpoints[2] == null)
+                    {
+                        liana.positionCount = 3;
+                        liana.enabled = true;
+                        preview = true;
+                        liana.SetPosition(0, hookpoints[0].transform.position);
                         liana.SetPosition(1, hookpoints[1].transform.position);
-                        liana.SetPosition(2, hookpoints[2].transform.position);
+                        liana.SetPosition(2, mousePos);
+                    }
+
+                    else
+                    {
+                        for (int x = 0; x < 3; x++)
+                        {
+                            preview = true;
+                            liana.enabled = true;
+                            if (hookpoints[x] != null)
+                                liana.SetPosition(0, hookpoints[0].transform.position);
+                            liana.SetPosition(1, hookpoints[1].transform.position);
+                            liana.SetPosition(2, hookpoints[2].transform.position);
+                        }
                     }
                 }
-            }
 
 
             if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -171,7 +178,7 @@ namespace Pitstop
                     if (trip.collider.tag == "ObjectApple")
                     {
                         Transform impactPos = (trip.collider.transform);
-                        Vector2 shootVect = new Vector2(impactPos.position.x - appleScript.playerPos.x, impactPos.position.y - appleScript.transform.position.y);
+                        Vector2 shootVect = new Vector2(impactPos.position.x - playerPos.x, impactPos.position.y - trip.collider.transform.position.y);
                         Vector2 pillarVect = new Vector2(hookpoints[1].transform.position.x - hookpoints[0].transform.position.x, hookpoints[1].transform.position.y - hookpoints[0].transform.position.y);
                         Angle1 = Vector2.Angle(pillarVect, shootVect);
                         Debug.Log("Angle is" + Angle1);
@@ -192,9 +199,6 @@ namespace Pitstop
                             rush = trip2.collider.gameObject.GetComponent<GorillaBehaviour>();
                             StartCoroutine(EnemyDamage());
                         }
-
-
-
                     }
 
                     else
@@ -203,6 +207,11 @@ namespace Pitstop
                     }
                 }
             }
+        }
+
+        void AppleBounce()
+        {
+            playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
         }
 
         IEnumerator EnemyDamage()

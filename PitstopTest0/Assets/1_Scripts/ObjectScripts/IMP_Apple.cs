@@ -14,11 +14,6 @@ namespace Pitstop
         [SerializeField]
         int timer;
 
-        [SerializeField]
-        GameObject Player;
-
-       public Vector2 playerPos;
-
         private void Update()
         {
             if (scannableObjectBehaviour.isArrived)
@@ -31,14 +26,6 @@ namespace Pitstop
         {
             explosionRange.SetActive(true);
             Destroy(gameObject, 0.1f);
-        }
-
-        void Bounce()
-        {
-            if (scannableObjectBehaviour.isFired == true)
-            {
-                playerPos = Player.transform.position;
-            }
         }
     }
 }
