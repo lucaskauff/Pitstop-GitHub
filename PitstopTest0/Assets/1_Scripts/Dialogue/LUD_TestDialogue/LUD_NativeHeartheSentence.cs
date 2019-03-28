@@ -158,9 +158,27 @@ namespace Pitstop
         {
             if (code == "go_down")
             {
-                Debug.Log("Go Down reaction activate");
+                GetComponent<LUD_NonDialogueReactions>().GoDown();
                 return false;
             }
+            else if (code == "repeat")
+            {
+                GetComponent<LUD_NonDialogueReactions>().Repeat();
+                return false;
+            }
+            else if (code == "show_the_way")
+            {
+                GetComponent<LUD_NonDialogueReactions>().ShowTheWay();
+                return true;
+            }
+            else if (code == "native_offended")
+            {
+                GetComponent<LUD_NonDialogueReactions>().NativeOffended();
+                return true;
+            }
+
+
+
             else
             {
 

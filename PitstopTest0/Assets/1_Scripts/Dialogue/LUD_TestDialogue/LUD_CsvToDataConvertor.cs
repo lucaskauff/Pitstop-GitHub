@@ -23,7 +23,7 @@ namespace Pitstop
 
         void Awake()
         {
-            csvFile = Resources.Load<TextAsset>("LUD_CSV/test_tableau_answer");
+            csvFile = Resources.Load<TextAsset>("LUD_CSV/combinaisons_depeceur_alpha_2");
             rows = csvFile.text.Split('\n');
 
             foreach (string row in rows)
