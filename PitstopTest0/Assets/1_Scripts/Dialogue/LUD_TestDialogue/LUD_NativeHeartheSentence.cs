@@ -55,7 +55,7 @@ namespace Pitstop
         public void HearASentence(List<int> heardSentence)
         {
 
-            if (isCaptivated)
+            if (isCaptivated && !GetComponent<LUD_NonDialogueReactions>().isOffended)
             {
                 int sumOfSentence = ValueOfTheSentence(heardSentence);
 
@@ -66,16 +66,16 @@ namespace Pitstop
                 while (answerFound == false)
                 {
 
-                    if (index > FindObjectOfType<LUD_CsvToDataConvertor>().nativeReactionList.Count - 1)    //s'il ne trouve aucun match
+                    if (index > GetComponent<LUD_CsvToDataConvertor>().nativeReactionList.Count - 1)    //s'il ne trouve aucun match
                     {
-                        currentTestReaction = FindObjectOfType<LUD_CsvToDataConvertor>().nativeReactionList[0];     //il prend la première réponse qui est un "? . ."
+                        currentTestReaction = GetComponent<LUD_CsvToDataConvertor>().nativeReactionList[0];     //il prend la première réponse qui est un "? . ."
                         NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3, false);
                         answerFound = true;
                     }
 
                     else
                     {
-                        currentTestReaction = FindObjectOfType<LUD_CsvToDataConvertor>().nativeReactionList[index];
+                        currentTestReaction = GetComponent<LUD_CsvToDataConvertor>().nativeReactionList[index];
                         bool isThisReactionTriggered = false;
 
                         if (currentTestReaction.testOperation == "divide")
@@ -142,7 +142,7 @@ namespace Pitstop
         void DisplayingExclamationPoint(bool isDisplayed)
         {
             dialogueSpace.SetActive(false);
-            FindObjectOfType<LUD_DialogueAppearance>().isDialogueSpaceActive = false;
+            GetComponent<LUD_DialogueAppearance>().isDialogueSpaceActive = false;
 
             if (isDisplayed)
             {
@@ -168,16 +168,15 @@ namespace Pitstop
             else if (code == "show_the_way")
             {
                 GetComponent<LUD_NonDialogueReactions>().ShowTheWay();
-                return true;
+                return false;
             }
             else if (code == "native_offended")
             {
-                GetComponent<LUD_NonDialogueReactions>().NativeOffended();
+                GetComponent<LUD_NonDialogueReactions>().StartCoroutine("LaunchTheDesactivcationaAndReturnToNormal"); 
                 return true;
             }
 
-
-
+            
             else
             {
 

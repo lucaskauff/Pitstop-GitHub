@@ -8,10 +8,9 @@ namespace Pitstop
     public class LUD_TestExploreWithMouseWheel : MonoBehaviour
     {
 
-        [SerializeField]
-        GameObject dialogueWheel;
-        [SerializeField]
-        Image[] displayedSentence;
+        
+        public GameObject dialogueWheel;
+        public Image[] displayedSentence;
 
 
 
@@ -23,9 +22,9 @@ namespace Pitstop
         private List<Image> spriteSentenceUI = new List<Image>();
 
         [Header("Natives Parameters")]
+        
 
-        [SerializeField]
-        GameObject[] nativesList;
+        public GameObject[] nativesList;
 
         [Header("Dialogue Wheel Button")]
 

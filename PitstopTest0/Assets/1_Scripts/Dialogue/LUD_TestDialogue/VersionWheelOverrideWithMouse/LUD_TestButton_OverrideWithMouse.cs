@@ -7,8 +7,8 @@ namespace Pitstop
 {
     public class LUD_TestButton_OverrideWithMouse : MonoBehaviour
     {
-        [SerializeField]
-        GameObject dialogueWheel;
+        
+        public GameObject dialogueWheel;
         [SerializeField]
         Image[] displayedSentence;
 
@@ -35,7 +35,7 @@ namespace Pitstop
         public Sprite selectedButton;
 
         private int actualIndex = 0;
-        private float decimalOfActualIndex = 0f;
+        //private float decimalOfActualIndex = 0f;
         /*
         [SerializeField, Range(0.1f, 1f)]        //if we go further than 1, some sign would be avoid (and we don't want this to happen)
         private float sensibilityOfMouseWheel = 1f;
