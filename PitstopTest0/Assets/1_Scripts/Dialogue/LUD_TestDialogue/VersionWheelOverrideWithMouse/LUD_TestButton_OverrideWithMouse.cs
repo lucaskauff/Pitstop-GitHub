@@ -9,9 +9,10 @@ namespace Pitstop
     {
         
         public GameObject dialogueWheel;
+        /*
         [SerializeField]
         Image[] displayedSentence;
-
+        */
 
 
         [Header("Sentence Parameters")]
@@ -28,13 +29,16 @@ namespace Pitstop
 
         [Header("Dialogue Wheel Button")]
 
+        /*
         [SerializeField]
         List<Button> dialogueWheelButtons = new List<Button>();
+        */
 
         public Sprite unSelectedButton;
         public Sprite selectedButton;
 
         private int actualIndex = 0;
+        
         //private float decimalOfActualIndex = 0f;
         /*
         [SerializeField, Range(0.1f, 1f)]        //if we go further than 1, some sign would be avoid (and we don't want this to happen)
@@ -66,6 +70,7 @@ namespace Pitstop
             {
                 DeleteLastWord();
             }
+            
             /*
             float mouseScrollwheelValue = Input.GetAxis("Mouse ScrollWheel");
 
@@ -75,19 +80,8 @@ namespace Pitstop
             }
             */
 
-            //float mouseX = Input.mousePosition.x;
-            //float mouseY = Input.mousePosition.y;
-            Vector3 mouseScreenPosition = Camera.main.WorldToScreenPoint(new Vector3 (Input.mousePosition.x, Input.mousePosition.x, Camera.main.transform.position.z));
             
-
-            Debug.Log("Mouse (" + mouseScreenPosition.x + ";" + mouseScreenPosition.y + ")");
-
-
-
-            if (Input.GetKeyDown(KeyCode.Mouse2))
-            {
-                dialogueWheelButtons[actualIndex].GetComponent<LUD_TestButton>().WhenClicked();
-            }
+            
 
         }
 
@@ -185,6 +179,7 @@ namespace Pitstop
             }
         }
 
+        /*
         private void ModifyIndexDialogueWheelSign(float value)
         {
 
@@ -224,14 +219,14 @@ namespace Pitstop
             {
                 actualIndex = 0;
             }
-            */
+            
 
             actualIndex = (int)value / 30;
 
             HighLightNewUiSign(dialogueWheelButtons[actualIndex]);
 
-        }
-
+        }*/
+        
         void UnLightOldUiSign(Button uiSign) //unlight the previous highlighted sign
         {
             uiSign.GetComponent<Image>().sprite = unSelectedButton;

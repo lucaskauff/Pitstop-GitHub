@@ -163,7 +163,7 @@ namespace Pitstop
             else if (code == "repeat")
             {
                 GetComponent<LUD_NonDialogueReactions>().Repeat();
-                return false;
+                return true;
             }
             else if (code == "show_the_way")
             {

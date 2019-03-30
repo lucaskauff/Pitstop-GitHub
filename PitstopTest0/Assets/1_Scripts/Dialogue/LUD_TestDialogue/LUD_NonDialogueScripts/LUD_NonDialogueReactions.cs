@@ -46,10 +46,7 @@ namespace Pitstop
             }
         }
 
-
-
-
-
+        
 
 
         public void GoDown()
@@ -80,8 +77,9 @@ namespace Pitstop
 
         public void Repeat()
         {
-            Debug.Log("Repeat last sentence"); 
+            //Debug.Log("Repeat last sentence"); 
         }
+
 
         public void ShowTheWay()
         {
