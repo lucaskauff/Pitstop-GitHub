@@ -6,6 +6,7 @@ namespace Pitstop
 {
     public class RootBehaviour2 : MonoBehaviour
     {
+        //Public
         public LineRenderer liana;
         public GameObject player;
         public GameObject[] hookpoints;
@@ -15,6 +16,7 @@ namespace Pitstop
         public EnemyHealthManager bossHealth;
         public bool mark;
 
+        //Private
         int layerMask;
         [SerializeField]
         float lifeInSeconds;
@@ -23,10 +25,17 @@ namespace Pitstop
         private Vector2 mousePos;
         [SerializeField]
         bool preview = true;
-        [SerializeField]
         float Angle1;
+        float Angle2;
         [SerializeField]
         Vector2 playerPos;
+        Transform impactPos;
+        [SerializeField]
+        ScannableObjectBehaviour scanObjBeh;
+        [SerializeField]
+        Rigidbody2D rb;
+        [SerializeField]
+        float velocityX;
 
         private void Start()
         {
@@ -168,6 +177,8 @@ namespace Pitstop
 
                 if (trip.collider != null)
                 {
+                    Debug.Log(trip.collider.gameObject.name);
+
                     if (trip.collider.tag == "Enemy")
                     {
                         Debug.Log(trip.collider.name);
@@ -177,11 +188,12 @@ namespace Pitstop
 
                     if (trip.collider.tag == "ObjectApple")
                     {
-                        Transform impactPos = (trip.collider.transform);
-                        Vector2 shootVect = new Vector2(impactPos.position.x - playerPos.x, impactPos.position.y - trip.collider.transform.position.y);
-                        Vector2 pillarVect = new Vector2(hookpoints[1].transform.position.x - hookpoints[0].transform.position.x, hookpoints[1].transform.position.y - hookpoints[0].transform.position.y);
-                        Angle1 = Vector2.Angle(pillarVect, shootVect);
-                        Debug.Log("Angle is" + Angle1);
+                        //StartCoroutine(Bounce());
+                        rb = crys.cloneProj.GetComponent<Rigidbody2D>();
+                        velocityX = rb.velocity.x;
+                        scanObjBeh = crys.cloneProj.GetComponent<ScannableObjectBehaviour>();
+                        impactPos = (trip.collider.transform);
+                        AppleBounce();                   
                     }
 
                 }
@@ -210,8 +222,27 @@ namespace Pitstop
         }
 
         void AppleBounce()
-        {
+        {            
             playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+            Vector2 shootVect = playerPos;      
+            Vector2 pillarVect = impactPos.position;
+            Angle1 = Vector2.Angle(pillarVect, shootVect);
+            Angle2 = 180 - Angle1;
+
+            Debug.Log("Angle is" + Angle1);
+            Debug.Log("Angle 2 is" + Angle2);
+
+            Vector2 result = new Vector2(Mathf.Sin(Angle2), Mathf.Cos(Angle2));
+            Debug.Log(result);
+
+            scanObjBeh.targetPos = result;
+
+            /*else if (rb.velocity.x < 0f)
+            {
+                scanObjBeh.targetPos = -result;
+            }*/
+
+            scanObjBeh.Shoot();
         }
 
         IEnumerator EnemyDamage()
@@ -225,6 +256,17 @@ namespace Pitstop
             rush.rushSpeed = -(rush.rushSpeed);
 
         }
+
+        /*IEnumerator Bounce()
+        {
+            Vector2 shootVect = player.transform.position;
+            Vector2 pillarVect = impactPos.position;
+            Angle1 = Vector2.Angle(pillarVect, shootVect);
+            Angle2 = 180 - Angle1;
+            yield return new WaitForSeconds(1f);
+            Debug.Log("Angle is" + Angle1);
+            Debug.Log("Angle 2 is" + Angle2);      
+        }*/
     }
 
 }

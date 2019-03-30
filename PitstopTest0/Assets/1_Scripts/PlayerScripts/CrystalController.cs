@@ -37,7 +37,7 @@ namespace Pitstop
         public GameObject objectHitted;
         GameObject objectOnScan;
         float fireRate = 0;
-        GameObject cloneProj;
+        
 
         Vector2 playerPosGround;
         Vector2 cursorPos;
@@ -52,6 +52,7 @@ namespace Pitstop
         public GameObject scannedObject;
         public GameObject circularRange;
         public LayerMask raycastLayerMask;
+        public GameObject cloneProj;
 
         private void Start()
         {
