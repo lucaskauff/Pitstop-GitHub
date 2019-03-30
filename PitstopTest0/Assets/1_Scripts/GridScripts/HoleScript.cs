@@ -8,8 +8,9 @@ namespace Pitstop
     {
         SceneLoader sceneLoader;
 
-        [SerializeField] float timePlayerHasToReact = 0.1f;
+        [SerializeField] float timePlayerHasToReact = 1;
         [SerializeField] PlayerControllerIso playerControllerIso = default;
+        [SerializeField] GameObject player = default;
 
         private bool playerReallyFell = false;
 
