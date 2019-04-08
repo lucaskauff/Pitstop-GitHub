@@ -7,7 +7,7 @@ namespace Pitstop
     public class CrystalRecuperation : MonoBehaviour
     {
         [SerializeField]
-        Animator whatElementShouldAppear;
+        Animator whatElementShouldAppear = default;
         [SerializeField]
         GameObject whatElementShouldDisappear;
 

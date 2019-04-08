@@ -6,6 +6,10 @@ namespace Pitstop
 {
     public class GorillaBehaviour : MonoBehaviour
     {
+        //MyComponents
+        Rigidbody2D myRb;
+        Animator myAnim;
+
         //SerializedField
         [SerializeField]
         float viewRangeRad;
@@ -29,14 +33,12 @@ namespace Pitstop
         public Transform viewRange;
         public GameObject target;
         public GameObject player;
-        //[SerializeField]
         public float rushSpeed = 3;
         public float rushTime = 2;
+        public bool isArrived;
 
         //Private
-        Rigidbody2D myRb;
-
-        public bool isArrived;
+        //Walk variables
         bool isWalking;
         Vector2 minWalkPoint;
         Vector2 maxWalkPoint;
@@ -45,16 +47,20 @@ namespace Pitstop
         int WalkDirection;
         bool hasWalkZone;
 
+        //
         bool col = false;
         Vector3 targetPos;
         bool followTargetCheck = false;
         float originalRushTime;
+
+        //
         bool stunCheck = false;
         float originalStunTime;
 
         void Start()
         {
             myRb = GetComponent<Rigidbody2D>();
+            myAnim = GetComponent<Animator>();
 
             viewRange.localScale *= viewRangeRad;
             originalRushTime = rushTime;
@@ -188,6 +194,7 @@ namespace Pitstop
                     }
 
                     transform.position = Vector2.MoveTowards(transform.position, targetPos, rushSpeed * Time.deltaTime);
+
 
                     if (col || this.transform.position == targetPos || rushTime <= 0)
                     {
