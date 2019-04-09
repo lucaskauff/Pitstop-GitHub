@@ -14,7 +14,7 @@ namespace Pitstop
         [SerializeField]
         string nextSceneName;
         [SerializeField]
-        PlayerControllerIso playerControllerIso;
+        PlayerControllerIso playerControllerIso = default;
 
         private void Start()
         {
