@@ -15,7 +15,16 @@ public class DetectZaynPassingThrough : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            myAnim.SetBool("Crossed", false);
             myAnim.SetTrigger("Pastro");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            myAnim.SetBool("Crossed", true);
         }
     }
 }

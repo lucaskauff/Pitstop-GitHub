@@ -10,7 +10,7 @@ namespace Pitstop
         Rigidbody2D myRb;
         Animator myAnim;
 
-        //SerializedField
+        //Serializable
         [SerializeField]
         float viewRangeRad;
         [SerializeField]
@@ -195,7 +195,6 @@ namespace Pitstop
 
                     transform.position = Vector2.MoveTowards(transform.position, targetPos, rushSpeed * Time.deltaTime);
 
-
                     if (col || this.transform.position == targetPos || rushTime <= 0)
                     {
                         isArrived = true;
@@ -215,18 +214,9 @@ namespace Pitstop
         {
             col = true;
 
-            if (other.gameObject.name == "Zayn" || other.gameObject.name == "Native")
+            if ((other.gameObject.tag == "Player" || other.gameObject.name == "Native") && !stunCheck)
             {
                 player.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealing);
-            }
-        }
-
-        IEnumerator Stunned()
-        {
-            while (stunTime > 0)
-            {
-                yield return new WaitForSeconds(1);
-                stunTime--;
             }
         }
 
@@ -236,6 +226,15 @@ namespace Pitstop
             {
                 yield return new WaitForSeconds(1);
                 rushTime--;
+            }
+        }
+
+        IEnumerator Stunned()
+        {
+            while (stunTime > 0)
+            {
+                yield return new WaitForSeconds(1);
+                stunTime--;
             }
         }
     }
