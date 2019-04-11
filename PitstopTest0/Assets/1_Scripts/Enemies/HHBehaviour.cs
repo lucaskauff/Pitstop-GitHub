@@ -6,9 +6,12 @@ namespace Pitstop
 {
     public class HHBehaviour : MonoBehaviour
     {
+        //My Components
+        Rigidbody2D myRb;
+
         //SerializedField
         [SerializeField]
-        float viewRangeRad;
+        float viewRangeRad = 1;
         [SerializeField]
         int damageDealing = 1;
         [SerializeField]
@@ -22,20 +25,17 @@ namespace Pitstop
         [SerializeField]
         float rushTime = 2;
         [SerializeField]
-        float rushRatio = 1.25f;
-        [SerializeField]
         float stunTime = 3;
+        //[SerializeField] float rushRatio = 1.25f;
 
         //Public
-        public GameObject walkZone;
-        public GameObject viewRange;
-        public GameObject target;
-        public GameObject player;
+        public GameObject walkZone = default;
+        public GameObject viewRange = default;
+        public GameObject target = default;
+        public GameObject player = default;
+        public bool isArrived = false;
 
         //Private
-        Rigidbody2D myRb;
-
-        public bool isArrived;
         bool isWalking;
         Vector2 minWalkPoint;
         Vector2 maxWalkPoint;

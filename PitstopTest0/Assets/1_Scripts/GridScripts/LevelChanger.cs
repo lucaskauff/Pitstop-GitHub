@@ -6,13 +6,16 @@ namespace Pitstop
 {
     public class LevelChanger : MonoBehaviour
     {
+        //GameManager
         SceneLoader sceneLoader;
 
+        //My Components
         [SerializeField]
-        Animator myAnim;
+        Animator myAnim = default;
 
+        //Serializable
         [SerializeField]
-        string nextSceneName;
+        string nextSceneName = null;
         [SerializeField]
         PlayerControllerIso playerControllerIso = default;
 

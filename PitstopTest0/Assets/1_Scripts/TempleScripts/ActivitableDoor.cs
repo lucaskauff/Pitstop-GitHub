@@ -9,13 +9,13 @@ namespace Pitstop
         //Animator myAnim;
 
         [SerializeField]
-        GameObject doorCollision;
+        GameObject doorCollision = default;
         [SerializeField]
-        GameObject door1;
+        GameObject door1 = default;
         [SerializeField]
-        GameObject door2;
+        GameObject door2 = default;
         [SerializeField]
-        PressurePlateBehaviour[] neededPressurePlatesToOpen;
+        PressurePlateBehaviour[] neededPressurePlatesToOpen = default;
 
         private bool allPressurePlatesOk = false;
 

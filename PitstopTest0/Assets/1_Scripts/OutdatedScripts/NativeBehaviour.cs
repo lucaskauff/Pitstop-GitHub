@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class NativeBehaviour : MonoBehaviour
 {
-    public string whereToShoot;
-
-    public Transform[] spearSpawners;
-    public GameObject spear;
+    public string whereToShoot = default;
+    public Transform[] spearSpawners = default;
+    public GameObject spear = default;
 
     [SerializeField]
-    float throwRange;
+    float throwRange = default;
 
     Vector2 nativePos;
     GameObject cloneSpear;

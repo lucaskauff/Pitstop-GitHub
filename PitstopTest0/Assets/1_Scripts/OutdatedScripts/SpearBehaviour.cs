@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class SpearBehaviour : MonoBehaviour
 {
+    //[SerializeField] float dmgDealing = 0;
     [SerializeField]
-    float dmgDealing;
-    [SerializeField]
-    float throwSpeed;
+    float throwSpeed = 1;
 
-    public Vector2 targetPos;
+    public Vector2 targetPos = default;
     public bool isFired = false;
 
     private void Update()

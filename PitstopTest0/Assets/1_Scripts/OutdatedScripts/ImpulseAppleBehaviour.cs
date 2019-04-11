@@ -7,10 +7,10 @@ namespace Pitstop
     public class ImpulseAppleBehaviour : MonoBehaviour
     {
         [SerializeField]
-        float shockwaveLength;
+        float shockwaveLength = default;
 
-        public ScannableObjectBehaviour scannableObjectBehaviour;
-        public GameObject shockwave;
+        public ScannableObjectBehaviour scannableObjectBehaviour = default;
+        public GameObject shockwave = default;
 
         private void Start()
         {

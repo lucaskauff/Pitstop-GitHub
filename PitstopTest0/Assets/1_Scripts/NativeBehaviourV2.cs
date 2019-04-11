@@ -5,10 +5,10 @@ using UnityEngine;
 public class NativeBehaviourV2 : MonoBehaviour
 {
     [SerializeField]
-    float moveSpeed;
+    float moveSpeed = 1;
 
     //public GameObject[] interestPoints;
-    public Transform whereToGo;
+    public Transform whereToGo = default;
     public bool hasToMove = false;
 
     private void Update()

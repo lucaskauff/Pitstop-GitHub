@@ -6,9 +6,12 @@ namespace Pitstop
 {
     public class OutlineCrystal : MonoBehaviour
     {
+        //My Components
         Renderer myRenderer;
-        [SerializeField] Color color;
-        [SerializeField] ScannableObjectBehaviour scannableObjectBehaviour;
+
+        //Serializable
+        [SerializeField] Color color = default;
+        [SerializeField] ScannableObjectBehaviour scannableObjectBehaviour = default;
 
     void Start()
         {

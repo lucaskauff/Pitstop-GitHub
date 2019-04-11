@@ -8,29 +8,27 @@ namespace Pitstop
 {
     public class DialogueManager : MonoBehaviour
     {
+        //GameManager
         InputManager inputManager;
 
+        //Public
         public bool readyToDisplay = false;
+        public bool playerReading = false;
 
+        //Serializable
         [SerializeField]
         float letterSpeed = 0;
         [SerializeField]
-        float positionOut;
-        [SerializeField]
-        float popInSpeed;
-        [SerializeField]
-        float popOutSpeed;
-        [SerializeField]
-        Animator diaBox;
+        Animator diaBox = default;
         [SerializeField]
         GameObject nameText = default;
         [SerializeField]
         GameObject dialogueText = default;
         [SerializeField]
-        PlayerControllerIso playerController;
+        PlayerControllerIso playerController = default;
 
+        //Private
         Queue<string> sentences;
-        public bool playerReading = false;
 
         void Start()
         {

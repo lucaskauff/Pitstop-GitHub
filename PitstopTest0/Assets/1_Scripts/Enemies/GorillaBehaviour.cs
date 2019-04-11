@@ -12,7 +12,7 @@ namespace Pitstop
 
         //Serializable
         [SerializeField]
-        float viewRangeRad;
+        float viewRangeRad = default;
         [SerializeField]
         int damageDealing = 1;
         [SerializeField]
@@ -22,9 +22,9 @@ namespace Pitstop
         [SerializeField]
         float waitTime = 1;
         /*[SerializeField]
-        float rushTime = 2;*/
+        float rushTime = 2;
         [SerializeField]
-        float rushRatio = 1.25f;
+        float rushRatio = 1.25f;*/
         [SerializeField]
         float stunTime = 3;
 

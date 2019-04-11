@@ -7,24 +7,26 @@ namespace Pitstop
 {
     public class RockBehaviour : MonoBehaviour
     {
-        //components
+        //My Components
         Animator myAnim;
         Renderer myRend;
 
+        //Public
         public float heightWhereToSpawn;
         public float fallSpeed;
-
         public ScanData data;
 
+        //Serializable
         [SerializeField]
-        float impulseDuration;
+        float impulseDuration = default;
         [SerializeField]
-        GameObject rockDetection;
+        GameObject rockDetection = default;
         [SerializeField]
-        ScannableObjectBehaviour scannableObjectBehaviour;
+        ScannableObjectBehaviour scannableObjectBehaviour = default;
         [SerializeField]
-        CinemachineImpulseSource playerImpulseSource;
+        CinemachineImpulseSource playerImpulseSource = default;
 
+        //Private
         private bool impulseGenerated = false;
         private bool arrivalCheck = false;
         private bool fallCheck = false;

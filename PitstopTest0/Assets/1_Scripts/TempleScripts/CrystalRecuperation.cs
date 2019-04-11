@@ -9,7 +9,7 @@ namespace Pitstop
         [SerializeField]
         Animator whatElementShouldAppear = default;
         [SerializeField]
-        GameObject whatElementShouldDisappear;
+        GameObject whatElementShouldDisappear = default;
 
         bool triggerOnceCheck = false;
 
