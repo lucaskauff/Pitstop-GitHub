@@ -148,9 +148,11 @@ namespace Pitstop
 
         void Previsualisation(SpriteRenderer whatToPreviz)
         {
-            if (crystalDirection != crystalShootTarget)
+            Vector2 shootTargetTest = new Vector2(crystalShootTarget.x, crystalShootTarget.y / 2);
+
+            if (crystalDirection != shootTargetTest)
             {
-                crystalShootTarget = new Vector2(crystalShootTarget.x, crystalShootTarget.y / 2);
+                crystalShootTarget = shootTargetTest;
             }
 
             switch (scannedObject.tag)
