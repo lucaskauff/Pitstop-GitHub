@@ -6,19 +6,22 @@ namespace Pitstop
 {
     public class DialogueTrigger : MonoBehaviour
     {
+        //GameManager
         GameManager gameManager;
         
+        //Serializable
         [SerializeField]
         bool onlyActivatableOnce = false;
         [SerializeField]
         bool triggerDialogueOnStart = false;
         [SerializeField]
-        DialogueManager dialogueManager;
+        DialogueManager dialogueManager = default;
         [SerializeField]
-        Dialogue dialogueInEnglish;
+        Dialogue dialogueInEnglish = default;
         [SerializeField]
-        Dialogue dialogueInFrench;
+        Dialogue dialogueInFrench = default;
 
+        //Private
         Dialogue activeDialogue;
         bool activationCheck = false;
 

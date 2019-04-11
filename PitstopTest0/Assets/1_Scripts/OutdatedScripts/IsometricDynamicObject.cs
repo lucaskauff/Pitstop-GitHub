@@ -5,7 +5,7 @@ using UnityEngine;
 public class IsometricDynamicObject : MonoBehaviour
 {
     [SerializeField]
-    private float floorHeight;
+    private float floorHeight = 0;
 
     private SpriteRenderer myRend;
     private float spriteHalfHeight;

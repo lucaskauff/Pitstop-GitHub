@@ -7,7 +7,7 @@ namespace Pitstop
     public class Crystal : MonoBehaviour
     {
         [SerializeField]
-        float floatingSpeed;
+        float floatingSpeed = 0.25f;
         [SerializeField]
         float floatingRatio = 4;
 

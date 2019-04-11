@@ -9,6 +9,13 @@ namespace Pitstop
     {
         InputManager inputManager;
 
+        //Public
+        public UIManager uIManager;
+        public int scanProgress = 0;
+        public GameObject scannedObject;
+        public GameObject circularRange;
+        public LayerMask raycastLayerMask;
+
         //SerializedField
         [SerializeField]
         float fireSpeed = 1;
@@ -23,9 +30,9 @@ namespace Pitstop
         [SerializeField]
         int maxObjectOnScene = 1;
         [SerializeField]
-        SpriteRenderer previsualisation;
+        SpriteRenderer previsualisation = default;
         [SerializeField]
-        PrevizContact previsualisationContact;
+        PrevizContact previsualisationContact = default;
         [SerializeField]
         float previzAlphaRatio = 0.2f;
 
@@ -34,7 +41,7 @@ namespace Pitstop
         int objectCountOnScene;
         public bool hitting = false;
         GameObject objectHittedBefore;
-        public GameObject objectHitted;
+        public GameObject objectHitted = default;
         GameObject objectOnScan;
         float fireRate = 0;
         GameObject cloneProj;
@@ -45,13 +52,6 @@ namespace Pitstop
         Vector2 crystalScanTarget;
         Vector2 crystalShootTarget;
         bool canShoot = false;
-
-        //Public
-        public UIManager uIManager;
-        public int scanProgress = 0;
-        public GameObject scannedObject;
-        public GameObject circularRange;
-        public LayerMask raycastLayerMask;
 
         private void Start()
         {
@@ -148,9 +148,11 @@ namespace Pitstop
 
         void Previsualisation(SpriteRenderer whatToPreviz)
         {
-            if (crystalDirection != crystalShootTarget)
+            Vector2 shootTargetTest = new Vector2(crystalShootTarget.x, crystalShootTarget.y / 2);
+
+            if (crystalDirection != shootTargetTest)
             {
-                crystalShootTarget = new Vector2(crystalShootTarget.x, crystalShootTarget.y / 2);
+                crystalShootTarget = shootTargetTest;
             }
 
             switch (scannedObject.tag)

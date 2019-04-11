@@ -26,7 +26,7 @@ namespace Pitstop
         [SerializeField]
         float moveSpeed = 3;
         [SerializeField]
-        float dashSpeed = 30;
+        float dashSpeed = 5;
         [SerializeField]
         float dashTime = 1;
         [SerializeField]
@@ -36,6 +36,7 @@ namespace Pitstop
         Vector2 moveInput;
         public bool isMoving = false;
         Vector2 lastMove = new Vector2(1, 0);
+        float initialMoveSpeed = 0;
         float dashRate = 0;
 
         void Start()
@@ -79,14 +80,9 @@ namespace Pitstop
             {
                 Dash();
             }
-
-            if (isBeingRepulsed)
+            else if (!isBeingRepulsed)
             {
-                StartCoroutine(ComeOnAndDash(dashLength));
-            }
-            else
-            {
-                StopCoroutine(ComeOnAndDash(dashLength));
+                StopCoroutine(ComeOnAndDash());
             }
 
             //Infos to animator
@@ -108,9 +104,11 @@ namespace Pitstop
 
         private void Dash()
         {
-            isBeingRepulsed = true;
             dashRate = Time.time + dashTime;
-            myRb.velocity = lastMove * dashSpeed;
+            initialMoveSpeed = moveSpeed;
+            moveSpeed = dashSpeed;
+            isBeingRepulsed = true;
+            StartCoroutine(ComeOnAndDash());
         }
 
         private void Spawn()
@@ -118,9 +116,10 @@ namespace Pitstop
             transform.position = sceneStartingPoint.position;
         }
 
-        IEnumerator ComeOnAndDash(float length)
+        IEnumerator ComeOnAndDash()
         {
-            yield return new WaitForSeconds(length);
+            yield return new WaitForSeconds(dashLength);
+            moveSpeed = initialMoveSpeed;
             isBeingRepulsed = false;
         }
     }

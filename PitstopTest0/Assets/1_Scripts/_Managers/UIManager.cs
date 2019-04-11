@@ -21,11 +21,11 @@ namespace Pitstop
         public float aiguilleOrientation5 = 217;
 
         [Header("Player Related"), SerializeField]
-        CrystalController crystalController;
+        CrystalController crystalController = default;
         [SerializeField]
-        PlayerHealthManager playerHealthMan;
+        PlayerHealthManager playerHealthMan = default;
         [SerializeField]
-        Animator playerLifes;
+        Animator playerLifes = default;
 
         //Private
         private Quaternion aiguilleNewRotation;

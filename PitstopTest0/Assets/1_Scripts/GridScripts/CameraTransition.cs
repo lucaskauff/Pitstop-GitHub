@@ -7,13 +7,13 @@ namespace Pitstop
     public class CameraTransition : MonoBehaviour
     {
         [SerializeField]
-        GameObject virtualCameraPlayer;
+        GameObject virtualCameraPlayer = default;
         [SerializeField]
-        GameObject virtualCameraGlade;
+        GameObject virtualCameraGlade = default;
 
-        void OnTriggerStay2D(Collider2D collider)
+        void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.gameObject.name == "Zayn")
+            if (collider.gameObject.tag == "Player")
             {
                 virtualCameraGlade.SetActive(true);
                 virtualCameraPlayer.SetActive(false);
@@ -22,7 +22,7 @@ namespace Pitstop
 
         void OnTriggerExit2D(Collider2D collider)
         {
-            if (collider.gameObject.name == "Zayn")
+            if (collider.gameObject.tag == "Player")
             {
                 virtualCameraPlayer.SetActive(true);
                 virtualCameraGlade.SetActive(false);

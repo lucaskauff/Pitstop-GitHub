@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+namespace Pitstop
 {
-    public GameObject whatToSpawn;
-    GameObject theSpawnedThing;
-
-    public void SpawnTheThing()
+    public class EnemySpawner : MonoBehaviour
     {
-        theSpawnedThing = (GameObject)Instantiate(whatToSpawn, transform.position, whatToSpawn.transform.rotation);
+        [SerializeField] GameObject whatToSpawn = default;
+        [SerializeField] GameObject theSpawnedThingTarget = default;
+        GameObject theSpawnedThing;
+
+        public void SpawnTheThing()
+        {
+            theSpawnedThing = (GameObject)Instantiate(whatToSpawn, transform.position, whatToSpawn.transform.rotation);
+            theSpawnedThing.SetActive(true);
+            theSpawnedThing.GetComponent<GorillaBehaviour>().target = theSpawnedThingTarget;
+        }
     }
 }
