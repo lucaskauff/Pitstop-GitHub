@@ -3257,10 +3257,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueSystemTest_orga12_5_with_alpha_csv
       objectReference: {fileID: 0}
-    - target: {fileID: 505118434, guid: b57b09cf902beb245a6dac7c292cfc23, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 505118435, guid: b57b09cf902beb245a6dac7c292cfc23, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5265827
@@ -3305,10 +3301,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1377637274, guid: b57b09cf902beb245a6dac7c292cfc23, type: 3}
-      propertyPath: csvFile
-      value: 
-      objectReference: {fileID: 4900000, guid: 2be9a670d6f09e54f8440aee2ce57fbb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b57b09cf902beb245a6dac7c292cfc23, type: 3}
 --- !u!1001 &381778226
@@ -4146,14 +4138,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueSystemTest_orga12_5_ExploreWithMouseWheel
       objectReference: {fileID: 0}
-    - target: {fileID: 2123915118, guid: d798561de66f1054da1aaab1009a46c8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456952630, guid: d798561de66f1054da1aaab1009a46c8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2123915119, guid: d798561de66f1054da1aaab1009a46c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5265827
@@ -4198,10 +4182,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 399630964, guid: d798561de66f1054da1aaab1009a46c8, type: 3}
-      propertyPath: csvFile
-      value: 
-      objectReference: {fileID: 4900000, guid: cdca005b9ad110e42a6dd393cf976b9d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d798561de66f1054da1aaab1009a46c8, type: 3}
 --- !u!1 &460307444 stripped
@@ -14744,12 +14724,12 @@ PrefabInstance:
     - target: {fileID: 6878430871726005667, guid: 8e7bbbc5263765f499c68380fb4fbdba,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6
+      value: 5.04
       objectReference: {fileID: 0}
     - target: {fileID: 6878430871726005667, guid: 8e7bbbc5263765f499c68380fb4fbdba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6878430871726005667, guid: 8e7bbbc5263765f499c68380fb4fbdba,
         type: 3}
@@ -14814,6 +14794,11 @@ PrefabInstance:
     - target: {fileID: 6878430871961790421, guid: 8e7bbbc5263765f499c68380fb4fbdba,
         type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878430871961790421, guid: 8e7bbbc5263765f499c68380fb4fbdba,
+        type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6878430871961790420, guid: 8e7bbbc5263765f499c68380fb4fbdba,
@@ -28087,12 +28072,12 @@ PrefabInstance:
     - target: {fileID: 4341883325254114749, guid: bd219b329a353594d91bcd823ecd1d38,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6
+      value: 5.04
       objectReference: {fileID: 0}
     - target: {fileID: 4341883325254114749, guid: bd219b329a353594d91bcd823ecd1d38,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 4341883325254114749, guid: bd219b329a353594d91bcd823ecd1d38,
         type: 3}
@@ -28919,11 +28904,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogueSystemTest_orga13
-      objectReference: {fileID: 0}
-    - target: {fileID: 604497306071994326, guid: 579e739f58c6e0245ac801e6889f3231,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5231542684711226598, guid: 579e739f58c6e0245ac801e6889f3231,
         type: 3}
@@ -31310,11 +31290,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueSystemTest_orga13_OverrideWithMouse
       objectReference: {fileID: 0}
-    - target: {fileID: 1585639328562057948, guid: b3ffeb3b13f54be4ca9e9c984a851680,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3530759686292345586, guid: b3ffeb3b13f54be4ca9e9c984a851680,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31370,8 +31345,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3051018574441752039, guid: b3ffeb3b13f54be4ca9e9c984a851680, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ffeb3b13f54be4ca9e9c984a851680, type: 3}
 --- !u!222 &8146958446401240411 stripped
 CanvasRenderer:

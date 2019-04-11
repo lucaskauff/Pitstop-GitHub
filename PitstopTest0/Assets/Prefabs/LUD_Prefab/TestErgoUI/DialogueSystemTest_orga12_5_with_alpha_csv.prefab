@@ -1172,7 +1172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &505118435
 Transform:
   m_ObjectHideFlags: 0
@@ -2082,6 +2082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185e9d33ed130ec4a8659d766d2cae89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isThePlayerNear: 0
 --- !u!1 &762244182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3833,6 +3834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b73a476f1093b84489a78c69b6640f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  csvFile: {fileID: 4900000, guid: 2be9a670d6f09e54f8440aee2ce57fbb, type: 3}
 --- !u!1 &1379978162
 GameObject:
   m_ObjectHideFlags: 0
@@ -4138,6 +4140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   butcherNative: {fileID: 1826276597}
+  isPlayerInside: 0
+  isShowWhereIsEllyaAppeared: 0
 --- !u!1 &1558014347
 GameObject:
   m_ObjectHideFlags: 0
@@ -5299,6 +5303,7 @@ MonoBehaviour:
   - {fileID: 1677426383}
   WalkingSpeedOfTheNative: 5
   distanceMaxToTriggeredArrival: 0.3
+  isOffended: 0
 --- !u!1 &1833923494
 GameObject:
   m_ObjectHideFlags: 0

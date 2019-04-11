@@ -105,7 +105,12 @@ namespace Pitstop
         {
             if (sentence.Count != 0)
             {
-                nativesList[0].GetComponent<LUD_NativeHeartheSentence>().HearASentence(sentence);
+                foreach (GameObject element in nativesList)
+                {
+                    element.GetComponent<LUD_NativeHeartheSentence>().HearASentence(sentence);
+                }
+
+                //nativesList[0].GetComponent<LUD_NativeHeartheSentence>().HearASentence(sentence);
             }
 
 

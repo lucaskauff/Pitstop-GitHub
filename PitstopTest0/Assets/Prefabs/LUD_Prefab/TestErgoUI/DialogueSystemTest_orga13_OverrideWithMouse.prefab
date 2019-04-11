@@ -817,7 +817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3530759686292345586
 Transform:
   m_ObjectHideFlags: 0
@@ -3353,7 +3353,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3055553981920413895}
-  - component: {fileID: 3051018574441752039}
   - component: {fileID: 7663049152682725542}
   - component: {fileID: 246793533452080126}
   m_Layer: 0
@@ -3377,30 +3376,6 @@ Transform:
   m_Father: {fileID: 3530759686292345586}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3051018574441752039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5266673178819605755}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50350379362035d4587777ae212b512e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueWheel: {fileID: 7502254222215748997}
-  displayedSentence:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  sentence: 
-  spriteSentenceUI:
-  - {fileID: 8987699169941390138}
-  - {fileID: 7719723469959236548}
-  - {fileID: 1490913138587725603}
-  nativesList:
-  - {fileID: 4913663238835465862}
 --- !u!114 &7663049152682725542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3427,10 +3402,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueWheel: {fileID: 7502254222215748997}
-  displayedSentence:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   sentence: 
   spriteSentenceUI:
   - {fileID: 8987699169941390138}
@@ -3438,7 +3409,6 @@ MonoBehaviour:
   - {fileID: 1490913138587725603}
   nativesList:
   - {fileID: 4913663238835465862}
-  dialogueWheelButtons: []
   unSelectedButton: {fileID: 0}
   selectedButton: {fileID: 0}
 --- !u!1 &5382645779661655746
