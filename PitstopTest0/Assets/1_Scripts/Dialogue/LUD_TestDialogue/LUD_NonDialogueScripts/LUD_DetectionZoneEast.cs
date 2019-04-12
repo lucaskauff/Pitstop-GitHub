@@ -10,6 +10,7 @@ namespace Pitstop
         public GameObject butcherNative;
         [SerializeField] bool isPlayerInside = false;
         [SerializeField] bool isShowWhereIsEllyaAppeared = false;
+        public GameObject EndOfSceneTextTrigger;
 
         private void Update()
         {
@@ -17,6 +18,7 @@ namespace Pitstop
             {
                 butcherNative.GetComponent<LUD_NonDialogueReactions>().ShowWhereIsEllya();
                 isShowWhereIsEllyaAppeared = true;
+                EndOfSceneTextTrigger.SetActive(true);
             }
         }
 
