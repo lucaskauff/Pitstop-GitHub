@@ -24,9 +24,9 @@ namespace Pitstop
         [SerializeField]
         float descanSpeed = 1;
         [Range(1, 10)]
-        public float maxScanRange = 5;
+        public float maxScanRange = 3;
         [Range(1, 10), SerializeField]
-        float maxShootRange = 5;
+        float maxShootRange = 3;
         [SerializeField]
         int maxObjectOnScene = 1;
         [SerializeField]
@@ -150,7 +150,11 @@ namespace Pitstop
         {
             Vector2 shootTargetTest = new Vector2(crystalShootTarget.x, crystalShootTarget.y / 2);
 
-            if (crystalDirection != shootTargetTest)
+            if (Vector2.Distance(playerPosGround, cursorPos) <= Vector2.Distance(playerPosGround, shootTargetTest))
+            {
+                crystalShootTarget = crystalDirection;
+            }
+            else
             {
                 crystalShootTarget = shootTargetTest;
             }

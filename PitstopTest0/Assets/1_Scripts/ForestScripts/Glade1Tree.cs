@@ -6,11 +6,11 @@ namespace Pitstop
 {
     public class Glade1Tree : MonoBehaviour
     {
-        [SerializeField] GameObject impulseApple = default;
+        [SerializeField] ScannableObjectBehaviour impulseApple = default;
         [SerializeField] Transform appleImpactOnGround = default;
         [SerializeField] float fallSpeed = 2;
 
-        private void OnColliderEnter2D(Collider2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Enemy")
             {
@@ -20,10 +20,10 @@ namespace Pitstop
 
         public void SpawnAnApple()
         {
-            impulseApple.GetComponent<ScannableObjectBehaviour>().targetPos = appleImpactOnGround.position;
-            impulseApple.GetComponent<ScannableObjectBehaviour>().projectileSpeed = fallSpeed;
-            impulseApple.GetComponent<ScannableObjectBehaviour>().isScannable = false;
-            impulseApple.GetComponent<ScannableObjectBehaviour>().isFired = true;
+            impulseApple.targetPos = appleImpactOnGround.position;
+            impulseApple.projectileSpeed = fallSpeed;
+            impulseApple.isScannable = false;
+            impulseApple.isFired = true;
         }
     }
 }
