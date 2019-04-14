@@ -454,11 +454,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyActivatableOnce: 0
+  triggerDialogueOnStart: 0
   dialogueManager: {fileID: 0}
-  dialogue:
+  dialogueInEnglish:
     name: 
     sentences: []
-  onlyActivatableOnce: 0
+  dialogueInFrench:
+    name: 
+    sentences: []
 --- !u!1 &1360985367
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +890,7 @@ GameObject:
   - component: {fileID: 1506693986}
   m_Layer: 2
   m_Name: ShootableAreaTilemap
-  m_TagString: Untagged
+  m_TagString: ShootableArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
