@@ -6,9 +6,7 @@ namespace Pitstop
 {
     public class PlayerDialogueManager : MonoBehaviour
     {
-        //SerializedField
-        [SerializeField]
-        float raycastDistance = 10;
+        //[SerializeField] float raycastDistance = 10;
 
         public bool spaceHold = false;
 

@@ -10,7 +10,7 @@ namespace Pitstop
 
         [SerializeField] float timePlayerHasToReact = 1;
         [SerializeField] PlayerControllerIso playerControllerIso = default;
-        [SerializeField] GameObject player = default;
+        //[SerializeField] GameObject player = default;
 
         private bool playerReallyFell = false;
 

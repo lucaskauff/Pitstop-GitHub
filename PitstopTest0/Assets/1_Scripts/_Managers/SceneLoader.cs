@@ -9,7 +9,7 @@ namespace Pitstop
     {
         public string activeScene;
 
-        public void Start()
+        public void Awake()
         {
             activeScene = SceneManager.GetActiveScene().name;
         }

@@ -8,6 +8,8 @@ namespace Pitstop
 {
     public class PlayerControllerIso : MonoBehaviour
     {
+        //GameManager
+        SceneLoader sceneLoader;
         InputManager inputManager;
 
         //My components
@@ -17,6 +19,7 @@ namespace Pitstop
 
         //Public
         public bool canMove = true;
+        public bool isMoving = false;
         public bool isBeingRepulsed = false;
         public float isometricRatio = 2;
 
@@ -26,7 +29,7 @@ namespace Pitstop
         [SerializeField]
         float moveSpeed = 3;
         [SerializeField]
-        float dashSpeed = 30;
+        float dashSpeed = 5;
         [SerializeField]
         float dashTime = 1;
         [SerializeField]
@@ -34,12 +37,13 @@ namespace Pitstop
 
         //Private
         Vector2 moveInput;
-        public bool isMoving = false;
-        Vector2 lastMove = new Vector2(1, 0);
+        Vector2 lastMove;
+        float initialMoveSpeed = 0;
         float dashRate = 0;
 
         void Start()
         {
+            sceneLoader = GameManager.Instance.sceneLoader;
             inputManager = GameManager.Instance.inputManager;
 
             myRb = GetComponent<Rigidbody2D>();
@@ -47,7 +51,29 @@ namespace Pitstop
             myAnim = GetComponent<Animator>();
 
             Spawn();
+        }
 
+        private void Spawn()
+        {
+            //Orientations of the player on start of scene
+            switch (sceneLoader.activeScene)
+            {
+                case "1_TEMPLE":
+                    lastMove = new Vector2(1, 0);
+                    break;
+
+                case "2_FOREST":
+                    lastMove = new Vector2(1, 1);
+                    break;
+
+                case "3_VILLAGE":
+                    lastMove = new Vector2(1, 1);
+                    break;
+            }
+
+            myAnim.SetFloat("LastMoveX", lastMove.x);
+            myAnim.SetFloat("LastMoveY", lastMove.y);
+            transform.position = sceneStartingPoint.position;
             canMove = true;
         }
 
@@ -79,14 +105,9 @@ namespace Pitstop
             {
                 Dash();
             }
-
-            if (isBeingRepulsed)
+            else if (!isBeingRepulsed)
             {
-                StartCoroutine(ComeOnAndDash(dashLength));
-            }
-            else
-            {
-                StopCoroutine(ComeOnAndDash(dashLength));
+                StopCoroutine(ComeOnAndDash());
             }
 
             //Infos to animator
@@ -108,19 +129,17 @@ namespace Pitstop
 
         private void Dash()
         {
-            isBeingRepulsed = true;
             dashRate = Time.time + dashTime;
-            myRb.velocity = lastMove * dashSpeed;
+            initialMoveSpeed = moveSpeed;
+            moveSpeed = dashSpeed;
+            isBeingRepulsed = true;
+            StartCoroutine(ComeOnAndDash());
         }
 
-        private void Spawn()
+        IEnumerator ComeOnAndDash()
         {
-            transform.position = sceneStartingPoint.position;
-        }
-
-        IEnumerator ComeOnAndDash(float length)
-        {
-            yield return new WaitForSeconds(length);
+            yield return new WaitForSeconds(dashLength);
+            moveSpeed = initialMoveSpeed;
             isBeingRepulsed = false;
         }
     }

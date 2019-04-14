@@ -6,9 +6,13 @@ namespace Pitstop
 {
     public class GorillaBehaviour : MonoBehaviour
     {
-        //SerializedField
+        //MyComponents
+        Rigidbody2D myRb;
+        Animator myAnim;
+
+        //Serializable
         [SerializeField]
-        float viewRangeRad;
+        float viewRangeRad = default;
         [SerializeField]
         int damageDealing = 1;
         [SerializeField]
@@ -18,9 +22,9 @@ namespace Pitstop
         [SerializeField]
         float waitTime = 1;
         /*[SerializeField]
-        float rushTime = 2;*/
+        float rushTime = 2;
         [SerializeField]
-        float rushRatio = 1.25f;
+        float rushRatio = 1.25f;*/
         [SerializeField]
         float stunTime = 3;
 
@@ -29,14 +33,12 @@ namespace Pitstop
         public Transform viewRange;
         public GameObject target;
         public GameObject player;
-        //[SerializeField]
         public float rushSpeed = 3;
         public float rushTime = 2;
+        public bool isArrived;
 
         //Private
-        Rigidbody2D myRb;
-
-        public bool isArrived;
+        //Walk variables
         bool isWalking;
         Vector2 minWalkPoint;
         Vector2 maxWalkPoint;
@@ -45,16 +47,20 @@ namespace Pitstop
         int WalkDirection;
         bool hasWalkZone;
 
+        //
         bool col = false;
         Vector3 targetPos;
         bool followTargetCheck = false;
         float originalRushTime;
+
+        //
         bool stunCheck = false;
         float originalStunTime;
 
         void Start()
         {
             myRb = GetComponent<Rigidbody2D>();
+            myAnim = GetComponent<Animator>();
 
             viewRange.localScale *= viewRangeRad;
             originalRushTime = rushTime;
@@ -208,18 +214,9 @@ namespace Pitstop
         {
             col = true;
 
-            if (other.gameObject.name == "Zayn" || other.gameObject.name == "Native")
+            if ((other.gameObject.tag == "Player" || other.gameObject.name == "Native") && !stunCheck)
             {
                 player.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealing);
-            }
-        }
-
-        IEnumerator Stunned()
-        {
-            while (stunTime > 0)
-            {
-                yield return new WaitForSeconds(1);
-                stunTime--;
             }
         }
 
@@ -229,6 +226,15 @@ namespace Pitstop
             {
                 yield return new WaitForSeconds(1);
                 rushTime--;
+            }
+        }
+
+        IEnumerator Stunned()
+        {
+            while (stunTime > 0)
+            {
+                yield return new WaitForSeconds(1);
+                stunTime--;
             }
         }
     }

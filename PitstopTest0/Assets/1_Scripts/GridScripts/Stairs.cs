@@ -7,10 +7,12 @@ namespace Pitstop
 {
     public class Stairs : MonoBehaviour
     {
+        //My Components
         Collider2D myCollider;
-
         [SerializeField]
-        CinemachineImpulseSource myImpulseSource;
+        CinemachineImpulseSource myImpulseSource = default;
+
+        //Serializable
         [SerializeField]
         float stairsIsometricRatio = 0.8f;
 

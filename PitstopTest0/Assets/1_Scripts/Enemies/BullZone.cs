@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BullZone : MonoBehaviour
 {
+    //[SerializeField] GameObject bull = default;
     [SerializeField]
-    GameObject bull;
-    [SerializeField]
-    BullController bullControl;
+    BullController bullControl = default;
 
     void OnTriggerEnter2D(Collider2D other)
     {
