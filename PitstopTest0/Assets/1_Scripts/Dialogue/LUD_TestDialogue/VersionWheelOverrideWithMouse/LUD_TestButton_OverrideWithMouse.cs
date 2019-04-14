@@ -8,9 +8,8 @@ namespace Pitstop
     public class LUD_TestButton_OverrideWithMouse : MonoBehaviour
     {
         [SerializeField]
-        GameObject dialogueWheel;
-        [SerializeField]
-        Image[] displayedSentence;
+        GameObject dialogueWheel = default;
+        //[SerializeField] Image[] displayedSentence = default;
 
 
 
@@ -24,7 +23,7 @@ namespace Pitstop
         [Header("Natives Parameters")]
 
         [SerializeField]
-        GameObject[] nativesList;
+        GameObject[] nativesList = default;
 
         [Header("Dialogue Wheel Button")]
 
@@ -35,7 +34,7 @@ namespace Pitstop
         public Sprite selectedButton;
 
         private int actualIndex = 0;
-        private float decimalOfActualIndex = 0f;
+        //private float decimalOfActualIndex = 0f;
         /*
         [SerializeField, Range(0.1f, 1f)]        //if we go further than 1, some sign would be avoid (and we don't want this to happen)
         private float sensibilityOfMouseWheel = 1f;

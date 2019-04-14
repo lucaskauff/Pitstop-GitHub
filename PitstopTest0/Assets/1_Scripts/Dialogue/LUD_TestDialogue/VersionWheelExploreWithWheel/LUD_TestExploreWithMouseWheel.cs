@@ -9,9 +9,8 @@ namespace Pitstop
     {
 
         [SerializeField]
-        GameObject dialogueWheel;
-        [SerializeField]
-        Image[] displayedSentence;
+        GameObject dialogueWheel = default;
+        //[SerializeField] Image[] displayedSentence = default;
 
 
 
@@ -25,7 +24,7 @@ namespace Pitstop
         [Header("Natives Parameters")]
 
         [SerializeField]
-        GameObject[] nativesList;
+        GameObject[] nativesList = default;
 
         [Header("Dialogue Wheel Button")]
 
