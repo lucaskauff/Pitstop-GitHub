@@ -55416,6 +55416,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1360985367, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
+      propertyPath: m_TagString
+      value: ShootableArea
+      objectReference: {fileID: 0}
     - target: {fileID: 1494004149, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.size
       value: 1
@@ -72820,6 +72824,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PointsInLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.81
+      objectReference: {fileID: 0}
     - target: {fileID: 3556835858144363793, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -72874,16 +72888,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 14.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.81
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaae4f4779dd9644fa2811e5ecbc686f, type: 3}
@@ -73261,6 +73265,16 @@ PrefabInstance:
       propertyPath: canMove
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8453608900050335717, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 2100673902}
+    - target: {fileID: 8453608900050335717, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: maxShootRange
+      value: 5.4
+      objectReference: {fileID: 0}
     - target: {fileID: 8558634675562326383, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: postProRedVignette
@@ -73280,36 +73294,6 @@ PrefabInstance:
         type: 3}
       propertyPath: feedbackRatio
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8453608900050335717, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: uIManager
-      value: 
-      objectReference: {fileID: 2100673902}
-    - target: {fileID: 8453608900050335717, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: maxShootRange
-      value: 5.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550475, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: m_ImpulseDefinition.m_AmplitudeGain
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550475, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: m_ImpulseDefinition.m_FrequencyGain
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550475, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: m_ImpulseDefinition.m_ImpactRadius
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550475, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: m_ImpulseDefinition.m_DissipationDistance
-      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8827798457674550477, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
@@ -73365,6 +73349,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550475, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_AmplitudeGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550475, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_FrequencyGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550475, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_ImpactRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550475, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_DissipationDistance
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da7a6d321a067ed49854b9c1c18766bc, type: 3}
@@ -76792,6 +76796,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
+        type: 3}
+      propertyPath: crystalController
+      value: 
+      objectReference: {fileID: 933587522}
+    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
+        type: 3}
+      propertyPath: playerHealthMan
+      value: 
+      objectReference: {fileID: 933587524}
+    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
+        type: 3}
+      propertyPath: playerLifes
+      value: 
+      objectReference: {fileID: 2100673832}
+    - target: {fileID: 925001519793593191, guid: 68ece97d118f2ee42b76be1e32598ade,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 933587523}
     - target: {fileID: 7457692282874141182, guid: 68ece97d118f2ee42b76be1e32598ade,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -76917,31 +76941,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 925001519793593191, guid: 68ece97d118f2ee42b76be1e32598ade,
-        type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 933587523}
     - target: {fileID: 7457692281373351656, guid: 68ece97d118f2ee42b76be1e32598ade,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -130
       objectReference: {fileID: 0}
-    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
-        type: 3}
-      propertyPath: crystalController
-      value: 
-      objectReference: {fileID: 933587522}
-    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
-        type: 3}
-      propertyPath: playerHealthMan
-      value: 
-      objectReference: {fileID: 933587524}
-    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
-        type: 3}
-      propertyPath: playerLifes
-      value: 
-      objectReference: {fileID: 2100673832}
     - target: {fileID: 8369793017956727374, guid: 68ece97d118f2ee42b76be1e32598ade,
         type: 3}
       propertyPath: m_Camera

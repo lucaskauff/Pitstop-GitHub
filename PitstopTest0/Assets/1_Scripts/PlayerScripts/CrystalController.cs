@@ -69,7 +69,7 @@ namespace Pitstop
             //Vector2 crystalOrigin = playerPosGround + crystalDirection.normalized;
 
             crystalScanTarget = Vector2.ClampMagnitude(crystalDirection, maxScanRange);
-            crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
+            //crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
 
             if (scannedObject != null)
             {
@@ -79,7 +79,7 @@ namespace Pitstop
             float scanRange = Vector2.Distance(playerPosGround, (Vector2)transform.position + crystalScanTarget);
 
             RaycastHit2D scanRay = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange); //raycast's definition
-            Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
+            //Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
 
             //SCAN
             if (scanRay.collider != null && inputManager.rightClickBeingPressed)
@@ -148,16 +148,17 @@ namespace Pitstop
 
         void Previsualisation(SpriteRenderer whatToPreviz)
         {
-            Vector2 shootTargetTest = new Vector2(crystalShootTarget.x, crystalShootTarget.y / 2);
+            Vector2 shootTargetTest = crystalDirection.normalized * maxShootRange;
+            shootTargetTest = new Vector2(shootTargetTest.x, shootTargetTest.y / 2);
 
-            if (Vector2.Distance(playerPosGround, cursorPos) <= Vector2.Distance(playerPosGround, shootTargetTest))
+            if (Vector2.Distance(playerPosGround, cursorPos) <= shootTargetTest.magnitude)
             {
                 crystalShootTarget = crystalDirection;
             }
             else
             {
                 crystalShootTarget = shootTargetTest;
-            }
+            }           
 
             switch (scannedObject.tag)
             {

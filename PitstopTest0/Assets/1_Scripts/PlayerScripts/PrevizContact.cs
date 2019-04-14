@@ -6,11 +6,11 @@ namespace Pitstop
 {
     public class PrevizContact : MonoBehaviour
     {
-        public bool objectShootable = false;
+        [HideInInspector] public bool objectShootable = false;
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.gameObject.name == "ShootableAreaTilemap" || collision.gameObject.tag == "PressurePlate")
+            if (collision.gameObject.tag == "ShootableArea" || collision.gameObject.tag == "PressurePlate")
             {
                 objectShootable = true;
             }
@@ -18,10 +18,13 @@ namespace Pitstop
             {
                 objectShootable = false;
             }
+        }
 
-            if (collision.gameObject.tag == "Player")
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "ShootableArea" || collision.gameObject.tag == "PressurePlate")
             {
-                Debug.Log("ok");
+                objectShootable = false;
             }
         }
     }
