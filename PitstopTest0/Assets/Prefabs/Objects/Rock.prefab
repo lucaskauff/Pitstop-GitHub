@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 6667375955699303486}
   - component: {fileID: 6667375955699303487}
   - component: {fileID: 6667375955699303484}
-  - component: {fileID: 6667375955699303457}
-  - component: {fileID: 6966562627018181910}
   - component: {fileID: 6667375955699303459}
   - component: {fileID: 6667375955699303485}
   - component: {fileID: 6667375955699303456}
   - component: {fileID: 6667375955699303458}
+  - component: {fileID: 8068176826541340084}
   m_Layer: 0
   m_Name: Rock
   m_TagString: ObjectRock
@@ -99,7 +98,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,66 +119,6 @@ PolygonCollider2D:
       - {x: 0.34375, y: 0}
       - {x: 0.375, y: 0.09375}
       - {x: 0.375, y: 0.53125}
---- !u!50 &6667375955699303457
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6667375955699303460}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!66 &6966562627018181910
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6667375955699303460}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 6667375955699303484}
-    m_ColliderPaths:
-    - - X: 2812500
-        Y: 6250000
-      - X: -2500000
-        Y: 6250000
-      - X: -3750000
-        Y: 5937500
-      - X: -3750000
-        Y: 625000
-      - X: -2500000
-        Y: 0
-      - X: 3437500
-        Y: 0
-      - X: 3750000
-        Y: 937500
-      - X: 3750000
-        Y: 5312500
-  m_CompositePaths:
-    m_Paths: []
-  m_VertexDistance: 0.0005
 --- !u!114 &6667375955699303459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,12 +150,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc2ffa471bac9b4e93d0be6c5bb6970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heightWhereToSpawn: 2
-  fallSpeed: 5
+  heightWhereToSpawn: 3
+  fallSpeed: 6
+  data:
+    associatedIcon: {fileID: 0}
+    scannable: 0
+    fired: 0
+    arrived: 0
+    type: 0
   impulseDuration: 0.25
   rockDetection: {fileID: 6667375956198307109}
   scannableObjectBehaviour: {fileID: 6667375955699303459}
-  playerImpulseSource: {fileID: 0}
+  playerImpulseSource: {fileID: 8068176826541340084}
 --- !u!114 &6667375955699303456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 1, b: 0.8469908, a: 0}
+  scannableObjectBehaviour: {fileID: 6667375955699303459}
 --- !u!95 &6667375955699303458
 Animator:
   serializedVersion: 3
@@ -249,6 +195,47 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8068176826541340084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667375955699303460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_AmplitudeGain: 0.25
+    m_FrequencyGain: 1.04
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 25
 --- !u!1 &6667375956198307109
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +487,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c0d990f986d859444af0d2676b47de4e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
