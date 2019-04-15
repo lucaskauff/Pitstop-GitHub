@@ -16,26 +16,28 @@ namespace Pitstop
         public EnemyHealthManager bossHealth;
         public bool mark;
 
-        //Private
-        int layerMask;
+        //Serializable
         [SerializeField]
         float lifeInSeconds;
-        private bool living;
-        GorillaBehaviour rush;
-        private Vector2 mousePos;
         [SerializeField]
         bool preview = true;
-        float Angle1;
-        float Angle2;
         [SerializeField]
         Vector2 playerPos;
-        Transform impactPos;
         [SerializeField]
         ScannableObjectBehaviour scanObjBeh;
         [SerializeField]
         Rigidbody2D rb;
         [SerializeField]
         float velocityX;
+
+        //Private
+        int layerMask;
+        bool living;
+        GorillaBehaviour rush;
+        Vector2 mousePos;
+        float Angle1;
+        float Angle2;
+        Transform impactPos;
 
         private void Start()
         {
@@ -52,7 +54,7 @@ namespace Pitstop
                 {
                     ResetHookpoints();
 
-                    LineGestion();
+                    LineManagement();
                 }
 
                 LianaCollider();
@@ -85,9 +87,9 @@ namespace Pitstop
             }
         }
 
-        public void LineGestion()
+        public void LineManagement()
         {
-                if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0))
                 {
                     pointSelect = true;
                     liana.enabled = false;
@@ -96,7 +98,6 @@ namespace Pitstop
                     {
                         return;
                     }
-
                     else if (hookpoints[1] == null)
                     {
                         liana.positionCount = 2;
@@ -105,7 +106,6 @@ namespace Pitstop
                         liana.SetPosition(0, hookpoints[0].transform.position);
                         liana.SetPosition(1, mousePos);
                     }
-
                     else if (hookpoints[2] == null)
                     {
                         liana.positionCount = 3;
@@ -115,7 +115,6 @@ namespace Pitstop
                         liana.SetPosition(1, hookpoints[1].transform.position);
                         liana.SetPosition(2, mousePos);
                     }
-
                     else
                     {
                         for (int x = 0; x < 3; x++)
@@ -130,7 +129,6 @@ namespace Pitstop
                     }
                 }
 
-
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 preview = false;
@@ -141,7 +139,6 @@ namespace Pitstop
                 {
                     liana.positionCount = 2;
                 }
-
                 else
                 {
                     liana.positionCount = 3;
@@ -153,7 +150,6 @@ namespace Pitstop
                     liana.enabled = false;
                     return;
                 }
-
                 else
                 {
                     liana.enabled = true;
@@ -195,7 +191,6 @@ namespace Pitstop
                         impactPos = (trip.collider.transform);
                         AppleBounce();                   
                     }
-
                 }
 
                 if (liana.positionCount == 3)
@@ -212,7 +207,6 @@ namespace Pitstop
                             StartCoroutine(EnemyDamage());
                         }
                     }
-
                     else
                     {
                         return;
@@ -254,7 +248,6 @@ namespace Pitstop
             rush.rushTime = 0.1f;
             yield return new WaitForSeconds(1f);
             rush.rushSpeed = -(rush.rushSpeed);
-
         }
 
         /*IEnumerator Bounce()
@@ -268,5 +261,4 @@ namespace Pitstop
             Debug.Log("Angle 2 is" + Angle2);      
         }*/
     }
-
 }

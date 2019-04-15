@@ -6,22 +6,26 @@ namespace Pitstop
 {
     public class HookPointBehaviour : MonoBehaviour
     {
+        //MyComponents
+        Renderer myRend;
+        Animator myAnim;
+
+        //Public
         public RootBehaviour2 root;
         public GameObject thisOne;
         public bool markSign;
 
-        Renderer myRenderer;
+        //Serializable
         [SerializeField]
         Color color;
         [SerializeField]
         bool canContinue = true;
-        Animator anim;
 
         private void Start()
         {
             thisOne = this.gameObject;
-            myRenderer = GetComponent<Renderer>();
-            anim = GetComponent<Animator>();
+            myRend = GetComponent<Renderer>();
+            myAnim = GetComponent<Animator>();
         }
 
         private void Update()
@@ -33,8 +37,7 @@ namespace Pitstop
                     markSign = false;
                     canContinue = true;
                     root.mark = false;
-                }
-                
+                }                
                 else
                 {
                     return;
@@ -54,7 +57,7 @@ namespace Pitstop
                 markSign = false;
             }
 
-            anim.SetBool("Marked", markSign);
+            myAnim.SetBool("Marked", markSign);
         }
 
         private void OnMouseOver()
@@ -74,17 +77,17 @@ namespace Pitstop
 
             if (root.crys.scannedObject.name == "ScannableRoot")
             {
-                color = myRenderer.material.GetColor("_ColorOutline");
+                color = myRend.material.GetColor("_ColorOutline");
                 color.a = 255;
-                myRenderer.material.SetColor("_ColorOutline", color);
+                myRend.material.SetColor("_ColorOutline", color);
             }
         }
 
         private void OnMouseExit()
         {
-            color = myRenderer.material.GetColor("_ColorOutline");
+            color = myRend.material.GetColor("_ColorOutline");
             color.a = 0;
-            myRenderer.material.SetColor("_ColorOutline", color);
+            myRend.material.SetColor("_ColorOutline", color);
         }
     }
 }
