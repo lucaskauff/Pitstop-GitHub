@@ -34,12 +34,15 @@ namespace Pitstop
         float dashTime = 1;
         [SerializeField]
         float dashLength = 0.5f;
+        [SerializeField]
+        float dashCooldown = 1f;
 
         //Private
         Vector2 moveInput;
         Vector2 lastMove;
         float initialMoveSpeed = 0;
         float dashRate = 0;
+        bool canDash = true;
 
         void Start()
         {
@@ -129,7 +132,7 @@ namespace Pitstop
 
         private void Dash()
         {
-            dashRate = Time.time + dashTime;
+            dashRate = Time.time + dashCooldown;
             initialMoveSpeed = moveSpeed;
             moveSpeed = dashSpeed;
             isBeingRepulsed = true;
@@ -141,6 +144,7 @@ namespace Pitstop
             yield return new WaitForSeconds(dashLength);
             moveSpeed = initialMoveSpeed;
             isBeingRepulsed = false;
+            yield return new WaitForSeconds(3);
         }
     }
 }

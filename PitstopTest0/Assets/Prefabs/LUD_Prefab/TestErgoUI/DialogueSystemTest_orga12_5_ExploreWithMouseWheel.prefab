@@ -607,6 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185e9d33ed130ec4a8659d766d2cae89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isThePlayerNear: 0
 --- !u!1 &266078735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,7 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b73a476f1093b84489a78c69b6640f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageTest: {fileID: 1417869459}
+  csvFile: {fileID: 4900000, guid: cdca005b9ad110e42a6dd393cf976b9d, type: 3}
 --- !u!1 &456777444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,7 +1181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &456952634
 RectTransform:
   m_ObjectHideFlags: 0

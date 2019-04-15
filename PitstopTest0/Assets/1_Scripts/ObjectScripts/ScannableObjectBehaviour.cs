@@ -23,7 +23,7 @@ namespace Pitstop
             {
                 if (gameObject.tag != "ObjectRoot")
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+                    Shoot();
                 }
             }
 
@@ -40,6 +40,11 @@ namespace Pitstop
             {
                 col = true;
             }
+        }
+
+        public void Shoot()
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
         }
     }
 }
