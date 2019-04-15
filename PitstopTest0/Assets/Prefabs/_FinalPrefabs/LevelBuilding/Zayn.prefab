@@ -1367,15 +1367,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b087d6839d04846a7bffbcd6cb831b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMove: 1
+  canMove: 0
   isMoving: 0
   isBeingRepulsed: 0
   isometricRatio: 2
   sceneStartingPoint: {fileID: 0}
   moveSpeed: 3
-  dashSpeed: 30
-  dashTime: 0.3
-  dashLength: 0.5
+  dashSpeed: 15
+  dashTime: 0.25
+  dashLength: 0.05
+  dashCooldown: 1.5
 --- !u!114 &8453608900050335717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1406,6 +1407,7 @@ MonoBehaviour:
   previzAlphaRatio: 0.2
   hitting: 0
   objectHitted: {fileID: 0}
+  cloneProj: {fileID: 0}
 --- !u!114 &8827798457674550475
 MonoBehaviour:
   m_ObjectHideFlags: 0

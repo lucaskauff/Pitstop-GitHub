@@ -72090,7 +72090,7 @@ PrefabInstance:
     - target: {fileID: 9127097305669116841, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9127097305669116842, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
@@ -72811,7 +72811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impulseApple: {fileID: 1913872623}
   appleImpactOnGround: {fileID: 380424348}
-  fallSpeed: 2
+  fallSpeed: 4
 --- !u!1001 &884657106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73250,21 +73250,6 @@ PrefabInstance:
       propertyPath: sceneStartingPoint
       value: 
       objectReference: {fileID: 884657109}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: dashLength
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: dashSpeed
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: canMove
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8453608900050335717, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: uIManager
@@ -76629,6 +76614,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
+        type: 3}
+      propertyPath: crystalController
+      value: 
+      objectReference: {fileID: 933587522}
+    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
+        type: 3}
+      propertyPath: playerHealthMan
+      value: 
+      objectReference: {fileID: 933587524}
+    - target: {fileID: 925001519793593191, guid: 68ece97d118f2ee42b76be1e32598ade,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 933587523}
     - target: {fileID: 7457692282874141182, guid: 68ece97d118f2ee42b76be1e32598ade,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -76759,21 +76759,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
-        type: 3}
-      propertyPath: crystalController
-      value: 
-      objectReference: {fileID: 933587522}
-    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
-        type: 3}
-      propertyPath: playerHealthMan
-      value: 
-      objectReference: {fileID: 933587524}
-    - target: {fileID: 925001519793593191, guid: 68ece97d118f2ee42b76be1e32598ade,
-        type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 933587523}
     - target: {fileID: 925001520134021613, guid: 68ece97d118f2ee42b76be1e32598ade,
         type: 3}
       propertyPath: m_AnchoredPosition.x
