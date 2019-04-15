@@ -29,12 +29,12 @@ PrefabInstance:
     - target: {fileID: 6706908312033732447, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.01
+      value: 18.98
       objectReference: {fileID: 0}
     - target: {fileID: 6706908312033732447, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.02
+      value: 9.15
       objectReference: {fileID: 0}
     - target: {fileID: 6706908312033732447, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
@@ -81,11 +81,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6706908312033732440, guid: e92790c8151d11d49b6c61a79fd45716,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c8b74ee58ffab6b439afb0fc85cf4bd0, type: 2}
     - target: {fileID: 6706908312033732445, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
       propertyPath: scannableObjectBehaviour
@@ -93,54 +88,14 @@ PrefabInstance:
       objectReference: {fileID: 8174704593899984714}
     - target: {fileID: 6706908312033732445, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
-      propertyPath: appleProjectionSpeed
-      value: 6
-      objectReference: {fileID: 0}
+      propertyPath: myAnim
+      value: 
+      objectReference: {fileID: 6078796628596924237}
     - target: {fileID: 6706908312033732445, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
       propertyPath: explosionRange
       value: 
       objectReference: {fileID: 8174704593243583062}
-    - target: {fileID: 6706908312033732445, guid: e92790c8151d11d49b6c61a79fd45716,
-        type: 3}
-      propertyPath: timer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6706908312451056203, guid: e92790c8151d11d49b6c61a79fd45716,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6706908312451056203, guid: e92790c8151d11d49b6c61a79fd45716,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6706908312451056196, guid: e92790c8151d11d49b6c61a79fd45716,
-        type: 3}
-      propertyPath: m_ForceMagnitude
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6706908312451056196, guid: e92790c8151d11d49b6c61a79fd45716,
-        type: 3}
-      propertyPath: m_ForceVariation
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 6706908312451056196, guid: e92790c8151d11d49b6c61a79fd45716,
-        type: 3}
-      propertyPath: m_ForceMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6706908312033732446, guid: e92790c8151d11d49b6c61a79fd45716,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6706908312451056198, guid: e92790c8151d11d49b6c61a79fd45716,
-        type: 3}
-      propertyPath: m_TagString
-      value: ObjectApple
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e92790c8151d11d49b6c61a79fd45716, type: 3}
 --- !u!1 &8174704593899984715 stripped
@@ -161,6 +116,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69776203d86a2446837582032e693c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6078796628596924237 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8664330043534061405, guid: e92790c8151d11d49b6c61a79fd45716,
+    type: 3}
+  m_PrefabInstance: {fileID: 3198078104132857872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8174704593243583062 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6706908312451056198, guid: e92790c8151d11d49b6c61a79fd45716,

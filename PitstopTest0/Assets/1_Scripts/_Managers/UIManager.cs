@@ -10,6 +10,7 @@ namespace Pitstop
         SceneLoader sceneLoader;
 
         [Header("Crystal UI"), SerializeField]
+        Animator crystalAnim = default;
         public Image crystalSlot;
         public Animator crystalSlotCanvasAnim;
 
@@ -51,6 +52,8 @@ namespace Pitstop
                     break;
 
                 case "2_FOREST":
+                    crystalAnim.SetBool("CrystalAlreadyThere", true);
+
                     if (!playerLifesAppearedCheck)
                     {
                         playerLifes.SetTrigger("Appear");
@@ -60,10 +63,16 @@ namespace Pitstop
                     playerLifes.SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
                     break;
 
-                case "2_1_MINIBOSS":                    
+                case "2_1_MINIBOSS":
+                    crystalAnim.SetBool("CrystalAlreadyThere", true);
                     break;
 
                 case "3_VILLAGE":
+                    crystalAnim.SetBool("CrystalAlreadyThere", true);
+                    break;
+
+                case "4_DUNGEON":
+                    crystalAnim.SetBool("CrystalAlreadyThere", true);
                     break;
             }
         }
