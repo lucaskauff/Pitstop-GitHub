@@ -44,7 +44,7 @@ namespace Pitstop
         public GameObject objectHitted = default;
         GameObject objectOnScan;
         float fireRate = 0;
-        GameObject cloneProj;
+        
 
         Vector2 playerPosGround;
         Vector2 cursorPos;
