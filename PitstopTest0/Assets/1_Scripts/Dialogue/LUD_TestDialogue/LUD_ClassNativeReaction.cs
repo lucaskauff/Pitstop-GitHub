@@ -43,11 +43,11 @@ namespace Pitstop
 
         }
 
-        private Sprite StringToImage(string code)
+        public Sprite StringToImage(string code)
         {
             if (code == "?")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/interrogation_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/interrogation_square_big");
             }
             else if (code == "north")
             {
@@ -67,27 +67,27 @@ namespace Pitstop
             }
             else if (code == "me")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/me_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/me_square_big");
             }
             else if (code == "you")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/you_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/you_square_big");
             }
             else if (code == "see")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/see_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/see_square_big");
             }
             else if (code == "photo")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/photo_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/photo_square_big");
             }
             else if (code == "gniack")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/gniack_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/gniack_square_big");
             }
             else if (code == "no")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/no_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/no_square_big");
             }
             else if (code == "repair")
             {
@@ -95,7 +95,7 @@ namespace Pitstop
             }
             else if (code == "danger")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/danger_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/danger_square_big");
             }
             else if (code == "child")
             {

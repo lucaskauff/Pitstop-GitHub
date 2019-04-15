@@ -22,13 +22,8 @@ namespace Pitstop
         private List<Image> spriteSentenceUI = new List<Image>();
 
         [Header("Natives Parameters")]
-
-        [SerializeField]
-        GameObject[] nativesList = default;
-
-
-
-        //Private
+        
+        public GameObject[] nativesList;
 
 
 
@@ -109,7 +104,12 @@ namespace Pitstop
         {
             if (sentence.Count != 0)
             {
-                nativesList[0].GetComponent<LUD_NativeHeartheSentence>().HearASentence(sentence);
+                foreach (GameObject element in nativesList)
+                {
+                    element.GetComponent<LUD_NativeHeartheSentence>().HearASentence(sentence);
+                }
+
+                //nativesList[0].GetComponent<LUD_NativeHeartheSentence>().HearASentence(sentence);
             }
 
 
@@ -148,28 +148,28 @@ namespace Pitstop
 
             else if (value == 17)
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/me_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/me_square_big");
             }
 
             else if (value == 19)
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/you_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/you_square_big");
             }
             else if (value == 23)
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/see_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/see_square_big");
             }
             else if (value == 29)
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/photo_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/photo_square_big");
             }
             else if (value == 31)
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/gniack_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/gniack_square_big");
             }
             else if (value == 37)
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/no_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/no_square_big");
             }
             else if (value == 41)
             {
@@ -177,7 +177,7 @@ namespace Pitstop
             }
             else if (value == 43)
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/danger_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/danger_square_big");
             }
             else if (value == 47)
             {
@@ -188,7 +188,7 @@ namespace Pitstop
 
             else
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/interrogation_square");
+                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/interrogation_square_big");
             }
         }
     }

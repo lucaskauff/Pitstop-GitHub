@@ -7,14 +7,9 @@ namespace Pitstop
 {
     public class LUD_CsvToDataConvertor : MonoBehaviour
     {
-        /*
-        //SerializeField
-        [SerializeField]
-        Image imageTest;
-        */
-
+        
         //Private
-        TextAsset csvFile;
+        public TextAsset csvFile;
         string[] rows;
 
         //Public
@@ -25,7 +20,7 @@ namespace Pitstop
 
         void Awake()
         {
-            csvFile = Resources.Load<TextAsset>("LUD_CSV/combinaisons_depeceur_alpha_2");
+            //csvFile = Resources.Load<TextAsset>("LUD_CSV/combinaisons_depeceur_alpha_2");
             rows = csvFile.text.Split('\n');
 
             foreach (string row in rows)
