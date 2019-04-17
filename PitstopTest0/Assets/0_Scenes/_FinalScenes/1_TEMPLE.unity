@@ -2045,6 +2045,7 @@ GameObject:
   - component: {fileID: 750495534}
   - component: {fileID: 750495535}
   - component: {fileID: 750495536}
+  - component: {fileID: 750495537}
   m_Layer: 0
   m_Name: CrystalToGet
   m_TagString: Untagged
@@ -2060,7 +2061,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750495533}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.38, y: -4.642, z: 0}
+  m_LocalPosition: {x: 0.39, y: -4.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1892421267}
@@ -2128,6 +2129,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingSpeed: 4
   floatingRatio: 0.25
+--- !u!95 &750495537
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750495533}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04cd9607b80273149b0cdfc6d08f67d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &768309836
 GameObject:
   m_ObjectHideFlags: 0
@@ -7426,7 +7446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatElementShouldAppear: {fileID: 1201072623}
-  whatElementShouldDisappear: {fileID: 750495533}
+  crystalToGetAnim: {fileID: 750495537}
+  whatElementShouldDisappear: {fileID: 0}
 --- !u!1 &1892421266
 GameObject:
   m_ObjectHideFlags: 0
@@ -8799,6 +8820,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
+        type: 3}
+      propertyPath: crystalController
+      value: 
+      objectReference: {fileID: 1754758191127585752}
+    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
+        type: 3}
+      propertyPath: playerHealthMan
+      value: 
+      objectReference: {fileID: 2003265252706418002}
+    - target: {fileID: 925001519793593191, guid: 68ece97d118f2ee42b76be1e32598ade,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1696102421751109879}
     - target: {fileID: 7457692282874141182, guid: 68ece97d118f2ee42b76be1e32598ade,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -8929,21 +8965,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
-        type: 3}
-      propertyPath: crystalController
-      value: 
-      objectReference: {fileID: 1754758191127585752}
-    - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
-        type: 3}
-      propertyPath: playerHealthMan
-      value: 
-      objectReference: {fileID: 2003265252706418002}
-    - target: {fileID: 925001519793593191, guid: 68ece97d118f2ee42b76be1e32598ade,
-        type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 1696102421751109879}
     - target: {fileID: 925001518833524342, guid: 68ece97d118f2ee42b76be1e32598ade,
         type: 3}
       propertyPath: m_IsActive
@@ -17436,7 +17457,7 @@ PrefabInstance:
     - target: {fileID: 9127097305669116841, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9127097305669116842, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
