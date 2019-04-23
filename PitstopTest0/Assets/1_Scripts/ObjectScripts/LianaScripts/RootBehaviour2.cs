@@ -30,6 +30,8 @@ namespace Pitstop
         Rigidbody2D rb;
         [SerializeField]
         float velocityX;
+        [SerializeField]
+        float decalageY = 0.5f;
 
         //Private
         bool living;

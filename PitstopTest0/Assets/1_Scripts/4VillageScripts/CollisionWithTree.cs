@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionWithTree : MonoBehaviour
+namespace Pitstop
 {
-    Animator myAnim;
-
-    private void Start()
+    public class CollisionWithTree : MonoBehaviour
     {
-        myAnim = GetComponent<Animator>();
-    }
+        Animator myAnim;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
+        private void Start()
         {
-            myAnim.SetTrigger("Collision");
+            myAnim = GetComponent<Animator>();
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
+            {
+                myAnim.SetTrigger("Collision");
+            }
         }
     }
 }

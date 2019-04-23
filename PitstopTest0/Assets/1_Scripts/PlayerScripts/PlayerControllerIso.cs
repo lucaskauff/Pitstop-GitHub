@@ -67,7 +67,7 @@ namespace Pitstop
                     break;
 
                 case "3_VILLAGE":
-                    lastMove = new Vector2(1, 1);
+                    lastMove = new Vector2(0, -1);
                     break;
             }
 
