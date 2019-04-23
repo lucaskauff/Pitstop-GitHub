@@ -6,10 +6,6 @@ namespace Pitstop
 {
     public class LUD_NativeHeartheSentence : MonoBehaviour
     {
-
-        
-        
-
         
         bool isExclamationPointActive;
         float timerForExclamation;
@@ -22,6 +18,7 @@ namespace Pitstop
         public float delayBeforeExclamationDisapperance = 1f;
         public bool isCaptivated = true;
 
+        private NativeReaction lastSaidSentence = new NativeReaction("equal;0;FALSE;no_reaction;?;empty;empty;,"); 
 
         private void Awake()
         {
@@ -70,6 +67,7 @@ namespace Pitstop
                     {
                         currentTestReaction = GetComponent<LUD_CsvToDataConvertor>().nativeReactionList[0];     //il prend la première réponse qui est un "? . ."
                         NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3, false);
+                        lastSaidSentence = currentTestReaction;
                         answerFound = true;
                     }
 
@@ -102,6 +100,7 @@ namespace Pitstop
                             if (isSentenceTriggered)    //because after Exclamation the sentence can not being triggered
                             {
                                 NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3, currentTestReaction.willTriggeredExclamation);
+                                lastSaidSentence = currentTestReaction;
 
                             }
                             else
@@ -162,8 +161,17 @@ namespace Pitstop
             }
             else if (code == "repeat")
             {
-                GetComponent<LUD_NonDialogueReactions>().Repeat();
-                return true;
+                //GetComponent<LUD_NonDialogueReactions>().Repeat();
+                DisplayingExclamationPoint((lastSaidSentence.willTriggeredExclamation));
+                bool isSentenceTriggered = NotDialogueReaction(lastSaidSentence.codeForReaction);
+
+                if (isSentenceTriggered)    //because after Exclamation the sentence can not being triggered
+                {
+                    NativeAnswer(lastSaidSentence.answerWord1, lastSaidSentence.answerWord2, lastSaidSentence.answerWord3, lastSaidSentence.willTriggeredExclamation);
+
+                }
+
+                return false;
             }
             else if (code == "show_the_way")
             {
@@ -175,6 +183,7 @@ namespace Pitstop
                 GetComponent<LUD_NonDialogueReactions>().StartCoroutine("LaunchTheDesactivcationaAndReturnToNormal"); 
                 return true;
             }
+           
 
             
             else
