@@ -245,7 +245,7 @@ namespace Pitstop
             rush.rushSpeed = -(rush.rushSpeed);
         }
 
-        /*IEnumerator Bounce()
+        IEnumerator Bounce()
         {
             Vector2 shootVect = player.transform.position;
             Vector2 pillarVect = impactPos.position;
@@ -253,7 +253,7 @@ namespace Pitstop
             Angle2 = 180 - Angle1;
             yield return new WaitForSeconds(1f);
             Debug.Log("Angle is" + Angle1);
-            Debug.Log("Angle 2 is" + Angle2);      
-        }*/
+            Debug.Log("Angle 2 is" + Angle2);
+        }
     }
 }
