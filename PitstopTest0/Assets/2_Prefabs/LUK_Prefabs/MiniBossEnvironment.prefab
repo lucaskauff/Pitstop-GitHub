@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8941146366546872314}
   - component: {fileID: 8941146366546872315}
-  - component: {fileID: 3637521278535685355}
+  - component: {fileID: 886527625205184504}
   m_Layer: 2
   m_Name: ground_gorillafight
   m_TagString: Untagged
@@ -80,8 +80,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3637521278535685355
-BoxCollider2D:
+--- !u!60 &886527625205184504
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,9 +103,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 22.5, y: 18}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -11.25, y: 9}
+      - {x: -11.25, y: -9}
+      - {x: 11.25, y: -9}
+      - {x: 11.25, y: 9}
 --- !u!1 &8941146367026336792
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +177,7 @@ SpriteRenderer:
   m_SortingLayerID: -985832523
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0191c9eb22e62a4439d1af35feee2c9b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 51308cf888d99fc46b4a8634fae37fd1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -332,7 +335,7 @@ SpriteRenderer:
   m_SortingLayerID: 1052579953
   m_SortingLayer: 4
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: 61cdd5e03d0b6dd44828832a00705ca0, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 51308cf888d99fc46b4a8634fae37fd1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

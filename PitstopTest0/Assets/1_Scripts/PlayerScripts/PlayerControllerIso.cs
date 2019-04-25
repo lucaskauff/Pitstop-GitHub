@@ -66,8 +66,16 @@ namespace Pitstop
                     lastMove = new Vector2(1, 1);
                     break;
 
+                case "2_MINIBOSS":
+                    lastMove = new Vector2(1, 0);
+                    break;
+
                 case "3_VILLAGE":
                     lastMove = new Vector2(0, -1);
+                    break;
+
+                case "4_DUNGEON":
+                    lastMove = new Vector2(1, 1);
                     break;
             }
 
