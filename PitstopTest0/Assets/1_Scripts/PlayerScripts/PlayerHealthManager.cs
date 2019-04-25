@@ -13,6 +13,7 @@ namespace Pitstop
 
         [Header("My Components")]
         [SerializeField] SpriteRenderer myRenderer;
+        [SerializeField] Animator myAnim;
         [SerializeField] CinemachineImpulseSource myImpulseSource;
 
         [Header("Public Variables")]
