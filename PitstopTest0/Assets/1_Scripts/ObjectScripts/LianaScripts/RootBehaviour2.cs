@@ -45,7 +45,7 @@ namespace Pitstop
         {
             if (crys.scannedObject != null)
             {
-                if (crys.scannedObject.name == "ScannableRoot")
+                if (crys.scannedObject.tag == "ObjectRoot")
                 {
                     ResetHookpoints();
 
@@ -239,7 +239,7 @@ namespace Pitstop
             bossHealth.HurtEnemy(damageDealing);
             liana.enabled = false;
             mark = true;
-            rush.rushSpeed = -(rush.rushSpeed);
+            rush.rushSpeed = -rush.rushSpeed;
             rush.rushTime = 0.1f;
             yield return new WaitForSeconds(1f);
             rush.rushSpeed = -(rush.rushSpeed);
