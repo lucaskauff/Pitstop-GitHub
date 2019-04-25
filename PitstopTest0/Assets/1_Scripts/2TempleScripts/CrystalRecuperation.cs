@@ -9,6 +9,8 @@ namespace Pitstop
         [SerializeField]
         Animator whatElementShouldAppear = default;
         [SerializeField]
+        Animator crystalToGetAnim = default;
+        [SerializeField]
         GameObject whatElementShouldDisappear = default;
 
         bool triggerOnceCheck = false;
@@ -19,7 +21,9 @@ namespace Pitstop
             {
                 whatElementShouldAppear.SetTrigger("Appear");
 
-                whatElementShouldDisappear.SetActive(false);
+                crystalToGetAnim.SetTrigger("PlayerGet");
+
+                //whatElementShouldDisappear.SetActive(false);
 
                 triggerOnceCheck = true;
             }
