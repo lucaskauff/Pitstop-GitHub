@@ -18,7 +18,8 @@ namespace Pitstop
         public float delayBeforeExclamationDisapperance = 1f;
         public bool isCaptivated = true;
 
-        private NativeReaction lastSaidSentence = new NativeReaction("equal;0;FALSE;no_reaction;?;empty;empty;,"); 
+        private NativeReaction lastSaidSentence;
+        bool wasFirstLastSaidSentenceLoaded = false;
 
         private void Awake()
         {
@@ -34,6 +35,12 @@ namespace Pitstop
 
         private void Update()
         {
+            if (!wasFirstLastSaidSentenceLoaded)
+            {
+                lastSaidSentence = new NativeReaction("equal;0;FALSE;no_reaction;?;empty;empty;,");
+                wasFirstLastSaidSentenceLoaded = true;
+            }
+
             if (isExclamationPointActive)
             {
                 if (timerForExclamation >= delayBeforeExclamationDisapperance)
