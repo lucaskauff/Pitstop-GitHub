@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Pitstop
 {
@@ -18,6 +19,7 @@ namespace Pitstop
 
         [Header("Native Offended")]
         public bool isOffended = false;
+        public Image uiWhenOffendedProgression;
 
 
 
@@ -65,9 +67,22 @@ namespace Pitstop
             yield return new WaitForSeconds(GetComponent<LUD_NativeHeartheSentence>().delayBeforeExclamationDisapperance + GetComponent<LUD_DialogueAppearance>().delay / 2);
             GetComponentInChildren<LUD_DetectionTriggeredByAttention>().UncaptivationOfTheNative();
 
-            yield return new WaitForSeconds(FindObjectOfType<LUD_NonDialogueManager>().timePassedLockedWhenOffended);
-            isOffended = false;
             
+            uiWhenOffendedProgression.gameObject.SetActive(true);
+            uiWhenOffendedProgression.fillAmount = 0;
+
+            int maxI = FindObjectOfType<LUD_NonDialogueManager>().stepsInUIOffendedProgression;
+            for (float i = 0f; i< maxI; ++i)
+            {
+                yield return new WaitForSeconds(FindObjectOfType<LUD_NonDialogueManager>().timePassedLockedWhenOffended/ maxI);
+                uiWhenOffendedProgression.fillAmount = (i+1)/ maxI;
+                //Debug.Log("i/maxI = " + i / maxI);
+            }
+            
+
+            isOffended = false;
+            uiWhenOffendedProgression.gameObject.SetActive(false);
+
             if (GetComponentInChildren<LUD_DetectionTriggeredByAttention>().isThePlayerNear)
             {
                 GetComponentInChildren<LUD_DetectionTriggeredByAttention>().CaptivationOfTheNative();
