@@ -31,6 +31,7 @@ namespace Pitstop
         //Private
         private Quaternion aiguilleNewRotation;
         private bool playerLifesAppearedCheck = false;
+        private bool crystalUiAppearedCheck = false;
 
         void Start()
         {
@@ -42,38 +43,32 @@ namespace Pitstop
             SpecificScenesEvents();
 
             ScanProgressEvents();
+
+            playerLifes.SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
         }
 
         public void SpecificScenesEvents()
         {
-            switch (sceneLoader.activeScene)
+            if (sceneLoader.activeScene != "1_TEMPLE")
             {
-                case "1_TEMPLE":
-                    break;
+                crystalAnim.SetBool("CrystalAlreadyThere", true);
 
-                case "2_FOREST":
-                    crystalAnim.SetBool("CrystalAlreadyThere", true);
+                if (!playerLifesAppearedCheck)
+                {
+                    playerLifes.SetTrigger("Appear");
+                    playerLifesAppearedCheck = true;
+                }
+            }
+            else if (sceneLoader.activeScene == "3_VILLAGE")
+            {
+                //Same for now but playerLifesBar should disappear
+                crystalAnim.SetBool("CrystalAlreadyThere", true);
 
-                    if (!playerLifesAppearedCheck)
-                    {
-                        playerLifes.SetTrigger("Appear");
-                        playerLifesAppearedCheck = true;
-                    }
-
-                    playerLifes.SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
-                    break;
-
-                case "2_1_MINIBOSS":
-                    crystalAnim.SetBool("CrystalAlreadyThere", true);
-                    break;
-
-                case "3_VILLAGE":
-                    crystalAnim.SetBool("CrystalAlreadyThere", true);
-                    break;
-
-                case "4_DUNGEON":
-                    crystalAnim.SetBool("CrystalAlreadyThere", true);
-                    break;
+                if (!playerLifesAppearedCheck)
+                {
+                    playerLifes.SetTrigger("Appear");
+                    playerLifesAppearedCheck = true;
+                }
             }
         }
 

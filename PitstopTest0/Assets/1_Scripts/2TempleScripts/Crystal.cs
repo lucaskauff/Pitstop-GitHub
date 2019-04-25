@@ -34,16 +34,18 @@ namespace Pitstop
 
         void Float(float heightRatio)
         {
-            //Version 1 (not very natural looking)
-            //transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, transform.position.y + heightRatio), floatingSpeed * Time.deltaTime);
-
-            //Version 2 (still not perfect)
+            //not very natural looking
             transform.position = new Vector2(transform.position.x, Mathf.SmoothStep(transform.position.y, transform.position.y + heightRatio, floatingSpeed * Time.deltaTime));
         }
-        
+
         void ReverseDirection()
         {
             floatingRatio = -floatingRatio;
+        }
+
+        public void Disappear()
+        {
+            Destroy(gameObject);
         }
     }
 }

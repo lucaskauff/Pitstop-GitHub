@@ -8,6 +8,8 @@ namespace Pitstop
     public class SceneLoader : MonoBehaviour
     {
         public string activeScene;
+        public string loadingScreenSceneName = "6_LOADINGSCREEN";
+        public float loadingDelay = 3f;
 
         public void Awake()
         {
@@ -17,7 +19,7 @@ namespace Pitstop
         public void LoadNewScene(string sceneToLoad)
         {
             activeScene = sceneToLoad;
-            SceneManager.LoadScene(sceneToLoad);
+            StartCoroutine(LoadingScreen(sceneToLoad));
         }
 
         public void ReloadScene()
@@ -29,6 +31,13 @@ namespace Pitstop
         {
             Debug.Log("Game leaved.");
             Application.Quit();
+        }
+
+        IEnumerator LoadingScreen(string sceneToLoad)
+        {
+            SceneManager.LoadScene(loadingScreenSceneName);
+            yield return new WaitForSeconds(loadingDelay);
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
 }
