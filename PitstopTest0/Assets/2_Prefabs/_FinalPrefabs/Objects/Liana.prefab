@@ -184,24 +184,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f3ca7111a645743afa0639271732ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liana: {fileID: 4816876112790863872}
-  scanObjBeh: {fileID: 0}
-  player: {fileID: 0}
+  myLineRend: {fileID: 4816876112790863872}
   hookpoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   pointSelect: 0
-  crys: {fileID: 0}
-  damageDealing: 1
-  bossHealth: {fileID: 0}
   mark: 0
-  lifeInSeconds: 0
-  preview: 1
+  thePlayer: {fileID: 0}
+  player: {fileID: 0}
   playerPos: {x: 0, y: 0}
-  rb: {fileID: 4816876112790863875}
-  velocityX: 0
+  crystalController: {fileID: 0}
+  damageDealing: 1
   decalageY: 0.5
+  bossHealth: {fileID: 0}
+  appleScanObjBeh: {fileID: 0}
 --- !u!114 &898276923229779687
 MonoBehaviour:
   m_ObjectHideFlags: 0

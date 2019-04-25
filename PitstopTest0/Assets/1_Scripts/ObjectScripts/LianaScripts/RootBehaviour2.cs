@@ -6,154 +6,126 @@ namespace Pitstop
 {
     public class RootBehaviour2 : MonoBehaviour
     {
-        [Header("Other Components")]
-        [SerializeField] LineRenderer liana = default;
-        [SerializeField] ScannableObjectBehaviour scanObjBeh = default;
+        //GameManager
+        InputManager inputManager;
 
-        //Public
-        public GameObject player;
+        [Header("My Components")]
+        [SerializeField] LineRenderer myLineRend = default;
+
+        [Header("Public")]
         public GameObject[] hookpoints;
-        public bool pointSelect;
-        public CrystalController crys;
-        public int damageDealing = 1;
-        public EnemyHealthManager bossHealth;
-        public bool mark;
+        [HideInInspector] public bool pointSelect;
+        [HideInInspector] public bool mark;
 
-        //Serializable
-        [SerializeField]
-        float lifeInSeconds;
-        [SerializeField]
-        bool preview = true;
-        [SerializeField]
-        Vector2 playerPos;
-        [SerializeField]
-        Rigidbody2D rb;
-        [SerializeField]
-        float velocityX;
-        [SerializeField]
-        float decalageY = 0.5f;
+        [Header("Player related")]
+        [SerializeField] Transform thePlayer = default;
+        [SerializeField] GameObject player;
+        [SerializeField] Vector2 playerPos;
+        public CrystalController crystalController;
+
+        [Header("Serializable")]
+        [SerializeField] int damageDealing = 1;
+        [SerializeField] float decalageY = 0.5f;
+        [SerializeField] EnemyHealthManager bossHealth;
+        [SerializeField] ScannableObjectBehaviour appleScanObjBeh = default;
 
         //Private
-        bool living;
-        GorillaBehaviour rush;
-        Vector2 mousePos;
+        bool preview = true;
         float Angle1;
         float Angle2;
         Transform impactPos;
+        float velocityX;
+        Rigidbody2D impAppleRb;
+        GorillaBehaviour rush;
+        int numberOfHookpointsOnStart;
+
+        private void Start()
+        {
+            inputManager = GameManager.Instance.inputManager;
+
+            numberOfHookpointsOnStart = hookpoints.Length;
+            Debug.Log(numberOfHookpointsOnStart);
+        }
 
         private void Update()
         {
-            if (crys.scannedObject != null)
+            if (crystalController.scannedObject != null)
             {
-                if (crys.scannedObject.tag == "ObjectRoot")
+                if (crystalController.scannedObject.tag == "ObjectRoot")
                 {
-                    ResetHookpoints();
+                    if (inputManager.onLeftClick)
+                    {
+                        ResetHookpoints();
+                    }
 
                     LineManagement();
                 }
 
                 LianaCollider();
-
-                if (crys.scannedObject.tag == "ObjectApple" && Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    playerPos = player.transform.position;
-                }
             }
-
-            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
         public void ResetHookpoints()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            for (int i = 0; i < hookpoints.Length; i++)
             {
-                for (int x = 0; x < 3; x++)
+                if (hookpoints[i] == null)
                 {
-                    if (hookpoints[x] == null)
-                    {
-                        return;
-                    }
-
-                    else if (hookpoints[x] != null)
-                    {
-                        hookpoints = new GameObject[3];
-                    }
+                    return;
+                }
+                else if (hookpoints[i] != null)
+                {
+                    hookpoints = new GameObject[numberOfHookpointsOnStart];
                 }
             }
         }
 
         public void LineManagement()
         {
-            if (Input.GetKey(KeyCode.Mouse0))
-                {
-                    pointSelect = true;
-                    liana.enabled = false;
-
-                    if (hookpoints[0] == null)
-                    {
-                        return;
-                    }
-                    else if (hookpoints[1] == null)
-                    {
-                        liana.positionCount = 2;
-                        liana.enabled = true;
-                        preview = true;
-                        liana.SetPosition(0, hookpoints[0].transform.position);
-                        liana.SetPosition(1, mousePos);
-                    }
-                    else if (hookpoints[2] == null)
-                    {
-                        liana.positionCount = 3;
-                        liana.enabled = true;
-                        preview = true;
-                        liana.SetPosition(0, hookpoints[0].transform.position);
-                        liana.SetPosition(1, hookpoints[1].transform.position);
-                        liana.SetPosition(2, mousePos);
-                    }
-                    else
-                    {
-                        for (int x = 0; x < 3; x++)
-                        {
-                            preview = true;
-                            liana.enabled = true;
-                            if (hookpoints[x] != null)
-                                liana.SetPosition(0, hookpoints[0].transform.position);
-                            liana.SetPosition(1, hookpoints[1].transform.position);
-                            liana.SetPosition(2, hookpoints[2].transform.position);
-                        }
-                    }
-                }
-
-            if (Input.GetKeyUp(KeyCode.Mouse0))
+            if (inputManager.leftClickBeingPressed)
             {
-                preview = false;
+                pointSelect = true;
+                myLineRend.enabled = false;
 
-                pointSelect = false;
-
-                if (hookpoints[2] == null)
+                if (hookpoints[0] == null)
                 {
-                    liana.positionCount = 2;
-                }
-                else
-                {
-                    liana.positionCount = 3;
-                }
-
-                if (hookpoints[1] == null)
-                {
-                    preview = false;
-                    liana.enabled = false;
                     return;
                 }
                 else
                 {
-                    liana.enabled = true;
-                    liana.SetPosition(0, hookpoints[0].transform.position);
-                    liana.SetPosition(1, hookpoints[1].transform.position);
-
-                    if (hookpoints[2] != null)
+                    for (int i = 0; i < hookpoints.Length - 1; i++)
                     {
-                        liana.SetPosition(2, hookpoints[2].transform.position);
+                        myLineRend.positionCount = hookpoints.Length - 1;
+                        myLineRend.enabled = true;
+                        preview = true;
+
+                        if (hookpoints[i] != null)
+                        {
+                            myLineRend.SetPosition(i, new Vector2(hookpoints[i].transform.position.x, hookpoints[i].transform.position.y + decalageY));
+                        }
+                        else
+                        {
+                            myLineRend.SetPosition(i, inputManager.cursorPosition);
+                        }
+                    }
+                }
+            }
+
+            if (inputManager.onLeftClickReleased)
+            {
+                pointSelect = false;
+
+                if (hookpoints[1] == null)
+                {
+                    preview = false;
+                    myLineRend.enabled = false;
+                    return;
+                }
+                else
+                {
+                    for (int i = 0; i < hookpoints.Length - 1; i++)
+                    {
+                        myLineRend.positionCount = i + 2;
                     }
                 }
             }
@@ -161,10 +133,9 @@ namespace Pitstop
 
         public void LianaCollider()
         {
-            if (liana.enabled == true && preview == false && hookpoints[1] != null)
+            if (myLineRend.enabled == true && preview == false && myLineRend.positionCount == 2)
             {
-                RaycastHit2D trip = Physics2D.Raycast(hookpoints[0].transform.position, hookpoints[1].transform.position - hookpoints[0].transform.position, Vector2.Distance(hookpoints[0].transform.position, hookpoints[1].transform.position));
-                Debug.DrawLine(hookpoints[0].transform.position, hookpoints[1].transform.position, Color.green);
+                RaycastHit2D trip = Physics2D.Raycast(new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY) - new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), Vector2.Distance(new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY)));
 
                 if (trip.collider != null)
                 {
@@ -180,18 +151,17 @@ namespace Pitstop
                     if (trip.collider.tag == "ObjectApple")
                     {
                         //StartCoroutine(Bounce());
-                        rb = crys.cloneProj.GetComponent<Rigidbody2D>();
-                        velocityX = rb.velocity.x;
-                        scanObjBeh = crys.cloneProj.GetComponent<ScannableObjectBehaviour>();
+                        impAppleRb = crystalController.cloneProj.GetComponent<Rigidbody2D>();
+                        velocityX = impAppleRb.velocity.x;
+                        appleScanObjBeh = crystalController.cloneProj.GetComponent<ScannableObjectBehaviour>();
                         impactPos = (trip.collider.transform);
-                        AppleBounce();                   
+                        AppleBounce();
                     }
                 }
 
-                if (liana.positionCount == 3)
+                if (myLineRend.positionCount == 3)
                 {
-                    RaycastHit2D trip2 = Physics2D.Raycast(hookpoints[1].transform.position, hookpoints[2].transform.position - hookpoints[1].transform.position, Vector2.Distance(hookpoints[1].transform.position, hookpoints[2].transform.position));
-                    Debug.DrawLine(hookpoints[1].transform.position, hookpoints[2].transform.position, Color.blue);
+                    RaycastHit2D trip2 = Physics2D.Raycast(new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY), new Vector2(hookpoints[2].transform.position.x, hookpoints[2].transform.position.y + decalageY) - new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY), Vector2.Distance(new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY), new Vector2(hookpoints[2].transform.position.x, hookpoints[2].transform.position.y + decalageY)));
 
                     if (trip2.collider != null)
                     {
@@ -211,9 +181,8 @@ namespace Pitstop
         }
 
         void AppleBounce()
-        {            
-            playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-            Vector2 shootVect = playerPos;      
+        {
+            Vector2 shootVect = thePlayer.position;      
             Vector2 pillarVect = impactPos.position;
             Angle1 = Vector2.Angle(pillarVect, shootVect);
             Angle2 = 180 - Angle1;
@@ -224,20 +193,20 @@ namespace Pitstop
             Vector2 result = new Vector2(Mathf.Sin(Angle2), Mathf.Cos(Angle2));
             Debug.Log(result);
 
-            scanObjBeh.targetPos = result;
+            appleScanObjBeh.targetPos = result;
 
             /*else if (rb.velocity.x < 0f)
             {
                 scanObjBeh.targetPos = -result;
             }*/
 
-            scanObjBeh.Shoot();
+            appleScanObjBeh.Shoot();
         }
 
         IEnumerator EnemyDamage()
         {
             bossHealth.HurtEnemy(damageDealing);
-            liana.enabled = false;
+            myLineRend.enabled = false;
             mark = true;
             rush.rushSpeed = -rush.rushSpeed;
             rush.rushTime = 0.1f;
