@@ -7,5 +7,6 @@ namespace Pitstop
     public class LUD_NonDialogueManager : MonoBehaviour
     {
         public float timePassedLockedWhenOffended = 3f;
+        public int stepsInUIOffendedProgression = 20;
     }
 }

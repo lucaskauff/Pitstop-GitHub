@@ -20,10 +20,11 @@ namespace Pitstop
         float letterSpeed = 0;
         [SerializeField]
         Animator diaBox = default;
-        [SerializeField]
-        GameObject nameText = default;
-        [SerializeField]
-        GameObject dialogueText = default;
+        
+        public GameObject nameText = default;
+        
+        public GameObject dialogueText = default;
+
         [SerializeField]
         PlayerControllerIso playerController = default;
 
