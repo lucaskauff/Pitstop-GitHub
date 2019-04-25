@@ -7,19 +7,13 @@ namespace Pitstop
 {
     public class LUD_DialogueAppearance : MonoBehaviour
     {
-        //Serializeield
+        
         [SerializeField]
         GameObject dialogueSpace = default;
         public float delay = 7f;
-
-
-        //Private
-
         float timer = 0f;
 
-        //Public
         public bool isDialogueSpaceActive = false;
-
 
         // Start is called before the first frame update
         void Start()
@@ -64,6 +58,7 @@ namespace Pitstop
 
             */
             StartCoroutine(ReactionAppearWithDelay(sign1, sign2, sign3, wasExclamationTriggered));
+
 
             timer = 0f;
         }
