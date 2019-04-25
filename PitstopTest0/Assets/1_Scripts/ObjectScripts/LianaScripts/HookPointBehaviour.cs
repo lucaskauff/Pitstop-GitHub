@@ -13,7 +13,6 @@ namespace Pitstop
         [SerializeField] Renderer myRend = default;
         [SerializeField] Animator myAnim = default; 
 
-        //Serializable
         [SerializeField] RootBehaviour2 associatedRoot = default;
         [SerializeField] Color outlineColorOnMouseOver = default;
 
@@ -75,7 +74,7 @@ namespace Pitstop
                 }
             }
 
-            if (associatedRoot.crys.scannedObject.name == "ScannableRoot")
+            if (associatedRoot.crys.scannedObject.tag == "ObjectRoot")
             {
                 outlineColorOnMouseOver = myRend.material.GetColor("_ColorOutline");
                 outlineColorOnMouseOver.a = 255;

@@ -8,25 +8,25 @@ namespace Pitstop
 {
     public class PlayerHealthManager : MonoBehaviour
     {
-        //From GameManager
+        //GameManager
         SceneLoader sceneLoader;
 
-        //My Components
-        SpriteRenderer myRenderer;
-        CinemachineImpulseSource myImpulseSource;
+        [Header("My Components")]
+        [SerializeField] SpriteRenderer myRenderer;
+        [SerializeField] CinemachineImpulseSource myImpulseSource;
 
-        //Public
+        [Header("Public Variables")]
         public int playerMaxHealth = 3;
         public int playerCurrentHealth;
 
-        //Serializable
+        [Header("Serializable")]
         [SerializeField] PostProcessVolume postProRedVignette = default;
         [SerializeField] float feedbackLength = 0.1f;
         [SerializeField] float maxBloodSize = 1;
         [SerializeField] float feedbackRatio = 1;
 
+        //Private
         Vignette vignetteLayer = null;
-
         float timer = 0f;
         bool hasToRecover = false;
         bool feedbackLaunched = false;
@@ -34,9 +34,6 @@ namespace Pitstop
         void Start()
         {
             sceneLoader = GameManager.Instance.sceneLoader;
-
-            myRenderer = GetComponent<SpriteRenderer>();
-            myImpulseSource = GetComponent<CinemachineImpulseSource>();
 
             playerCurrentHealth = playerMaxHealth;
         }

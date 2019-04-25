@@ -45,7 +45,7 @@ namespace Pitstop
         {
             if (crys.scannedObject != null)
             {
-                if (crys.scannedObject.name == "ScannableRoot")
+                if (crys.scannedObject.tag == "ObjectRoot")
                 {
                     ResetHookpoints();
 

@@ -8420,12 +8420,12 @@ PrefabInstance:
     - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.4
+      value: -11.59
       objectReference: {fileID: 0}
     - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.02
+      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 3556835858144363793, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
@@ -8496,6 +8496,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 925001519793593191, guid: 68ece97d118f2ee42b76be1e32598ade,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1696102421751109879}
     - target: {fileID: 925001519708655414, guid: 68ece97d118f2ee42b76be1e32598ade,
         type: 3}
       propertyPath: crystalController
@@ -8506,11 +8511,6 @@ PrefabInstance:
       propertyPath: playerHealthMan
       value: 
       objectReference: {fileID: 2003265252706418002}
-    - target: {fileID: 925001519793593191, guid: 68ece97d118f2ee42b76be1e32598ade,
-        type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 1696102421751109879}
     - target: {fileID: 7457692282874141182, guid: 68ece97d118f2ee42b76be1e32598ade,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -15720,6 +15720,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zayn
       objectReference: {fileID: 0}
+    - target: {fileID: 8453608900050335717, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 556812085}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint
+      value: 
+      objectReference: {fileID: 658678499}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: dashSpeed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: dashLength
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 8827798457674550477, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15774,31 +15799,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8453608900050335717, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: uIManager
-      value: 
-      objectReference: {fileID: 556812085}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint
-      value: 
-      objectReference: {fileID: 658678499}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: canMove
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: dashSpeed
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: dashLength
-      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8453608899426083321, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
@@ -17258,8 +17258,8 @@ PrefabInstance:
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: dialogueInFrench.sentences.Array.data[0]
-      value: "C'est bon, je suis en un seul morceau.\nMais o\xF9 je suis tomb\xE9
-        moi ?"
+      value: "C'est bon, je suis en \nun seul morceau.\nMais ou je suis tombe moi
+        ?"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fb7d921a5320c48b94fcaeb3915f1d, type: 3}

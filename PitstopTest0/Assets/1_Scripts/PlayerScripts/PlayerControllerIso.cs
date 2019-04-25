@@ -13,9 +13,9 @@ namespace Pitstop
         InputManager inputManager;
 
         //My components
-        Rigidbody2D myRb;
-        Collider2D myCollider;
-        Animator myAnim;
+        [SerializeField] Rigidbody2D myRb;
+        [SerializeField] Collider2D myCollider;
+        [SerializeField] Animator myAnim;
 
         //Public
         public bool canMove = true;
@@ -45,10 +45,6 @@ namespace Pitstop
         {
             sceneLoader = GameManager.Instance.sceneLoader;
             inputManager = GameManager.Instance.inputManager;
-
-            myRb = GetComponent<Rigidbody2D>();
-            myCollider = GetComponent<Collider2D>();
-            myAnim = GetComponent<Animator>();
 
             Spawn();
         }
