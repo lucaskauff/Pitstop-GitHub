@@ -13,9 +13,8 @@ namespace Pitstop
         InputManager inputManager;
 
         //My components
-        [SerializeField] Rigidbody2D myRb;
-        [SerializeField] Collider2D myCollider;
-        [SerializeField] Animator myAnim;
+        [SerializeField] Rigidbody2D myRb = default;
+        [SerializeField] Animator myAnim = default;
 
         //Public
         public bool canMove = true;

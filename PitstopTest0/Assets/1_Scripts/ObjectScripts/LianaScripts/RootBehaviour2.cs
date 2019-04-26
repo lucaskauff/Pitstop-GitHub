@@ -19,14 +19,14 @@ namespace Pitstop
 
         [Header("Player related")]
         [SerializeField] Transform thePlayer = default;
-        [SerializeField] GameObject player;
+        [SerializeField] GameObject player = default;
         [SerializeField] Vector2 playerPos;
         public CrystalController crystalController;
 
         [Header("Serializable")]
         [SerializeField] int damageDealing = 1;
         [SerializeField] float decalageY = 0.5f;
-        [SerializeField] EnemyHealthManager bossHealth;
+        [SerializeField] EnemyHealthManager bossHealth = default;
         [SerializeField] ScannableObjectBehaviour appleScanObjBeh = default;
 
         //Private
@@ -38,13 +38,13 @@ namespace Pitstop
         Rigidbody2D impAppleRb;
         GorillaBehaviour rush;
         int numberOfHookpointsOnStart;
+        RaycastHit2D[] trips;
 
         private void Start()
         {
             inputManager = GameManager.Instance.inputManager;
 
             numberOfHookpointsOnStart = hookpoints.Length;
-            Debug.Log(numberOfHookpointsOnStart);
         }
 
         private void Update()
@@ -67,17 +67,7 @@ namespace Pitstop
 
         public void ResetHookpoints()
         {
-            for (int i = 0; i < hookpoints.Length; i++)
-            {
-                if (hookpoints[i] == null)
-                {
-                    return;
-                }
-                else if (hookpoints[i] != null)
-                {
-                    hookpoints = new GameObject[numberOfHookpointsOnStart];
-                }
-            }
+            hookpoints = new GameObject[numberOfHookpointsOnStart];
         }
 
         public void LineManagement()
@@ -93,12 +83,12 @@ namespace Pitstop
                 }
                 else
                 {
-                    for (int i = 0; i < hookpoints.Length - 1; i++)
-                    {
-                        myLineRend.positionCount = hookpoints.Length - 1;
-                        myLineRend.enabled = true;
-                        preview = true;
+                    myLineRend.positionCount = hookpoints.Length;
+                    myLineRend.enabled = true;
+                    preview = true;
 
+                    for (int i = 0; i < hookpoints.Length; i++)
+                    {
                         if (hookpoints[i] != null)
                         {
                             myLineRend.SetPosition(i, new Vector2(hookpoints[i].transform.position.x, hookpoints[i].transform.position.y + decalageY));
@@ -115,17 +105,12 @@ namespace Pitstop
             {
                 pointSelect = false;
 
-                if (hookpoints[1] == null)
+                for (int i = 0; i < hookpoints.Length; i++)
                 {
-                    preview = false;
-                    myLineRend.enabled = false;
-                    return;
-                }
-                else
-                {
-                    for (int i = 0; i < hookpoints.Length - 1; i++)
+                    if (hookpoints[i]  == null)
                     {
-                        myLineRend.positionCount = i + 2;
+                        myLineRend.positionCount = i;
+                        return;
                     }
                 }
             }
@@ -133,10 +118,14 @@ namespace Pitstop
 
         public void LianaCollider()
         {
-            if (myLineRend.enabled == true && preview == false && myLineRend.positionCount == 2)
+            if (myLineRend.enabled == true && preview == false)
             {
-                RaycastHit2D trip = Physics2D.Raycast(new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY) - new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), Vector2.Distance(new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY)));
+                for (int i = 0; i < hookpoints.Length; i++)
+                {
+                    //trips[] = Physics2D.Raycast(new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY) - new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), Vector2.Distance(new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY)));
+                }
 
+                /*
                 if (trip.collider != null)
                 {
                     Debug.Log(trip.collider.gameObject.name);
@@ -157,8 +146,9 @@ namespace Pitstop
                         impactPos = (trip.collider.transform);
                         AppleBounce();
                     }
-                }
+                }*/
 
+                /*
                 if (myLineRend.positionCount == 3)
                 {
                     RaycastHit2D trip2 = Physics2D.Raycast(new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY), new Vector2(hookpoints[2].transform.position.x, hookpoints[2].transform.position.y + decalageY) - new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY), Vector2.Distance(new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY), new Vector2(hookpoints[2].transform.position.x, hookpoints[2].transform.position.y + decalageY)));
@@ -176,7 +166,7 @@ namespace Pitstop
                     {
                         return;
                     }
-                }
+                }*/
             }
         }
 

@@ -63,7 +63,7 @@ namespace Pitstop
         {
             if (associatedRoot.pointSelect)
             {
-                for (int i = 0; i < associatedRoot.hookpoints.Length - 1; i++)
+                for (int i = 0; i < associatedRoot.hookpoints.Length; i++)
                 {
                     if (associatedRoot.hookpoints[i] == null && canContinue == true)
                     {
