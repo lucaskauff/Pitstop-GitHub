@@ -8,5 +8,6 @@ namespace Pitstop
     {
         public float timePassedLockedWhenOffended = 3f;
         public int stepsInUIOffendedProgression = 20;
+
     }
 }
