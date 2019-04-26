@@ -1,5 +1,61 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &157383728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 157383729}
+  - component: {fileID: 157383730}
+  m_Layer: 0
+  m_Name: DialogueWhenFirstNativeIsOffended
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &157383729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157383728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2040702144}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &157383730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157383728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  dialogueManager: {fileID: 0}
+  dialogueInEnglish:
+    name: Zayn
+    sentences:
+    - Oops! I think I make him angry. I should be aware of what I'm saying. I mean,
+      what signs I make.
+  dialogueInFrench:
+    name: Zayn
+    sentences:
+    - "Oups ! Je crois que je l'ai contrari\xE9. Je devrais faire attention \xE0 ce
+      que je dis. Enfin, ce que je signe..."
 --- !u!1 &208938852
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +194,7 @@ MonoBehaviour:
     name: //4th wall\\
     sentences:
     - END OF THE VILLAGE
-    - until...
+    - for now...
   dialogueInFrench:
     name: "//4\xE8me mur\\\\"
     sentences:
@@ -180,7 +236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 16.69, y: 5.27}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 515, y: 322}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &387898900
@@ -921,7 +977,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310974664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.22, y: 6.11, z: 0.1796875}
+  m_LocalPosition: {x: 10.22, y: 6.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1579554950}
@@ -1067,6 +1123,7 @@ MonoBehaviour:
   distanceMaxToTriggeredArrival: 0.3
   isOffended: 0
   uiWhenOffendedProgression: {fileID: 1557443654}
+  dialogueWhenNativeOffended: {fileID: 157383728}
 --- !u!1 &1408709566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,7 +1322,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472260587}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -1315,12 +1372,18 @@ MonoBehaviour:
     name: Zayn
     sentences:
     - So... this is their village...
-    - Maybe they can help me to find Ellya.
+    - 'Maybe they can help me to find Ellya. '
+    - 'But we don''t speak the same language.
+
+      I will have to use something else to communicate.'
   dialogueInFrench:
     name: Zayn
     sentences:
-    - "Alors voil\xE0 \xE0 quoi ressemble leur village..."
-    - "Peut-\xEAtre ont-ils des informations vis \xE0 vis d'Ellya."
+    - "Alors voila a quoi ressemble \nleur village..."
+    - "Peut-\xEAtre ont-ils des informations vis \xE0 vis d'Ellya... Mais ils ne parlent
+      pas ma langue, je vais devoir essayer de me faire comprendre autrement."
+    - Mais ils ne parlent pas ma langue, je vais devoir essayer de me faire comprendre
+      autrement.
 --- !u!1 &1481571096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,7 +1442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 0370f5e869643c248bc1815a7d60871c, type: 3}
-  m_Color: {r: 0.8962264, g: 0.24096651, b: 0.24096651, a: 0.44705883}
+  m_Color: {r: 0.8962264, g: 0.24096651, b: 0.24096651, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1949,6 +2012,7 @@ Transform:
   m_Children:
   - {fileID: 1413674755}
   - {fileID: 1301573941}
+  - {fileID: 157383729}
   m_Father: {fileID: 5231542684711226598}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2295,7 +2359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8606407419086163983}
   m_Layer: 0
-  m_Name: NoDialogueReactionsManager
+  m_Name: NoDialogueReactionsElements
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2309,7 +2373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307304308269920086}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5265827, y: 7.1659427, z: 0.1796875}
+  m_LocalPosition: {x: 0.5265827, y: 7.1659427, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7357166172322347459}
@@ -3309,7 +3373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -63.6}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7100388335714921756
@@ -6877,8 +6941,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6963725308388097908}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5765079, y: 6.015478, z: 0.14215177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5231542684711226598}
@@ -6944,8 +7008,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7041439729006674795}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5265827, y: 6.775943, z: 0.1796875}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5231542684711226598}
@@ -7237,7 +7301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7974989284077370348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.47, y: 0.9, z: 0.1796875}
+  m_LocalPosition: {x: -6.47, y: 0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3649228298774849422}
@@ -7386,6 +7450,7 @@ MonoBehaviour:
   distanceMaxToTriggeredArrival: 0.3
   isOffended: 0
   uiWhenOffendedProgression: {fileID: 1481571097}
+  dialogueWhenNativeOffended: {fileID: 157383728}
 --- !u!1 &8081050825877286084
 GameObject:
   m_ObjectHideFlags: 0

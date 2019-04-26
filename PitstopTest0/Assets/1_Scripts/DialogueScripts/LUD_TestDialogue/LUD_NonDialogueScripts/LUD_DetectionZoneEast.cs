@@ -18,7 +18,7 @@ namespace Pitstop
             {
                 butcherNative.GetComponent<LUD_NonDialogueReactions>().ShowWhereIsEllya();
                 isShowWhereIsEllyaAppeared = true;
-                EndOfSceneTextTrigger.SetActive(true);
+                //EndOfSceneTextTrigger.SetActive(true);
 
 
             }

@@ -30,7 +30,6 @@ namespace Pitstop
         [SerializeField] ScannableObjectBehaviour appleScanObjBeh = default;
 
         //Private
-        bool preview = true;
         float Angle1;
         float Angle2;
         Transform impactPos;
@@ -45,6 +44,8 @@ namespace Pitstop
             inputManager = GameManager.Instance.inputManager;
 
             numberOfHookpointsOnStart = hookpoints.Length;
+
+            ResetHookpoints();
         }
 
         private void Update()
@@ -68,6 +69,7 @@ namespace Pitstop
         public void ResetHookpoints()
         {
             hookpoints = new GameObject[numberOfHookpointsOnStart];
+            trips = new RaycastHit2D[0];
         }
 
         public void LineManagement()
@@ -85,7 +87,6 @@ namespace Pitstop
                 {
                     myLineRend.positionCount = hookpoints.Length;
                     myLineRend.enabled = true;
-                    preview = true;
 
                     for (int i = 0; i < hookpoints.Length; i++)
                     {
@@ -107,10 +108,15 @@ namespace Pitstop
 
                 for (int i = 0; i < hookpoints.Length; i++)
                 {
-                    if (hookpoints[i]  == null)
+                    if (hookpoints[i] == null)
                     {
                         myLineRend.positionCount = i;
+                        trips = new RaycastHit2D[i];
                         return;
+                    }
+                    else
+                    {
+                        trips[i] = Physics2D.Raycast(new Vector2(hookpoints[i-1].transform.position.x, hookpoints[i-1].transform.position.y + decalageY), new Vector2(hookpoints[i].transform.position.x, hookpoints[i].transform.position.y + decalageY) - new Vector2(hookpoints[i-1].transform.position.x, hookpoints[i-1].transform.position.y + decalageY), Vector2.Distance(new Vector2(hookpoints[i-1].transform.position.x, hookpoints[i-1].transform.position.y + decalageY), new Vector2(hookpoints[i].transform.position.x, hookpoints[i].transform.position.y + decalageY)));
                     }
                 }
             }
@@ -118,11 +124,14 @@ namespace Pitstop
 
         public void LianaCollider()
         {
-            if (myLineRend.enabled == true && preview == false)
+            if (myLineRend.enabled == true)
             {
-                for (int i = 0; i < hookpoints.Length; i++)
+                for (int i = 0; i < trips.Length; i++)
                 {
-                    //trips[] = Physics2D.Raycast(new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY) - new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), Vector2.Distance(new Vector2(hookpoints[0].transform.position.x, hookpoints[0].transform.position.y + decalageY), new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY)));
+                    if (trips[i].collider != null)
+                    {
+                        Debug.Log(trips[i].collider.gameObject.name);
+                    }
                 }
 
                 /*
@@ -132,7 +141,6 @@ namespace Pitstop
 
                     if (trip.collider.tag == "Enemy")
                     {
-                        Debug.Log(trip.collider.name);
                         rush = trip.collider.gameObject.GetComponent<GorillaBehaviour>();
                         StartCoroutine(EnemyDamage());
                     }
@@ -145,26 +153,6 @@ namespace Pitstop
                         appleScanObjBeh = crystalController.cloneProj.GetComponent<ScannableObjectBehaviour>();
                         impactPos = (trip.collider.transform);
                         AppleBounce();
-                    }
-                }*/
-
-                /*
-                if (myLineRend.positionCount == 3)
-                {
-                    RaycastHit2D trip2 = Physics2D.Raycast(new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY), new Vector2(hookpoints[2].transform.position.x, hookpoints[2].transform.position.y + decalageY) - new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY), Vector2.Distance(new Vector2(hookpoints[1].transform.position.x, hookpoints[1].transform.position.y + decalageY), new Vector2(hookpoints[2].transform.position.x, hookpoints[2].transform.position.y + decalageY)));
-
-                    if (trip2.collider != null)
-                    {
-                        if (trip.collider.tag == "Enemy")
-                        {
-                            Debug.Log(trip2.collider.name + "2");
-                            rush = trip2.collider.gameObject.GetComponent<GorillaBehaviour>();
-                            StartCoroutine(EnemyDamage());
-                        }
-                    }
-                    else
-                    {
-                        return;
                     }
                 }*/
             }
