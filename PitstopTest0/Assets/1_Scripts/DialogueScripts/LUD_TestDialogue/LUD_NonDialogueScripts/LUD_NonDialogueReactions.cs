@@ -20,6 +20,7 @@ namespace Pitstop
         [Header("Native Offended")]
         public bool isOffended = false;
         public Image uiWhenOffendedProgression;
+        public GameObject dialogueWhenNativeOffended;
 
 
 
@@ -70,6 +71,8 @@ namespace Pitstop
             
             uiWhenOffendedProgression.gameObject.SetActive(true);
             uiWhenOffendedProgression.fillAmount = 0;
+
+            //dialogueWhenNativeOffended.GetComponent<DialogueTrigger>().TriggerDialogue();
 
             int maxI = FindObjectOfType<LUD_NonDialogueManager>().stepsInUIOffendedProgression;
             for (float i = 0f; i< maxI; ++i)
@@ -130,6 +133,8 @@ namespace Pitstop
             NativeReaction reactionEllya = new NativeReaction(stringReactionEllya);
             yield return new WaitForSeconds(0.5f);
             GetComponent<LUD_DialogueAppearance>().ReactionAppearance(reactionEllya.answerWord1, reactionEllya.answerWord2, reactionEllya.answerWord3, false);
+
+            FindObjectOfType<OpenTheGate>().BridgeReparation();
         }
 
     }
