@@ -7,12 +7,8 @@ namespace Pitstop
 {
     public class LUD_TestButton : MonoBehaviour
     {
-        //SerializeField
-        [SerializeField]
-        int valueOfTheWord = 0;
-
-        //Private
-
+        
+        public int valueOfTheWord = 0;
 
         // Start is called before the first frame update
         void Start()
