@@ -24,8 +24,11 @@ namespace Pitstop
         public CrystalController crystalController;
 
         [Header("Serializable")]
+        [SerializeField] float bounceTime = 1;
+        [SerializeField] float bounceAmount = 1;
         [SerializeField] int damageDealing = 1;
         [SerializeField] float decalageY = 0.5f;
+        [SerializeField] LayerMask layerLiana = default;
         [SerializeField] EnemyHealthManager bossHealth = default;
         [SerializeField] ScannableObjectBehaviour appleScanObjBeh = default;
 
@@ -38,6 +41,9 @@ namespace Pitstop
         GorillaBehaviour rush;
         int numberOfHookpointsOnStart;
         RaycastHit2D[] trips;
+        bool raycastsOkay = false;
+        bool impactAngleSet;
+        Vector2 impactAngle;
 
         private void Start()
         {
@@ -69,7 +75,10 @@ namespace Pitstop
         public void ResetHookpoints()
         {
             hookpoints = new GameObject[numberOfHookpointsOnStart];
-            trips = new RaycastHit2D[0];
+            trips = new RaycastHit2D[numberOfHookpointsOnStart - 1];
+            raycastsOkay = false;
+            impactAngleSet = false;
+            StopAllCoroutines();
         }
 
         public void LineManagement()
@@ -114,9 +123,9 @@ namespace Pitstop
                         trips = new RaycastHit2D[i];
                         return;
                     }
-                    else
+                    else if (i >= 1)
                     {
-                        trips[i] = Physics2D.Raycast(new Vector2(hookpoints[i-1].transform.position.x, hookpoints[i-1].transform.position.y + decalageY), new Vector2(hookpoints[i].transform.position.x, hookpoints[i].transform.position.y + decalageY) - new Vector2(hookpoints[i-1].transform.position.x, hookpoints[i-1].transform.position.y + decalageY), Vector2.Distance(new Vector2(hookpoints[i-1].transform.position.x, hookpoints[i-1].transform.position.y + decalageY), new Vector2(hookpoints[i].transform.position.x, hookpoints[i].transform.position.y + decalageY)));
+                        raycastsOkay = true;
                     }
                 }
             }
@@ -126,36 +135,93 @@ namespace Pitstop
         {
             if (myLineRend.enabled == true)
             {
-                for (int i = 0; i < trips.Length; i++)
+                if (raycastsOkay)
                 {
-                    if (trips[i].collider != null)
+                    for (int i = 0; i < hookpoints.Length; i++)
                     {
-                        Debug.Log(trips[i].collider.gameObject.name);
+                        if (hookpoints[i] != null && i >= 1)
+                        {
+                            Vector2 originHookpoint = new Vector2(hookpoints[i - 1].transform.position.x, hookpoints[i - 1].transform.position.y + decalageY);
+                            Vector2 targetHookpoint = new Vector2(hookpoints[i].transform.position.x, hookpoints[i].transform.position.y + decalageY);
+
+                            trips[i] = Physics2D.Raycast(originHookpoint, targetHookpoint - originHookpoint, Vector2.Distance(originHookpoint, targetHookpoint), layerLiana);
+                            Debug.DrawLine(new Vector2(hookpoints[i - 1].transform.position.x, hookpoints[i - 1].transform.position.y + decalageY), new Vector2(hookpoints[i].transform.position.x, hookpoints[i].transform.position.y + decalageY), Color.red);
+                        }
                     }
                 }
 
-                /*
-                if (trip.collider != null)
+                for (int i = 0; i < trips.Length; i++)
                 {
-                    Debug.Log(trip.collider.gameObject.name);
-
-                    if (trip.collider.tag == "Enemy")
+                    if (trips[i].collider != null && trips[i].collider.gameObject.tag != "HookPoint")
                     {
-                        rush = trip.collider.gameObject.GetComponent<GorillaBehaviour>();
-                        StartCoroutine(EnemyDamage());
-                    }
+                        Debug.Log(trips[i].collider.gameObject.name);
 
-                    if (trip.collider.tag == "ObjectApple")
-                    {
-                        //StartCoroutine(Bounce());
-                        impAppleRb = crystalController.cloneProj.GetComponent<Rigidbody2D>();
-                        velocityX = impAppleRb.velocity.x;
-                        appleScanObjBeh = crystalController.cloneProj.GetComponent<ScannableObjectBehaviour>();
-                        impactPos = (trip.collider.transform);
-                        AppleBounce();
+                        if (trips[i].collider.gameObject.tag == "Player" && hookpoints[i-1] != null)
+                        {
+                            Debug.Log("zaynoubouncidu");
+                            Debug.Log(trips.Length);
+                            StartCoroutine(PlayerBounce(hookpoints[i].transform.position, hookpoints[i+1].transform.position, trips[i].collider.gameObject.transform.position));
+                        }
                     }
-                }*/
+                }
             }
+        }
+
+        IEnumerator PlayerBounce(Vector2 originHP, Vector2 targetHP, Vector2 impactPos)
+        {
+            myLineRend.enabled = false;
+            mark = true;
+
+            player.GetComponent<PlayerControllerIso>().playerCanMove = false;
+            player.GetComponent<PlayerControllerIso>().moveInput = new Vector2(player.GetComponent<PlayerControllerIso>().moveInput.x * -bounceAmount, player.GetComponent<PlayerControllerIso>().moveInput.y * -bounceAmount);
+
+            
+            if (!impactAngleSet)
+            {
+                impactAngle = player.GetComponent<PlayerControllerIso>().lastMove + impactPos;
+                impactAngleSet = true;
+            }
+
+            Vector2 impactPosProj;
+            Vector2 bounceVector;
+
+            if (Vector2.Distance(originHP, impactPos) <= Vector2.Distance(targetHP, impactPos))
+            {
+                impactPosProj = impactPos + (new Vector2(-(impactPos.x - originHP.x), -(impactPos.y - originHP.y)));
+
+                if (Vector2.Distance(originHP, impactAngle) <= Vector2.Distance(impactPosProj, impactAngle))
+                {
+                    float angleForCase1;
+                    angleForCase1 = Vector3.SignedAngle(impactAngle, originHP, impactPos);
+                    bounceVector = Quaternion.AngleAxis(-2 * angleForCase1, new Vector3(0, 0, 1)) * impactAngle;
+                }
+                else
+                {
+                    //lameme
+                    bounceVector = new Vector2(1, 1);
+                }
+            }
+            else
+            {
+                impactPosProj = impactPos + (new Vector2(-(impactPos.x - targetHP.x), -(impactPos.y - targetHP.y)));
+
+                if (Vector2.Distance(targetHP, impactAngle) <= Vector2.Distance(impactPosProj, impactAngle))
+                {
+                    bounceVector = new Vector2(1, 1);
+                }
+                else
+                {
+                    //lameme
+                    bounceVector = new Vector2(1, 1);
+                }
+            }
+
+            player.GetComponent<PlayerControllerIso>().moveInput = new Vector2(bounceVector.x * bounceAmount, bounceVector.y * bounceAmount);          
+
+            yield return new WaitForSeconds(bounceTime);
+
+            player.GetComponent<PlayerControllerIso>().playerCanMove = true;
+            ResetHookpoints();
         }
 
         void AppleBounce()
