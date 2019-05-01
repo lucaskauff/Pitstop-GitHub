@@ -12,9 +12,9 @@ namespace Pitstop
         SceneLoader sceneLoader;
 
         [Header("My Components")]
-        [SerializeField] SpriteRenderer myRenderer;
-        [SerializeField] Animator myAnim;
-        [SerializeField] CinemachineImpulseSource myImpulseSource;
+        //to use on player taking dmg
+        //[SerializeField] Animator myAnim = default;
+        [SerializeField] CinemachineImpulseSource myImpulseSource = default;
 
         [Header("Public Variables")]
         public int playerMaxHealth = 3;

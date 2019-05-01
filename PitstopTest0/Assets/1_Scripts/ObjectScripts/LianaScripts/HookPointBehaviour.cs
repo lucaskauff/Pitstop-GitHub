@@ -31,7 +31,7 @@ namespace Pitstop
         {
             if (inputManager.onLeftClick)
             {
-                if (associatedRoot.crys.scannedObject.tag == "ObjectRoot")
+                if (associatedRoot.crystalController.scannedObject.tag == "ObjectRoot")
                 {
                     markSign = false;
                     canContinue = true;
@@ -63,18 +63,18 @@ namespace Pitstop
         {
             if (associatedRoot.pointSelect)
             {
-                for (int x = 0; x < 3; x++)
+                for (int i = 0; i < associatedRoot.hookpoints.Length; i++)
                 {
-                    if (associatedRoot.hookpoints[x] == null && canContinue == true)
+                    if (associatedRoot.hookpoints[i] == null && canContinue == true)
                     {
-                        associatedRoot.hookpoints[x] = gameObject;
+                        associatedRoot.hookpoints[i] = gameObject;
                         canContinue = false;
                         markSign = true;
                     }
                 }
             }
 
-            if (associatedRoot.crys.scannedObject.tag == "ObjectRoot")
+            if (associatedRoot.crystalController.scannedObject.tag == "ObjectRoot")
             {
                 outlineColorOnMouseOver = myRend.material.GetColor("_ColorOutline");
                 outlineColorOnMouseOver.a = 255;

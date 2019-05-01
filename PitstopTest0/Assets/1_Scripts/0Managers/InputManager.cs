@@ -48,12 +48,12 @@ namespace Pitstop
             dashKey = Input.GetKeyDown(KeyCode.LeftShift);
             //
             cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            onLeftClick = Input.GetKeyDown("mouse 0");
-            leftClickBeingPressed = Input.GetKey("mouse 0");
-            onLeftClickReleased = Input.GetKeyUp("mouse 0");
-            onRightClick = Input.GetKeyDown("mouse 1");
-            rightClickBeingPressed = Input.GetKey("mouse 1");
-            onRightClickReleased = Input.GetKeyUp("mouse 1");
+            onLeftClick = Input.GetKeyDown(KeyCode.Mouse0);
+            leftClickBeingPressed = Input.GetKey(KeyCode.Mouse0);
+            onLeftClickReleased = Input.GetKeyUp(KeyCode.Mouse0);
+            onRightClick = Input.GetKeyDown(KeyCode.Mouse1);
+            rightClickBeingPressed = Input.GetKey(KeyCode.Mouse1);
+            onRightClickReleased = Input.GetKeyUp(KeyCode.Mouse1);
         }
     }
 }

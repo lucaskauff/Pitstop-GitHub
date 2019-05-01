@@ -14,7 +14,6 @@ namespace Pitstop
         public int scanProgress = 0;
         public GameObject scannedObject;
         public GameObject circularRange;
-        public LayerMask raycastLayerMask;
 
         //SerializedField
         [SerializeField]
@@ -35,6 +34,8 @@ namespace Pitstop
         PrevizContact previsualisationContact = default;
         [SerializeField]
         float previzAlphaRatio = 0.2f;
+        [SerializeField] int ignoreRaycast = 2;
+        [SerializeField] int liana = 9;
 
         //Private
         List<GameObject> gameObjectsOnScene = new List<GameObject>();
@@ -145,6 +146,20 @@ namespace Pitstop
             if (canShoot && inputManager.onLeftClick && scannedObject != null && Time.time > fireRate)
             {   
                 Shoot();
+            }
+        }
+
+        private void LateUpdate()
+        {
+            //Assigning the right layer
+            if (inputManager.rightClickBeingPressed)
+            {
+                gameObject.layer = ignoreRaycast;
+                return;
+            }
+            else
+            {
+                gameObject.layer = liana;
             }
         }
 
