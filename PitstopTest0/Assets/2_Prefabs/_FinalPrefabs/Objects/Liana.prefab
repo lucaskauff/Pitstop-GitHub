@@ -190,14 +190,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   pointSelect: 0
   mark: 0
   thePlayer: {fileID: 0}
   player: {fileID: 0}
   playerPos: {x: 0, y: 0}
   crystalController: {fileID: 0}
+  bounceTime: 0.25
+  bounceAmount: 1
   damageDealing: 1
-  decalageY: 0.5
+  decalageY: 0.3
+  layerLiana:
+    serializedVersion: 2
+    m_Bits: 512
   bossHealth: {fileID: 0}
   appleScanObjBeh: {fileID: 0}
 --- !u!114 &898276923229779687
@@ -252,6 +258,8 @@ LineRenderer:
   m_SortingLayer: 4
   m_SortingOrder: -1
   m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}

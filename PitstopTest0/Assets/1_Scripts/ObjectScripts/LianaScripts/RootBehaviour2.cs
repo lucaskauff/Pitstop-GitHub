@@ -75,7 +75,7 @@ namespace Pitstop
         public void ResetHookpoints()
         {
             hookpoints = new GameObject[numberOfHookpointsOnStart];
-            trips = new RaycastHit2D[numberOfHookpointsOnStart - 1];
+            trips = new RaycastHit2D[numberOfHookpointsOnStart];
             raycastsOkay = false;
             impactAngleSet = false;
             StopAllCoroutines();
@@ -154,13 +154,11 @@ namespace Pitstop
                 {
                     if (trips[i].collider != null && trips[i].collider.gameObject.tag != "HookPoint")
                     {
-                        Debug.Log(trips[i].collider.gameObject.name);
+                        //Debug.Log(trips[i].collider.gameObject.name);
 
-                        if (trips[i].collider.gameObject.tag == "Player" && hookpoints[i-1] != null)
+                        if (trips[i].collider.gameObject.tag == "Player" && i >= 1)
                         {
-                            Debug.Log("zaynoubouncidu");
-                            Debug.Log(trips.Length);
-                            StartCoroutine(PlayerBounce(hookpoints[i].transform.position, hookpoints[i+1].transform.position, trips[i].collider.gameObject.transform.position));
+                            StartCoroutine(PlayerBounce(hookpoints[i-1].transform.position, hookpoints[i].transform.position, trips[i].collider.gameObject.transform.position));
                         }
                     }
                 }
@@ -173,8 +171,7 @@ namespace Pitstop
             mark = true;
 
             player.GetComponent<PlayerControllerIso>().playerCanMove = false;
-            player.GetComponent<PlayerControllerIso>().moveInput = new Vector2(player.GetComponent<PlayerControllerIso>().moveInput.x * -bounceAmount, player.GetComponent<PlayerControllerIso>().moveInput.y * -bounceAmount);
-
+            //player.GetComponent<PlayerControllerIso>().moveInput = new Vector2(player.GetComponent<PlayerControllerIso>().moveInput.x * -bounceAmount, player.GetComponent<PlayerControllerIso>().moveInput.y * -bounceAmount);
             
             if (!impactAngleSet)
             {
@@ -193,12 +190,15 @@ namespace Pitstop
                 {
                     float angleForCase1;
                     angleForCase1 = Vector3.SignedAngle(impactAngle, originHP, impactPos);
-                    bounceVector = Quaternion.AngleAxis(-2 * angleForCase1, new Vector3(0, 0, 1)) * impactAngle;
+                    bounceVector = Quaternion.AngleAxis(2 * angleForCase1, new Vector3(0, 0, 1)) * impactAngle;
+                    Debug.Log("case1");
                 }
                 else
                 {
-                    //lameme
-                    bounceVector = new Vector2(1, 1);
+                    float angleForCase3;
+                    angleForCase3 = Vector3.SignedAngle(impactAngle, impactPosProj, impactPos);
+                    bounceVector = Quaternion.AngleAxis(2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
+                    Debug.Log("case3");
                 }
             }
             else
@@ -207,12 +207,17 @@ namespace Pitstop
 
                 if (Vector2.Distance(targetHP, impactAngle) <= Vector2.Distance(impactPosProj, impactAngle))
                 {
-                    bounceVector = new Vector2(1, 1);
+                    float angleForCase2;
+                    angleForCase2 = Vector3.SignedAngle(impactAngle, targetHP, impactPos);
+                    bounceVector = Quaternion.AngleAxis(2 * angleForCase2, new Vector3(0, 0, 1)) * impactAngle;
+                    Debug.Log("case2");
                 }
                 else
                 {
-                    //lameme
-                    bounceVector = new Vector2(1, 1);
+                    float angleForCase3;
+                    angleForCase3 = Vector3.SignedAngle(impactAngle, impactPosProj, impactPos);
+                    bounceVector = Quaternion.AngleAxis(2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
+                    Debug.Log("case3");
                 }
             }
 

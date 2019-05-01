@@ -85,6 +85,9 @@ namespace Pitstop
         {
             isMoving = false;
 
+            //DEBUG WITH LIANA !
+            Debug.DrawLine(transform.position, new Vector2(transform.position.x + moveInput.x, transform.position.y + moveInput.y), Color.blue);
+
             if (!canMove)
             {
                 myRb.velocity = Vector2.zero;
