@@ -228,50 +228,5 @@ namespace Pitstop
             player.GetComponent<PlayerControllerIso>().playerCanMove = true;
             ResetHookpoints();
         }
-
-        void AppleBounce()
-        {
-            Vector2 shootVect = thePlayer.position;      
-            Vector2 pillarVect = impactPos.position;
-            Angle1 = Vector2.Angle(pillarVect, shootVect);
-            Angle2 = 180 - Angle1;
-
-            Debug.Log("Angle is" + Angle1);
-            Debug.Log("Angle 2 is" + Angle2);
-
-            Vector2 result = new Vector2(Mathf.Sin(Angle2), Mathf.Cos(Angle2));
-            Debug.Log(result);
-
-            appleScanObjBeh.targetPos = result;
-
-            /*else if (rb.velocity.x < 0f)
-            {
-                scanObjBeh.targetPos = -result;
-            }*/
-
-            appleScanObjBeh.Shoot();
-        }
-
-        IEnumerator EnemyDamage()
-        {
-            bossHealth.HurtEnemy(damageDealing);
-            myLineRend.enabled = false;
-            mark = true;
-            rush.rushSpeed = -rush.rushSpeed;
-            rush.rushTime = 0.1f;
-            yield return new WaitForSeconds(1f);
-            rush.rushSpeed = -(rush.rushSpeed);
-        }
-
-        IEnumerator Bounce()
-        {
-            Vector2 shootVect = player.transform.position;
-            Vector2 pillarVect = impactPos.position;
-            Angle1 = Vector2.Angle(pillarVect, shootVect);
-            Angle2 = 180 - Angle1;
-            yield return new WaitForSeconds(1f);
-            Debug.Log("Angle is" + Angle1);
-            Debug.Log("Angle 2 is" + Angle2);
-        }
     }
 }

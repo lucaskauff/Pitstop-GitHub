@@ -113,11 +113,11 @@ namespace Pitstop
                         {
                             if (scanProgress == 5)
                             {
-                                scannedObject = GameObject.FindWithTag(objectOnScan.tag);
+                                scannedObject = objectOnScan;
                                 uIManager.ChangeImageInCrystalSlot(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
-
+                                
                                 FindObjectOfType<LUD_PreviewOfScannedObject>().ChangePreviewCrystalInDialogueWheel(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon, scannedObject.GetComponent<ScannableObjectBehaviour>().valueOfTheWorld, scannedObject.GetComponent<ScannableObjectBehaviour>().isAWord);
-
+                                
                                 StopAllCoroutines();
                                 scanProgress = 0;
                             }
@@ -262,7 +262,7 @@ namespace Pitstop
         {
             while (scanProgress < 5)
             {
-                Debug.Log(scanProgress);
+                //Debug.Log(scanProgress);
                 yield return new WaitForSeconds(scanSpeed);
                 scanProgress++;
             }
@@ -272,7 +272,7 @@ namespace Pitstop
         {
             while (scanProgress > 0)
             {
-                Debug.Log(scanProgress);
+                //Debug.Log(scanProgress);
                 yield return new WaitForSeconds(descanSpeed);
                 scanProgress--;
             }
