@@ -126,15 +126,19 @@ MonoBehaviour:
   triggerDialogueOnStart: 0
   dialogueManager: {fileID: 0}
   dialogueInEnglish:
-    name: Zayne
+    name: Zayn
     sentences:
-    - Oops! I think I make him angry. I should be aware of what I'm saying. I mean,
-      what signs I make.
+    - 'Oops! I think I made him angry. I should be aware of what I''m saying. '
+    - 'I mean ... what signs I make.
+
+      I will have to wait a little bit before be able to talk to him again.'
   dialogueInFrench:
-    name: Zayne
+    name: Zayn
     sentences:
     - "Oups ! Je crois que je l'ai contrari\xE9. Je devrais faire attention \xE0 ce
-      que je dis. Enfin, ce que je signe..."
+      que je dis."
+    - "Enfin ... ce que je signe. \nJe vais devoir attendre un peu avant de pouvoir
+      lui reparler."
 --- !u!1 &190376355
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +589,7 @@ MonoBehaviour:
   - {fileID: 1068989617}
   WalkingSpeedOfTheNative: 3
   distanceMaxToTriggeredArrival: 0.3
+  dialogueWhenZaynSeeWhereIsEllya: {fileID: 629814739}
   isOffended: 0
   uiWhenOffendedProgression: {fileID: 1282936803}
   dialogueWhenNativeOffended: {fileID: 157383728}
@@ -1215,6 +1220,64 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &629814739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 629814740}
+  - component: {fileID: 629814741}
+  m_Layer: 0
+  m_Name: DialogueWhenSeeThatTheBridgeIsBlocked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &629814740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629814739}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2040702144}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &629814741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629814739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  dialogueManager: {fileID: 0}
+  dialogueInEnglish:
+    name: Zayn
+    sentences:
+    - This man saw Ellya in the East ? Thank God ! She's alive !
+    - "But this bridge is the only access and it's broken... \nWhy this kind of things
+      only happens to me ?"
+  dialogueInFrench:
+    name: Zayn
+    sentences:
+    - "Cet homme aurait vu Ellya \xE0 l'Est ? Quel soulagement ! Elle est en vie !"
+    - "Mais le pont pour y acc\xE9der est cass\xE9... S'il y a bien un mec qui doit
+      tout prendre comme \xE7a, c'est moi !"
 --- !u!1 &643887391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,6 +1766,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   builderNative1: {fileID: 1744320359806515373}
   builderNative2: {fileID: 332917577}
+  dialogueWhenBridgeIsRepaired: {fileID: 982105073}
+--- !u!1 &982105073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 982105074}
+  - component: {fileID: 982105075}
+  m_Layer: 0
+  m_Name: DialogueWhenTheBridgeIsRebuilt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &982105074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982105073}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2040702144}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &982105075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982105073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  dialogueManager: {fileID: 0}
+  dialogueInEnglish:
+    name: Zayn
+    sentences:
+    - Whoa the bridge is already repaired ! You're fast guys...
+    - Wait a little bit more Ellya, I'm coming !
+  dialogueInFrench:
+    name: Zayn
+    sentences:
+    - "Le pont est d\xE9j\xE0 r\xE9par\xE9 ! Rapide les mecs..."
+    - Attend encore un peu Ellya, j'arrive !
 --- !u!1 &982267718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,6 +2295,7 @@ MonoBehaviour:
   - {fileID: 1726373261}
   WalkingSpeedOfTheNative: 3
   distanceMaxToTriggeredArrival: 0.3
+  dialogueWhenZaynSeeWhereIsEllya: {fileID: 629814739}
   isOffended: 0
   uiWhenOffendedProgression: {fileID: 1557443654}
   dialogueWhenNativeOffended: {fileID: 157383728}
@@ -2557,13 +2678,13 @@ MonoBehaviour:
   triggerDialogueOnStart: 1
   dialogueManager: {fileID: 0}
   dialogueInEnglish:
-    name: Zayne
+    name: Zayn
     sentences:
     - So... this is their village...
-    - 'Maybe they can help me to find Ellya. '
+    - Maybe they can help me to find Ellya.
     - But we don't speak the same language. I will have to use something else to communicate.
   dialogueInFrench:
-    name: Zayne
+    name: Zayn
     sentences:
     - "Alors voil\xE0 \xE0 quoi ressemble leur village..."
     - "Peut-\xEAtre ont-ils des informations vis \xE0 vis d'Ellya... Mais ils ne parlent
@@ -3459,6 +3580,8 @@ Transform:
   - {fileID: 1413674755}
   - {fileID: 1301573941}
   - {fileID: 157383729}
+  - {fileID: 629814740}
+  - {fileID: 982105074}
   m_Father: {fileID: 5231542684711226598}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4006,7 +4129,7 @@ Transform:
   - {fileID: 1278347434}
   - {fileID: 2061311389}
   m_Father: {fileID: 5231542684711226598}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &346511966904789894
 GameObject:
@@ -4397,10 +4520,8 @@ Transform:
   m_Children:
   - {fileID: 124005458757480278}
   - {fileID: 2040702144}
-  - {fileID: 7403275983033733038}
-  - {fileID: 879855578637106746}
-  - {fileID: 7963980536962449009}
   - {fileID: 8606407419086163983}
+  - {fileID: 746028481917798901}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5022,6 +5143,7 @@ MonoBehaviour:
   - {fileID: 1878897347}
   WalkingSpeedOfTheNative: 3
   distanceMaxToTriggeredArrival: 0.3
+  dialogueWhenZaynSeeWhereIsEllya: {fileID: 629814739}
   isOffended: 0
   uiWhenOffendedProgression: {fileID: 5517769340207074168}
   dialogueWhenNativeOffended: {fileID: 157383728}
@@ -8057,8 +8179,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 7929562039225147732}
-  m_Father: {fileID: 5231542684711226598}
-  m_RootOrder: 3
+  m_Father: {fileID: 746028481917798901}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8407,6 +8529,39 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &5072211127262472799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 746028481917798901}
+  m_Layer: 0
+  m_Name: DialogueSystem_v14
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &746028481917798901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5072211127262472799}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 87.856674, y: 63.74981, z: 53.42519}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7403275983033733038}
+  - {fileID: 879855578637106746}
+  - {fileID: 7963980536962449009}
+  m_Father: {fileID: 5231542684711226598}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5167191378596212972
 GameObject:
   m_ObjectHideFlags: 0
@@ -9649,11 +9804,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6963725308388097908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5765079, y: 6.015478, z: 0.14215177}
+  m_LocalPosition: {x: -87.28017, y: -57.73433, z: -53.28304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5231542684711226598}
-  m_RootOrder: 2
+  m_Father: {fileID: 746028481917798901}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &501709359959594164
 MonoBehaviour:
@@ -9732,11 +9887,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7041439729006674795}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5265827, y: 6.775943, z: 0.1796875}
+  m_LocalPosition: {x: -87.33009, y: -56.973866, z: -53.245502}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5231542684711226598}
-  m_RootOrder: 4
+  m_Father: {fileID: 746028481917798901}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6312975277265370962
 MonoBehaviour:
@@ -10323,6 +10478,7 @@ MonoBehaviour:
   - {fileID: 7996849977281785234}
   WalkingSpeedOfTheNative: 3
   distanceMaxToTriggeredArrival: 0.3
+  dialogueWhenZaynSeeWhereIsEllya: {fileID: 629814739}
   isOffended: 0
   uiWhenOffendedProgression: {fileID: 1481571097}
   dialogueWhenNativeOffended: {fileID: 157383728}
@@ -10682,7 +10838,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6427a06b212abbf4e8feb180df317251, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ca641c5a56db7541ab4189a73555f34, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
