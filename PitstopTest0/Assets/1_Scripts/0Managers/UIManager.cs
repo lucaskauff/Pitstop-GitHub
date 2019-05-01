@@ -31,7 +31,6 @@ namespace Pitstop
         //Private
         private Quaternion aiguilleNewRotation;
         private bool playerLifesAppearedCheck = false;
-        private bool crystalUiAppearedCheck = false;
 
         void Start()
         {
