@@ -1429,6 +1429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b747cf74ed9de684da7604611515cf66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRenderer: {fileID: 8827798457674550476}
+  myAnim: {fileID: 8453608900050335740}
+  myImpulseSource: {fileID: 8827798457674550475}
   playerMaxHealth: 3
   playerCurrentHealth: 3
   postProRedVignette: {fileID: 0}
@@ -1447,6 +1450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b087d6839d04846a7bffbcd6cb831b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRb: {fileID: 8827798457674550479}
+  myCollider: {fileID: 5027924806974236885}
+  myAnim: {fileID: 8453608900050335740}
   canMove: 0
   isMoving: 0
   isBeingRepulsed: 0
