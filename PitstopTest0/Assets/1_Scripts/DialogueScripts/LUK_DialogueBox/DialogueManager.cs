@@ -42,7 +42,7 @@ namespace Pitstop
 
         private void Update()
         {
-            if (playerReading && inputManager.anyKeyPressed)
+            if (playerReading && inputManager.skipActualDialogueBox)
             {
                 DisplayNextSentence();
             }

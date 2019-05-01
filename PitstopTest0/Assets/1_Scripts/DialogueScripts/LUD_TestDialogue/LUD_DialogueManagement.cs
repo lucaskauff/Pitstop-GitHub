@@ -11,6 +11,7 @@ namespace Pitstop
         [SerializeField]
         GameObject dialogueWheel = default;
         //[SerializeField] Image[] displayedSentence = default;
+        public bool isDialogueWheelActive = false;
 
 
 
@@ -57,11 +58,13 @@ namespace Pitstop
         public void WheelAppearance()
         {
             dialogueWheel.SetActive(true);
+            isDialogueWheelActive = true;
         }
 
         public void WheelDisappearance()
         {
             dialogueWheel.SetActive(false);
+            isDialogueWheelActive = false;
 
             SentenceIsPrononced();
 

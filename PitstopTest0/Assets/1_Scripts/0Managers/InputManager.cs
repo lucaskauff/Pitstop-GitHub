@@ -14,6 +14,7 @@ namespace Pitstop
 
         //UI keys
         public bool displayDialogueWheelKey;
+        public bool skipActualDialogueBox;
 
         //Interaction button
         public bool interactionButton;
@@ -39,6 +40,7 @@ namespace Pitstop
             escKey = Input.GetKeyDown(KeyCode.Escape);
             //
             displayDialogueWheelKey = Input.GetKey(KeyCode.Space);
+            skipActualDialogueBox = Input.GetKeyDown(KeyCode.A);
             //
             interactionButton = Input.GetKeyDown(KeyCode.E);
             //
