@@ -51,33 +51,31 @@ namespace Pitstop
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == "Player" && !dialogueManager.playerReading && !activationCheck)
+            if (collision.gameObject.tag == "Player")
             {
                 TriggerDialogue();
-
-                if (onlyActivatableOnce)
-                {
-                    activationCheck = true;
-                }
             }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Player" && !dialogueManager.playerReading && !activationCheck)
+            if (collision.gameObject.tag == "Player")
             {
                 TriggerDialogue();
+            }
+        }
+
+        public void TriggerDialogue()
+        {
+            if (!dialogueManager.playerReading && !activationCheck)
+            {
+                dialogueManager.StartDialogue(activeDialogue);
 
                 if (onlyActivatableOnce)
                 {
                     activationCheck = true;
                 }
             }
-        }
-
-        public void TriggerDialogue()
-        {
-            dialogueManager.StartDialogue(activeDialogue);
         }
     }
 }

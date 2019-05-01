@@ -115,6 +115,8 @@ namespace Pitstop
                                 scannedObject = GameObject.FindWithTag(objectOnScan.tag);
                                 uIManager.ChangeImageInCrystalSlot(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
 
+                                FindObjectOfType<LUD_PreviewOfScannedObject>().ChangePreviewCrystalInDialogueWheel(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon, scannedObject.GetComponent<ScannableObjectBehaviour>().valueOfTheWorld, scannedObject.GetComponent<ScannableObjectBehaviour>().isAWord);
+
                                 StopAllCoroutines();
                                 scanProgress = 0;
                             }
