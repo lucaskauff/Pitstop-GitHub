@@ -189,13 +189,19 @@ namespace Pitstop
             {
                 GetComponent<LUD_NonDialogueReactions>().StartCoroutine("LaunchTheDesactivcationaAndReturnToNormal"); 
                 return true;
-            }
-           
 
-            
+            }
+            else if (code == "go_repair_east")
+            {
+                GetComponent<LUD_NonDialogueReactions>().GoRepairEast();
+                return true;
+            }
+
+
+
             else
             {
-
+                
                 return true;
             }
         }
