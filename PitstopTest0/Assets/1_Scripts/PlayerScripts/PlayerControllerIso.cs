@@ -13,12 +13,12 @@ namespace Pitstop
         InputManager inputManager;
 
         //My components
-        [SerializeField] Rigidbody2D myRb;
-        [SerializeField] Collider2D myCollider;
-        [SerializeField] Animator myAnim;
+        [SerializeField] Rigidbody2D myRb = default;
+        [SerializeField] Animator myAnim = default;
 
         //Public
         public bool canMove = true;
+        [HideInInspector] public bool playerCanMove = true;
         public bool isMoving = false;
         public bool isBeingRepulsed = false;
         public float isometricRatio = 2;
@@ -26,8 +26,8 @@ namespace Pitstop
         //Serializable
         [SerializeField]
         Transform sceneStartingPoint = null;
-        [SerializeField]
-        float moveSpeed = 3;
+        //[SerializeField]
+        public float moveSpeed = 3;
         [SerializeField]
         float dashSpeed = 5;
         [SerializeField]
@@ -36,8 +36,8 @@ namespace Pitstop
         float dashCooldown = 1;
 
         //Private
-        Vector2 moveInput;
-        Vector2 lastMove;
+        [HideInInspector] public Vector2 moveInput;
+        [HideInInspector] public Vector2 lastMove;
         float initialMoveSpeed = 0;
         float dashRate = 0;
 
@@ -67,7 +67,7 @@ namespace Pitstop
                     break;
 
                 case "3_VILLAGE":
-                    lastMove = new Vector2(0, -1);
+                    lastMove = new Vector2(0, 1);
                     break;
 
                 case "4_DUNGEON":
@@ -85,6 +85,9 @@ namespace Pitstop
         {
             isMoving = false;
 
+            //DEBUG WITH LIANA !
+            Debug.DrawLine(transform.position, new Vector2(transform.position.x + moveInput.x, transform.position.y + moveInput.y), Color.blue);
+
             if (!canMove)
             {
                 myRb.velocity = Vector2.zero;
@@ -92,7 +95,10 @@ namespace Pitstop
                 return;
             }
 
-            moveInput = new Vector2(inputManager.horizontalInput, inputManager.verticalInput / isometricRatio).normalized;
+            if (playerCanMove)
+            {
+                moveInput = new Vector2(inputManager.horizontalInput, inputManager.verticalInput / isometricRatio).normalized;
+            }
 
             if (moveInput != Vector2.zero)
             {
