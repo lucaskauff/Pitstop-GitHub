@@ -8,7 +8,6 @@ namespace Pitstop
     public class Stairs : MonoBehaviour
     {
         //My Components
-        [SerializeField] Collider2D myCollider;
         [SerializeField] CinemachineImpulseSource myImpulseSource = default;
 
         //Serializable

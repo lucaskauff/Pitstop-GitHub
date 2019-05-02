@@ -10,9 +10,10 @@ namespace Pitstop
         InputManager inputManager;
 
         //Public
-        public UIManager uIManager;
         public int scanProgress = 0;
+        public int maxScanProgress = 5;
         public GameObject scannedObject;
+        public GameObject objectOnScan;
         public GameObject circularRange;
 
         //SerializedField
@@ -43,7 +44,6 @@ namespace Pitstop
         public bool hitting = false;
         GameObject objectHittedBefore;
         public GameObject objectHitted = default;
-        GameObject objectOnScan;
         float fireRate = 0;
 
         public GameObject cloneProj;
@@ -111,12 +111,12 @@ namespace Pitstop
                         //If hit object is the same as the registered one
                         else if (objectOnScan.tag == objectHitted.tag)
                         {
-                            if (scanProgress == 5)
+                            if (scanProgress == maxScanProgress)
                             {
-                                scannedObject = GameObject.FindWithTag(objectOnScan.tag);
-                                uIManager.ChangeImageInCrystalSlot(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
-
+                                scannedObject = objectOnScan;
+                                
                                 FindObjectOfType<LUD_PreviewOfScannedObject>().ChangePreviewCrystalInDialogueWheel(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon, scannedObject.GetComponent<ScannableObjectBehaviour>().valueOfTheWorld, scannedObject.GetComponent<ScannableObjectBehaviour>().isAWord);
+                                FindObjectOfType<UIManager>().ChangeImageInCrystalSlot(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
 
                                 StopAllCoroutines();
                                 scanProgress = 0;
@@ -180,6 +180,7 @@ namespace Pitstop
             switch (scannedObject.tag)
             {
                 case "ObjectLiana":
+                    previsualisation.sprite = null;
                     return;
 
                 case "ObjectRock":
@@ -260,9 +261,9 @@ namespace Pitstop
 
         IEnumerator Scan()
         {
-            while (scanProgress < 5)
+            while (scanProgress < maxScanProgress)
             {
-                Debug.Log(scanProgress);
+                //Debug.Log(scanProgress);
                 yield return new WaitForSeconds(scanSpeed);
                 scanProgress++;
             }
@@ -272,7 +273,7 @@ namespace Pitstop
         {
             while (scanProgress > 0)
             {
-                Debug.Log(scanProgress);
+                //Debug.Log(scanProgress);
                 yield return new WaitForSeconds(descanSpeed);
                 scanProgress--;
             }
