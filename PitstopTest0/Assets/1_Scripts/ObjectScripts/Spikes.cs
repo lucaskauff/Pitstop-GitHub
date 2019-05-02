@@ -8,8 +8,10 @@ namespace Pitstop
     {
         [SerializeField] int damageDealing = 1;
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
+            Debug.Log(collision.gameObject.tag);
+
             if (collision.gameObject.tag == "Player")
             {
                 collision.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealing);

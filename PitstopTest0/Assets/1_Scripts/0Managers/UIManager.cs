@@ -17,13 +17,19 @@ namespace Pitstop
         [Header("Crystal UI Elements")]
         [SerializeField] Animator crystalAnim = default;
         [SerializeField] Image scanBarFill = default;
+        [SerializeField] Image scanBarSides = default;
         [SerializeField] Image crystalSlot = default;
 
         [Header("Player HP Elements")]
         [SerializeField] Animator playerLife = default;
         [SerializeField] Image playerLifeBarFill = default;
 
+        [Header("Serializable")]
+        [SerializeField] float waitBeforeResettigFillSeconds = 1;
+
         //Private
+        private bool doUpdateCrystalFill = true;
+        private bool scannedObjIconAppeared = false;
         private bool playerLifeAppearedCheck = false;
 
         void Start()
@@ -66,7 +72,19 @@ namespace Pitstop
 
         public void UpdateCrystalUI()
         {
-            scanBarFill.fillAmount = crystalController.scanProgress / 5f;
+            if (doUpdateCrystalFill)
+            {
+                scanBarFill.fillAmount = crystalController.scanProgress / 5f;
+            }
+
+            if (crystalController.scannedObject != null)
+            {
+                scanBarSides.enabled = true;
+            }
+            else
+            {
+                scanBarSides.enabled = false;
+            }
         }
 
         public void UpdatePlayerLife()
@@ -76,13 +94,20 @@ namespace Pitstop
 
         public void ChangeImageInCrystalSlot(Sprite sprite)
         {
-            crystalSlot.GetComponent<Image>().color = Color.white;
-            crystalSlot.GetComponent<Image>().sprite = sprite;
+            crystalSlot.color = Color.white;
+            crystalSlot.sprite = sprite;
         }
 
         public void MakeUIElementAppear(GameObject whatToReveal)
         {
             whatToReveal.SetActive(true);
+        }
+
+        IEnumerator WaitBeforeResettingCrystalFill()
+        {
+            doUpdateCrystalFill = false;
+            yield return new WaitForSeconds(waitBeforeResettigFillSeconds);
+            doUpdateCrystalFill = true;
         }
     }
 }

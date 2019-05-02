@@ -7,12 +7,9 @@ namespace Pitstop
     public class IMP_Apple : MonoBehaviour
     {
         public float appleProjectionSpeed = 3;
-        [SerializeField]
-        ScannableObjectBehaviour scannableObjectBehaviour = default;
-        [SerializeField]
-        Animator myAnim = default;
-        [SerializeField]
-        GameObject explosionRange = default;
+        [SerializeField] ScannableObjectBehaviour scannableObjectBehaviour = default;
+        [SerializeField] Animator myAnim = default;
+        [SerializeField] GameObject explosionRange = default;
 
         private void Start()
         {

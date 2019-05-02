@@ -29,7 +29,7 @@ namespace Pitstop
 
         private void Update()
         {
-            if (inputManager.onLeftClick)
+            if (inputManager.onLeftClick && associatedRoot.crystalController.scannedObject != null)
             {
                 if (associatedRoot.crystalController.scannedObject.tag == "ObjectRoot")
                 {
@@ -73,12 +73,14 @@ namespace Pitstop
                     }
                 }
             }
-
-            if (associatedRoot.crystalController.scannedObject.tag == "ObjectRoot")
+            if (associatedRoot.crystalController.scannedObject != null)
             {
-                outlineColorOnMouseOver = myRend.material.GetColor("_ColorOutline");
-                outlineColorOnMouseOver.a = 255;
-                myRend.material.SetColor("_ColorOutline", outlineColorOnMouseOver);
+                if (associatedRoot.crystalController.scannedObject.tag == "ObjectRoot")
+                {
+                    outlineColorOnMouseOver = myRend.material.GetColor("_ColorOutline");
+                    outlineColorOnMouseOver.a = 255;
+                    myRend.material.SetColor("_ColorOutline", outlineColorOnMouseOver);
+                }
             }
         }
 

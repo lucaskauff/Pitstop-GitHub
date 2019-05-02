@@ -17,8 +17,8 @@ namespace Pitstop
         [SerializeField] CinemachineImpulseSource myImpulseSource = default;
 
         [Header("Public Variables")]
-        public int playerMaxHealth = 3;
-        public int playerCurrentHealth;
+        public float playerMaxHealth = 3;
+        public float playerCurrentHealth;
 
         [Header("Serializable")]
         [SerializeField] PostProcessVolume postProRedVignette = default;
