@@ -57,6 +57,9 @@ namespace Pitstop
             Vector2 direction = (Vector2)cam.ScreenToWorldPoint(Input.mousePosition) - origin;
             angle = Mathf.Atan2(direction.normalized.y, direction.normalized.x) * Mathf.Rad2Deg;
             angle -= 90 / 4 * 3;
+
+            angle -= 180 / buttons.Length;
+
             angle = angle >= 0 ? angle : angle + 360;
             angle = angle > 360 ? angle - 360 : angle;
             
@@ -66,7 +69,7 @@ namespace Pitstop
         {
             int actualHandledElement;
 
-            actualHandledElement = Mathf.FloorToInt(((angle * buttons.Length)/ 360));
+            actualHandledElement = Mathf.FloorToInt(((angle * buttons.Length) / 360));
 
             HandleElements(actualHandledElement);
         }
