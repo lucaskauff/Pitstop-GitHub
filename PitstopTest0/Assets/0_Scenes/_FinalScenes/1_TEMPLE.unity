@@ -2452,7 +2452,7 @@ GameObject:
   - component: {fileID: 839547990}
   - component: {fileID: 839547985}
   - component: {fileID: 839547984}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: ShootableAreaTilemap
   m_TagString: ShootableArea
   m_Icon: {fileID: 0}
@@ -3905,7 +3905,7 @@ GameObject:
   - component: {fileID: 987419182}
   - component: {fileID: 987419177}
   - component: {fileID: 987419180}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CrystalRoomTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5709,11 +5709,7 @@ MonoBehaviour:
   dialogueInEnglish:
     name: Hieroglyphs
     sentences:
-    - 'It seems like there was an
-
-      advanced civilisation living here...
-
-      ////'
+    - "It seems like there was an\nadvanced civilisation \nliving here..."
     - 'They had developed technologies
 
       in link with an ancient energy...'
@@ -8371,6 +8367,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NEW UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5295134211186563096, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1696102421751109879}
     - target: {fileID: 3570546493296195888, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8491,11 +8492,6 @@ PrefabInstance:
       propertyPath: playerHealthMan
       value: 
       objectReference: {fileID: 2003265252706418002}
-    - target: {fileID: 5295134211186563096, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 1696102421751109879}
     - target: {fileID: 2510001323631958657, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -8547,31 +8543,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PointsInLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 3556835858144363793, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
@@ -8627,6 +8598,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.49
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaae4f4779dd9644fa2811e5ecbc686f, type: 3}
@@ -8727,78 +8723,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1270572482}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[0].x
-      value: 0.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[0].y
-      value: 0.09375
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[1].x
-      value: 0.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[1].y
-      value: 0.53125
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[2].x
-      value: 0.28125
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[2].y
-      value: 0.625
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[3].x
-      value: -0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[3].y
-      value: 0.625
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[4].x
-      value: -0.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[4].y
-      value: 0.59375
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[5].x
-      value: -0.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[5].y
-      value: 0.0625
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[6].x
-      value: -0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[7].x
-      value: 0.34375
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6667375955699303460, guid: 267f460faa38bed4798f1395a2a448d8,
         type: 3}
       propertyPath: m_Name
@@ -8858,21 +8782,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6667375955699303487, guid: 267f460faa38bed4798f1395a2a448d8,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.5188679
-      objectReference: {fileID: 0}
-    - target: {fileID: 6667375955699303487, guid: 267f460faa38bed4798f1395a2a448d8,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.5188679
-      objectReference: {fileID: 0}
-    - target: {fileID: 6667375955699303487, guid: 267f460faa38bed4798f1395a2a448d8,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.5188679
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 267f460faa38bed4798f1395a2a448d8, type: 3}
@@ -15702,6 +15611,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zayn
       objectReference: {fileID: 0}
+    - target: {fileID: 8453608900050335717, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8453608900050335717, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: groundLayerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: sceneStartingPoint
@@ -15721,11 +15640,6 @@ PrefabInstance:
         type: 3}
       propertyPath: dashLength
       value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8453608900050335717, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: uIManager
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8827798457674550477, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
@@ -17230,7 +17144,7 @@ PrefabInstance:
       propertyPath: dialogueInEnglish.sentences.Array.data[0]
       value: 'I guess I''m okay.
 
-        But what''s that place ?'
+        But what is this place ?'
       objectReference: {fileID: 0}
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3466213904368604523}
   - component: {fileID: 898276923229779687}
   - component: {fileID: 4816876112790863872}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Liana
   m_TagString: ObjectRoot
   m_Icon: {fileID: 0}
@@ -172,6 +172,8 @@ MonoBehaviour:
   projectileSpeed: 3
   targetPos: {x: 0, y: 0}
   col: 0
+  isAWord: 0
+  valueOfTheWorld: 0
 --- !u!114 &3466213904368604523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,19 +195,14 @@ MonoBehaviour:
   - {fileID: 0}
   pointSelect: 0
   mark: 0
-  thePlayer: {fileID: 0}
   player: {fileID: 0}
-  playerPos: {x: 0, y: 0}
   crystalController: {fileID: 0}
   bounceTime: 0.25
   bounceAmount: 1
-  damageDealing: 1
   decalageY: 0.3
   layerLiana:
     serializedVersion: 2
     m_Bits: 512
-  bossHealth: {fileID: 0}
-  appleScanObjBeh: {fileID: 0}
 --- !u!114 &898276923229779687
 MonoBehaviour:
   m_ObjectHideFlags: 0

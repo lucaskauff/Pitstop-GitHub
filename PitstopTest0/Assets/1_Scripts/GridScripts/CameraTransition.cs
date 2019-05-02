@@ -6,10 +6,8 @@ namespace Pitstop
 {
     public class CameraTransition : MonoBehaviour
     {
-        [SerializeField]
-        GameObject virtualCameraPlayer = default;
-        [SerializeField]
-        GameObject virtualCameraGlade = default;
+        [SerializeField] GameObject virtualCameraPlayer = default;
+        [SerializeField] GameObject virtualCameraGlade = default;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {

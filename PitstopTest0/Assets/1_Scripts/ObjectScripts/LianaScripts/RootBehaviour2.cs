@@ -24,11 +24,8 @@ namespace Pitstop
         [Header("Serializable")]
         [SerializeField] float bounceTime = 1;
         [SerializeField] float bounceAmount = 1;
-        [SerializeField] int damageDealing = 1;
         [SerializeField] float decalageY = 0.5f;
         [SerializeField] LayerMask layerLiana = default;
-        [SerializeField] EnemyHealthManager bossHealth = default;
-        [SerializeField] ScannableObjectBehaviour appleScanObjBeh = default;
 
         //Private
         Transform impactPos;
@@ -184,7 +181,7 @@ namespace Pitstop
                 {
                     float angleForCase1;
                     angleForCase1 = Vector3.SignedAngle(impactAngle, originHP, impactPos);
-                    bounceVector = Quaternion.AngleAxis(2 * angleForCase1, new Vector3(0, 0, 1)) * impactAngle;
+                    bounceVector = Quaternion.AngleAxis(-2 * angleForCase1, new Vector3(0, 0, 1)) * impactAngle;
                     Debug.Log("case1");
                 }
                 else

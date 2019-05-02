@@ -7,46 +7,41 @@ namespace Pitstop
 {
     public class CrystalController : MonoBehaviour
     {
+        //GameManager
+        SceneLoader sceneLoader;
         InputManager inputManager;
-
-        //Public
+        
+        [Header("Public variables")]
         public int scanProgress = 0;
         public int maxScanProgress = 5;
-        public GameObject scannedObject;
-        public GameObject objectOnScan;
-        public GameObject circularRange;
-
-        //SerializedField
-        [SerializeField]
-        float fireSpeed = 1;
-        [SerializeField]
-        float scanSpeed = 1;
-        [SerializeField]
-        float descanSpeed = 1;
-        [Range(1, 10)]
         public float maxScanRange = 3;
-        [Range(1, 10), SerializeField]
-        float maxShootRange = 3;
-        [SerializeField]
-        int maxObjectOnScene = 1;
-        [SerializeField]
-        SpriteRenderer previsualisation = default;
-        [SerializeField]
-        PrevizContact previsualisationContact = default;
-        [SerializeField]
-        float previzAlphaRatio = 0.2f;
+        public GameObject scannedObject;
+        public GameObject circularRange;
+        [HideInInspector] public GameObject objectOnScan;
+        [HideInInspector] public GameObject cloneProj;
+        [HideInInspector] public bool hitting = false;
+        [HideInInspector] public GameObject objectHitted = default;
+
+        [Header("Serializable variables")]
+        [SerializeField] float fireSpeed = 1;
+        [SerializeField] float scanSpeed = 1;
+        [SerializeField] float descanSpeed = 1;
+        [SerializeField] float maxShootRange = 3;
+        [SerializeField] int maxObjectOnScene = 1; //1 set by the GD
+        [SerializeField] SpriteRenderer previsualisation = default;
+        [SerializeField] PrevizContact previsualisationContact = default;
+        [SerializeField] float previzAlphaRatio = 0.2f;
+        [SerializeField] Color previzIsShootableColor = default;
+        [SerializeField] Color previzNotShootableColor = default;
         [SerializeField] int ignoreRaycast = 2;
         [SerializeField] int liana = 9;
+        [SerializeField] LayerMask scannableMask = default;
 
         //Private
         List<GameObject> gameObjectsOnScene = new List<GameObject>();
         int objectCountOnScene;
-        public bool hitting = false;
         GameObject objectHittedBefore;
-        public GameObject objectHitted = default;
         float fireRate = 0;
-
-        public GameObject cloneProj;
         Vector2 playerPosGround;
         Vector2 cursorPos;
         Vector2 crystalDirection;
@@ -56,6 +51,7 @@ namespace Pitstop
 
         private void Start()
         {
+            sceneLoader = GameManager.Instance.sceneLoader;
             inputManager = GameManager.Instance.inputManager;
 
             circularRange.transform.localScale *= maxScanRange;
@@ -65,12 +61,8 @@ namespace Pitstop
         {
             playerPosGround = circularRange.transform.position;
             cursorPos = inputManager.cursorPosition;
-
             crystalDirection = cursorPos - playerPosGround;
-            //Vector2 crystalOrigin = playerPosGround + crystalDirection.normalized;
-
             crystalScanTarget = Vector2.ClampMagnitude(crystalDirection, maxScanRange);
-            //crystalShootTarget = Vector2.ClampMagnitude(crystalDirection, maxShootRange);
 
             if (scannedObject != null)
             {
@@ -79,8 +71,8 @@ namespace Pitstop
 
             float scanRange = Vector2.Distance(playerPosGround, (Vector2)transform.position + crystalScanTarget);
 
-            RaycastHit2D scanRay = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange); //raycast's definition
-            //Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
+            RaycastHit2D scanRay = Physics2D.Raycast(playerPosGround, crystalDirection, scanRange, scannableMask); //raycast's definition
+            Debug.DrawRay(playerPosGround, crystalDirection, Color.red); //draws the line in scene/debug
 
             //SCAN
             if (scanRay.collider != null && inputManager.rightClickBeingPressed)
@@ -115,7 +107,12 @@ namespace Pitstop
                             {
                                 scannedObject = objectOnScan;
                                 
-                                FindObjectOfType<LUD_PreviewOfScannedObject>().ChangePreviewCrystalInDialogueWheel(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon, scannedObject.GetComponent<ScannableObjectBehaviour>().valueOfTheWorld, scannedObject.GetComponent<ScannableObjectBehaviour>().isAWord);
+                                //should be enabled when encountering the first native
+                                if (sceneLoader.activeScene != "1_TEMPLE" && sceneLoader.activeScene != "2_FOREST" && sceneLoader.activeScene != "2_MINIBOSS")
+                                {
+                                    FindObjectOfType<LUD_PreviewOfScannedObject>().ChangePreviewCrystalInDialogueWheel(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon, scannedObject.GetComponent<ScannableObjectBehaviour>().valueOfTheWorld, scannedObject.GetComponent<ScannableObjectBehaviour>().isAWord);
+                                }
+
                                 FindObjectOfType<UIManager>().ChangeImageInCrystalSlot(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
 
                                 StopAllCoroutines();
@@ -190,12 +187,12 @@ namespace Pitstop
                     if (previsualisationContact.objectShootable)
                     {
                         canShoot = true;
-                        previsualisation.color = new Color(0, 1, 0, previzAlphaRatio); //if he can shoot the scannedObject : color of the previz = green
+                        previsualisation.color = previzIsShootableColor; //if he can shoot the scannedObject : color of the previz = green
                     }
                     else
                     {
                         canShoot = false;
-                        previsualisation.color = new Color(1, 0, 0, previzAlphaRatio); //if he can't shoot the scannedObject : color of the previz = red
+                        previsualisation.color = previzNotShootableColor; //if he can't shoot the scannedObject : color of the previz = red
                     }
                     break;
 
@@ -206,12 +203,12 @@ namespace Pitstop
                     if (previsualisationContact.objectShootable)
                     {
                         canShoot = true;
-                        previsualisation.color = new Color(0, 1, 0, previzAlphaRatio); //if he can shoot the scannedObject : color of the previz = green
+                        previsualisation.color = previzIsShootableColor; //if he can shoot the scannedObject : color of the previz = green
                     }
                     else
                     {
                         canShoot = false;
-                        previsualisation.color = new Color(1, 0, 0, previzAlphaRatio); //if he can't shoot the scannedObject : color of the previz = red
+                        previsualisation.color = previzNotShootableColor; //if he can't shoot the scannedObject : color of the previz = red
                     }
                     break;
             }
@@ -263,7 +260,6 @@ namespace Pitstop
         {
             while (scanProgress < maxScanProgress)
             {
-                //Debug.Log(scanProgress);
                 yield return new WaitForSeconds(scanSpeed);
                 scanProgress++;
             }
@@ -273,7 +269,6 @@ namespace Pitstop
         {
             while (scanProgress > 0)
             {
-                //Debug.Log(scanProgress);
                 yield return new WaitForSeconds(descanSpeed);
                 scanProgress--;
             }
