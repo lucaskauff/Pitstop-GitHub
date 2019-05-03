@@ -8,7 +8,7 @@ namespace Pitstop
     {
         [SerializeField] GameObject whatToSpawn = default;
         [SerializeField] GameObject targetOfSpawnedThing = default;
-        public GameObject theSpawnedThing = default;
+        [HideInInspector] public GameObject theSpawnedThing = default;
 
         public void SpawnTheThing()
         {
