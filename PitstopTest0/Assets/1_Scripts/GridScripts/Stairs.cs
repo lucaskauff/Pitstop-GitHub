@@ -7,17 +7,12 @@ namespace Pitstop
 {
     public class Stairs : MonoBehaviour
     {
-        Collider2D myCollider;
+        //My Components
+        [SerializeField] CinemachineImpulseSource myImpulseSource = default;
 
-        [SerializeField]
-        CinemachineImpulseSource myImpulseSource;
+        //Serializable
         [SerializeField]
         float stairsIsometricRatio = 0.8f;
-
-        private void Start()
-        {
-            myCollider = GetComponent<Collider2D>();
-        }
 
         //Sets up a new isometric ratio for the player + generates light impulse
         private void OnTriggerStay2D(Collider2D collision)

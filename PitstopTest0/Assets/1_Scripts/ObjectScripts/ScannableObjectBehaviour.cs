@@ -13,9 +13,14 @@ namespace Pitstop
         public float projectileSpeed = 3;
         public Vector2 targetPos;
 
+
         //public ScanData entity;
 
         public bool col = false;
+
+        [Header("ParametersForDialogueWheel")]      //Add by Luc D.
+        public bool isAWord = false;
+        public int valueOfTheWorld = 0;
 
         private void Update()
         {
@@ -23,7 +28,7 @@ namespace Pitstop
             {
                 if (gameObject.tag != "ObjectRoot")
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+                    Shoot();
                 }
             }
 
@@ -40,6 +45,11 @@ namespace Pitstop
             {
                 col = true;
             }
+        }
+
+        public void Shoot()
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
         }
     }
 }

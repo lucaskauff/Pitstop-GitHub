@@ -6,34 +6,37 @@ namespace Pitstop
 {
     public class IMP_Apple : MonoBehaviour
     {
-        [SerializeField]
-        ScannableObjectBehaviour scannableObjectBehaviour;
-        public float appleProjectionSpeed;
-        [SerializeField]
-        GameObject explosionRange;
-        [SerializeField]
-        int timer;
+        public float appleProjectionSpeed = 3;
+        [SerializeField] ScannableObjectBehaviour scannableObjectBehaviour = default;
+        [SerializeField] Animator myAnim = default;
+        [SerializeField] GameObject explosionRange = default;
+
+        private void Start()
+        {
+            myAnim = GetComponent<Animator>();
+        }
 
         private void Update()
         {
             if (scannableObjectBehaviour.isArrived)
             {
-                Explode();
-                //StartCoroutine(Explosion());
+                ExplosionAnimStart();
             }
+        }
+
+        public void ExplosionAnimStart()
+        {
+            myAnim.SetTrigger("Explosion");
         }
 
         public void Explode()
         {
             explosionRange.SetActive(true);
-            Destroy(gameObject, 0.1f);
         }
 
-        IEnumerator Explosion()
+        public void DestroyMe()
         {
-            yield return new WaitForSeconds(timer);
-            explosionRange.SetActive(true);
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject);
         }
     }
 }

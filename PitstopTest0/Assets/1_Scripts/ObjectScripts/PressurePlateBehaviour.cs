@@ -6,11 +6,15 @@ namespace Pitstop
 {
     public class PressurePlateBehaviour : MonoBehaviour
     {
+        //My Components
         Collider2D myCollider;
         Animator myAnim;
 
+        //Public
         public bool plateDown = false;
-        GameObject objectOnPlate;
+
+        //Private
+        public GameObject objectOnPlate;
 
         private void Start()
         {
@@ -18,29 +22,42 @@ namespace Pitstop
             myAnim = GetComponent<Animator>();
         }
 
-        private void Update()
-        {
-            
-        }
-
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if ((collision.gameObject.name == "Zayn" || collision.gameObject.tag == "ObjectRock") && objectOnPlate == null)
+            if (objectOnPlate != null && collision.gameObject != objectOnPlate)
+            {
+                return;
+            }
+            else if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "ObjectRock")
             {
                 objectOnPlate = collision.gameObject;
-                plateDown = true;
-                myAnim.SetBool("PlateDown", plateDown);
+            }
+            else
+            {
+                objectOnPlate = null;
             }
         }
-        
+
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.gameObject == objectOnPlate)
             {
                 objectOnPlate = null;
-                plateDown = false;
-                myAnim.SetBool("PlateDown", plateDown);
             }
+        }
+
+        private void LateUpdate()
+        {
+            if (objectOnPlate == null)
+            {
+                plateDown = false;
+            }
+            else
+            {
+                plateDown = true;
+            }
+
+            myAnim.SetBool("PlateDown", plateDown);
         }
     }
 }

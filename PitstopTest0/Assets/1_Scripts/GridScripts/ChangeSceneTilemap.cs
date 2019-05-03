@@ -6,12 +6,13 @@ namespace Pitstop
 {
     public class ChangeSceneTilemap : MonoBehaviour
     {
+        //Serializable
         [SerializeField]
-        LevelChanger levelChanger;
+        LevelChanger levelChanger = default;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.name == "Zayn")
+            if (collision.gameObject.tag == "Player")
             {
                 levelChanger.LevelChanging();
             }
