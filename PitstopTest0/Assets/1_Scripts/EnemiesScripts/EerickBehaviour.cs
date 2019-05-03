@@ -28,7 +28,14 @@ namespace Pitstop
             else
             {
                 ThrowProjAtTarget();
+
+                CheckPosition();
             }
+        }
+
+        void CheckPosition()
+        {
+
         }
 
         void ThrowProjAtTarget()
