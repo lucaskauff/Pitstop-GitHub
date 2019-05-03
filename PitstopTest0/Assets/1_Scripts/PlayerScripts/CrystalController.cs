@@ -29,7 +29,7 @@ namespace Pitstop
         [SerializeField] float maxShootRange = 3;
         [SerializeField] int maxObjectOnScene = 1; //1 set by the GD
         [SerializeField] SpriteRenderer previsualisation = default;
-        [SerializeField] PrevizContact previsualisationContact = default;
+        [SerializeField] PrevizContact previzContact = default;
         [SerializeField] Color previzIsShootableColor = default;
         [SerializeField] Color previzNotShootableColor = default;
         [SerializeField] int ignoreRaycast = 2;
@@ -175,7 +175,7 @@ namespace Pitstop
 
             switch (scannedObject.tag)
             {
-                case "ObjectLiana":
+                case "ObjectRoot":
                     previsualisation.sprite = null;
                     return;
 
@@ -183,7 +183,7 @@ namespace Pitstop
                     previsualisation.gameObject.transform.position = playerPosGround + crystalShootTarget;
                     previsualisation.sprite = whatToPreviz.sprite;
 
-                    if (previsualisationContact.objectShootable)
+                    if (previzContact.objectShootable)
                     {
                         canShoot = true;
                         previsualisation.color = previzIsShootableColor; //if he can shoot the scannedObject : color of the previz = green
@@ -199,7 +199,7 @@ namespace Pitstop
                     previsualisation.gameObject.transform.position = playerPosGround + crystalShootTarget;
                     previsualisation.sprite = whatToPreviz.sprite;
 
-                    if (previsualisationContact.objectShootable)
+                    if (previzContact.objectShootable)
                     {
                         canShoot = true;
                         previsualisation.color = previzIsShootableColor; //if he can shoot the scannedObject : color of the previz = green

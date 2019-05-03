@@ -40,7 +40,14 @@ namespace Pitstop
             escKey = Input.GetKeyDown(KeyCode.Escape);
             //
             displayDialogueWheelKey = Input.GetKey(KeyCode.Space);
-            skipActualDialogueBox = Input.GetKeyDown(KeyCode.A);
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                skipActualDialogueBox = true;
+            }
+            else
+            {
+                skipActualDialogueBox = false;
+            }
             //
             interactionButton = Input.GetKeyDown(KeyCode.E);
             //
