@@ -22,9 +22,9 @@ namespace Pitstop
 
         [Header("Serializable")]
         [SerializeField] PostProcessVolume postProRedVignette = default;
-        [SerializeField] float feedbackLength = 0.1f;
+        [SerializeField] float feedbackLength = 0.5f;
         [SerializeField] float maxBloodSize = 1;
-        [SerializeField] float feedbackRatio = 1;
+        [SerializeField] float feedbackSpeed = 1;
 
         //Private
         Vignette vignetteLayer = null;
@@ -48,12 +48,12 @@ namespace Pitstop
 
             if (hasToRecover && !feedbackLaunched)
             {
-                StartCoroutine(RecoverFromAttack());
+                StartCoroutine(GotAttacked());
                 feedbackLaunched = true;
             }
             else
             {
-                StopCoroutine(RecoverFromAttack());
+                StopCoroutine(GotAttacked());
                 feedbackLaunched = false;
             }
         }
@@ -61,7 +61,6 @@ namespace Pitstop
         public void HurtPlayer(int damageToGive)
         {
             playerCurrentHealth -= damageToGive;
-            postProRedVignette.profile.TryGetSettings(out vignetteLayer);
             hasToRecover = true;
         }
 
@@ -75,13 +74,19 @@ namespace Pitstop
             playerCurrentHealth = playerMaxHealth;
         }
 
-        IEnumerator RecoverFromAttack()
+        //not perfect yet
+        IEnumerator GotAttacked()
         {
-            timer += feedbackRatio * Time.deltaTime;
             myImpulseSource.GenerateImpulse();
+
+            postProRedVignette.profile.TryGetSettings(out vignetteLayer);
             vignetteLayer.intensity.value = Mathf.Lerp(0, maxBloodSize, timer);
+            timer += feedbackSpeed * Time.deltaTime;
+
             yield return new WaitForSeconds(feedbackLength);
+
             vignetteLayer.intensity.value = 0;
+            timer = 0;
             hasToRecover = false;
         }
     }

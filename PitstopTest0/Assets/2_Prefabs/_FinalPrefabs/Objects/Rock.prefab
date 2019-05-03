@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6667375955699303456}
   - component: {fileID: 6667375955699303458}
   - component: {fileID: 8068176826541340084}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rock
   m_TagString: ObjectRock
   m_Icon: {fileID: 0}
@@ -138,6 +138,8 @@ MonoBehaviour:
   projectileSpeed: 10
   targetPos: {x: 0, y: 0}
   col: 0
+  isAWord: 0
+  valueOfTheWorld: 0
 --- !u!114 &6667375955699303485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +251,7 @@ GameObject:
   - component: {fileID: 6667375956198307105}
   - component: {fileID: 6667375956198307106}
   - component: {fileID: 6667375956198307107}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: RockDetection
   m_TagString: ObjectRock
   m_Icon: {fileID: 0}

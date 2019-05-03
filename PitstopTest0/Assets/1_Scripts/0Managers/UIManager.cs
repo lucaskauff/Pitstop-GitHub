@@ -29,7 +29,6 @@ namespace Pitstop
 
         //Private
         private bool doUpdateCrystalFill = true;
-        private bool scannedObjIconAppeared = false;
         private bool playerLifeAppearedCheck = false;
 
         void Start()

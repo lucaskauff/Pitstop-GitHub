@@ -6,33 +6,27 @@ namespace Pitstop
 {
     public class GorillaBehaviour : MonoBehaviour
     {
-        //MyComponents
-        Rigidbody2D myRb;
-        Animator myAnim;
+        [Header("My components")]
+        [SerializeField] Rigidbody2D myRb = default;
+        //waiting for anims
+        //[SerializeField] Animator myAnim = default;
 
         //Serializable
-        [SerializeField]
-        float viewRangeRad = default;
-        [SerializeField]
-        int damageDealing = 1;
-        [SerializeField]
-        float walkSpeed = 1;
-        [SerializeField]
-        float walkTime = 1;
-        [SerializeField]
-        float waitTime = 1;
-        /*[SerializeField]
-        float rushTime = 2;
-        [SerializeField]
-        float rushRatio = 1.25f;*/
-        [SerializeField]
-        float stunTime = 3;
+        [SerializeField] float viewRangeRad = default;
+        [SerializeField] int damageDealing = 1;
+        [SerializeField] float walkSpeed = 1;
+        [SerializeField] float walkTime = 1;
+        [SerializeField] float waitTime = 1;
+        [SerializeField] float stunTime = 3;
+        [SerializeField] float repulsionDuration = 1;
 
         //Public
+        public bool canMove = true;
         public GameObject walkZone;
         public Transform viewRange;
         public GameObject target;
         public GameObject player;
+        public bool isFleeing = false;
         public float rushSpeed = 3;
         public float rushTime = 2;
         public bool isArrived;
@@ -49,7 +43,7 @@ namespace Pitstop
 
         //
         bool col = false;
-        Vector3 targetPos;
+        public Vector3 targetPos;
         bool followTargetCheck = false;
         float originalRushTime;
 
@@ -57,11 +51,11 @@ namespace Pitstop
         bool stunCheck = false;
         float originalStunTime;
 
+        //
+        public bool isBeingRepulsed = false;
+
         void Start()
         {
-            myRb = GetComponent<Rigidbody2D>();
-            myAnim = GetComponent<Animator>();
-
             viewRange.localScale *= viewRangeRad;
             originalRushTime = rushTime;
             originalStunTime = stunTime;
@@ -81,14 +75,25 @@ namespace Pitstop
 
         void Update()
         {
-            if (isArrived)
+            if (!canMove)
+            {
+                return;
+            }
+            else if (isBeingRepulsed)
+            {
+                StartCoroutine(WaitDuringRepulsion());
+            }
+            else if (isArrived)
             {
                 myRb.velocity = Vector2.zero;
 
                 if (!stunCheck)
                 {
                     followTargetCheck = false;
-                    target = null;
+                    if (!isFleeing)
+                    {
+                        target = null;
+                    }
                     col = false;
 
                     StopAllCoroutines();
@@ -198,6 +203,7 @@ namespace Pitstop
                     if (col || this.transform.position == targetPos || rushTime <= 0)
                     {
                         isArrived = true;
+                        //isFleeing = false;
                     }
                 }
             }
@@ -214,9 +220,19 @@ namespace Pitstop
         {
             col = true;
 
-            if ((other.gameObject.tag == "Player" || other.gameObject.name == "Native") && !stunCheck)
+            //check if there will be native vs enemies situations
+            if ((other.gameObject.tag == "Player" || other.gameObject.name == "Native") && !stunCheck && !isFleeing)
             {
                 player.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealing);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "ObjectApple")
+            {
+                StopCoroutine(WaitDuringRepulsion());
+                isBeingRepulsed = true;
             }
         }
 
@@ -236,6 +252,12 @@ namespace Pitstop
                 yield return new WaitForSeconds(1);
                 stunTime--;
             }
+        }
+
+        IEnumerator WaitDuringRepulsion()
+        {
+            yield return new WaitForSeconds(repulsionDuration);
+            isBeingRepulsed = false;
         }
     }
 }
