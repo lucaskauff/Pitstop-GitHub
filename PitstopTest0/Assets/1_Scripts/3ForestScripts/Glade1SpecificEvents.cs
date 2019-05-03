@@ -30,6 +30,7 @@ namespace Pitstop
             if (collision.gameObject == hHGlade1Beh.gameObject)
             {
                 hHGlade1Beh.target = targetForHammerHeadOutsideG1;
+                hHGlade1Beh.isFleeing = true;
             }
         }
     }
