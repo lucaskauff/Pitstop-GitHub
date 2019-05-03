@@ -14,9 +14,9 @@ namespace Pitstop
         [Header("Public variables")]
         public int scanProgress = 0;
         public int maxScanProgress = 5;
-        public float maxScanRange = 3;
-        public GameObject scannedObject;
+        public float maxScanRange = 3;        
         public GameObject circularRange;
+        [HideInInspector] public GameObject scannedObject;
         [HideInInspector] public GameObject objectOnScan;
         [HideInInspector] public GameObject cloneProj;
         [HideInInspector] public bool hitting = false;
@@ -30,7 +30,6 @@ namespace Pitstop
         [SerializeField] int maxObjectOnScene = 1; //1 set by the GD
         [SerializeField] SpriteRenderer previsualisation = default;
         [SerializeField] PrevizContact previsualisationContact = default;
-        [SerializeField] float previzAlphaRatio = 0.2f;
         [SerializeField] Color previzIsShootableColor = default;
         [SerializeField] Color previzNotShootableColor = default;
         [SerializeField] int ignoreRaycast = 2;

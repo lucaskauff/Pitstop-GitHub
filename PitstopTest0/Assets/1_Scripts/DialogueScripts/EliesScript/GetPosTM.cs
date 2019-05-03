@@ -7,7 +7,7 @@ namespace Pitstop
 {
     public class GetPosTM : MonoBehaviour
     {
-        [SerializeField] private Tilemap tilemap;
+        [SerializeField] private Tilemap tilemap = default;
 
         void Update()
         {
