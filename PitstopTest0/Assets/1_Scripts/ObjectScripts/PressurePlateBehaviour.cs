@@ -7,7 +7,6 @@ namespace Pitstop
     public class PressurePlateBehaviour : MonoBehaviour
     {
         [Header("My components")]
-        [SerializeField] Collider2D myCollider = default;
         [SerializeField] Animator myAnim = default;
 
         //Public
