@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-guid: 1bfc6910fa6e8da498b0bbd689fb39d5
+guid: a13dd4d8f60b8eb49800b20adf1a8d0f
 TextureImporter:
   fileIDToRecycleName:
-    21300000: new_poto1
-    21300002: new_poto2
-    21300004: new_poto5
-    21300006: new_poto0
-    21300008: new_poto3
-    21300010: new_poto4
+    21300000: PressurePlate_0
+    21300002: PressurePlate_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -66,7 +62,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -77,7 +73,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 8192
+    maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -90,121 +86,41 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: new_poto1
+      name: PressurePlate_0
       rect:
         serializedVersion: 2
-        x: 3678
-        y: 1708
-        width: 92
-        height: 364
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+        x: 0
+        y: 0
+        width: 30
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37dda60b078e4fe46a653ba1baf3fe0b
+      spriteID: 67450c6e568f8eb48b6e43845fbe1427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: new_poto2
+      name: PressurePlate_1
       rect:
         serializedVersion: 2
-        x: 3920
-        y: 1972
-        width: 92
-        height: 364
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+        x: 30
+        y: 0
+        width: 30
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ceb89dee98419741a173b65280dfdd4
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: new_poto5
-      rect:
-        serializedVersion: 2
-        x: 4388
-        y: 1776
-        width: 92
-        height: 364
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c1ca538007bb0da4fae93369b057cffa
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: new_poto0
-      rect:
-        serializedVersion: 2
-        x: 3420
-        y: 1420
-        width: 92
-        height: 364
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94fd628eeb6f2324f8359da7d7f9bc06
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: new_poto3
-      rect:
-        serializedVersion: 2
-        x: 3888
-        y: 1224
-        width: 92
-        height: 364
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b89815d83dacbd40aa2bfdc2d0a33fe
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: new_poto4
-      rect:
-        serializedVersion: 2
-        x: 4148
-        y: 1512
-        width: 92
-        height: 364
-      alignment: 9
-      pivot: {x: 0.5, y: 0.05}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 992ffdd7e53a87b4091fa9f582daa341
+      spriteID: 5444dc8513c5b5f4c8b93f38dade818e
       vertices: []
       indices: 
       edges: []
@@ -212,7 +128,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: cadbb17e15c010b428154941f7c91f7a
+    spriteID: 39b3e5b07d01a3a4d9d5f3d81b30e687
     vertices: []
     indices: 
     edges: []
