@@ -8,22 +8,21 @@ namespace Pitstop
     {
         //GameManager
         GameManager gameManager;
-        
-        //Serializable
-        [SerializeField]
-        bool onlyActivatableOnce = false;
-        [SerializeField]
-        bool triggerDialogueOnStart = false;
-        [SerializeField]
-        DialogueManager dialogueManager = default;
-        [SerializeField]
-        Dialogue dialogueInEnglish = default;
-        [SerializeField]
-        Dialogue dialogueInFrench = default;
+
+        [Header("Serializable")]
+        //Bools must be false by default pls !
+        [SerializeField] bool onlyActivatableOnce = false;
+        [SerializeField] bool triggerDialogueOnStart = false;
+        [SerializeField] bool interactionButtonNeeded = false;
+        [SerializeField] DialogueManager dialogueManager = default;
+        [SerializeField] GameObject interactionButton = default;
+        [SerializeField] Dialogue dialogueInEnglish = default;
+        [SerializeField] Dialogue dialogueInFrench = default;
 
         //Private
         Dialogue activeDialogue;
         bool activationCheck = false;
+        bool diaHasBeenTriggeredOnInput = false;
 
         private void Start()
         {
@@ -43,7 +42,7 @@ namespace Pitstop
 
             if (triggerDialogueOnStart && !activationCheck && dialogueManager.readyToDisplay)
             {
-                TriggerDialogue();
+                TriggerDialogueDirectly();
 
                 activationCheck = true;
             }
@@ -51,21 +50,42 @@ namespace Pitstop
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Player" && !interactionButtonNeeded)
             {
-                TriggerDialogue();
+                TriggerDialogueDirectly();
             }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Player" && !interactionButtonNeeded)
             {
-                TriggerDialogue();
+                TriggerDialogueDirectly();
             }
         }
 
-        public void TriggerDialogue()
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Player" && interactionButtonNeeded && !diaHasBeenTriggeredOnInput)
+            {
+                TriggerDialogueOnInput();
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Player" && interactionButtonNeeded)
+            {
+                interactionButton.SetActive(false);
+
+                if (!onlyActivatableOnce)
+                {
+                    diaHasBeenTriggeredOnInput = false;
+                }
+            }
+        }
+
+        public void TriggerDialogueDirectly()
         {
             if (!dialogueManager.playerReading && !activationCheck)
             {
@@ -76,6 +96,27 @@ namespace Pitstop
                     activationCheck = true;
                 }
             }
+        }
+
+        public void TriggerDialogueOnInput()
+        {
+            if (!dialogueManager.playerReading && !activationCheck)
+            {
+                interactionButton.SetActive(true);
+
+                if (gameManager.inputManager.interactionButton)
+                {
+                    interactionButton.SetActive(false);
+                    dialogueManager.StartDialogue(activeDialogue);
+
+                    if (onlyActivatableOnce)
+                    {
+                        activationCheck = true;
+                    }
+
+                    diaHasBeenTriggeredOnInput = true;
+                }
+            }            
         }
     }
 }

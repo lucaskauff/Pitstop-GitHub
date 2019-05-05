@@ -21,7 +21,7 @@ namespace Pitstop
                 isBridgeRepaired = true;
 
                 FindObjectOfType<OpenTheGate>().BridgeReparation();
-                dialogueWhenBridgeIsRepaired.GetComponent<DialogueTrigger>().TriggerDialogue();
+                dialogueWhenBridgeIsRepaired.GetComponent<DialogueTrigger>().TriggerDialogueDirectly();
             }
         }
 
