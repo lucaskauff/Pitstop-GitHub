@@ -11,8 +11,8 @@ namespace Pitstop
         [SerializeField] float maxSize = 2.15f;
         [SerializeField] float minSize = 0.25f;
 
-        public float t;
-        public float currentSize;
+        float t;
+        float currentSize;
 
         bool switchDone = false;
 

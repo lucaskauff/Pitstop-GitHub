@@ -12,7 +12,7 @@ namespace Pitstop
         SceneLoader sceneLoader;
         InputManager inputManager;
 
-        //My components
+        [Header("My components")]
         [SerializeField] Rigidbody2D myRb = default;
         [SerializeField] Animator myAnim = default;
 
@@ -21,19 +21,15 @@ namespace Pitstop
         [HideInInspector] public bool playerCanMove = true;
         public bool isMoving = false;
         public bool isBeingRepulsed = false;
+        public float moveSpeed = 3;
         public float isometricRatio = 2;
 
         //Serializable
-        [SerializeField]
-        Transform sceneStartingPoint = null;
-        //[SerializeField]
-        public float moveSpeed = 3;
-        [SerializeField]
-        float dashSpeed = 5;
-        [SerializeField]
-        float dashLength = 0.5f;
-        [SerializeField]
-        float dashCooldown = 1;
+        [SerializeField] Transform sceneStartingPoint = null;
+        [SerializeField] float dashSpeed = 5;
+        [SerializeField] float dashLength = 0.5f;
+        [SerializeField] float dashCooldown = 1;
+        [SerializeField] float repulseTime = 0.5f;
 
         //Private
         [HideInInspector] public Vector2 moveInput;
@@ -130,10 +126,10 @@ namespace Pitstop
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "ObjectApple")
+            if (collision.gameObject.tag == "ObjectApple" && !isBeingRepulsed)
             {
                 Debug.Log("Apple touched !");
-                isBeingRepulsed = true;
+                StartCoroutine(ComeOnAndFly());
             }
         }
 
@@ -151,6 +147,15 @@ namespace Pitstop
             yield return new WaitForSeconds(dashLength);
             moveSpeed = initialMoveSpeed;
             isBeingRepulsed = false;
+        }
+
+        IEnumerator ComeOnAndFly()
+        {
+            isBeingRepulsed = true;
+            yield return new WaitForSeconds(repulseTime);
+            myRb.velocity = Vector2.zero;
+            isBeingRepulsed = false;
+            StopCoroutine(ComeOnAndFly());
         }
     }
 }

@@ -662,10 +662,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crystalAltar: {fileID: 1852141736}
   propSpeed: 2
-  maxSize: 2.15
+  maxSize: 3
   minSize: 0.1
-  t: 0
-  currentSize: 0
 --- !u!331 &228835103
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -4083,7 +4081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &853584841
 Transform:
   m_ObjectHideFlags: 0
@@ -4159,10 +4157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crystalAltar: {fileID: 1852141736}
   propSpeed: 2
-  maxSize: 2.15
+  maxSize: 3
   minSize: 0.1
-  t: 0
-  currentSize: 0
 --- !u!1 &872363451
 GameObject:
   m_ObjectHideFlags: 0
@@ -16203,11 +16199,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint
-      value: 
-      objectReference: {fileID: 658678499}
     - target: {fileID: 8827798457674550477, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16263,6 +16254,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint
+      value: 
+      objectReference: {fileID: 658678499}
     - target: {fileID: 8000820858692480709, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_IsActive
@@ -17615,7 +17611,7 @@ PrefabInstance:
     - target: {fileID: 9127097305669116841, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9127097305669116842, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
