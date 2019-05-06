@@ -34,7 +34,7 @@ namespace Pitstop
         {
             yield return new WaitForSeconds(timeBeforeCommentingReparation);
 
-            dialogueWhenBridgeIsRepaired.GetComponent<DialogueTrigger>().TriggerDialogue();
+            dialogueWhenBridgeIsRepaired.GetComponent<DialogueTrigger>().TriggerDialogueDirectly();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

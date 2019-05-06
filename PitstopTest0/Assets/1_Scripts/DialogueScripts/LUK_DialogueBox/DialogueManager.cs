@@ -49,15 +49,21 @@ namespace Pitstop
         {
             if (playerReading && inputManager.skipActualDialogueBox)
             {
-                if (isCurrentSentenceFinished) DisplayNextSentence();
-                else currentLetterSpeed = 0f;
-
-
+                if (isCurrentSentenceFinished)
+                {
+                    DisplayNextSentence();
+                    return;
+                }
+                else
+                {
+                    currentLetterSpeed = 0f;
+                }
             }
         }
 
         public void StartDialogue(Dialogue dialogue)
         {
+            //questionnable
             //playerController.canMove = false;
             playerReading = true;
 

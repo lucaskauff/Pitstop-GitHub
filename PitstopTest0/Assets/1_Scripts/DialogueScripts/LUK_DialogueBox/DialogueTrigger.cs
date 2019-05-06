@@ -79,19 +79,22 @@ namespace Pitstop
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Player" && !interactionButtonNeeded)
+            if (collision.gameObject.tag == "Player")
             {
-                TriggerDialogueDirectly();
+                if (!interactionButtonNeeded)
+                {
+                    TriggerDialogueDirectly();
+                }
+                else
+                {
+                    debugging = true;
+                }
             }
         }
 
-        private void OnTriggerStay2D(Collider2D collision)
+        private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "Player" && interactionButtonNeeded)
-            {
-                debugging = true;
-            }
-            else
             {
                 debugging = false;
             }
