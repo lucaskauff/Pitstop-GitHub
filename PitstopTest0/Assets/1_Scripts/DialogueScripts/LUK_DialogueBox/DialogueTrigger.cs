@@ -8,6 +8,7 @@ namespace Pitstop
     {
         //GameManager
         GameManager gameManager;
+        InputManager inputManager;
 
         [Header("Serializable")]
         //Bools must be false by default pls !
@@ -21,12 +22,13 @@ namespace Pitstop
 
         //Private
         Dialogue activeDialogue;
-        bool activationCheck = false;
-        bool diaHasBeenTriggeredOnInput = false;
+        public bool activationCheck = false;
+        public bool debugging = false;
 
         private void Start()
         {
             gameManager = GameManager.Instance;
+            inputManager = GameManager.Instance.inputManager;
         }
 
         private void Update()
@@ -45,6 +47,25 @@ namespace Pitstop
                 TriggerDialogueDirectly();
 
                 activationCheck = true;
+            }
+
+            if (interactionButtonNeeded)
+            {
+                if (debugging)
+                {
+                    interactionButton.SetActive(true);
+
+                    if (inputManager.interactionButton)
+                    {
+                        TriggerDialogueDirectly();
+                        debugging = false;
+                        return;
+                    }
+                }
+                else
+                {
+                    interactionButton.SetActive(false);
+                }
             }
         }
 
@@ -66,22 +87,13 @@ namespace Pitstop
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Player" && interactionButtonNeeded && !diaHasBeenTriggeredOnInput)
-            {
-                TriggerDialogueOnInput();
-            }
-        }
-
-        private void OnTriggerExit2D(Collider2D collision)
-        {
             if (collision.gameObject.tag == "Player" && interactionButtonNeeded)
             {
-                interactionButton.SetActive(false);
-
-                if (!onlyActivatableOnce)
-                {
-                    diaHasBeenTriggeredOnInput = false;
-                }
+                debugging = true;
+            }
+            else
+            {
+                debugging = false;
             }
         }
 
@@ -96,27 +108,6 @@ namespace Pitstop
                     activationCheck = true;
                 }
             }
-        }
-
-        public void TriggerDialogueOnInput()
-        {
-            if (!dialogueManager.playerReading && !activationCheck)
-            {
-                interactionButton.SetActive(true);
-
-                if (gameManager.inputManager.interactionButton)
-                {
-                    interactionButton.SetActive(false);
-                    dialogueManager.StartDialogue(activeDialogue);
-
-                    if (onlyActivatableOnce)
-                    {
-                        activationCheck = true;
-                    }
-
-                    diaHasBeenTriggeredOnInput = true;
-                }
-            }            
         }
     }
 }
