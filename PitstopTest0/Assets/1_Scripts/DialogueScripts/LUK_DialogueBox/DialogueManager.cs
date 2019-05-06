@@ -14,10 +14,13 @@ namespace Pitstop
         //Public
         public bool readyToDisplay = false;
         public bool playerReading = false;
+        public bool isCurrentSentenceFinished = false;
 
         //Serializable
         [SerializeField]
-        float letterSpeed = 0;
+        float currentLetterSpeed = 0;
+        [SerializeField]
+        float originalLetterSpeed = 0;
         [SerializeField]
         Animator diaBox = default;
         
@@ -38,19 +41,24 @@ namespace Pitstop
             sentences = new Queue<string>();
 
             readyToDisplay = true;
+
+            ResetLetterSpeed();
         }
 
         private void Update()
         {
             if (playerReading && inputManager.skipActualDialogueBox)
             {
-                DisplayNextSentence();
+                if (isCurrentSentenceFinished) DisplayNextSentence();
+                else currentLetterSpeed = 0f;
+
+
             }
         }
 
         public void StartDialogue(Dialogue dialogue)
         {
-            playerController.canMove = false;
+            //playerController.canMove = false;
             playerReading = true;
 
             nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;
@@ -85,12 +93,17 @@ namespace Pitstop
 
         IEnumerator TypeSentence(string sentence)
         {
+            isCurrentSentenceFinished = false;
+
             dialogueText.GetComponent<TextMeshProUGUI>().text = "";
             foreach (char letter in sentence.ToCharArray())
             {
                 dialogueText.GetComponent<TextMeshProUGUI>().text += letter;
-                yield return new WaitForSeconds(letterSpeed);
+                yield return new WaitForSeconds(currentLetterSpeed);
             }
+
+            isCurrentSentenceFinished = true;
+            ResetLetterSpeed();
         }
 
         public void EndDialogue()
@@ -110,6 +123,11 @@ namespace Pitstop
         void DialogueBoxPopOut()
         {
             diaBox.SetTrigger("PopOut");
+        }
+
+        void ResetLetterSpeed()
+        {
+            currentLetterSpeed = originalLetterSpeed;
         }
     }
 }

@@ -13,6 +13,9 @@ namespace Pitstop
 
         public GameObject dialogueWhenBridgeIsRepaired;
 
+        [SerializeField]
+        float timeBeforeCommentingReparation = 1f;
+
         // Update is called once per frame
         private void Update()
         {
@@ -21,8 +24,17 @@ namespace Pitstop
                 isBridgeRepaired = true;
 
                 FindObjectOfType<OpenTheGate>().BridgeReparation();
-                dialogueWhenBridgeIsRepaired.GetComponent<DialogueTrigger>().TriggerDialogueDirectly();
+
+                StartCoroutine(WaitBeforeCommentingReparations());
+                
             }
+        }
+
+        IEnumerator WaitBeforeCommentingReparations()
+        {
+            yield return new WaitForSeconds(timeBeforeCommentingReparation);
+
+            dialogueWhenBridgeIsRepaired.GetComponent<DialogueTrigger>().TriggerDialogue();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
