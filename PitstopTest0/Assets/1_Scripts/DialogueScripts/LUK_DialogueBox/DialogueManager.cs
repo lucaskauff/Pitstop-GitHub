@@ -28,6 +28,8 @@ namespace Pitstop
         
         public GameObject dialogueText = default;
 
+        public bool interactionDebug = false;
+
         [SerializeField]
         PlayerControllerIso playerController = default;
 
@@ -54,9 +56,13 @@ namespace Pitstop
                     DisplayNextSentence();
                     return;
                 }
-                else
+                else if (!interactionDebug)
                 {
                     currentLetterSpeed = 0f;
+                }
+                else
+                {
+                    interactionDebug = false;
                 }
             }
         }
@@ -64,7 +70,8 @@ namespace Pitstop
         public void StartDialogue(Dialogue dialogue)
         {
             //questionnable
-            //playerController.canMove = false;
+            playerController.canMove = false;
+
             playerReading = true;
 
             nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;

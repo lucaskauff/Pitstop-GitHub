@@ -57,6 +57,7 @@ namespace Pitstop
 
                     if (inputManager.interactionButton)
                     {
+                        dialogueManager.interactionDebug = true;
                         TriggerDialogueDirectly();
                         debugging = false;
                         return;
@@ -92,11 +93,30 @@ namespace Pitstop
             }
         }
 
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "Player" && !interactionButtonNeeded)
+            {
+                if (dialogueManager.playerReading)
+                {
+                    dialogueManager.EndDialogue();
+                }
+            }
+        }
+
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Player" && interactionButtonNeeded)
+            if (collision.gameObject.tag == "Player")
             {
-                debugging = false;
+                if (interactionButtonNeeded)
+                {
+                    debugging = false;
+                }
+
+                if (dialogueManager.playerReading)
+                {
+                    dialogueManager.EndDialogue();
+                }
             }
         }
 
