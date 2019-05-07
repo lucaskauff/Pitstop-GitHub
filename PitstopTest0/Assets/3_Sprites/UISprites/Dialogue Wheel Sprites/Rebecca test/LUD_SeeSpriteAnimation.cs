@@ -12,15 +12,37 @@ namespace Pitstop
         public Sprite seeSprite1;
         public Sprite seeSprite2;
         public float timeBetweenTwoSprites = 1f;
+        float timer = 0f;
 
         bool isFirstFrameDisplay = true;
 
         private void Start()
         {
             GetComponent<Image>().sprite = seeSprite1;
-            StartCoroutine(WaitBeforeChangeSprite());
         }
 
+        private void Update()
+        {
+            if (timer>=timeBetweenTwoSprites)
+            {
+                if (isFirstFrameDisplay)
+                {
+                    GetComponent<Image>().sprite = seeSprite1;
+                }
+                else
+                {
+                    GetComponent<Image>().sprite = seeSprite2;
+                }
+
+                isFirstFrameDisplay = !isFirstFrameDisplay;
+
+                timer = 0f;
+            }
+
+            timer += Time.deltaTime;
+        }
+
+        /*
         IEnumerator WaitBeforeChangeSprite()
         {
             yield return new WaitForSeconds(timeBetweenTwoSprites);
@@ -38,7 +60,7 @@ namespace Pitstop
             
             StartCoroutine(WaitBeforeChangeSprite());
         }
-
+        */
     }
 
 }

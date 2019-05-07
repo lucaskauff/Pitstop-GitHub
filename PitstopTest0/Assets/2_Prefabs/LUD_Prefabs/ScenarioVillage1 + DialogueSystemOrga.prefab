@@ -1034,7 +1034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191903415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.17, y: -7.72, z: 0}
+  m_LocalPosition: {x: -19.48, y: -12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1103755739}
@@ -2654,8 +2654,8 @@ MonoBehaviour:
     name: Zayn
     sentences:
     - "Cet homme aurait vu Ellya \xE0 l'Est ? Quel soulagement ! Elle est en vie !"
-    - "Mais le pont pour y acc\xE9der est cass\xE9... S'il y a bien un mec qui doit
-      tout prendre comme \xE7a, c'est moi !"
+    - "Mais le pont pour y acc\xE9der est cass\xE9... Ce genre de choses n'arrive
+      qu'\xE0 moi !"
 --- !u!1 &651251093
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,6 +3677,11 @@ Transform:
   - {fileID: 1705971823}
   - {fileID: 629814740}
   - {fileID: 982105074}
+  - {fileID: 1894050279805276648}
+  - {fileID: 1633196851}
+  - {fileID: 1241904927}
+  - {fileID: 1445276516}
+  - {fileID: 1508557716}
   m_Father: {fileID: 691161685}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4821,6 +4826,8 @@ MonoBehaviour:
   builderNative2: {fileID: 686817940}
   dialogueWhenBridgeIsRepaired: {fileID: 982105073}
   timeBeforeCommentingReparation: 1
+  timeBeforeSayingThatABuilderMissed: 1
+  dialogueWhenOnlyOneBuilderIsHere: {fileID: 0}
 --- !u!1 &1177981807
 GameObject:
   m_ObjectHideFlags: 0
@@ -5396,6 +5403,62 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &1241904926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1241904927}
+  - component: {fileID: 1241904928}
+  m_Layer: 0
+  m_Name: DialogueWhenTooMuch"?"_2nd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1241904927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241904926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 179483109}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1241904928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241904926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  dialogueManager: {fileID: 0}
+  dialogueInEnglish:
+    name: Zayn
+    sentences:
+    - Everyone watch with his eyes... Signs about vision should be similar despite
+      the culture.
+  dialogueInFrench:
+    name: Zayn
+    sentences:
+    - "Tout le monde voit avec ses yeux... Les signes autour de la vision doivent
+      \xEAtre semblables malgr\xE9 la culture."
 --- !u!1 &1283835552
 GameObject:
   m_ObjectHideFlags: 0
@@ -6261,6 +6324,62 @@ Transform:
   m_Father: {fileID: 1294751924}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1445276515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1445276516}
+  - component: {fileID: 1445276517}
+  m_Layer: 0
+  m_Name: DialogueWhenTooMuch"?"_3th
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1445276516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445276515}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 179483109}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1445276517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445276515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  dialogueManager: {fileID: 0}
+  dialogueInEnglish:
+    name: Zayn
+    sentences:
+    - Mmh... If I remember well, in the North Archipelagos, pretending to bite something
+      means "eat"...
+  dialogueInFrench:
+    name: Zayn
+    sentences:
+    - Mmh... Si je me souviens bien, dans les Archipels du Nord, faire mine de mordre
+      quelque chose signifie "manger"...
 --- !u!1 &1464253134
 GameObject:
   m_ObjectHideFlags: 0
@@ -6332,6 +6451,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isThePlayerNear: 0
+--- !u!1 &1508557715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1508557716}
+  - component: {fileID: 1508557717}
+  m_Layer: 0
+  m_Name: DialogueWhenTooMuch"?"_4th
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1508557716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508557715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 179483109}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1508557717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508557715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  dialogueManager: {fileID: 0}
+  dialogueInEnglish:
+    name: Zayn
+    sentences:
+    - Even in our culture every profession has its own vocabulary. It's funny when
+      you think about it.
+  dialogueInFrench:
+    name: Zayn
+    sentences:
+    - "C'est amusant comment, m\xEAme chez nous, chaque corps de m\xE9tiers \xE0 son
+      propre vocabulaire."
 --- !u!1 &1510691185
 GameObject:
   m_ObjectHideFlags: 0
@@ -6858,6 +7033,62 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &1633196850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1633196851}
+  - component: {fileID: 1633196852}
+  m_Layer: 0
+  m_Name: DialogueWhenTooMuch"?"_1st
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1633196851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633196850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 179483109}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1633196852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633196850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  dialogueManager: {fileID: 0}
+  dialogueInEnglish:
+    name: Zayn
+    sentences:
+    - Ellya studied a lot of languages. She said once that concept like "Me" or "You"
+      are universal.
+  dialogueInFrench:
+    name: Zayn
+    sentences:
+    - "Ellya a beaucoup \xE9tudi\xE9 les langues. D'apr\xE8s elle, les concepts de
+      \"Moi\" et \"Toi\" sont universels."
 --- !u!1 &1647410146
 GameObject:
   m_ObjectHideFlags: 0
@@ -8836,6 +9067,36 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
+--- !u!1 &2138506267082351917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1894050279805276648}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1894050279805276648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138506267082351917}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 179483109}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2830754303667572117
 GameObject:
   m_ObjectHideFlags: 0

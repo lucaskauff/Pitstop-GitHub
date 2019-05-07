@@ -58,7 +58,7 @@ namespace Pitstop
 
         public void StartDialogue(Dialogue dialogue)
         {
-            //playerController.canMove = false;
+            playerController.canMove = false;
             playerReading = true;
 
             nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;

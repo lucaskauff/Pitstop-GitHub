@@ -68,7 +68,7 @@ namespace Pitstop
         IEnumerator LaunchTheDesactivcationaAndReturnToNormal()
         {
             isOffended = true;
-            yield return new WaitForSeconds(GetComponent<LUD_NativeHeartheSentence>().delayBeforeExclamationDisapperance + GetComponent<LUD_DialogueAppearance>().delay / 2);
+            yield return new WaitForSeconds(GetComponent<LUD_NativeHeartheSentence>().delayBeforeExclamationDisapperance + GetComponent<LUD_DialogueAppearance>().delay / 1.5f);
             GetComponentInChildren<LUD_DetectionTriggeredByAttention>().UncaptivationOfTheNative();
 
             
