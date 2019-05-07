@@ -6,14 +6,16 @@ namespace Pitstop
 {
     public class LUD_NativeMovement : MonoBehaviour
     {
+        public bool canMove = true;
+
         public List<Transform> pointsOfThePath = new List<Transform>();
-        private int indexInPointOfThPath = 0;
+        public int indexInPointOfThPath = 0;
 
-        [SerializeField] private float walkingSpeedOfTheNative = 5f;
-        [SerializeField] private float speedMultiplier = 1f;
-        [SerializeField] float speedDropOfSpeedMultiplier = 0.1f; 
+        [SerializeField] private float walkingSpeedOfTheNative = 1f;
+        public float speedMultiplier = 1f;
+        [SerializeField] float speedDropOfSpeedMultiplier = 1f; 
 
-        [SerializeField] float distanceMaxToTriggeredArrival = 1f;
+        public float distanceMaxToTriggeredArrival = 0.2f;
 
 
 
@@ -43,17 +45,20 @@ namespace Pitstop
             relativePositionToCurrentObjective = relativePositionToCurrentObjective.normalized;
             relativePositionToCurrentObjective.z = 0f;
 
-            this.transform.position += relativePositionToCurrentObjective * walkingSpeedOfTheNative * Time.deltaTime * speedMultiplier;
-
-            if ((pointsOfThePath[indexInPointOfThPath].position - this.transform.position).magnitude <= distanceMaxToTriggeredArrival)
+            if (canMove)
             {
-                if (indexInPointOfThPath < pointsOfThePath.Count - 1)
+                this.transform.position += relativePositionToCurrentObjective * walkingSpeedOfTheNative * Time.deltaTime * speedMultiplier;
+
+                if ((pointsOfThePath[indexInPointOfThPath].position - this.transform.position).magnitude <= distanceMaxToTriggeredArrival)
                 {
-                    indexInPointOfThPath++;
-                }
-                else
-                {
-                    indexInPointOfThPath = 0;
+                    if (indexInPointOfThPath < pointsOfThePath.Count - 1)
+                    {
+                        indexInPointOfThPath++;
+                    }
+                    else
+                    {
+                        indexInPointOfThPath = 0;
+                    }
                 }
             }
 
