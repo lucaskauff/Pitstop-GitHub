@@ -1206,10 +1206,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readyToDisplay: 0
   playerReading: 0
-  letterSpeed: 0.03
+  isCurrentSentenceFinished: 1
+  currentLetterSpeed: 0
+  originalLetterSpeed: 0.03
   diaBox: {fileID: 5295134210856388127}
   nameText: {fileID: 2510001323770926930}
   dialogueText: {fileID: 2510001323631958663}
+  interactionDebug: 0
   playerController: {fileID: 0}
 --- !u!1 &5412722021699034502
 GameObject:
