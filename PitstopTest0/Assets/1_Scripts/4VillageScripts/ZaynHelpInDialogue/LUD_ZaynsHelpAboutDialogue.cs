@@ -30,19 +30,19 @@ namespace Pitstop
             
             if (nbrOfInterrogation >= minNbrOfInterrogationForTriggerFourthHelp)
             {
-                fourthDialogueOfHelps.TriggerDialogue();
+                fourthDialogueOfHelps.TriggerDialogueDirectly();
             }
             else if (nbrOfInterrogation >= minNbrOfInterrogationForTriggerThirdHelp)
             {
-                thirdDialogueOfHelps.TriggerDialogue();
+                thirdDialogueOfHelps.TriggerDialogueDirectly();
             }
             else if (nbrOfInterrogation >= minNbrOfInterrogationForTriggerSecondHelp)
             {
-                secondDialogueOfHelps.TriggerDialogue();
+                secondDialogueOfHelps.TriggerDialogueDirectly();
             }
             else if (nbrOfInterrogation>=minNbrOfInterrogationForTriggerFirstHelp)
             {
-                firstDialogueOfHelps.TriggerDialogue();
+                firstDialogueOfHelps.TriggerDialogueDirectly();
             }
             
         }
