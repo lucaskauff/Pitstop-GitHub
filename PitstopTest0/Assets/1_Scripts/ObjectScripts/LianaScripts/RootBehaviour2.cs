@@ -22,10 +22,12 @@ namespace Pitstop
         public CrystalController crystalController;
 
         [Header("Serializable")]
-        [SerializeField] float bounceTime = 1;
+        [SerializeField] float bounceTime = 2;
         [SerializeField] float bounceAmount = 1;
         [SerializeField] float decalageY = 0.5f;
         [SerializeField] LayerMask layerLiana = default;
+        [SerializeField] Transform actualThreat = default;
+        [SerializeField] float errorMargin = 2f;
 
         //Private
         Transform impactPos;
@@ -34,6 +36,14 @@ namespace Pitstop
         bool raycastsOkay = false;
         bool impactAngleSet;
         Vector2 impactAngle;
+
+        Vector2 impactPosProj;
+        Vector2 bounceVector;
+
+        //Debug
+        Vector2 impactPosDebug;
+        Vector2 appleTargetPos;
+        Vector2 previousTargetpos;
 
         private void Start()
         {
@@ -157,6 +167,14 @@ namespace Pitstop
             }
         }
 
+        /*
+        public void LateUpdate()
+        {
+            Debug.DrawLine(impactPosDebug, appleTargetPos, Color.yellow);
+            Debug.DrawLine(impactPosDebug, previousTargetpos, Color.cyan);
+        }
+        */
+
         IEnumerator PlayerBounce(Vector2 originHP, Vector2 targetHP, Vector2 impactPos)
         {
             myLineRend.enabled = false;
@@ -225,14 +243,14 @@ namespace Pitstop
             myLineRend.enabled = false;
             mark = true;
 
+            /*
             if (!impactAngleSet)
             {
-                impactAngle = (apple.GetComponent<ScannableObjectBehaviour>().targetPos - impactPos).normalized;
+                impactAngle = (impactPos + apple.GetComponent<ScannableObjectBehaviour>().targetPos).normalized;
                 impactAngleSet = true;
-            }
 
-            Vector2 impactPosProj;
-            Vector2 bounceVector;
+                previousTargetpos = apple.GetComponent<ScannableObjectBehaviour>().targetPos;
+            }
 
             if (Vector2.Distance(originHP, impactPos) <= Vector2.Distance(targetHP, impactPos))
             {
@@ -242,14 +260,16 @@ namespace Pitstop
                 {
                     float angleForCase1;
                     angleForCase1 = Vector3.SignedAngle(impactAngle, originHP, impactPos);
-                    bounceVector = Quaternion.AngleAxis(2 * angleForCase1, new Vector3(0, 0, 1)) * impactAngle;
+                    //bounceVector = Quaternion.AngleAxis(2 * angleForCase1, new Vector3(0, 0, 1)) * impactAngle;
+                    bounceVector = Quaternion.AngleAxis(180 - 2 * angleForCase1, new Vector3(0, 0, 1)) * impactAngle;
                     Debug.Log("case1");
                 }
                 else
                 {
                     float angleForCase3;
                     angleForCase3 = Vector3.SignedAngle(impactAngle, impactPosProj, impactPos);
-                    bounceVector = Quaternion.AngleAxis(2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
+                    //bounceVector = Quaternion.AngleAxis(-2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
+                    bounceVector = Quaternion.AngleAxis(180 - 2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
                     Debug.Log("case3");
                 }
             }
@@ -261,19 +281,28 @@ namespace Pitstop
                 {
                     float angleForCase2;
                     angleForCase2 = Vector3.SignedAngle(impactAngle, targetHP, impactPos);
-                    bounceVector = Quaternion.AngleAxis(2 * angleForCase2, new Vector3(0, 0, 1)) * impactAngle;
+                    //bounceVector = Quaternion.AngleAxis(-2 * angleForCase2, new Vector3(0, 0, 1)) * impactAngle;
+                    bounceVector = Quaternion.AngleAxis(180 - 2 * angleForCase2, new Vector3(0, 0, 1)) * impactAngle;
                     Debug.Log("case2");
                 }
                 else
                 {
                     float angleForCase3;
                     angleForCase3 = Vector3.SignedAngle(impactAngle, impactPosProj, impactPos);
-                    bounceVector = Quaternion.AngleAxis(2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
+                    //bounceVector = Quaternion.AngleAxis(-2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
+                    bounceVector = Quaternion.AngleAxis(180 - 2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
                     Debug.Log("case3");
                 }
             }
 
             apple.GetComponent<ScannableObjectBehaviour>().targetPos = new Vector2(bounceVector.x * bounceAmount, bounceVector.y * bounceAmount);
+            */
+
+            apple.GetComponent<ScannableObjectBehaviour>().targetPos = (Random.insideUnitCircle * errorMargin) + (Vector2)actualThreat.position;
+
+            //Debug
+            impactPosDebug = impactPos;
+            appleTargetPos = apple.GetComponent<ScannableObjectBehaviour>().targetPos;
 
             yield return new WaitForSeconds(bounceTime);
 

@@ -10,9 +10,11 @@ namespace Pitstop
         public int enemyMaxHealth = 3;
         public int enemyCurrentHealth;
 
+        //Serializable
+        [SerializeField] Animator myAnim = default;
+
         void Start()
         {
-            //enemyCurrentHealth = enemyMaxHealth;
             ResetHealth();
         }
 
@@ -32,6 +34,7 @@ namespace Pitstop
         public void HurtEnemy(int damageToGive)
         {
             enemyCurrentHealth -= damageToGive;
+            myAnim.SetTrigger("Hit");
         }
 
         public void HealEnemy(int healToGive)

@@ -11,7 +11,7 @@ namespace Pitstop
         [SerializeField] Animator crystalToGetAnim = default;
         //[SerializeField] GameObject whatElementShouldDisappear = default;
 
-        bool triggerOnceCheck = false;
+        [HideInInspector] public bool triggerOnceCheck = false;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {

@@ -11,25 +11,21 @@ namespace Pitstop
         //GameManager
         InputManager inputManager;
 
-        //Public
+        [Header("Public")]
         public bool readyToDisplay = false;
         public bool playerReading = false;
         public bool isCurrentSentenceFinished = false;
 
-        //Serializable
-        [SerializeField]
-        float currentLetterSpeed = 0;
-        [SerializeField]
-        float originalLetterSpeed = 0;
-        [SerializeField]
-        Animator diaBox = default;
-        
-        public GameObject nameText = default;
-        
-        public GameObject dialogueText = default;
+        [Header("Serializable")]
+        [SerializeField] float currentLetterSpeed = 0;
+        [SerializeField] float originalLetterSpeed = 0;
+        [SerializeField] Animator diaBox = default;
+        [SerializeField] GameObject passDialogueArrow = default;
+        [SerializeField] PlayerControllerIso playerController = default;
 
-        [SerializeField]
-        PlayerControllerIso playerController = default;
+        [HideInInspector] public GameObject nameText = default;
+        [HideInInspector] public GameObject dialogueText = default;
+        [HideInInspector] public bool interactionDebug = false;
 
         //Private
         Queue<string> sentences;
@@ -47,18 +43,38 @@ namespace Pitstop
 
         private void Update()
         {
+            if (isCurrentSentenceFinished)
+            {
+                passDialogueArrow.SetActive(true);
+            }
+            else
+            {
+                passDialogueArrow.SetActive(false);
+            }
+
             if (playerReading && inputManager.skipActualDialogueBox)
             {
-                if (isCurrentSentenceFinished) DisplayNextSentence();
-                else currentLetterSpeed = 0f;
-
-
+                if (isCurrentSentenceFinished)
+                {
+                    DisplayNextSentence();
+                    return;
+                }
+                else if (!interactionDebug)
+                {
+                    currentLetterSpeed = 0f;
+                }
+                else
+                {
+                    interactionDebug = false;
+                }
             }
         }
 
         public void StartDialogue(Dialogue dialogue)
         {
+            //questionnable
             playerController.canMove = false;
+
             playerReading = true;
 
             nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;
