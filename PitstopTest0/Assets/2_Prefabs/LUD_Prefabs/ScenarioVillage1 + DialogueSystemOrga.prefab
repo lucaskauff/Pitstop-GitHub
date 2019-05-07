@@ -137,9 +137,9 @@ MonoBehaviour:
   dialogueInEnglish:
     name: Zayn
     sentences:
-    - So... this is their village...
-    - Maybe they can help me to find Ellya.
-    - But we don't speak the same language. I will have to use something else to communicate.
+    - So... that's their village...
+    - Maybe they can help me find Ellya.
+    - But we don't speak the same language. I'll have to use something else to communicate.
   dialogueInFrench:
     name: Zayn
     sentences:
@@ -2647,9 +2647,9 @@ MonoBehaviour:
   dialogueInEnglish:
     name: Zayn
     sentences:
-    - This man saw Ellya in the East ? Thank God ! She's alive !
-    - "But this bridge is the only access and it's broken... \nWhy this kind of things
-      only happens to me ?"
+    - This guy saw Ellya in the East? Thank God, she made it alive!
+    - "But this bridge is the only access and it's broken... \nWhy does this kind
+      of stuff only happen to me?"
   dialogueInFrench:
     name: Zayn
     sentences:
@@ -3925,12 +3925,12 @@ MonoBehaviour:
     name: Zayn
     sentences:
     - Whoa... You're fast guys !
-    - Wait a little bit more Ellya, I'm coming !
+    - Hang in there Ellya, I'm coming...
   dialogueInFrench:
     name: Zayn
     sentences:
     - "Whaou... Vous \xEAtes rapides les mecs !"
-    - Attend encore un peu Ellya, j'arrive !
+    - Attend encore un peu Ellya, j'arrive...
 --- !u!1 &987260664
 GameObject:
   m_ObjectHideFlags: 0
@@ -4826,8 +4826,8 @@ MonoBehaviour:
   builderNative2: {fileID: 686817940}
   dialogueWhenBridgeIsRepaired: {fileID: 982105073}
   timeBeforeCommentingReparation: 1
-  timeBeforeSayingThatABuilderMissed: 1
-  dialogueWhenOnlyOneBuilderIsHere: {fileID: 0}
+  timeBeforeSayingThatABuilderMissed: 5
+  dialogueWhenOnlyOneBuilderIsHere: {fileID: 2138506267082351918}
 --- !u!1 &1177981807
 GameObject:
   m_ObjectHideFlags: 0
@@ -5452,12 +5452,12 @@ MonoBehaviour:
   dialogueInEnglish:
     name: Zayn
     sentences:
-    - Everyone watch with his eyes... Signs about vision should be similar despite
-      the culture.
+    - Everyone uses their eyes to watch... Signs about vision should all be alike
+      despite the culture.
   dialogueInFrench:
     name: Zayn
     sentences:
-    - "Tout le monde voit avec ses yeux... Les signes autour de la vision doivent
+    - "Tout le monde regarde avec ses yeux... Les signes autour de la vision devraient
       \xEAtre semblables malgr\xE9 la culture."
 --- !u!1 &1283835552
 GameObject:
@@ -6373,8 +6373,8 @@ MonoBehaviour:
   dialogueInEnglish:
     name: Zayn
     sentences:
-    - Mmh... If I remember well, in the North Archipelagos, pretending to bite something
-      means "eat"...
+    - Mmh... If I remember well, in the Northern Islands, pretending to bite something
+      means "to eat"...
   dialogueInFrench:
     name: Zayn
     sentences:
@@ -6500,8 +6500,8 @@ MonoBehaviour:
   dialogueInEnglish:
     name: Zayn
     sentences:
-    - Even in our culture every profession has its own vocabulary. It's funny when
-      you think about it.
+    - Even in our culture every line of profession has its own vocabulary. It's funny
+      when you think about it.
   dialogueInFrench:
     name: Zayn
     sentences:
@@ -7082,7 +7082,7 @@ MonoBehaviour:
   dialogueInEnglish:
     name: Zayn
     sentences:
-    - Ellya studied a lot of languages. She said once that concept like "Me" or "You"
+    - Ellya studied a lot of languages. She said once that concepts like "Me" or "You"
       are universal.
   dialogueInFrench:
     name: Zayn
@@ -7346,7 +7346,7 @@ MonoBehaviour:
     - 'Oops! I think I made him angry. I should be aware of what I''m saying. '
     - 'I mean ... what signs I make.
 
-      I will have to wait a little bit before be able to talk to him again.'
+      I will have to wait a little bit before I''m able to talk to him again.'
   dialogueInFrench:
     name: Zayn
     sentences:
@@ -9076,8 +9076,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1894050279805276648}
+  - component: {fileID: 2138506267082351918}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DialogueWhenOnlyOneBuilderIsHere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9097,6 +9098,30 @@ Transform:
   m_Father: {fileID: 179483109}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2138506267082351918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138506267082351917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  dialogueManager: {fileID: 0}
+  dialogueInEnglish:
+    name: Zayn
+    sentences:
+    - The bridge is completely destroyed. Can he really fix it alone?
+  dialogueInFrench:
+    name: Zayn
+    sentences:
+    - "Le pont est compl\xE9tement d\xE9truit. Pas s\xFBr qu'il arrive \xE0 le r\xE9parer
+      tout seul."
 --- !u!1 &2830754303667572117
 GameObject:
   m_ObjectHideFlags: 0
