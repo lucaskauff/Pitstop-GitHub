@@ -33,6 +33,7 @@ namespace Pitstop
             vCamPlayer.SetActive(false);
 
             repairingBridge.SetTrigger("RepairBridge");
+            
 
             workingBridge.SetActive(true);
             brokenBridge.SetActive(false);

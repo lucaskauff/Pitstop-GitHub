@@ -3060,6 +3060,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8174704593243583062, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174704593243583067, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b0b5e6a0fb741c468f16d1fed24a39e, type: 3}
 --- !u!1 &77749611
@@ -80017,6 +80027,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8174704593243583067, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174704593243583067, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8174704593899984712, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -80072,16 +80092,6 @@ PrefabInstance:
         type: 3}
       propertyPath: appleProjectionSpeed
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8174704593243583067, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8174704593243583067, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8174704593243583060, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
         type: 3}
@@ -80286,12 +80296,12 @@ PrefabInstance:
     - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.79
+      value: 15.6
       objectReference: {fileID: 0}
     - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 3556835858144363793, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
@@ -80566,7 +80576,7 @@ MonoBehaviour:
   previzContact: {fileID: 7930724599912941273}
   tilemap: {fileID: 654554262}
   pos1: {x: 27, y: -11}
-  pos2: {x: 44, y: 4}
+  pos2: {x: 67, y: 27}
 --- !u!114 &1004050940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81180,16 +81190,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zayn
       objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint
-      value: 
-      objectReference: {fileID: 884657109}
-    - target: {fileID: 8558634675562326383, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: postProRedVignette
-      value: 
-      objectReference: {fileID: 308264011}
     - target: {fileID: 8827798457674550477, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -81245,6 +81245,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint
+      value: 
+      objectReference: {fileID: 884657109}
+    - target: {fileID: 8558634675562326383, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: postProRedVignette
+      value: 
+      objectReference: {fileID: 308264011}
     - target: {fileID: 8000820858692480709, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_IsActive
@@ -84721,7 +84731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2059195397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84729,7 +84739,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059195396}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64e0a4ca800622e4d8ac54ff2ece6556, type: 3}
   m_Name: 

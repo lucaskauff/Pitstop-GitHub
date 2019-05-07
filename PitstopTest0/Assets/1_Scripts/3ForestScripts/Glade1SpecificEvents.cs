@@ -27,10 +27,13 @@ namespace Pitstop
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.gameObject == hHGlade1Beh.gameObject)
+            if (collision.gameObject.tag != "Player")
             {
-                hHGlade1Beh.target = targetForHammerHeadOutsideG1;
-                hHGlade1Beh.isFleeing = true;
+                if (collision.gameObject == hHGlade1Beh.gameObject)
+                {
+                    hHGlade1Beh.target = targetForHammerHeadOutsideG1;
+                    hHGlade1Beh.isFleeing = true;
+                }
             }
         }
     }
