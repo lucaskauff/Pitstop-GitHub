@@ -40,7 +40,7 @@ namespace Pitstop
                 
                 if (timer>= timeBeforeSayingThatABuilderMissed)
                 {
-                    dialogueWhenOnlyOneBuilderIsHere.TriggerDialogue();
+                    dialogueWhenOnlyOneBuilderIsHere.TriggerDialogueDirectly();
                 }
                 else
                 {
