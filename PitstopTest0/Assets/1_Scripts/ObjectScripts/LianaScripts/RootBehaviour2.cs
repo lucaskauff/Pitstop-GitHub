@@ -160,7 +160,11 @@ namespace Pitstop
                         }
                         else if (trips[i].collider.gameObject.tag == "ObjectApple")
                         {
-                            StartCoroutine(AppleBounce(hookpoints[i - 1].transform.position, hookpoints[i].transform.position, trips[i].collider.gameObject.transform.position, trips[i].collider.gameObject));
+                            StartCoroutine(AppleBounce(hookpoints[i-1].transform.position, hookpoints[i].transform.position, trips[i].collider.gameObject.transform.position, trips[i].collider.gameObject));
+                        }
+                        else if (trips[i].collider.gameObject.name == "Hammerhead(Clone)")
+                        {
+                            StartCoroutine(HammerheadBounce(trips[i].collider.gameObject));
                         }
                     }
                 }
@@ -306,6 +310,16 @@ namespace Pitstop
 
             yield return new WaitForSeconds(bounceTime);
 
+            ResetHookpoints();
+        }
+
+        IEnumerator HammerheadBounce(GameObject hammerhead)
+        {
+            myLineRend.enabled = false;
+            mark = true;
+            hammerhead.GetComponent<GorillaBehaviour>().rushSpeed = -hammerhead.GetComponent<GorillaBehaviour>().rushSpeed;
+            yield return new WaitForSeconds(bounceTime);
+            hammerhead.GetComponent<GorillaBehaviour>().rushSpeed = -hammerhead.GetComponent<GorillaBehaviour>().rushSpeed;
             ResetHookpoints();
         }
     }

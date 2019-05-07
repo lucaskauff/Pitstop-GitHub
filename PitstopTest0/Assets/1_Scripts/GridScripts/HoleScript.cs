@@ -10,7 +10,6 @@ namespace Pitstop
 
         [SerializeField] float timePlayerHasToReact = 1;
         [SerializeField] PlayerControllerIso playerControllerIso = default;
-        //[SerializeField] GameObject player = default;
 
         private bool playerReallyFell = false;
 
@@ -38,6 +37,17 @@ namespace Pitstop
                 if (!playerControllerIso.isBeingRepulsed)
                 {
                     StartCoroutine(PlayerDelay());
+                }
+            }
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.gameObject.name == playerControllerIso.gameObject.name)
+            {
+                if (!playerControllerIso.isBeingRepulsed)
+                {
+                    HoleConsequence();
                 }
             }
         }

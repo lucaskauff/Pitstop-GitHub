@@ -7,6 +7,7 @@ namespace Pitstop
     public class IMP_Apple : MonoBehaviour
     {
         public float appleProjectionSpeed = 3;
+        public bool hasExploded = false;
         [SerializeField] ScannableObjectBehaviour scannableObjectBehaviour = default;
         [SerializeField] Animator myAnim = default;
         [SerializeField] GameObject explosionRange = default;
@@ -27,6 +28,7 @@ namespace Pitstop
         public void ExplosionAnimStart()
         {
             myAnim.SetTrigger("Explosion");
+            hasExploded = true;
         }
 
         public void Explode()
