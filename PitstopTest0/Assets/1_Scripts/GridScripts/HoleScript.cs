@@ -6,38 +6,29 @@ namespace Pitstop
 {
     public class HoleScript : MonoBehaviour
     {
-        SceneLoader sceneLoader;
-
         [SerializeField] float timePlayerHasToReact = 1;
         [SerializeField] PlayerControllerIso playerControllerIso = default;
+        [SerializeField] Animator theFadeOnDead = default;
 
-        private bool playerReallyFell = false;
-
-        private void Start()
-        {
-            sceneLoader = GameManager.Instance.sceneLoader;
-        }
-
-        private void Update()
-        {
-            if (playerReallyFell)
-            {
-                HoleConsequence();
-            }
-            else
-            {
-                StopCoroutine(PlayerDelay());
-            }
-        }
+        bool delayIsPlaying = false;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.name == playerControllerIso.gameObject.name)
             {
                 if (!playerControllerIso.isBeingRepulsed)
-                {
+                {                    
                     StartCoroutine(PlayerDelay());
                 }
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.name == playerControllerIso.gameObject.name)
+            {
+                StopAllCoroutines();
+                return;
             }
         }
 
@@ -45,7 +36,7 @@ namespace Pitstop
         {
             if (collision.gameObject.name == playerControllerIso.gameObject.name)
             {
-                if (!playerControllerIso.isBeingRepulsed)
+                if (!delayIsPlaying && !playerControllerIso.isBeingRepulsed)
                 {
                     HoleConsequence();
                 }
@@ -54,18 +45,23 @@ namespace Pitstop
 
         private void HoleConsequence()
         {
-            //To update !
-            sceneLoader.ReloadScene();
+            playerControllerIso.canMove = false;
+            theFadeOnDead.SetTrigger("PlayerIsDead");
         }
 
         IEnumerator PlayerDelay()
         {
+            delayIsPlaying = true;
+
             if (playerControllerIso.isBeingRepulsed)
             {
-                playerReallyFell = false;
+                yield return null;
             }
+
             yield return new WaitForSeconds(timePlayerHasToReact);
-            playerReallyFell = true;
+
+            delayIsPlaying = false;
+            HoleConsequence();
         }
     }
 }
