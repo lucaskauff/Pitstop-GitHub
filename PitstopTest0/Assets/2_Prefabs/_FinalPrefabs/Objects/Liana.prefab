@@ -93,7 +93,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4816876112790863935}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!60 &4015890566052001412
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -190,19 +190,18 @@ MonoBehaviour:
   hookpoints:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   pointSelect: 0
   mark: 0
   player: {fileID: 0}
   crystalController: {fileID: 0}
-  bounceTime: 0.25
-  bounceAmount: 1
+  bounceTime: 1.5
+  bounceAmount: 4
   decalageY: 0.3
   layerLiana:
     serializedVersion: 2
     m_Bits: 512
+  actualThreat: {fileID: 0}
+  errorMargin: 2
 --- !u!114 &898276923229779687
 MonoBehaviour:
   m_ObjectHideFlags: 0
