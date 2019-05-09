@@ -13,9 +13,8 @@ namespace Pitstop
         {
             Debug.Log(collision.gameObject.name);
 
-            if (collision.gameObject.tag == "ObjectApple")
+            if (collision.gameObject.name == "AppleForThePlayerToScan2(Clone)")
             {
-                Debug.Log("apple touched menhir");
                 myAnim.SetTrigger("MenhirIsTouched");
             }
         }
