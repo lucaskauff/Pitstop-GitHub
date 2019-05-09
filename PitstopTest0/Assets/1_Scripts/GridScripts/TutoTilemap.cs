@@ -2,47 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutoTilemap : MonoBehaviour
+namespace Pitstop
 {
-    //Serializable
-    [SerializeField] float delay = 0;
-    [SerializeField] GameObject textToShow = default;
-
-    //Private
-    bool triggerOnceCheck = false;
-
-    private void TheTutorial()
+    public class TutoTilemap : MonoBehaviour
     {
-        //could be improved
-        textToShow.SetActive(true);
-    }
+        //Serializable
+        [SerializeField] float delay = 0;
+        [SerializeField] GameObject textToShow = default;
 
-    private void EndOfTheTutorial()
-    {
-        //could be improved
-        textToShow.SetActive(false);
-    }
+        //Private
+        bool triggerOnceCheck = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player" && !triggerOnceCheck)
+        private void Update()
         {
-            triggerOnceCheck = true;
-            StartCoroutine(DelayForThePlayerToUnderstand());
+            switch (gameObject.name)
+            {
+                case "ScanTutoTilemap":
+                    if (FindObjectOfType<CrystalController>().scannedObject != null)
+                    {
+                        EndOfTheTutorial();
+                    }
+                    break;
+            }
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        private void TheTutorial()
         {
-            EndOfTheTutorial();
+            //could be improved
+            textToShow.SetActive(true);
         }
-    }
 
-    IEnumerator DelayForThePlayerToUnderstand()
-    {
-        yield return new WaitForSeconds(delay);
-        TheTutorial();
+        private void EndOfTheTutorial()
+        {
+            //could be improved
+            textToShow.SetActive(false);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Player" && !triggerOnceCheck)
+            {
+                triggerOnceCheck = true;
+                StartCoroutine(DelayForThePlayerToUnderstand());
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                EndOfTheTutorial();
+            }
+        }
+
+        IEnumerator DelayForThePlayerToUnderstand()
+        {
+            yield return new WaitForSeconds(delay);
+            TheTutorial();
+        }
     }
 }
