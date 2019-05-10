@@ -346,15 +346,18 @@ MonoBehaviour:
   dialogueManager: {fileID: 1936975862}
   interactionButton: {fileID: 845135721}
   dialogueInEnglish:
-    name: 'Hieroglyphs :'
-    sentences:
-    - But something happened...
-    - Or more like someone...
-    - (The rest is unreadable.)
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: It seems that something happened... Or someone ?
+    - speaker: Zayn
+      sentence: The rest is unreadable...
   dialogueInFrench:
-    name: 'Hieroglyphes :'
-    sentences:
-    - "Sauf que quelqu'un est arriv\xE9."
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: "Il semblerait quelque chose soit arriv\xE9... \xE0 moins que ce ne
+        soit quelqu'un."
+    - speaker: Zayn
+      sentence: Le reste est illisible...
   activationCheck: 0
   debugging: 0
 --- !u!1839735485 &116534188
@@ -2020,23 +2023,13 @@ MonoBehaviour:
   dialogueManager: {fileID: 1936975862}
   interactionButton: {fileID: 0}
   dialogueInEnglish:
-    name: Zayn
-    sentences:
-    - 'This probably was a way
-
-      to the rest of the temple.'
-    - 'I wonder what''s behind
-
-      those rocks...'
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: It might lead to the rest of the temple... But it seems compromised.
   dialogueInFrench:
-    name: Zayn
-    sentences:
-    - 'Ce chemin devait mener
-
-      au reste de ce temple.'
-    - 'Je me demande ce qu''il y a de
-
-      l''autre cote de ces pierres...'
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: Ca devait mener au reste du temple... Mais ca me semble compromis.
   activationCheck: 0
   debugging: 0
 --- !u!1 &568500503
@@ -3041,15 +3034,13 @@ MonoBehaviour:
   dialogueManager: {fileID: 1936975862}
   interactionButton: {fileID: 0}
   dialogueInEnglish:
-    name: Zayn
-    sentences:
-    - 'Rocks have slipped.
-
-      Way is blocked.'
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: Blocked...
   dialogueInFrench:
-    name: Zayn
-    sentences:
-    - "Il y a eu un \xE9boulis.\nLa voie n'est plus praticable."
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: "Bouch\xE9..."
   activationCheck: 0
   debugging: 0
 --- !u!1 &750495533
@@ -5058,6 +5049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCameraPlayer: {fileID: 6878430872115984567}
   virtualCameraGlade: {fileID: 1029424784}
+  uiCamera: {fileID: 0}
 --- !u!483693784 &987419182
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -7291,18 +7283,26 @@ MonoBehaviour:
   dialogueManager: {fileID: 1936975862}
   interactionButton: {fileID: 575469227}
   dialogueInEnglish:
-    name: 'Hieroglyphs :'
-    sentences:
-    - "It seems like there was an\nadvanced civilisation \nliving here..."
-    - 'They had developed technologies
-
-      in link with an ancient energy...'
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: Strange fresco... I think it portray a really advanced civilization.
+    - speaker: Zayn
+      sentence: This object... that looks like a crystal. It's really enhanced on
+        this representation.
+    - speaker: Zayn
+      sentence: Crap... if only Ellya was here. She is the one who knows about that
+        kind of stuff.
   dialogueInFrench:
-    name: 'Hieroglyphes :'
-    sentences:
-    - 'Une ancienne civilisation
-
-      a vecu ici...'
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: Etrange fresque... On dirait qu'elle depeint une civilisation tres
+        avancee.
+    - speaker: Zayn
+      sentence: "Cet objet... cette sorte de cristal. Il est tr\xE8s mis en valeur
+        sur cette repr\xE9sentation."
+    - speaker: Zayn
+      sentence: "Merde... si seulement Ellya \xE9tait l\xE0. C'est elle qui s'y conna\xEEt
+        dans ce genre de truc."
   activationCheck: 0
   debugging: 0
 --- !u!1 &1277265167
@@ -8829,15 +8829,19 @@ MonoBehaviour:
   dialogueManager: {fileID: 1936975862}
   interactionButton: {fileID: 0}
   dialogueInEnglish:
-    name: Zayn
-    sentences:
-    - 'I can''t get out from here.
-
-      I''ll have to find another way.'
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: It looks to unstable. Climbing would be too dangerous.
+    - speaker: Zayn
+      sentence: Crap...
   dialogueInFrench:
-    name: Zayn
-    sentences:
-    - "Je ne peux pas sortir par l\xE0.\nJe vais devoir trouver une autre sortie."
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: Ca a l'air trop instable. Trop dangereux a escalader.
+    - speaker: Zayn
+      sentence: 'Fais chier...
+
+'
   activationCheck: 0
   debugging: 0
 --- !u!1 &1811906196
@@ -8892,13 +8896,13 @@ MonoBehaviour:
   dialogueManager: {fileID: 1936975862}
   interactionButton: {fileID: 0}
   dialogueInEnglish:
-    name: Zayn
-    sentences:
-    - What's that ?
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: What's this blue glowing stuff? A crystal?
   dialogueInFrench:
-    name: Zayn
-    sentences:
-    - Qu'est-ce que ?
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: Qu'est-ce que c'est ? Un cristal ?
   activationCheck: 0
   debugging: 0
 --- !u!66 &1852141729
@@ -10990,31 +10994,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PointsInLevel
       objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.05
-      objectReference: {fileID: 0}
     - target: {fileID: 3556835858144363793, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11069,6 +11048,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaae4f4779dd9644fa2811e5ecbc686f, type: 3}
@@ -18007,11 +18011,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zayn
       objectReference: {fileID: 0}
-    - target: {fileID: 8453608899426083321, guid: da7a6d321a067ed49854b9c1c18766bc,
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: sceneStartingPoint
+      value: 
+      objectReference: {fileID: 658678499}
     - target: {fileID: 8827798457674550477, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18067,12 +18071,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint
-      value: 
-      objectReference: {fileID: 658678499}
     - target: {fileID: 8000820858692480709, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8453608899426083321, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -19513,6 +19517,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
+        type: 3}
+      propertyPath: dialogueInFrench.allDialoguePart.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
+        type: 3}
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1936975862}
@@ -19552,6 +19566,21 @@ PrefabInstance:
       propertyPath: dialogueInFrench.sentences.Array.data[0]
       value: "C'est bon, je suis en \nun seul morceau.\nMais ou je suis tombe moi
         ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[0].speaker
+      value: Zayn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[0].sentence
+      value: Shiiit... Where did I fall ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
+        type: 3}
+      propertyPath: dialogueInFrench.allDialoguePart.Array.data[0].sentence
+      value: Merde... Ou est-ce que j'ai atterri ?
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fb7d921a5320c48b94fcaeb3915f1d, type: 3}

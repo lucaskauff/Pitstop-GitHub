@@ -2,17 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LUD_TriggerTheFirstDialogue : MonoBehaviour
+namespace Pitstop
 {
-    // Start is called before the first frame update
-    void Start()
+    public class LUD_TriggerTheFirstDialogue : MonoBehaviour
     {
+
+        public DialogueTrigger dialogueBox;
+        bool hasBeentriggeredOnce = false;
+
+
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+
+            if (collision.gameObject.tag == "Player" && !hasBeentriggeredOnce)
+            {
+                dialogueBox.TriggerDialogueDirectly();
+                FindObjectOfType<LUD_NativeBehaviourOnMiniBossScene>().StartCoroutine("WaitBeforeFlyingAway");
+
+                //Debug.Log("FindObjectOfType<EerickBehaviour>().playerHasTriggeredNative = " + FindObjectOfType<EerickBehaviour>().playerHasTriggeredNative);
+                FindObjectOfType<EerickBehaviour>().playerHasTriggeredNative = true;
+
+                hasBeentriggeredOnce = true;
+
+
+            }
+
+        }
+
         
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

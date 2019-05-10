@@ -23,6 +23,7 @@ namespace Pitstop
             if (enemyCurrentHealth <= 0)
             {
                 gameObject.SetActive(false);
+                FindObjectOfType<LUD_ScenarioOfTheMiniBossWithTheNative>().EndOfTheFightConcequences();
             }
 
             if (enemyCurrentHealth > enemyMaxHealth)

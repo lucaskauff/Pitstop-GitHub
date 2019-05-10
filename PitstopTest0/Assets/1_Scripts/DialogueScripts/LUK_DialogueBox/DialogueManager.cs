@@ -15,6 +15,7 @@ namespace Pitstop
         public bool readyToDisplay = false;
         public bool playerReading = false;
         public bool isCurrentSentenceFinished = false;
+        public string codeOfTheLastTriggeringSentence = null;
 
         [Header("Serializable")]
         [SerializeField] float currentLetterSpeed = 0;
@@ -28,12 +29,17 @@ namespace Pitstop
         [HideInInspector] public bool interactionDebug = false;
 
         //Private
+        Queue<string> namesOfSpeakers;
         Queue<string> sentences;
+
+        bool willtheCurrentSentencesTriggeredSomethingWhenFinished = false;
+        string memoryForTheTriggerCode = null;
 
         void Start()
         {
             inputManager = GameManager.Instance.inputManager;
 
+            namesOfSpeakers = new Queue<string>();
             sentences = new Queue<string>();
 
             readyToDisplay = true;
@@ -70,21 +76,37 @@ namespace Pitstop
             }
         }
 
-        public void StartDialogue(Dialogue dialogue)
+        public void StartDialogue(Dialogue dialogue, bool triggerOrNot, string codeForTrigger)
         {
             //questionnable
             playerController.canMove = false;
 
             playerReading = true;
 
-            nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;
+            //nameText.GetComponent<TextMeshProUGUI>().text = dialogue.name;
 
+            namesOfSpeakers.Clear();
             sentences.Clear();
 
+            willtheCurrentSentencesTriggeredSomethingWhenFinished = triggerOrNot;
+
+            if (triggerOrNot) memoryForTheTriggerCode = codeForTrigger;
+            else memoryForTheTriggerCode = null;
+
+            
+            /*
             foreach (string sentence in dialogue.sentences)
             {
                 sentences.Enqueue(sentence);
             }
+            */
+
+            foreach (SpecificDialoguePart dialoguePart in dialogue.allDialoguePart)
+            {
+                namesOfSpeakers.Enqueue(dialoguePart.speaker);
+                sentences.Enqueue(dialoguePart.sentence);
+            }
+
 
             //dialogueBox apparition
             DialogueBoxPopIn();
@@ -97,13 +119,18 @@ namespace Pitstop
             if (sentences.Count == 0)
             {
                 EndDialogue();
+                
+                codeOfTheLastTriggeringSentence = memoryForTheTriggerCode;
+
                 return;
             }
 
+            string nameOfTheCurrentSpeaker = namesOfSpeakers.Dequeue();
             string sentence = sentences.Dequeue();
 
             //Displays letter by letter
             StopAllCoroutines();
+            nameText.GetComponent<TextMeshProUGUI>().text = nameOfTheCurrentSpeaker;
             StartCoroutine(TypeSentence(sentence));
         }
 

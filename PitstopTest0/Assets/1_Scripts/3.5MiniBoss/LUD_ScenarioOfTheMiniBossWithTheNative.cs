@@ -6,25 +6,49 @@ namespace Pitstop
 {
     public class LUD_ScenarioOfTheMiniBossWithTheNative : MonoBehaviour
     {
-        /*
-        public PlayerControllerIso playerController;
+        [SerializeField] float timeBeforeCommentingTheEndOfFight = 1f;
+        public DialogueTrigger dialogueAfterTheFight;
 
-        [Header("Zayn movements")]
-        public Transform pointWhereZaynGoAtTheBeggining;
-        private bool isArrivedToFirstPoint = false;
+        [SerializeField] DialogueManager dialogueManager = default;
+        [SerializeField] GameObject dialogueWheelSystem = default;
 
-        // Start is called before the first frame update
-        void Start()
+        private bool isDialogueWheelAppeared = false;
+
+
+        private void Update()
         {
+            string code = dialogueManager.codeOfTheLastTriggeringSentence;
+
+            if (code == "Return Of The Native After The Mini Boss")
+            {
+                FindObjectOfType<LUD_NativeBehaviourOnMiniBossScene>().isReturningFromForest = true;
+            }
             
-            //playerController.canMove = false;
+            
+            else if (dialogueManager.codeOfTheLastTriggeringSentence == "Tutorial For Dialogue Wheel" && !isDialogueWheelAppeared)
+            {
+                Debug.Log("Tutorial for dialogue wheel");
+                dialogueWheelSystem.SetActive(true);
+
+                //afficher le tuto bouton
+
+                isDialogueWheelAppeared = true;
+
+            }
         }
 
-        // Update is called once per frame
-        void FixedUpdate()
+
+
+        public void EndOfTheFightConcequences()
         {
-
+            StartCoroutine(WaitBeforeCommentingAfterTheFight());
         }
-        */
+
+        IEnumerator WaitBeforeCommentingAfterTheFight()
+        {
+            yield return new WaitForSeconds(timeBeforeCommentingTheEndOfFight);
+            dialogueAfterTheFight.TriggerDialogueDirectly();
+            
+        }
     }
 }
