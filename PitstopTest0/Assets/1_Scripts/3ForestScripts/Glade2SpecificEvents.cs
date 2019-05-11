@@ -34,17 +34,13 @@ namespace Pitstop
             {
                 hHGlade2Beh.isFleeing = false;
                 hHGlade2Beh.canMove = true;
-
             }
         }
 
-        private void OnTriggerExit2D(Collider2D collision)
+        public void HammerheadIsOutOfGlade()
         {
-            if (collision.gameObject == hHGlade2Beh.gameObject)
-            {
-                hHGlade2Beh.target = targetForHammerHeadOutsideG2;
-                hHGlade2Beh.isFleeing = true;
-            }
+            hHGlade2Beh.target = targetForHammerHeadOutsideG2;
+            hHGlade2Beh.isFleeing = true;
         }
     }
 }
