@@ -161,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCameraPlayer: {fileID: 1447629971}
   virtualCameraGlade: {fileID: 2030970785}
+  uiCamera: {fileID: 1252400034}
 --- !u!19719996 &13404197
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -18065,6 +18066,10 @@ PrefabInstance:
       propertyPath: virtualCameraGlade
       value: 
       objectReference: {fileID: 1962673762}
+    - target: {fileID: 1360985374, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
+      propertyPath: uiCamera
+      value: 
+      objectReference: {fileID: 1252400034}
     - target: {fileID: 1506693988, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 578
@@ -83721,13 +83726,17 @@ MonoBehaviour:
   dialogueManager: {fileID: 1058097536}
   interactionButton: {fileID: 0}
   dialogueInEnglish:
-    name: Zayn
-    sentences: []
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: Oh hi mark
   dialogueInFrench:
-    name: 
-    sentences: []
+    allDialoguePart:
+    - speaker: 
+      sentence: 
   activationCheck: 0
   debugging: 0
+  triggerSomethingWhenFinished: 0
+  codeOfTriggeredAction: 
 --- !u!4 &366205036 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7518388902612668753, guid: 6987ab44b876e8640b1f1ebf75745a5c,
@@ -84530,12 +84539,12 @@ PrefabInstance:
     - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.46
+      value: -7.4
       objectReference: {fileID: 0}
     - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.76
+      value: -17.5
       objectReference: {fileID: 0}
     - target: {fileID: 3556835858144363793, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
@@ -86884,6 +86893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCameraPlayer: {fileID: 1447629971}
   virtualCameraGlade: {fileID: 2013023154}
+  uiCamera: {fileID: 1252400034}
 --- !u!19719996 &1335750303
 TilemapCollider2D:
   m_ObjectHideFlags: 0

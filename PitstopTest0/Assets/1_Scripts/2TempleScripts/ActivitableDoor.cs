@@ -21,11 +21,11 @@ namespace Pitstop
 
             if (allPressurePlatesOk)
             {
-                doorCollision.SetActive(false);
+                //doorCollision.SetActive(false);
             }
             else
             {
-                doorCollision.SetActive(true);
+                //doorCollision.SetActive(true);
             }
 
             door1.SetBool("DoorOpen", allPressurePlatesOk);

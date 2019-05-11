@@ -35,6 +35,8 @@ namespace Pitstop
         private void EndOfTheTutorial()
         {
             //could be improved
+            //StopCoroutine(DelayForThePlayerToUnderstand());
+            StopAllCoroutines();
             textToShow.SetActive(false);
         }
 
