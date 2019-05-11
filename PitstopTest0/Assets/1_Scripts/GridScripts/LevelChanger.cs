@@ -10,14 +10,11 @@ namespace Pitstop
         SceneLoader sceneLoader;
 
         //My Components
-        [SerializeField]
-        Animator myAnim = default;
+        [SerializeField] Animator myAnim = default;
 
         //Serializable
-        [SerializeField]
-        string nextSceneName = null;
-        [SerializeField]
-        PlayerControllerIso playerControllerIso = default;
+        public string nextSceneName = null;
+        [SerializeField] PlayerControllerIso playerControllerIso = default;
 
         private void Start()
         {

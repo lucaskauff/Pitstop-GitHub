@@ -30,6 +30,7 @@ namespace Pitstop
         [SerializeField] float dashLength = 0.5f;
         [SerializeField] float dashCooldown = 1;
         [SerializeField] float repulseTime = 0.5f;
+        [SerializeField] float repulseTimeDash = 0.5f;
 
         //Private
         [HideInInspector] public Vector2 moveInput;
@@ -114,6 +115,7 @@ namespace Pitstop
             else if (!isBeingRepulsed)
             {
                 StopCoroutine(ComeOnAndDash());
+                StopCoroutine(RepulsionOnDash());
             }
 
             //Infos to animator
@@ -127,9 +129,12 @@ namespace Pitstop
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "ObjectApple" && !isBeingRepulsed)
-            {
-                Debug.Log("Apple touched !");
-                StartCoroutine(ComeOnAndFly());
+            {                
+                if (collision.gameObject.GetComponentInParent<IMP_Apple>().hasExploded)
+                {
+                    Debug.Log("Apple touched !");
+                    StartCoroutine(ComeOnAndFly());
+                }
             }
         }
 
@@ -140,12 +145,18 @@ namespace Pitstop
             moveSpeed = dashSpeed;
             isBeingRepulsed = true;
             StartCoroutine(ComeOnAndDash());
+            StartCoroutine(RepulsionOnDash());
         }
 
         IEnumerator ComeOnAndDash()
         {
             yield return new WaitForSeconds(dashLength);
             moveSpeed = initialMoveSpeed;
+        }
+
+        IEnumerator RepulsionOnDash()
+        {
+            yield return new WaitForSeconds(repulseTimeDash);
             isBeingRepulsed = false;
         }
 
