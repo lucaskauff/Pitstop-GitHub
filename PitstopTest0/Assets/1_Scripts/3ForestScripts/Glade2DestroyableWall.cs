@@ -6,6 +6,8 @@ namespace Pitstop
 {
     public class Glade2DestroyableWall : MonoBehaviour
     {
+        [HideInInspector] public bool isDestroyed = false;
+
         [SerializeField] Animator myAnim = default;
         [SerializeField] Glade2SpecificEvents glade2SpecificEvents = default;
 
@@ -20,6 +22,7 @@ namespace Pitstop
         public void WallReallyIsDestroyed()
         {
             glade2SpecificEvents.HammerheadIsOutOfGlade();
+            isDestroyed = true;
         }
     }
 }

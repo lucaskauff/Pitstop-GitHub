@@ -8,6 +8,10 @@ namespace Pitstop
     {
         [SerializeField] Transform targetForHammerHeadInsideG2 = default;
         [SerializeField] GameObject targetForHammerHeadOutsideG2 = default;
+        [SerializeField] float hammerheadSlowSpeed = 1f;
+        [SerializeField] float slowDownLength = 5f;
+
+        float hammerheadOriginalRushSpeed;
 
         GorillaBehaviour hHGlade2Beh = null;
         bool hHStill = false;
@@ -34,6 +38,9 @@ namespace Pitstop
             {
                 hHGlade2Beh.isFleeing = false;
                 hHGlade2Beh.canMove = true;
+                hammerheadOriginalRushSpeed = hHGlade2Beh.rushSpeed;
+                //it is buggy
+                //StartCoroutine(SlowingTheHammerheadDown());
             }
         }
 
@@ -41,6 +48,13 @@ namespace Pitstop
         {
             hHGlade2Beh.target = targetForHammerHeadOutsideG2;
             hHGlade2Beh.isFleeing = true;
+        }
+
+        IEnumerator SlowingTheHammerheadDown()
+        {
+            hHGlade2Beh.rushSpeed = hammerheadSlowSpeed;
+            yield return new WaitForSeconds(slowDownLength);
+            hHGlade2Beh.rushSpeed = hammerheadOriginalRushSpeed;
         }
     }
 }
