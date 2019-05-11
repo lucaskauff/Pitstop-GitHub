@@ -25,6 +25,10 @@ namespace Pitstop
         public bool activationCheck = false;
         public bool debugging = false;
 
+        [Header("Will Something Happen after")]
+        public bool triggerSomethingWhenFinished = false;
+        public string codeOfTriggeredAction = null;
+
         private void Start()
         {
             gameManager = GameManager.Instance;
@@ -124,7 +128,7 @@ namespace Pitstop
         {
             if (!dialogueManager.playerReading && !activationCheck)
             {
-                dialogueManager.StartDialogue(activeDialogue);
+                dialogueManager.StartDialogue(activeDialogue,triggerSomethingWhenFinished,codeOfTriggeredAction);
 
                 if (onlyActivatableOnce)
                 {

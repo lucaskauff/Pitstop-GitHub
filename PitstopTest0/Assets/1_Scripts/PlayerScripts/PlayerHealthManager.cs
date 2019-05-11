@@ -25,12 +25,14 @@ namespace Pitstop
         [SerializeField] float feedbackLength = 0.5f;
         [SerializeField] float maxBloodSize = 1;
         [SerializeField] float feedbackSpeed = 1;
+        [SerializeField] float timeOfInvincibility = 1f;
 
         //Private
         Vignette vignetteLayer = null;
         float timer = 0f;
         bool hasToRecover = false;
         bool feedbackLaunched = false;
+        bool isInvincible = false;
 
         void Start()
         {
@@ -60,8 +62,13 @@ namespace Pitstop
 
         public void HurtPlayer(int damageToGive)
         {
-            playerCurrentHealth -= damageToGive;
-            hasToRecover = true;
+            if (!isInvincible)
+            {
+                playerCurrentHealth -= damageToGive;
+                hasToRecover = true;
+
+                StartCoroutine(LaunchInvicibilityMode());
+            }
         }
 
         public void HealPlayer(int healToGive)
@@ -82,12 +89,33 @@ namespace Pitstop
             postProRedVignette.profile.TryGetSettings(out vignetteLayer);
             vignetteLayer.intensity.value = Mathf.Lerp(0, maxBloodSize, timer);
             timer += feedbackSpeed * Time.deltaTime;
+            
 
             yield return new WaitForSeconds(feedbackLength);
 
+            
             vignetteLayer.intensity.value = 0;
             timer = 0;
             hasToRecover = false;
+        }
+
+        IEnumerator LaunchInvicibilityMode()
+        {
+            isInvincible = true;
+
+            //yield return new WaitForSeconds(timeOfInvincibility);
+
+            int nbrOfStepInInvincibility = 20; //has to be even
+
+            for (int i = 0; i< nbrOfStepInInvincibility; i++)
+            {
+                
+                GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().isVisible;
+
+                yield return new WaitForSeconds(timeOfInvincibility / nbrOfStepInInvincibility);
+            }
+
+            isInvincible = false;
         }
     }
 }

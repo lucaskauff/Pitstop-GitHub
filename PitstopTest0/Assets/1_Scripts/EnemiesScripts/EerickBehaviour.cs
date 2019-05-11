@@ -22,6 +22,8 @@ namespace Pitstop
         [SerializeField] float repulseTime = 1f;
 
         bool fightCanStart = false;
+        public bool playerHasTriggeredNative = false;
+
         bool waitForCooldown = false;
         GameObject cloneProj;
 
@@ -44,7 +46,7 @@ namespace Pitstop
         {
             if (!fightCanStart)
             {
-                if (target.canMove)
+                if (target.canMove && playerHasTriggeredNative)
                 {
                     fightCanStart = true;
                 }
