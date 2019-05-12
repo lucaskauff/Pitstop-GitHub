@@ -78,11 +78,11 @@ namespace Pitstop
                     else nextScene = "Acte V : TERRITOIRE DE LA BETE";
                     break;
 
-                /* probably won't have a name
-                case "5_EPILOGUE":
-                    nextScene = "EPILOGUE";
-                    break;
-                */
+                    /* probably won't have a name
+                    case "5_EPILOGUE":
+                        nextScene = "EPILOGUE";
+                        break;
+                    */
             }
         }
 

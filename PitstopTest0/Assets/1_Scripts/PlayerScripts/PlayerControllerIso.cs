@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
-using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 namespace Pitstop
 {
@@ -15,6 +14,7 @@ namespace Pitstop
         [Header("My components")]
         [SerializeField] Rigidbody2D myRb = default;
         [SerializeField] Animator myAnim = default;
+        [SerializeField] Image dashCdFb = default;
 
         //Public
         public bool canMove = true;
@@ -25,7 +25,8 @@ namespace Pitstop
         public float isometricRatio = 2;
 
         //Serializable
-        [SerializeField] Transform sceneStartingPoint = null;
+        public static int savingPointIndex = 0;
+        [SerializeField] Transform[] sceneStartingPoint;
         [SerializeField] float dashSpeed = 5;
         [SerializeField] float dashLength = 0.5f;
         [SerializeField] float dashCooldown = 1;
@@ -74,7 +75,9 @@ namespace Pitstop
 
             myAnim.SetFloat("LastMoveX", lastMove.x);
             myAnim.SetFloat("LastMoveY", lastMove.y);
-            transform.position = sceneStartingPoint.position;
+
+            transform.position = sceneStartingPoint[savingPointIndex].position;
+            
             canMove = true;
         }
 
@@ -108,7 +111,11 @@ namespace Pitstop
                 myRb.velocity = Vector2.zero;
             }
 
-            if (inputManager.dashKey && Time.time > dashRate)
+            if (Time.time < dashRate)
+            {
+                dashCdFb.fillAmount = (dashRate - Time.time) / dashCooldown;
+            }
+            else if (inputManager.dashKey)
             {
                 Dash();
             }
@@ -146,6 +153,11 @@ namespace Pitstop
             isBeingRepulsed = true;
             StartCoroutine(ComeOnAndDash());
             StartCoroutine(RepulsionOnDash());
+        }
+
+        public void IncrementSavingPoint(int associatedIndex)
+        {
+            savingPointIndex = associatedIndex;
         }
 
         IEnumerator ComeOnAndDash()

@@ -6,16 +6,23 @@ namespace Pitstop
 {
     public class Glade2DestroyableWall : MonoBehaviour
     {
+        [HideInInspector] public bool isDestroyed = false;
+
         [SerializeField] Animator myAnim = default;
-        [SerializeField] Collider2D myColl = default;
+        [SerializeField] Glade2SpecificEvents glade2SpecificEvents = default;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Enemy")
             {
                 myAnim.SetTrigger("IsDestroyed");
-                myColl.enabled = false;
             }
+        }
+
+        public void WallReallyIsDestroyed()
+        {
+            glade2SpecificEvents.HammerheadIsOutOfGlade();
+            isDestroyed = true;
         }
     }
 }

@@ -4632,15 +4632,6 @@ PrefabInstance:
       propertyPath: levelChanger
       value: 
       objectReference: {fileID: 380960474}
-    - target: {fileID: 7518388901931225301, guid: 6987ab44b876e8640b1f1ebf75745a5c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 778954259, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1360985367, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4651,10 +4642,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1506693984, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 778954262, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
-      propertyPath: m_ColliderPaths.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1506693988, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
@@ -20207,6 +20194,19 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[643].second.m_ColliderType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7518388901931225301, guid: 6987ab44b876e8640b1f1ebf75745a5c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 778954259, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 778954262, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
 --- !u!1 &523321521
@@ -21498,6 +21498,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4816876112790863874, guid: 76dcb4e089bd04f4faa21b8386a9017a,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4816876112790863874, guid: 76dcb4e089bd04f4faa21b8386a9017a,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4816876112790863874, guid: 76dcb4e089bd04f4faa21b8386a9017a,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4816876112790863875, guid: 76dcb4e089bd04f4faa21b8386a9017a,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4816876112790863872, guid: 76dcb4e089bd04f4faa21b8386a9017a,
         type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
@@ -21537,26 +21557,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Parameters.colorGradient.key1.b
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816876112790863874, guid: 76dcb4e089bd04f4faa21b8386a9017a,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816876112790863874, guid: 76dcb4e089bd04f4faa21b8386a9017a,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816876112790863874, guid: 76dcb4e089bd04f4faa21b8386a9017a,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816876112790863875, guid: 76dcb4e089bd04f4faa21b8386a9017a,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76dcb4e089bd04f4faa21b8386a9017a, type: 3}

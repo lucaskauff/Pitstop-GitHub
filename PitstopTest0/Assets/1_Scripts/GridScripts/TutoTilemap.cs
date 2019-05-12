@@ -23,6 +23,13 @@ namespace Pitstop
                         EndOfTheTutorial();
                     }
                     break;
+
+                case "CamTransitionGlade2":
+                    if (FindObjectOfType<Glade2DestroyableWall>().isDestroyed)
+                    {
+                        EndOfTheTutorial();
+                    }
+                    break;
             }
         }
 
