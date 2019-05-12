@@ -55,7 +55,7 @@ namespace Pitstop
 
             if (interactionButtonNeeded)
             {
-                if (debugging)
+                if (debugging && !activationCheck)
                 {
                     interactionButton.SetActive(true);
 
