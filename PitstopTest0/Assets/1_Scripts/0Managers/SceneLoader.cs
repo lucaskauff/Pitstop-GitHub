@@ -7,6 +7,8 @@ namespace Pitstop
 {
     public class SceneLoader : MonoBehaviour
     {
+        GameManager gameManager;
+
         public string activeScene;
         public string nextScene;
         public string loadingScreenSceneName = "6_LOADINGSCREEN";
@@ -17,6 +19,11 @@ namespace Pitstop
         public void Awake()
         {
             activeScene = SceneManager.GetActiveScene().name;
+        }
+
+        public void Start()
+        {
+            gameManager = GameManager.Instance;
         }
 
         public void LoadNewScene(string sceneToLoad)
@@ -40,33 +47,42 @@ namespace Pitstop
         {
             switch (sceneToLoadName)
             {
+                /* probably won't have a name
                 case "0_PROLOGUE":
-                    nextScene = "PROLOGUE";
+                    if (gameManager.languageSetToEnglish) nextScene = "PROLOGUE";
                     break;
+                */
 
                 case "1_TEMPLE":
-                    nextScene = "Act I : TEMPLE";
+                    if (gameManager.languageSetToEnglish) nextScene = "Act I : TEMPLE";
+                    else nextScene = "Acte I : TEMPLE";
                     break;
 
                 case "2_FOREST":
-                    nextScene = "Act II : FOREST";
+                    if (gameManager.languageSetToEnglish) nextScene = "Act II : FOREST";
+                    else nextScene = "Acte II : FORET";
                     break;
 
                 case "2_MINIBOSS":
-                    nextScene = "";
+                    if (gameManager.languageSetToEnglish) nextScene = "Act III : EERICK";
+                    else nextScene = "Acte III : EERICK";
                     break;
 
                 case "3_VILLAGE":
-                    nextScene = "Act III : VILLAGE";
+                    if (gameManager.languageSetToEnglish) nextScene = "Act IV : VILLAGE";
+                    else nextScene = "Acte IV : VILLAGE";
                     break;
 
                 case "4_DUNGEON":
-                    nextScene = "Act IV : DUNGEON";
+                    if (gameManager.languageSetToEnglish) nextScene = "Act V : TERRITORY OF THE BEAST";
+                    else nextScene = "Acte V : TERRITOIRE DE LA BETE";
                     break;
 
+                /* probably won't have a name
                 case "5_EPILOGUE":
                     nextScene = "EPILOGUE";
                     break;
+                */
             }
         }
 
@@ -79,3 +95,4 @@ namespace Pitstop
         }
     }
 }
+ 

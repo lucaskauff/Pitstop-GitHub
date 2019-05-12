@@ -34,6 +34,7 @@ namespace Pitstop
             {
                 hHGlade2Beh.isFleeing = false;
                 hHGlade2Beh.canMove = true;
+
             }
         }
 

@@ -18,7 +18,6 @@ namespace Pitstop
                 virtualCameraGlade.SetActive(true);
                 virtualCameraPlayer.SetActive(false);
 
-                
                 uiCamera.orthographicSize = 11;
             }
         }
@@ -29,8 +28,7 @@ namespace Pitstop
             {
                 virtualCameraGlade.SetActive(true);
                 virtualCameraPlayer.SetActive(false);
-
-               
+                
                 uiCamera.orthographicSize = 11;
             }
         }
@@ -41,7 +39,6 @@ namespace Pitstop
             {
                 virtualCameraPlayer.SetActive(true);
                 virtualCameraGlade.SetActive(false);
-
                 
                 uiCamera.orthographicSize = 5;
             }
@@ -53,7 +50,6 @@ namespace Pitstop
             {
                 virtualCameraPlayer.SetActive(true);
                 virtualCameraGlade.SetActive(false);
-
                 
                 uiCamera.orthographicSize = 5;
             }

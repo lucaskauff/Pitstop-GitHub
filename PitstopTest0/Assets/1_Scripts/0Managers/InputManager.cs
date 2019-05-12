@@ -6,6 +6,8 @@ namespace Pitstop
 {
     public class InputManager : MonoBehaviour
     {
+        GameManager gameManager;
+
         //General
         public bool anyKeyPressed;
 
@@ -33,6 +35,11 @@ namespace Pitstop
         public bool rightClickBeingPressed;
         public bool onRightClickReleased;
 
+        private void Start()
+        {
+            gameManager = GameManager.Instance;
+        }
+
         void Update()
         {
             anyKeyPressed = Input.anyKeyDown;
@@ -51,8 +58,17 @@ namespace Pitstop
             //
             interactionButton = Input.GetKeyDown(KeyCode.E);
             //
-            horizontalInput = Input.GetAxisRaw("Horizontal");
-            verticalInput = Input.GetAxisRaw("Vertical");
+            if (gameManager.languageSetToEnglish == false)
+            {
+                horizontalInput = Input.GetAxisRaw("Horizontal (French)");
+                verticalInput = Input.GetAxisRaw("Vertical (French)");
+            }
+            else
+            {
+                horizontalInput = Input.GetAxisRaw("Horizontal (English)");
+                verticalInput = Input.GetAxisRaw("Vertical (English)");
+            }
+            
             //
             dashKey = Input.GetKeyDown(KeyCode.LeftShift);
             //
