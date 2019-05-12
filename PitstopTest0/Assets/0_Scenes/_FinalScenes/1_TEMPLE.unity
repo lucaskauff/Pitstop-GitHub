@@ -348,16 +348,16 @@ MonoBehaviour:
   dialogueInEnglish:
     allDialoguePart:
     - speaker: Zayn
-      sentence: It seems that something happened... Or someone ?
+      sentence: (It seems that something happened... Or someone ?)
     - speaker: Zayn
-      sentence: The rest is unreadable...
+      sentence: (The rest is unreadable...)
   dialogueInFrench:
     allDialoguePart:
     - speaker: Zayn
-      sentence: "Il semblerait quelque chose soit arriv\xE9... \xE0 moins que ce ne
-        soit quelqu'un."
+      sentence: "(Il semblerait quelque chose soit arrive \xE0 cette civilisation...
+        A moins que ce ne soit quelqu'un.)"
     - speaker: Zayn
-      sentence: Le reste est illisible...
+      sentence: (Le reste est illisible)
   activationCheck: 0
   debugging: 0
   triggerSomethingWhenFinished: 0
@@ -2231,11 +2231,11 @@ MonoBehaviour:
   dialogueInEnglish:
     allDialoguePart:
     - speaker: Zayn
-      sentence: It might lead to the rest of the temple... But it seems compromised.
+      sentence: (It might lead to the rest of the temple...)
   dialogueInFrench:
     allDialoguePart:
     - speaker: Zayn
-      sentence: Ca devait mener au reste du temple... Mais ca me semble compromis.
+      sentence: (Ca devait mener au reste du temple...)
   activationCheck: 0
   debugging: 0
   triggerSomethingWhenFinished: 0
@@ -3343,11 +3343,11 @@ MonoBehaviour:
   dialogueInEnglish:
     allDialoguePart:
     - speaker: Zayn
-      sentence: Blocked...
+      sentence: (Blocked...)
   dialogueInFrench:
     allDialoguePart:
     - speaker: Zayn
-      sentence: "Bouch\xE9..."
+      sentence: (Bouche...)
   activationCheck: 0
   debugging: 0
   triggerSomethingWhenFinished: 0
@@ -7672,24 +7672,26 @@ MonoBehaviour:
   dialogueInEnglish:
     allDialoguePart:
     - speaker: Zayn
-      sentence: Strange fresco... I think it portray a really advanced civilization.
+      sentence: (Strange fresco... I think it portray a really advanced civilization.)
     - speaker: Zayn
-      sentence: This object... that looks like a crystal. It's really enhanced on
-        this representation.
+      sentence: (This object... that looks like a crystal. It's really enhanced on
+        this representation.)
     - speaker: Zayn
-      sentence: Crap... if only Ellya was here. She is the one who knows about that
-        kind of stuff.
+      sentence: (Crap... if only Ellya was here. She is the one who knows about that
+        kind of stuff.)
   dialogueInFrench:
     allDialoguePart:
     - speaker: Zayn
-      sentence: Etrange fresque... On dirait qu'elle depeint une civilisation tres
-        avancee.
+      sentence: (Quelle etrange fresque... On dirait qu'elle depeint une civilisation
+        tres avancee.)
     - speaker: Zayn
-      sentence: "Cet objet... cette sorte de cristal. Il est tr\xE8s mis en valeur
-        sur cette repr\xE9sentation."
+      sentence: "(Et cet objet... cette sorte de cristal. Il est tr\xE8s mis en valeur
+        sur cette representation.)"
     - speaker: Zayn
-      sentence: "Merde... si seulement Ellya \xE9tait l\xE0. C'est elle qui s'y conna\xEEt
-        dans ce genre de truc."
+      sentence: (...)
+    - speaker: Zayn
+      sentence: "(Si seulement Ellya \xE9tait l\xE0. C'est elle l'expert pour ce genre
+        de trucs.)"
   activationCheck: 0
   debugging: 0
   triggerSomethingWhenFinished: 0
@@ -9220,15 +9222,19 @@ MonoBehaviour:
   dialogueInEnglish:
     allDialoguePart:
     - speaker: Zayn
-      sentence: It looks to unstable. Climbing would be too dangerous.
+      sentence: (It looks to unstable. Climbing would be too dangerous.)
     - speaker: Zayn
-      sentence: Crap...
+      sentence: (...)
+    - speaker: Zayn
+      sentence: Crap!
   dialogueInFrench:
     allDialoguePart:
     - speaker: Zayn
-      sentence: Ca a l'air trop instable. Trop dangereux a escalader.
+      sentence: (Ca a l'air trop instable.)
     - speaker: Zayn
-      sentence: 'Fais chier...
+      sentence: (...)
+    - speaker: Zayn
+      sentence: 'Fais chier !
 
 '
   activationCheck: 0
@@ -19242,6 +19248,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zayn
       objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint
+      value: 
+      objectReference: {fileID: 658678499}
     - target: {fileID: 8827798457674550477, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19297,11 +19308,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint
-      value: 
-      objectReference: {fileID: 658678499}
     - target: {fileID: 8000820858692480709, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_IsActive
@@ -20749,12 +20755,12 @@ PrefabInstance:
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: dialogueInEnglish.allDialoguePart.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: dialogueInFrench.allDialoguePart.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
@@ -20806,12 +20812,37 @@ PrefabInstance:
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: dialogueInEnglish.allDialoguePart.Array.data[0].sentence
-      value: Shiiit... Where did I fall ?
+      value: Shiiit...
       objectReference: {fileID: 0}
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: dialogueInFrench.allDialoguePart.Array.data[0].sentence
-      value: Merde... Ou est-ce que j'ai atterri ?
+      value: 'Merde... '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
+        type: 3}
+      propertyPath: dialogueInFrench.allDialoguePart.Array.data[0].speaker
+      value: Zayn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
+        type: 3}
+      propertyPath: dialogueInFrench.allDialoguePart.Array.data[1].speaker
+      value: Zayn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
+        type: 3}
+      propertyPath: dialogueInFrench.allDialoguePart.Array.data[1].sentence
+      value: Ou est-ce que j'ai atterri ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[1].speaker
+      value: Zayn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[1].sentence
+      value: Where did I fall ?
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fb7d921a5320c48b94fcaeb3915f1d, type: 3}
