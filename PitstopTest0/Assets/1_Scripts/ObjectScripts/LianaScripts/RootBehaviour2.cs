@@ -238,6 +238,7 @@ namespace Pitstop
 
             yield return new WaitForSeconds(bounceTime);
 
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             player.GetComponent<PlayerControllerIso>().playerCanMove = true;
             ResetHookpoints();
         }

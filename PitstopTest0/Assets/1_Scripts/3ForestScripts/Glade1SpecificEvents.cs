@@ -12,6 +12,7 @@ namespace Pitstop
         [SerializeField] EnemySpawner hHNest = default;
         [SerializeField] GameObject targetForHammerHeadOutsideG1 = default;
         [SerializeField] PlayerControllerIso playerControllerIso = default;
+        [SerializeField] HoleScript holeScript = default;
 
         //Private
         bool playerEnteredCheck = false;
@@ -23,6 +24,7 @@ namespace Pitstop
             {
                 hHNest.SpawnTheThing();
                 hHGlade1Beh = hHNest.theSpawnedThing.GetComponent<GorillaBehaviour>();
+                holeScript.gorillaBehaviour = hHNest.theSpawnedThing.GetComponent<GorillaBehaviour>();
                 playerControllerIso.canMove = false;
                 playerEnteredCheck = true;
             }
