@@ -354,10 +354,10 @@ MonoBehaviour:
   dialogueInFrench:
     allDialoguePart:
     - speaker: Zayn
-      sentence: "(Il semblerait quelque chose soit arrive \xE0 cette civilisation...
-        A moins que ce ne soit quelqu'un.)"
+      sentence: (Il semblerait que quelque chose soit arrive a cette civilisation...
+        A moins que ce ne soit quelqu'un.)
     - speaker: Zayn
-      sentence: (Le reste est illisible)
+      sentence: (Le reste est illisible...)
   activationCheck: 0
   debugging: 0
   triggerSomethingWhenFinished: 0
@@ -7685,13 +7685,13 @@ MonoBehaviour:
       sentence: (Quelle etrange fresque... On dirait qu'elle depeint une civilisation
         tres avancee.)
     - speaker: Zayn
-      sentence: "(Et cet objet... cette sorte de cristal. Il est tr\xE8s mis en valeur
-        sur cette representation.)"
+      sentence: (Et cet objet... cette sorte de cristal. Il est tres mis en valeur
+        sur cette representation.)
     - speaker: Zayn
       sentence: (...)
     - speaker: Zayn
-      sentence: "(Si seulement Ellya \xE9tait l\xE0. C'est elle l'expert pour ce genre
-        de trucs.)"
+      sentence: (Si seulement Ellya etait la. C'est elle l'expert pour ce genre de
+        trucs.)
   activationCheck: 0
   debugging: 0
   triggerSomethingWhenFinished: 0
@@ -19252,6 +19252,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sceneStartingPoint
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint.Array.data[0]
+      value: 
       objectReference: {fileID: 658678499}
     - target: {fileID: 8827798457674550477, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
@@ -20665,7 +20670,7 @@ PrefabInstance:
     - target: {fileID: 9127097305669116841, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9127097305669116842, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
@@ -20812,12 +20817,12 @@ PrefabInstance:
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: dialogueInEnglish.allDialoguePart.Array.data[0].sentence
-      value: Shiiit...
+      value: (Shiiit...)
       objectReference: {fileID: 0}
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: dialogueInFrench.allDialoguePart.Array.data[0].sentence
-      value: 'Merde... '
+      value: (Merde...)
       objectReference: {fileID: 0}
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
@@ -20832,7 +20837,7 @@ PrefabInstance:
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: dialogueInFrench.allDialoguePart.Array.data[1].sentence
-      value: Ou est-ce que j'ai atterri ?
+      value: (Ou est-ce que j'ai atterri ?)
       objectReference: {fileID: 0}
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
@@ -20842,7 +20847,7 @@ PrefabInstance:
     - target: {fileID: 8830600641502868250, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: dialogueInEnglish.allDialoguePart.Array.data[1].sentence
-      value: Where did I fall ?
+      value: (Where did I fall ?)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fb7d921a5320c48b94fcaeb3915f1d, type: 3}

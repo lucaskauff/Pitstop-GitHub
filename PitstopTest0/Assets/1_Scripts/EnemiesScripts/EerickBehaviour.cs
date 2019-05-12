@@ -70,11 +70,12 @@ namespace Pitstop
         {
             if (enemyHealthManager.enemyCurrentHealth < storedHealth || backAfterRepulse)
             {
+
                 if (!backToFightPosSet)
                 {
                     myRb.velocity = Vector2.zero;
                     goBackToFightSpeed = goBackToFightSpeedStored;
-                    backToFightPos = positionPoints[Mathf.RoundToInt(Random.Range(0, positionPoints.Length - 1))];
+                    //backToFightPos = positionPoints[Mathf.RoundToInt(Random.Range(0, positionPoints.Length - 1))];
                     backToFightPosSet = true;
                     goBackToFightSpeed = Vector2.Distance(transform.position, backToFightPos.position) * goBackToFightSpeed;
                 }
