@@ -26,6 +26,7 @@ namespace Pitstop
         [SerializeField] float fireSpeed = 1;
         [SerializeField] float scanSpeed = 1;
         [SerializeField] float descanSpeed = 1;
+        [SerializeField] float timeScannerAtZero = 0.5f;
         [SerializeField] float maxShootRange = 3;
         [SerializeField] int maxObjectOnScene = 1; //1 set by the GD
         [SerializeField] SpriteRenderer previsualisation = default;
@@ -115,7 +116,8 @@ namespace Pitstop
                                 FindObjectOfType<UIManager>().ChangeImageInCrystalSlot(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon);
 
                                 StopAllCoroutines();
-                                scanProgress = 0;
+                                //scanProgress = 0;
+                                StartCoroutine(ResetScanner());
                             }
                         }
                         //If new object hitted directly => Reinitialise scanProgress
@@ -259,7 +261,11 @@ namespace Pitstop
         {
             while (scanProgress < maxScanProgress)
             {
-                yield return new WaitForSeconds(scanSpeed);
+                if (scanProgress == 0)
+                {
+                    scanProgress++;
+                }
+                yield return new WaitForSeconds(scanSpeed / maxScanProgress);
                 scanProgress++;
             }
         }
@@ -268,9 +274,16 @@ namespace Pitstop
         {
             while (scanProgress > 0)
             {
-                yield return new WaitForSeconds(descanSpeed);
+                yield return new WaitForSeconds(descanSpeed / maxScanProgress);
                 scanProgress--;
             }
+        }
+
+        IEnumerator ResetScanner()
+        {
+            yield return new WaitForSeconds(timeScannerAtZero);
+            scanProgress = 0;
+            StopCoroutine(ResetScanner());
         }
     }
 }
