@@ -6,9 +6,13 @@ namespace Pitstop
 {
     public class Glade1SpecificEvents : MonoBehaviour
     {
+        public bool spawnAnotherOne = false;
+
         //Serializable
         [SerializeField] EnemySpawner hHNest = default;
         [SerializeField] GameObject targetForHammerHeadOutsideG1 = default;
+        [SerializeField] PlayerControllerIso playerControllerIso = default;
+        [SerializeField] HoleScript holeScript = default;
 
         //Private
         bool playerEnteredCheck = false;
@@ -18,20 +22,37 @@ namespace Pitstop
         {
             if (collision.gameObject.tag == "Player" && !playerEnteredCheck)
             {
-                Debug.Log("Player entered Glade1.");
                 hHNest.SpawnTheThing();
                 hHGlade1Beh = hHNest.theSpawnedThing.GetComponent<GorillaBehaviour>();
+                holeScript.gorillaBehaviour = hHNest.theSpawnedThing.GetComponent<GorillaBehaviour>();
+                playerControllerIso.canMove = false;
                 playerEnteredCheck = true;
             }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.gameObject == hHGlade1Beh.gameObject)
+            if (collision.gameObject.tag != "Enemy")
+            {
+                return;
+            }
+            else if (collision.gameObject == hHGlade1Beh.gameObject)
             {
                 hHGlade1Beh.target = targetForHammerHeadOutsideG1;
                 hHGlade1Beh.isFleeing = true;
+                playerControllerIso.canMove = true;
+
+                if (spawnAnotherOne)
+                {
+                    SpawnAnotherHH();
+                }
             }
+        }
+
+        private void SpawnAnotherHH()
+        {
+            hHNest.targetOfSpawnedThing = playerControllerIso.gameObject;
+            hHNest.SpawnTheThing();
         }
     }
 }

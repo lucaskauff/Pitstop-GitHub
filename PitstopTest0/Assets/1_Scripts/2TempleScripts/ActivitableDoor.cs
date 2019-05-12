@@ -8,21 +8,12 @@ namespace Pitstop
     {
         //Animator myAnim;
 
-        [SerializeField]
-        GameObject doorCollision = default;
-        [SerializeField]
-        GameObject door1 = default;
-        [SerializeField]
-        GameObject door2 = default;
-        [SerializeField]
-        PressurePlateBehaviour[] neededPressurePlatesToOpen = default;
+        [SerializeField] GameObject doorCollision = default;
+        [SerializeField] Animator door1 = default;
+        [SerializeField] Animator door2 = default;
+        [SerializeField] PressurePlateBehaviour[] neededPressurePlatesToOpen = default;
 
         private bool allPressurePlatesOk = false;
-
-        private void Start()
-        {
-            //myAnim = GetComponent<Animator>();
-        }
 
         private void Update()
         {
@@ -30,18 +21,15 @@ namespace Pitstop
 
             if (allPressurePlatesOk)
             {
-                doorCollision.SetActive(false);
-                door1.SetActive(false);
-                door2.SetActive(false);
+                //doorCollision.SetActive(false);
             }
             else
             {
-                doorCollision.SetActive(true);
-                door1.SetActive(true);
-                door2.SetActive(true);
+                //doorCollision.SetActive(true);
             }
 
-            //myAnim.SetBool("DoorOpen", allPressurePlatesOk);
+            door1.SetBool("DoorOpen", allPressurePlatesOk);
+            door2.SetBool("DoorOpen", allPressurePlatesOk);
         }
 
         void CheckPressurePlates()

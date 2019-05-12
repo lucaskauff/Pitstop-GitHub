@@ -25,7 +25,7 @@ namespace Pitstop
         [SerializeField] Image playerLifeBarFill = default;
 
         [Header("Serializable")]
-        [SerializeField] float waitBeforeResettigFillSeconds = 1;
+        [SerializeField] float waitBeforeResettingFillSeconds = 1;
 
         //Private
         private bool doUpdateCrystalFill = true;
@@ -73,7 +73,8 @@ namespace Pitstop
         {
             if (doUpdateCrystalFill)
             {
-                scanBarFill.fillAmount = crystalController.scanProgress / 5f;
+                float maxScanProgUi = crystalController.maxScanProgress;
+                scanBarFill.fillAmount = crystalController.scanProgress / maxScanProgUi;
             }
 
             if (crystalController.scannedObject != null)
@@ -105,7 +106,7 @@ namespace Pitstop
         IEnumerator WaitBeforeResettingCrystalFill()
         {
             doUpdateCrystalFill = false;
-            yield return new WaitForSeconds(waitBeforeResettigFillSeconds);
+            yield return new WaitForSeconds(waitBeforeResettingFillSeconds);
             doUpdateCrystalFill = true;
         }
     }

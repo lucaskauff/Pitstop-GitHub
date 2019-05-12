@@ -28,9 +28,7 @@ namespace Pitstop
             exclamationPointUI.SetActive(false);
             isExclamationPointActive = false;
             timerForExclamation = 0f;
-
-
-
+            
         }
 
         private void Update()
@@ -73,6 +71,7 @@ namespace Pitstop
                     if (index > GetComponent<LUD_CsvToDataConvertor>().nativeReactionList.Count - 1)    //s'il ne trouve aucun match
                     {
                         currentTestReaction = GetComponent<LUD_CsvToDataConvertor>().nativeReactionList[0];     //il prend la première réponse qui est un "? . ."
+                        bool isSentenceTriggered = NotDialogueReaction(currentTestReaction.codeForReaction);
                         NativeAnswer(currentTestReaction.answerWord1, currentTestReaction.answerWord2, currentTestReaction.answerWord3, false);
                         lastSaidSentence = currentTestReaction;
                         answerFound = true;
@@ -194,6 +193,11 @@ namespace Pitstop
             else if (code == "go_repair_east")
             {
                 GetComponent<LUD_NonDialogueReactions>().GoRepairEast();
+                return true;
+            }
+            else if (code == "dont_understand")
+            {
+                FindObjectOfType<LUD_ZaynsHelpAboutDialogue>().nbrOfInterrogation += 1;
                 return true;
             }
 

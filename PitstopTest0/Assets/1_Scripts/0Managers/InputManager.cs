@@ -58,6 +58,10 @@ namespace Pitstop
             //
             interactionButton = Input.GetKeyDown(KeyCode.E);
             //
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+            //ATTENTION ATTENTION CLASS : this led to some bugs
+            /*
             if (gameManager.languageSetToEnglish == false)
             {
                 horizontalInput = Input.GetAxisRaw("Horizontal (French)");
@@ -68,7 +72,7 @@ namespace Pitstop
                 horizontalInput = Input.GetAxisRaw("Horizontal (English)");
                 verticalInput = Input.GetAxisRaw("Vertical (English)");
             }
-            
+            */
             //
             dashKey = Input.GetKeyDown(KeyCode.LeftShift);
             //

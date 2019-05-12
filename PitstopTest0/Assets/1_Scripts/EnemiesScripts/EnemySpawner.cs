@@ -7,7 +7,7 @@ namespace Pitstop
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] GameObject whatToSpawn = default;
-        [SerializeField] GameObject targetOfSpawnedThing = default;
+        public GameObject targetOfSpawnedThing = default;
         [HideInInspector] public GameObject theSpawnedThing = default;
 
         public void SpawnTheThing()

@@ -19,7 +19,10 @@ namespace Pitstop
 
         void TestPreviz()
         {
-            previzContact.objectShootable = tilemap.IsInZone(previzContact.transform.position, pos1, pos2);
+            if (!previzContact.objectShootable)
+            {
+                previzContact.objectShootable = tilemap.IsInZone(previzContact.transform.position, pos1, pos2);
+            }
         }        
     }
 }

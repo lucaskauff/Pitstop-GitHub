@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Pitstop
 {
     public class CameraTransition : MonoBehaviour
     {
         [SerializeField] GameObject virtualCameraPlayer = default;
         [SerializeField] GameObject virtualCameraGlade = default;
+        [SerializeField] Camera uiCamera = default;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -15,6 +17,8 @@ namespace Pitstop
             {
                 virtualCameraGlade.SetActive(true);
                 virtualCameraPlayer.SetActive(false);
+
+                uiCamera.orthographicSize = 11;
             }
         }
 
@@ -24,6 +28,8 @@ namespace Pitstop
             {
                 virtualCameraGlade.SetActive(true);
                 virtualCameraPlayer.SetActive(false);
+                
+                uiCamera.orthographicSize = 11;
             }
         }
 
@@ -33,6 +39,8 @@ namespace Pitstop
             {
                 virtualCameraPlayer.SetActive(true);
                 virtualCameraGlade.SetActive(false);
+                
+                uiCamera.orthographicSize = 5;
             }
         }
 
@@ -42,6 +50,8 @@ namespace Pitstop
             {
                 virtualCameraPlayer.SetActive(true);
                 virtualCameraGlade.SetActive(false);
+                
+                uiCamera.orthographicSize = 5;
             }
         }
     }

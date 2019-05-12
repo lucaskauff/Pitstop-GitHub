@@ -68,14 +68,14 @@ namespace Pitstop
         IEnumerator LaunchTheDesactivcationaAndReturnToNormal()
         {
             isOffended = true;
-            yield return new WaitForSeconds(GetComponent<LUD_NativeHeartheSentence>().delayBeforeExclamationDisapperance + GetComponent<LUD_DialogueAppearance>().delay / 2);
+            yield return new WaitForSeconds(GetComponent<LUD_NativeHeartheSentence>().delayBeforeExclamationDisapperance + GetComponent<LUD_DialogueAppearance>().delay / 1.5f);
             GetComponentInChildren<LUD_DetectionTriggeredByAttention>().UncaptivationOfTheNative();
 
             
             uiWhenOffendedProgression.gameObject.SetActive(true);
             uiWhenOffendedProgression.fillAmount = 0;
 
-            dialogueWhenNativeOffended.GetComponent<DialogueTrigger>().TriggerDialogue();
+            dialogueWhenNativeOffended.GetComponent<DialogueTrigger>().TriggerDialogueDirectly();
 
             int maxI = FindObjectOfType<LUD_NonDialogueManager>().stepsInUIOffendedProgression;
             for (float i = 0f; i< maxI; ++i)
@@ -140,7 +140,7 @@ namespace Pitstop
             GetComponent<LUD_DialogueAppearance>().ReactionAppearance(reactionEllya.answerWord1, reactionEllya.answerWord2, reactionEllya.answerWord3, false);
 
             /////FindObjectOfType<OpenTheGate>().BridgeReparation();
-            dialogueWhenZaynSeeWhereIsEllya.GetComponent<DialogueTrigger>().TriggerDialogue();
+            dialogueWhenZaynSeeWhereIsEllya.GetComponent<DialogueTrigger>().TriggerDialogueDirectly();
         }
 
         public void GoRepairEast()
