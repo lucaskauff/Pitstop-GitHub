@@ -1448,9 +1448,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b747cf74ed9de684da7604611515cf66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerControllerIso: {fileID: 8827798457674550474}
   myImpulseSource: {fileID: 8827798457674550475}
   playerMaxHealth: 3
   playerCurrentHealth: 3
+  theFadeOnDead: {fileID: 0}
   postProRedVignette: {fileID: 0}
   feedbackLength: 0.25
   maxBloodSize: 1
@@ -1477,7 +1479,7 @@ MonoBehaviour:
   isBeingRepulsed: 0
   moveSpeed: 3
   isometricRatio: 2
-  sceneStartingPoint: {fileID: 0}
+  sceneStartingPoint: []
   dashSpeed: 16
   dashLength: 0.05
   dashCooldown: 1
@@ -1507,8 +1509,9 @@ MonoBehaviour:
   hitting: 0
   objectHitted: {fileID: 0}
   fireSpeed: 1
-  scanSpeed: 0.19
-  descanSpeed: 1
+  scanSpeed: 1
+  descanSpeed: 5
+  timeScannerAtZero: 0.5
   maxShootRange: 3
   maxObjectOnScene: 1
   previsualisation: {fileID: 1851182244}

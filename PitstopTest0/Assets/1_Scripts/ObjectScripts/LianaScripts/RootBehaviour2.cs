@@ -22,8 +22,12 @@ namespace Pitstop
         public CrystalController crystalController;
 
         [Header("Serializable")]
-        [SerializeField] float bounceTime = 2;
-        [SerializeField] float bounceAmount = 1;
+        [SerializeField] float bounceTimeApple = 1;
+        [SerializeField] float bounceTimePlayer = 1;
+        [SerializeField] float bounceTimeHammerhead = 1;
+        [SerializeField] float bounceAmountApple = 1;
+        [SerializeField] float bounceAmountPlayer = 1;
+        [SerializeField] float bounceAmountHammerhead = 1;
         [SerializeField] float decalageY = 0.5f;
         [SerializeField] LayerMask layerLiana = default;
         [SerializeField] Transform actualThreat = default;
@@ -179,69 +183,6 @@ namespace Pitstop
         }
         */
 
-        IEnumerator PlayerBounce(Vector2 originHP, Vector2 targetHP, Vector2 impactPos)
-        {
-            myLineRend.enabled = false;
-            mark = true;
-
-            player.GetComponent<PlayerControllerIso>().playerCanMove = false;
-            
-            if (!impactAngleSet)
-            {
-                impactAngle = player.GetComponent<PlayerControllerIso>().lastMove;
-                impactAngleSet = true;
-            }
-
-            Vector2 impactPosProj;
-            Vector2 bounceVector;
-
-            if (Vector2.Distance(originHP, impactPos) <= Vector2.Distance(targetHP, impactPos))
-            {
-                impactPosProj = impactPos + (new Vector2(-(impactPos.x - originHP.x), -(impactPos.y - originHP.y)));
-
-                if (Vector2.Distance(originHP, impactAngle) <= Vector2.Distance(impactPosProj, impactAngle))
-                {
-                    float angleForCase1;
-                    angleForCase1 = Vector3.SignedAngle(impactAngle, originHP, impactPos);
-                    bounceVector = Quaternion.AngleAxis(-2 * angleForCase1, new Vector3(0, 0, 1)) * impactAngle;
-                    Debug.Log("case1");
-                }
-                else
-                {
-                    float angleForCase3;
-                    angleForCase3 = Vector3.SignedAngle(impactAngle, impactPosProj, impactPos);
-                    bounceVector = Quaternion.AngleAxis(2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
-                    Debug.Log("case3");
-                }
-            }
-            else
-            {
-                impactPosProj = impactPos + (new Vector2(-(impactPos.x - targetHP.x), -(impactPos.y - targetHP.y)));
-
-                if (Vector2.Distance(targetHP, impactAngle) <= Vector2.Distance(impactPosProj, impactAngle))
-                {
-                    float angleForCase2;
-                    angleForCase2 = Vector3.SignedAngle(impactAngle, targetHP, impactPos);
-                    bounceVector = Quaternion.AngleAxis(2 * angleForCase2, new Vector3(0, 0, 1)) * impactAngle;
-                    Debug.Log("case2");
-                }
-                else
-                {
-                    float angleForCase3;
-                    angleForCase3 = Vector3.SignedAngle(impactAngle, impactPosProj, impactPos);
-                    bounceVector = Quaternion.AngleAxis(2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
-                    Debug.Log("case3");
-                }
-            }
-
-            player.GetComponent<PlayerControllerIso>().moveInput = new Vector2(bounceVector.x * bounceAmount, bounceVector.y * bounceAmount);          
-
-            yield return new WaitForSeconds(bounceTime);
-
-            player.GetComponent<PlayerControllerIso>().playerCanMove = true;
-            ResetHookpoints();
-        }
-
         IEnumerator AppleBounce(Vector2 originHP, Vector2 targetHP, Vector2 impactPos, GameObject apple)
         {
             myLineRend.enabled = false;
@@ -302,24 +243,102 @@ namespace Pitstop
             apple.GetComponent<ScannableObjectBehaviour>().targetPos = new Vector2(bounceVector.x * bounceAmount, bounceVector.y * bounceAmount);
             */
 
-            apple.GetComponent<ScannableObjectBehaviour>().targetPos = (Random.insideUnitCircle * errorMargin) + (Vector2)actualThreat.position;
+            apple.GetComponent<IMP_Apple>().appleProjectionSpeed = bounceAmountApple;
+            apple.GetComponent<ScannableObjectBehaviour>().targetPos = (Random.insideUnitCircle * errorMargin) + (Vector2)actualThreat.position;            
 
             //Debug
             impactPosDebug = impactPos;
             appleTargetPos = apple.GetComponent<ScannableObjectBehaviour>().targetPos;
 
-            yield return new WaitForSeconds(bounceTime);
+            yield return new WaitForSeconds(bounceTimeApple);
 
+            ResetHookpoints();
+        }
+
+        IEnumerator PlayerBounce(Vector2 originHP, Vector2 targetHP, Vector2 impactPos)
+        {
+            myLineRend.enabled = false;
+            mark = true;
+
+            player.GetComponent<PlayerControllerIso>().playerCanMove = false;
+
+            /*
+            if (!impactAngleSet)
+            {
+                impactAngle = player.GetComponent<PlayerControllerIso>().lastMove;
+                impactAngleSet = true;
+            }
+
+            Vector2 impactPosProj;
+            Vector2 bounceVector;
+
+            if (Vector2.Distance(originHP, impactPos) <= Vector2.Distance(targetHP, impactPos))
+            {
+                impactPosProj = impactPos + (new Vector2(-(impactPos.x - originHP.x), -(impactPos.y - originHP.y)));
+
+                if (Vector2.Distance(originHP, impactAngle) <= Vector2.Distance(impactPosProj, impactAngle))
+                {
+                    float angleForCase1;
+                    angleForCase1 = Vector3.SignedAngle(impactAngle, originHP, impactPos);
+                    bounceVector = Quaternion.AngleAxis(-2 * angleForCase1, new Vector3(0, 0, 1)) * impactAngle;
+                    Debug.Log("case1");
+                }
+                else
+                {
+                    float angleForCase3;
+                    angleForCase3 = Vector3.SignedAngle(impactAngle, impactPosProj, impactPos);
+                    bounceVector = Quaternion.AngleAxis(2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
+                    Debug.Log("case3");
+                }
+            }
+            else
+            {
+                impactPosProj = impactPos + (new Vector2(-(impactPos.x - targetHP.x), -(impactPos.y - targetHP.y)));
+
+                if (Vector2.Distance(targetHP, impactAngle) <= Vector2.Distance(impactPosProj, impactAngle))
+                {
+                    float angleForCase2;
+                    angleForCase2 = Vector3.SignedAngle(impactAngle, targetHP, impactPos);
+                    bounceVector = Quaternion.AngleAxis(2 * angleForCase2, new Vector3(0, 0, 1)) * impactAngle;
+                    Debug.Log("case2");
+                }
+                else
+                {
+                    float angleForCase3;
+                    angleForCase3 = Vector3.SignedAngle(impactAngle, impactPosProj, impactPos);
+                    bounceVector = Quaternion.AngleAxis(2 * angleForCase3, new Vector3(0, 0, 1)) * impactAngle;
+                    Debug.Log("case3");
+                }
+            }
+
+            player.GetComponent<PlayerControllerIso>().moveInput = new Vector2(bounceVector.x * bounceAmount, bounceVector.y * bounceAmount);          
+            */
+
+            player.GetComponent<PlayerControllerIso>().moveInput = new Vector2(-player.GetComponent<PlayerControllerIso>().moveInput.x, -player.GetComponent<PlayerControllerIso>().moveInput.y).normalized * bounceAmountPlayer;
+
+            yield return new WaitForSeconds(bounceTimePlayer);
+
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            player.GetComponent<PlayerControllerIso>().playerCanMove = true;
             ResetHookpoints();
         }
 
         IEnumerator HammerheadBounce(GameObject hammerhead)
         {
+            bool hhOriginRushSpeedStored = false;
+            float originalHammerheadRushSpeed = 0;
+
+            if (!hhOriginRushSpeedStored)
+            {
+                originalHammerheadRushSpeed = hammerhead.GetComponent<GorillaBehaviour>().rushSpeed;
+                hhOriginRushSpeedStored = true;
+            }
+
             myLineRend.enabled = false;
             mark = true;
-            hammerhead.GetComponent<GorillaBehaviour>().rushSpeed = -hammerhead.GetComponent<GorillaBehaviour>().rushSpeed;
-            yield return new WaitForSeconds(bounceTime);
-            hammerhead.GetComponent<GorillaBehaviour>().rushSpeed = -hammerhead.GetComponent<GorillaBehaviour>().rushSpeed;
+            hammerhead.GetComponent<GorillaBehaviour>().rushSpeed = -hammerhead.GetComponent<GorillaBehaviour>().rushSpeed * bounceAmountHammerhead;
+            yield return new WaitForSeconds(bounceTimeHammerhead);
+            hammerhead.GetComponent<GorillaBehaviour>().rushSpeed = originalHammerheadRushSpeed;
             ResetHookpoints();
         }
     }

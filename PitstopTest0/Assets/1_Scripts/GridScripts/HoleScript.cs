@@ -6,11 +6,39 @@ namespace Pitstop
 {
     public class HoleScript : MonoBehaviour
     {
+        [SerializeField] Collider2D myCol = default;
         [SerializeField] float timePlayerHasToReact = 1;
         [SerializeField] PlayerControllerIso playerControllerIso = default;
+        public GorillaBehaviour gorillaBehaviour = null;
         [SerializeField] Animator theFadeOnDead = default;
 
         bool delayIsPlaying = false;
+
+        private void Update()
+        {
+            if (gorillaBehaviour == null)
+            {
+                if (playerControllerIso.isBeingRepulsed)
+                {
+                    myCol.isTrigger = true;
+                }
+                else
+                {
+                    myCol.isTrigger = false;
+                }
+            }
+            else
+            {
+                if (playerControllerIso.isBeingRepulsed || gorillaBehaviour.isBeingRepulsed)
+                {
+                    myCol.isTrigger = true;
+                }
+                else
+                {
+                    myCol.isTrigger = false;
+                }
+            }
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

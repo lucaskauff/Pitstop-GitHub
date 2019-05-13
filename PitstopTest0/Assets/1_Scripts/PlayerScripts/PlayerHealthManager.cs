@@ -14,6 +14,7 @@ namespace Pitstop
         [Header("My Components")]
         //to use on player taking dmg
         //[SerializeField] Animator myAnim = default;
+        [SerializeField] PlayerControllerIso playerControllerIso = default;
         [SerializeField] CinemachineImpulseSource myImpulseSource = default;
 
         [Header("Public Variables")]
@@ -21,6 +22,7 @@ namespace Pitstop
         public float playerCurrentHealth;
 
         [Header("Serializable")]
+        [SerializeField] Animator theFadeOnDead = default;
         [SerializeField] PostProcessVolume postProRedVignette = default;
         [SerializeField] float feedbackLength = 0.5f;
         [SerializeField] float maxBloodSize = 1;
@@ -45,7 +47,8 @@ namespace Pitstop
         {
             if (playerCurrentHealth <= 0)
             {
-                sceneLoader.ReloadScene();
+                playerControllerIso.canMove = false;
+                theFadeOnDead.SetTrigger("PlayerIsDead");
             }
 
             if (hasToRecover && !feedbackLaunched)
