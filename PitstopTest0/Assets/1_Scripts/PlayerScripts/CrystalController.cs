@@ -108,7 +108,7 @@ namespace Pitstop
                                 scannedObject = objectOnScan;
                                 
                                 //should be enabled when encountering the first native
-                                if (sceneLoader.activeScene != "1_TEMPLE" && sceneLoader.activeScene != "2_FOREST" && sceneLoader.activeScene != "2_MINIBOSS")
+                                if (sceneLoader.activeScene != "1_TEMPLE" && sceneLoader.activeScene != "2_FOREST" && sceneLoader.activeScene != "2_MINIBOSS" && sceneLoader.activeScene != "4_DUNGEON")
                                 {
                                     FindObjectOfType<LUD_PreviewOfScannedObject>().ChangePreviewCrystalInDialogueWheel(scannedObject.GetComponent<ScannableObjectBehaviour>().associatedIcon, scannedObject.GetComponent<ScannableObjectBehaviour>().valueOfTheWorld, scannedObject.GetComponent<ScannableObjectBehaviour>().isAWord);
                                 }
