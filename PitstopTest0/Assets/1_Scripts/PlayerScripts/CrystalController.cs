@@ -238,7 +238,7 @@ namespace Pitstop
             {
                 foreach (var obj in gameObjectsOnScene)
                 {
-                    Destroy(obj);
+                    if (obj != null) Destroy(obj);
                 }
 
                 objectCountOnScene = 0;
