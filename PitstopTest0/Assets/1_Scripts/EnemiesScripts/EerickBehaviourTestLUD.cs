@@ -16,7 +16,7 @@ namespace Pitstop
         [SerializeField] Transform fromWhereTheApplesAreShot = default;
         [SerializeField] float cooldown = 2;
         [SerializeField] float goBackToFightSpeed = 2;
-        [SerializeField] float regularSpeed = 2;
+        //[SerializeField] float regularSpeed = 2;
         [SerializeField] float errorMargin = 0.5f;
         [SerializeField] int damageDealing = 1;
         [SerializeField] float repulseTime = 1f;
@@ -123,9 +123,9 @@ namespace Pitstop
                     goBackToFightSpeed = goBackToFightSpeedStored;
 
                     //CHANGE OF INDEX MODIFICATOR\\
-                    int modificator = Mathf.RoundToInt(Random.Range(-1, 1));
-                    while (modificator == 0) modificator = Mathf.RoundToInt(Random.Range(-1, 1));       //so only have -1 or +1
-
+                    int modificator = Random.Range(-1, 2);  //the maximum is exclusive if the random.range pick an integer
+                    while (modificator == 0) modificator = Random.Range(-1, 2);       //so only have -1 or +1
+                    
                     indexOfTargetedPosition += modificator;
 
                     if (indexOfTargetedPosition < 0) indexOfTargetedPosition = positionPoints.Length - 1;
@@ -141,7 +141,7 @@ namespace Pitstop
 
                 if (transform.position == positionPoints[indexOfTargetedPosition].position)
                 {
-                    //storedHealth = enemyHealthManager.enemyCurrentHealth;
+                    
                     backToFightPosSet = false;
                     haveToChangeItsSpot = false;
                     storedHealth = enemyHealthManager.enemyCurrentHealth;
@@ -176,8 +176,16 @@ namespace Pitstop
             {
                 collision.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealing);
             }
+
+            /*
+            if (collision.gameObject.tag == "ObjectApple" && !isBeingRepulsed)
+            {
+                StartCoroutine(ComeOnAndFly());
+            }*/
+
         }
 
+        
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "ObjectApple" && !isBeingRepulsed)
@@ -201,7 +209,7 @@ namespace Pitstop
             isBeingRepulsed = false;
             backAfterRepulse = true;
 
-            //haveToChangeItsSpot = true;
+            haveToChangeItsSpot = true;
 
             StopCoroutine(ComeOnAndFly());
         }

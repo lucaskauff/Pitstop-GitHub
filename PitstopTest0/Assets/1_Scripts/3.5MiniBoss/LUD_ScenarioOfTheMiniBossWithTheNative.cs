@@ -27,7 +27,7 @@ namespace Pitstop
             
             else if (dialogueManager.codeOfTheLastTriggeringSentence == "Tutorial For Dialogue Wheel" && !isDialogueWheelAppeared)
             {
-                Debug.Log("Tutorial for dialogue wheel");
+                
                 dialogueWheelSystem.SetActive(true);
 
                 //afficher le tuto bouton
