@@ -43,6 +43,12 @@ namespace Pitstop
         [SerializeField] float cooldownDuringRage = 0.2f;
         [SerializeField] float cooldownAtTheOrigin = 2f;
 
+        [Header("Rage Mode 2")]
+        [SerializeField] float timeBeforeRageMode2 = 6f;
+        [SerializeField] float durationOfRageMode2 = 0.5f;
+        [SerializeField] float cooldownDuringRage2 = 0.05f;
+
+        bool secondPhaseTriggered = false;
 
 
         private void Start()
@@ -56,7 +62,7 @@ namespace Pitstop
             storedHealth = enemyHealthManager.enemyMaxHealth;
             goBackToFightSpeedStored = goBackToFightSpeed;
 
-            StartCoroutine(RageManagement());
+            //StartCoroutine(RageManagement());
 
 
         }
@@ -68,10 +74,18 @@ namespace Pitstop
                 if (target.canMove && playerHasTriggeredNative)
                 {
                     fightCanStart = true;
+                    StartCoroutine(RageManagement());
                 }
             }
             else
             {
+                if (enemyHealthManager.enemyCurrentHealth <= enemyHealthManager.enemyMaxHealth / 2 && !secondPhaseTriggered)
+                {
+                    secondPhaseTriggered = true;
+                    //anim de 2eme phase
+
+                }
+
                 ThrowProjAtTarget();
 
                 //LostHealthConsequence();
@@ -81,35 +95,6 @@ namespace Pitstop
             }
         }
 
-        /*
-        void LostHealthConsequence()
-        {
-            if (enemyHealthManager.enemyCurrentHealth < storedHealth || backAfterRepulse)
-            {
-                
-                if (!backToFightPosSet)
-                {
-                    myRb.velocity = Vector2.zero;
-                    goBackToFightSpeed = goBackToFightSpeedStored;
-                    backToFightPos = positionPoints[Mathf.RoundToInt(Random.Range(0, positionPoints.Length - 1))];/////
-                    backToFightPosSet = true;
-                    goBackToFightSpeed = Vector2.Distance(transform.position, backToFightPos.position) * goBackToFightSpeed;
-                }
-
-                transform.position = Vector2.MoveTowards(transform.position, backToFightPos.position, goBackToFightSpeed * Time.deltaTime);
-                Debug.Log("A avancé");
-                Debug.DrawLine(transform.position, backToFightPos.position, Color.black);
-
-                if (transform.position == backToFightPos.position)
-                {
-                    storedHealth = enemyHealthManager.enemyCurrentHealth;
-                    backToFightPosSet = false;
-                    backAfterRepulse = false;
-                }
-                
-            }
-        }
-        */
 
             
         void ChangeSpotIfNeeded()
@@ -216,15 +201,31 @@ namespace Pitstop
 
         IEnumerator RageManagement()
         {
-            yield return new WaitForSeconds(timeBeforeRageMode);
+            if (secondPhaseTriggered)
+            {
+                yield return new WaitForSeconds(timeBeforeRageMode2);
 
-            cooldown = cooldownDuringRage;
+                cooldown = cooldownDuringRage2;
 
-            yield return new WaitForSeconds(durationOfRageMode);
+                yield return new WaitForSeconds(durationOfRageMode2);
 
-            cooldown = cooldownAtTheOrigin;
+                cooldown = cooldownAtTheOrigin;
 
-            StartCoroutine(RageManagement());
+                StartCoroutine(RageManagement());
+            }
+            else
+            {
+                yield return new WaitForSeconds(timeBeforeRageMode);
+
+                cooldown = cooldownDuringRage;
+
+                yield return new WaitForSeconds(durationOfRageMode);
+
+                cooldown = cooldownAtTheOrigin;
+
+                StartCoroutine(RageManagement());
+            }
+            
         }
     }
 }
