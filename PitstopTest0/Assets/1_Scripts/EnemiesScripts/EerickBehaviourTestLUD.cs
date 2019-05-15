@@ -107,6 +107,7 @@ namespace Pitstop
                     myRb.velocity = Vector2.zero;
                     goBackToFightSpeed = goBackToFightSpeedStored;
 
+                    /*
                     //CHANGE OF INDEX MODIFICATOR\\
                     int modificator = Random.Range(-1, 2);  //the maximum is exclusive if the random.range pick an integer
                     while (modificator == 0) modificator = Random.Range(-1, 2);       //so only have -1 or +1
@@ -116,6 +117,28 @@ namespace Pitstop
                     if (indexOfTargetedPosition < 0) indexOfTargetedPosition = positionPoints.Length - 1;
                     else if (indexOfTargetedPosition > positionPoints.Length - 1) indexOfTargetedPosition = 0;
                     //----\\
+                    */
+
+                    //NEW DESTINATION DEPENDS ON THE DISTANCE TO THE PLAYER\\
+
+                    int superiorIndex = indexOfTargetedPosition + 1;
+                    if (superiorIndex > positionPoints.Length - 1) superiorIndex = 0;
+
+                    int inferiorIndex = indexOfTargetedPosition - 1;
+                    if (inferiorIndex < 0) inferiorIndex = positionPoints.Length - 1;
+
+                    if ((positionPoints[inferiorIndex].position - this.transform.position).magnitude < (positionPoints[superiorIndex].position - this.transform.position).magnitude)
+                    {
+                        indexOfTargetedPosition = inferiorIndex;
+                    }
+                    else
+                    {
+                        indexOfTargetedPosition = superiorIndex;
+                    }
+
+                        
+
+                    //---\\
 
                     backToFightPosSet = true;
                     goBackToFightSpeed = Vector2.Distance(transform.position, positionPoints[indexOfTargetedPosition].position) * goBackToFightSpeed;
