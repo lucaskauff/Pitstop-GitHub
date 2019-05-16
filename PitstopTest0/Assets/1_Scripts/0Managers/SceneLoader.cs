@@ -93,6 +93,16 @@ namespace Pitstop
             yield return new WaitForSeconds(loadingDelay);
             SceneManager.LoadScene(sceneToLoad);
         }
+
+
+        public void MainMenu()
+        {
+            SceneManager.LoadScene("00_Menu");
+        }
+        public void Reload_Scene()
+        {
+            SceneManager.LoadScene(activeScene);
+        }
     }
 }
  

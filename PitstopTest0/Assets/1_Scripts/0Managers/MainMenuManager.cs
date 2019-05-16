@@ -51,5 +51,6 @@ namespace Pitstop
         {
             sceneLoader.QuitGame();
         }
+
     }
 }
