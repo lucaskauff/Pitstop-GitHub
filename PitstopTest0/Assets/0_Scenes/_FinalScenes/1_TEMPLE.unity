@@ -762,7 +762,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb0b86c33d2fdd49b76c984d27c78cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorCollision: {fileID: 851920250}
   door1: {fileID: 128451072}
   door2: {fileID: 1190792649}
   neededPressurePlatesToOpen:
@@ -18221,7 +18220,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
+      propertyPath: sceneStartingPoint.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
       propertyPath: sceneStartingPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint.Array.data[0]
       value: 
       objectReference: {fileID: 658678499}
     - target: {fileID: 8000820858692480709, guid: da7a6d321a067ed49854b9c1c18766bc,

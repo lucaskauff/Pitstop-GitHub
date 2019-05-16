@@ -6,9 +6,6 @@ namespace Pitstop
 {
     public class ActivitableDoor : MonoBehaviour
     {
-        //Animator myAnim;
-
-        [SerializeField] GameObject doorCollision = default;
         [SerializeField] Animator door1 = default;
         [SerializeField] Animator door2 = default;
         [SerializeField] PressurePlateBehaviour[] neededPressurePlatesToOpen = default;
@@ -19,17 +16,11 @@ namespace Pitstop
         {
             CheckPressurePlates();
 
-            if (allPressurePlatesOk)
-            {
-                //doorCollision.SetActive(false);
-            }
-            else
-            {
-                //doorCollision.SetActive(true);
-            }
-
             door1.SetBool("DoorOpen", allPressurePlatesOk);
-            door2.SetBool("DoorOpen", allPressurePlatesOk);
+            if (door2 != null)
+            {
+                door2.SetBool("DoorOpen", allPressurePlatesOk);
+            }
         }
 
         void CheckPressurePlates()
