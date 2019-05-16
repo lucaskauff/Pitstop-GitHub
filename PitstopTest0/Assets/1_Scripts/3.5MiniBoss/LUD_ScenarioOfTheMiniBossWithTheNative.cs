@@ -14,6 +14,8 @@ namespace Pitstop
 
         private bool isDialogueWheelAppeared = false;
 
+        [SerializeField] GameObject native = default;
+        [SerializeField] GameObject openingDialogueWheelTutorial = default;
 
         private void Update()
         {
@@ -25,14 +27,24 @@ namespace Pitstop
             }
             
             
-            else if (dialogueManager.codeOfTheLastTriggeringSentence == "Tutorial For Dialogue Wheel" && !isDialogueWheelAppeared)
+            else if (code == "Tutorial For Dialogue Wheel" )
             {
+                if (!isDialogueWheelAppeared)
+                {
+                    dialogueWheelSystem.SetActive(true);
+                    isDialogueWheelAppeared = true;
+                }
                 
-                dialogueWheelSystem.SetActive(true);
+                if (native.GetComponentInChildren<LUD_DetectionTriggeredByAttention>().isThePlayerNear)
+                {
+                    openingDialogueWheelTutorial.SetActive(true);
+                }
+                else
+                {
+                    openingDialogueWheelTutorial.SetActive(false);
+                }
 
-                //afficher le tuto bouton
-
-                isDialogueWheelAppeared = true;
+                
 
             }
         }
