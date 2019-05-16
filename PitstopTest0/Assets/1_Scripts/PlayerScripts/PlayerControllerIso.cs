@@ -88,6 +88,20 @@ namespace Pitstop
             //DEBUG WITH LIANA !
             Debug.DrawLine(transform.position, new Vector2(transform.position.x + moveInput.x, transform.position.y + moveInput.y), Color.blue);
 
+            if (Time.time < dashRate)
+            {
+                dashCdFb.fillAmount = (dashRate - Time.time) / dashCooldown;
+            }
+            else if (inputManager.dashKey)
+            {
+                Dash();
+            }
+            else if (!isBeingRepulsed)
+            {
+                StopCoroutine(ComeOnAndDash());
+                StopCoroutine(RepulsionOnDash());
+            }
+
             if (!canMove)
             {
                 myRb.velocity = Vector2.zero;
@@ -109,20 +123,6 @@ namespace Pitstop
             else
             {
                 myRb.velocity = Vector2.zero;
-            }
-
-            if (Time.time < dashRate)
-            {
-                dashCdFb.fillAmount = (dashRate - Time.time) / dashCooldown;
-            }
-            else if (inputManager.dashKey)
-            {
-                Dash();
-            }
-            else if (!isBeingRepulsed)
-            {
-                StopCoroutine(ComeOnAndDash());
-                StopCoroutine(RepulsionOnDash());
             }
 
             //Infos to animator
@@ -158,6 +158,11 @@ namespace Pitstop
         public void IncrementSavingPoint(int associatedIndex)
         {
             savingPointIndex = associatedIndex;
+        }
+
+        public void ResetSavingPoint()
+        {
+            savingPointIndex = 0;
         }
 
         IEnumerator ComeOnAndDash()

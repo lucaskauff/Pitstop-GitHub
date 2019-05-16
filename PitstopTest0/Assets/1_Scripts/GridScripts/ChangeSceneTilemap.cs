@@ -14,6 +14,7 @@ namespace Pitstop
         {
             if (collision.gameObject.tag == "Player")
             {
+                collision.gameObject.GetComponent<PlayerControllerIso>().ResetSavingPoint();
                 levelChanger.LevelChanging();
             }
         }
