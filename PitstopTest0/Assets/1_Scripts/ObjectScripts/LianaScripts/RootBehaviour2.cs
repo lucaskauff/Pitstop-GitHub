@@ -170,6 +170,12 @@ namespace Pitstop
                         {
                             StartCoroutine(HammerheadBounce(trips[i].collider.gameObject));
                         }
+                        else if (trips[i].collider.gameObject.name == "Eerick")
+                        {
+                            myLineRend.enabled = false;
+                            mark = true;
+                            ResetHookpoints();
+                        }
                     }
                 }
             }
@@ -316,10 +322,15 @@ namespace Pitstop
 
             player.GetComponent<PlayerControllerIso>().moveInput = new Vector2(-player.GetComponent<PlayerControllerIso>().moveInput.x, -player.GetComponent<PlayerControllerIso>().moveInput.y).normalized * bounceAmountPlayer;
 
+            player.GetComponent<SpriteRenderer>().flipX = true; //test feedback
+
             yield return new WaitForSeconds(bounceTimePlayer);
 
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             player.GetComponent<PlayerControllerIso>().playerCanMove = true;
+
+            player.GetComponent<SpriteRenderer>().flipX = false; //test feedback
+
             ResetHookpoints();
         }
 

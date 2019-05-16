@@ -18,6 +18,7 @@ namespace Pitstop
         public Transform whereTheNativeComeBack;
         [SerializeField] float speedOfReturning = 4f;
         public DialogueTrigger dialogueToTriggerInTheCenter;
+        public bool isReturnedInTheCenter = false;
 
 
         // Update is called once per frame
@@ -31,6 +32,7 @@ namespace Pitstop
                 relativePositionOfArrival.z = 0f;
                 Vector3 normalizedRelativePositionOfArrival = relativePositionOfArrival.normalized;
 
+                
 
                 this.transform.position += normalizedRelativePositionOfArrival * Time.deltaTime * speedOfEscape;
 
@@ -49,16 +51,26 @@ namespace Pitstop
                 relativePositionOfArrival.z = 0f;
                 Vector3 normalizedRelativePositionOfArrival = relativePositionOfArrival.normalized;
 
+                //Debug.Log("relativePositionOfArrival.magnitude = " + relativePositionOfArrival.magnitude);
 
                 this.transform.position += normalizedRelativePositionOfArrival * Time.deltaTime * speedOfReturning;
 
                 if (relativePositionOfArrival.magnitude <= maxDistanceTotriggerArrival)
                 {
                     isReturningFromForest = false;
+                    isReturnedInTheCenter = true;
+                    FindObjectOfType<DialogueManager>().codeOfTheLastTriggeringSentence = "";
+
                     GetComponent<Collider2D>().enabled = true;
-                    dialogueToTriggerInTheCenter.TriggerDialogueDirectly();
+                    
 
                 }
+
+            }
+
+            else if (isReturnedInTheCenter && GetComponentInChildren<LUD_DetectionTriggeredByAttention>().isThePlayerNear)
+            {
+                dialogueToTriggerInTheCenter.TriggerDialogueDirectly();
             }
 
         }

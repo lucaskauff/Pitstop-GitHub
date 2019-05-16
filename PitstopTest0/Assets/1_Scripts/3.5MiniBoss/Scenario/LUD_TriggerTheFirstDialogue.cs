@@ -22,6 +22,7 @@ namespace Pitstop
 
                 //Debug.Log("FindObjectOfType<EerickBehaviour>().playerHasTriggeredNative = " + FindObjectOfType<EerickBehaviour>().playerHasTriggeredNative);
                 FindObjectOfType<EerickBehaviour>().playerHasTriggeredNative = true;
+                FindObjectOfType<EerickBehaviourTestLUD>().playerHasTriggeredNative = true;
 
                 hasBeentriggeredOnce = true;
 

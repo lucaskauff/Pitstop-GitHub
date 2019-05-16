@@ -28,18 +28,20 @@ namespace Pitstop
         // Update is called once per frame
         void Update()
         {
+            
             if (GetComponent<LUD_NativeHeartheSentence>().isCaptivated)
             {
 
                 if (speedMultiplier > 0) speedMultiplier -= speedDropOfSpeedMultiplier * Time.deltaTime;
                 if (speedMultiplier < 0) speedMultiplier = 0;
-
+                                                                                                                                
             }
             else
             {
                 if (speedMultiplier < 1) speedMultiplier += speedDropOfSpeedMultiplier * Time.deltaTime;
                 if (speedMultiplier > 1) speedMultiplier = 1;
             }
+            
 
             Vector3 relativePositionToCurrentObjective = pointsOfThePath[indexInPointOfThPath].position - this.transform.position;
             relativePositionToCurrentObjective = relativePositionToCurrentObjective.normalized;
