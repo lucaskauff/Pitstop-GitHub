@@ -147,7 +147,7 @@ namespace Pitstop
             }
         }
 
-        private void LateUpdate()
+        void LateUpdate()
         {
             //Assigning the right layer
             if (inputManager.rightClickBeingPressed)
