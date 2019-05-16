@@ -13,6 +13,7 @@ namespace Pitstop
 
         //Menu keys
         public bool escKey;
+        public bool pauseKey;
 
         //UI keys
         public bool displayDialogueWheelKey;
@@ -45,6 +46,7 @@ namespace Pitstop
             anyKeyPressed = Input.anyKeyDown;
             //
             escKey = Input.GetKeyDown(KeyCode.Escape);
+            pauseKey = Input.GetKeyDown(KeyCode.P);
             //
             displayDialogueWheelKey = Input.GetKey(KeyCode.Space);
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
