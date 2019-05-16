@@ -64,8 +64,8 @@ namespace Pitstop
                     break;
 
                 case "2_MINIBOSS":
-                    if (gameManager.languageSetToEnglish) nextScene = "Act III : EERICK";
-                    else nextScene = "Acte III : EERICK";
+                    if (gameManager.languageSetToEnglish) nextScene = "Act III : MINIBOSS";
+                    else nextScene = "Acte III : MINIBOSS";
                     break;
 
                 case "3_VILLAGE":
