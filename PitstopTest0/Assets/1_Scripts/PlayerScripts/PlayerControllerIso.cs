@@ -39,6 +39,9 @@ namespace Pitstop
         float initialMoveSpeed = 0;
         float dashRate = 0;
 
+        [Header("Sounds")]
+        [SerializeField] AudioSource footStepSound = default;
+
         void Start()
         {
             sceneLoader = GameManager.Instance.sceneLoader;

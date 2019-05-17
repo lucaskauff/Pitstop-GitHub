@@ -7088,7 +7088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1219016390
 Transform:
   m_ObjectHideFlags: 0
@@ -7684,7 +7684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289176950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -10.1, y: 0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 648498890}
@@ -7724,10 +7724,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -298594843
-  m_SortingLayer: 3
+  m_SortingLayerID: 1052579953
+  m_SortingLayer: 4
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 297e3495e306ad04fb54535b0fe091be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e93f3a51a9819e44b87efcf356815d3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7758,59 +7758,53 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1289176955}
     m_ColliderPaths:
-    - - X: -89274424
-        Y: 14752874
-      - X: -91186800
-        Y: 15805875
-      - X: -86534376
-        Y: 17846288
-      - X: -86265056
-        Y: 19911382
-      - X: -79375000
-        Y: 24687500
-      - X: -86727088
-        Y: 35879260
-      - X: -89036160
-        Y: 20638884
-      - X: -95905392
-        Y: 15136963
-      - X: -98416728
-        Y: 13938713
-      - X: -100427704
-        Y: 12754294
-      - X: -102444784
-        Y: 9691257
-      - X: -102602920
-        Y: 8581464
-      - X: -101049376
-        Y: 9094588
-      - X: -98907048
-        Y: 11674706
-      - X: -95358752
-        Y: 12010002
-      - X: -93236872
-        Y: 13684378
-      - X: -90095440
-        Y: 13631450
+    - - X: -674428
+        Y: -5447125
+      - X: -2586803
+        Y: -4394124
+      - X: 2065620
+        Y: -2353711
+      - X: 2334938
+        Y: -288618
+      - X: -436162
+        Y: 438883
+      - X: -7305393
+        Y: -5063036
+      - X: -9816732
+        Y: -6261286
+      - X: -11827707
+        Y: -7445706
+      - X: -13844786
+        Y: -10508742
+      - X: -14002924
+        Y: -11618536
+      - X: -12449379
+        Y: -11105411
+      - X: -10307055
+        Y: -8525294
+      - X: -6758756
+        Y: -8189997
+      - X: -4636879
+        Y: -6515622
+      - X: -1495447
+        Y: -6568550
   m_CompositePaths:
     m_Paths:
-    - - {x: -10.104938, y: 0.9094588}
-      - {x: -9.890705, y: 1.1674706}
-      - {x: -9.535875, y: 1.2010002}
-      - {x: -9.323688, y: 1.3684378}
-      - {x: -9.009544, y: 1.363145}
-      - {x: -8.927443, y: 1.4752874}
-      - {x: -9.11868, y: 1.5805875}
-      - {x: -8.653438, y: 1.7846289}
-      - {x: -8.626506, y: 1.9911382}
-      - {x: -7.9375, y: 2.46875}
-      - {x: -8.6727085, y: 3.5879261}
-      - {x: -8.903616, y: 2.0638883}
-      - {x: -9.590539, y: 1.5136963}
-      - {x: -9.841673, y: 1.3938713}
-      - {x: -10.04277, y: 1.2754294}
-      - {x: -10.244478, y: 0.9691257}
-      - {x: -10.260292, y: 0.8581464}
+    - - {x: -1.2449379, y: -1.1105411}
+      - {x: -1.0307056, y: -0.8525294}
+      - {x: -0.6758756, y: -0.8189997}
+      - {x: -0.4636879, y: -0.6515622}
+      - {x: -0.1495447, y: -0.656855}
+      - {x: -0.0674428, y: -0.5447125}
+      - {x: -0.2586803, y: -0.43941242}
+      - {x: 0.206562, y: -0.2353711}
+      - {x: 0.2334938, y: -0.0288618}
+      - {x: -0.0436162, y: 0.0438883}
+      - {x: -0.7305393, y: -0.5063036}
+      - {x: -0.98167324, y: -0.6261286}
+      - {x: -1.1827707, y: -0.7445706}
+      - {x: -1.3844786, y: -1.0508742}
+      - {x: -1.4002924, y: -1.1618537}
   m_VertexDistance: 0.0005
 --- !u!50 &1289176954
 Rigidbody2D:
@@ -7846,11 +7840,11 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 8.86, y: -2.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 46.875, y: 25}
+    oldSize: {x: 2.84375, y: 6.1875}
     newSize: {x: 46.875, y: 25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -7862,8 +7856,6 @@ PolygonCollider2D:
       - {x: -9.11868, y: 1.5805875}
       - {x: -8.653438, y: 1.7846289}
       - {x: -8.626506, y: 1.9911381}
-      - {x: -7.9375, y: 2.46875}
-      - {x: -8.6727085, y: 3.587926}
       - {x: -8.903616, y: 2.0638883}
       - {x: -9.590539, y: 1.5136963}
       - {x: -9.841673, y: 1.3938713}
@@ -11270,6 +11262,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632932067928894237, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e29aff139fb3e5c45851dd5025b6bf5b, type: 3}
@@ -19711,6 +19708,11 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[127].Y
       value: 4993978
       objectReference: {fileID: 0}
+    - target: {fileID: 4411585275572433417, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8827798457674550476, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_Color.r
@@ -20010,6 +20012,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogueInEnglish.allDialoguePart.Array.data[1].sentence
       value: (Where did I fall ?)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127097306074284302, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fb7d921a5320c48b94fcaeb3915f1d, type: 3}
