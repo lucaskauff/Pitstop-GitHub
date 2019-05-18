@@ -6,6 +6,7 @@ namespace Pitstop
 {
     public class DialogueWheelTuto : MonoBehaviour
     {
+        [SerializeField] Animator myAnim = default;
         [SerializeField, Tooltip("Angle in Degrees")] private float startingAngle;
         [SerializeField, Tooltip("Angle in Degrees")] private float endingAngle;
         [SerializeField] private float speed;
@@ -16,6 +17,7 @@ namespace Pitstop
         private float angle;
         private float time;
         private bool inReset;
+        private bool displayClick;
 
         private void Awake()
         {
@@ -25,8 +27,13 @@ namespace Pitstop
 
         private void Update()
         {
-            if(!inReset) AngleVariation();
-            DoTheMove();
+            myAnim.SetBool("Click", displayClick);
+
+            if (!inReset)
+            {
+                AngleVariation();
+                DoTheMove();
+            }
         }
 
         public void DoTheMove()
@@ -45,17 +52,23 @@ namespace Pitstop
             else
             {
                 time += Time.deltaTime * speed;
+                displayClick = false;
+                Debug.Log("here1");
             }
         }
 
         private IEnumerator DelayingReset()
         {
             inReset = true;
+            displayClick = true;
+            Debug.Log("here2");
 
             yield return new WaitForSeconds(delay);
 
             time = 0;
             inReset = false;
+            displayClick = false;
+            Debug.Log("here3");
         }
     }
 }
