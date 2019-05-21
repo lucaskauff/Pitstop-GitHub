@@ -20,6 +20,7 @@ namespace Pitstop
         [SerializeField] Animator additionnalDoor = default;
 
         [HideInInspector] public bool isActivatable = false;
+        [HideInInspector] public bool doorIsOpened = false;
         bool triggerOnceCheck = false;
         bool triggerDoorOpeningCheck = false;
 

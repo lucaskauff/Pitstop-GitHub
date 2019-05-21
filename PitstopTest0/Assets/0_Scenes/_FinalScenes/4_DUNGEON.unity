@@ -1463,7 +1463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 101783038}
   m_Layer: 0
-  m_Name: DoorPuzzle4
+  m_Name: DoorAltar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1484,8 +1484,9 @@ Transform:
   - {fileID: 1976733153}
   - {fileID: 1767547173}
   - {fileID: 1312043296}
+  - {fileID: 1378265651}
   m_Father: {fileID: 1454334803}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &113695061
 GameObject:
@@ -1581,12 +1582,12 @@ PrefabInstance:
     - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.92
+      value: 18.19
       objectReference: {fileID: 0}
     - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.33
+      value: 8.42
       objectReference: {fileID: 0}
     - target: {fileID: 3556835858144363793, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
@@ -3607,6 +3608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 559515066}
   - component: {fileID: 559515067}
+  - component: {fileID: 559515068}
   m_Layer: 0
   m_Name: DownRightWalls_0
   m_TagString: Untagged
@@ -3664,7 +3666,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1052579953
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b356992f2d6d723479fa2c4c31ae98bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3676,6 +3678,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &559515068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559515065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f9bfc579d59e241a3f0ee835bdda9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myRenderer: {fileID: 559515067}
+  newSortingOrder: 0
+  associatedAltar: {fileID: 0}
 --- !u!4 &577566855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8174704593899984719, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
@@ -6016,7 +6033,7 @@ Transform:
   - {fileID: 1455527001}
   - {fileID: 1781494821}
   m_Father: {fileID: 1454334803}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &951476712 stripped
 PolygonCollider2D:
@@ -25141,14 +25158,13 @@ GameObject:
   - component: {fileID: 1312043300}
   - component: {fileID: 1312043299}
   - component: {fileID: 1312043298}
-  - component: {fileID: 1312043297}
   m_Layer: 0
   m_Name: TheDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1312043296
 Transform:
   m_ObjectHideFlags: 0
@@ -25157,28 +25173,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312043295}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.336, y: 0.5450001, z: 0}
+  m_LocalPosition: {x: 1.259, y: 0.903, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 101783038}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1312043297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312043295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbb0b86c33d2fdd49b76c984d27c78cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door1: {fileID: 1312043301}
-  door2: {fileID: 0}
-  neededPressurePlatesToOpen:
-  - {fileID: 4659359505749582584}
 --- !u!66 &1312043298
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -25196,13 +25196,26 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1312043300}
+    m_ColliderPaths:
+    - - X: 7487045
+        Y: 1751424
+      - X: -9012738
+        Y: -937043
+      - X: -11116261
+        Y: -7527244
+      - X: -9101447
+        Y: -8965691
+      - X: 10037427
+        Y: 537378
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.9437428, y: 0.3537378}
-      - {x: 0.6887045, y: 0.4751425}
-      - {x: -1.1716261, y: -0.4527244}
-      - {x: -0.9701447, y: -0.596569}
+    - - {x: 1.0037427, y: 0.0537378}
+      - {x: 0.7487045, y: 0.1751424}
+      - {x: -0.9012738, y: -0.0937043}
+      - {x: -1.1116261, y: -0.7527244}
+      - {x: -0.9101447, y: -0.89656913}
   m_VertexDistance: 0.0005
 --- !u!50 &1312043299
 Rigidbody2D:
@@ -25238,11 +25251,11 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.06, y: -0.3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.2}
+    oldSize: {x: 1.78125, y: 4.3125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -25251,6 +25264,7 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.6887045, y: 0.47514248}
+      - {x: -0.96127385, y: 0.20629567}
       - {x: -1.1716261, y: -0.45272446}
       - {x: -0.97014475, y: -0.59656906}
       - {x: 0.94374275, y: 0.35373783}
@@ -25264,7 +25278,7 @@ Animator:
   m_GameObject: {fileID: 1312043295}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 71872d03d984aa843836968e603c5a03, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4c46e2929fd0f9f45a9f07c1def196c0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -25310,7 +25324,7 @@ SpriteRenderer:
   m_SortingLayerID: 1052579953
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2d866e4f2d49e4246bf294444a3e808b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e36dd00c4f8faf4aae7f040e3251c82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -25319,8 +25333,8 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_MaskInteraction: 1
+  m_SpriteSortPoint: 1
 --- !u!1 &1326120250
 GameObject:
   m_ObjectHideFlags: 0
@@ -25479,6 +25493,84 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1378265650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1378265651}
+  - component: {fileID: 1378265652}
+  m_Layer: 0
+  m_Name: TheDoorMask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1378265651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378265650}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.259, y: 0.903, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 101783038}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!331 &1378265652
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378265650}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 2e36dd00c4f8faf4aae7f040e3251c82, type: 3}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 1052579953
+  m_BackSortingLayerID: 1052579953
+  m_FrontSortingLayer: 4
+  m_BackSortingLayer: 4
+  m_FrontSortingOrder: 1
+  m_BackSortingOrder: -2
+  m_IsCustomRangeActive: 1
+  m_SpriteSortPoint: 1
 --- !u!1 &1387338159
 GameObject:
   m_ObjectHideFlags: 0
@@ -26787,9 +26879,9 @@ Transform:
   m_Children:
   - {fileID: 427649271}
   - {fileID: 1128403386}
-  - {fileID: 101783038}
   - {fileID: 1735945022}
   - {fileID: 942555222}
+  - {fileID: 101783038}
   m_Father: {fileID: 1099216564}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27240,6 +27332,7 @@ MonoBehaviour:
   doorPointer: {fileID: 1918675122}
   additionnalDoor: {fileID: 1455527005}
   isActivatable: 0
+  doorIsOpened: 0
 --- !u!1 &1504388716
 GameObject:
   m_ObjectHideFlags: 0
@@ -30483,7 +30576,7 @@ Transform:
   - {fileID: 518473787}
   - {fileID: 1011098441}
   m_Father: {fileID: 1454334803}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1737954972
 GameObject:
@@ -30874,6 +30967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1815686046}
   - component: {fileID: 1815686047}
+  - component: {fileID: 1815686048}
   m_Layer: 0
   m_Name: DoorDownLeft_1
   m_TagString: Untagged
@@ -30931,7 +31025,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1052579953
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300002, guid: 937ffe223e79a3c49bc71f2a5231c7d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -30943,6 +31037,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &1815686048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815686045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f9bfc579d59e241a3f0ee835bdda9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myRenderer: {fileID: 559515067}
+  newSortingOrder: 0
+  associatedAltar: {fileID: 0}
 --- !u!1 &1816308218
 GameObject:
   m_ObjectHideFlags: 0
@@ -32375,7 +32484,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &1979755195
 GameObject:
   m_ObjectHideFlags: 0
@@ -35487,7 +35596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2080986162
 Transform:
   m_ObjectHideFlags: 0
