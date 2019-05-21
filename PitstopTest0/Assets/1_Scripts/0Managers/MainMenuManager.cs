@@ -9,10 +9,8 @@ namespace Pitstop
         GameManager gameManager;
         SceneLoader sceneLoader;
 
-        [SerializeField]
-        string nextSceneToLoad = null;
-        [SerializeField]
-        MainMenuText[] mainMenuTexts = default;
+        [SerializeField] string nextSceneToLoad = null;
+        [SerializeField] MainMenuText[] mainMenuTexts = default;
 
         private void Start()
         {

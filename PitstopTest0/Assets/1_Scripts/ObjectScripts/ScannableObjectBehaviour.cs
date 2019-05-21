@@ -54,8 +54,7 @@ namespace Pitstop
         public void Shoot()
         {
             if (!GetComponentInChildren<AudioSource>().isPlaying) GetComponentInChildren<AudioSource>().Play();
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
-            
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);            
         }
     }
 }

@@ -6,12 +6,26 @@ namespace Pitstop
 {
     public class PillarCheckForRocks : MonoBehaviour
     {
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "ObjectRock")
             {
-                Destroy(collision.gameObject);
-                Destroy(collision.gameObject.transform.parent.gameObject);
+                Debug.Log("ola");
+                if (!collision.gameObject.GetComponent<RockBehaviour>().isOnRepulse)
+                {
+                    Destroy(collision.gameObject);
+                }
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "ObjectRock")
+            {        
+                if (!collision.gameObject.GetComponent<RockBehaviour>().isOnRepulse)
+                {
+                    Destroy(collision.gameObject);
+                }
             }
         }
     }

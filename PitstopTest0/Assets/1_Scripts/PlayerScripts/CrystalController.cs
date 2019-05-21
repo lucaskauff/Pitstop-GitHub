@@ -52,7 +52,7 @@ namespace Pitstop
         [Header("Sounds")]
         public AudioSource scanningSound;
         public AudioSource endOfTheScanSound;
-        public AudioSource rockFallingSound;
+        //public AudioSource rockFallingSound;
 
         private void Start()
         {
@@ -167,7 +167,7 @@ namespace Pitstop
             }
         }
 
-        private void LateUpdate()
+        void LateUpdate()
         {
             //Assigning the right layer
             if (inputManager.rightClickBeingPressed)
@@ -243,7 +243,7 @@ namespace Pitstop
                     return;
 
                 case "ObjectRock":
-                    rockFallingSound.Play();
+                    //rockFallingSound.Play();
                     ShootableObject((Vector2)transform.position + crystalShootTarget + new Vector2(0, scannedObject.GetComponent<RockBehaviour>().heightWhereToSpawn), scannedObject.GetComponent<RockBehaviour>().fallSpeed);
                     break;
 
