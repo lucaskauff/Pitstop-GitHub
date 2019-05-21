@@ -6,25 +6,25 @@ using Cinemachine;
 namespace Pitstop
 {
     public class RockBehaviour : MonoBehaviour
-    {
-        //My Components
-        Animator myAnim;
-        Renderer myRend;
+    {        
+        [Header("My Components")]
+        [SerializeField] Animator myAnim = default;
+        [SerializeField] Renderer myRend = default;
+        [SerializeField] Rigidbody2D myRb = default;
+        public Collider2D myCol = default;
+        public Collider2D myTrigger = default;
 
         //Public
         public float heightWhereToSpawn;
         public float fallSpeed;
-        public ScanData data;
+        public bool isOnRepulse = false;
 
         //Serializable
-        [SerializeField]
-        float impulseDuration = default;
-        [SerializeField]
-        GameObject rockDetection = default;
-        [SerializeField]
-        ScannableObjectBehaviour scannableObjectBehaviour = default;
-        [SerializeField]
-        CinemachineImpulseSource playerImpulseSource = default;
+        [SerializeField] float impulseDuration = default;
+        [SerializeField] GameObject rockDetection = default;
+        [SerializeField] ScannableObjectBehaviour scannableObjectBehaviour = default;
+        [SerializeField] CinemachineImpulseSource playerImpulseSource = default;
+        [SerializeField] float repulseDelay = 1f;
 
         //Private
         private bool impulseGenerated = false;
@@ -33,12 +33,11 @@ namespace Pitstop
 
         private void Start()
         {
-            myAnim = GetComponent<Animator>();
-            myRend = GetComponent<Renderer>();
-
             if (scannableObjectBehaviour.isFired)
             {
                 myRend.enabled = false;
+                myCol.enabled = false;
+                myTrigger.enabled = false;
             }
         }
 
@@ -53,12 +52,16 @@ namespace Pitstop
                     fallCheck = true;
                 }
 
-                rockDetection.SetActive(false);
+                //rockDetection.SetActive(false);
+                myCol.enabled = false;
+                myTrigger.enabled = false;
                 return;
             }
             else
             {
-                rockDetection.SetActive(true);
+                //rockDetection.SetActive(true);
+                myCol.enabled = true;
+                myTrigger.enabled = true;
             }
 
             if (scannableObjectBehaviour.isArrived && !arrivalCheck)
@@ -79,11 +82,33 @@ namespace Pitstop
             StartCoroutine(CameraShake());
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "ObjectApple")
+            {
+                StartCoroutine(WaitAfterBeingRepulsed());
+            }
+        }
+
         IEnumerator CameraShake()
         {
             playerImpulseSource.GenerateImpulse();
             yield return new WaitForSeconds(impulseDuration);
             impulseGenerated = true;
+        }
+
+        IEnumerator WaitAfterBeingRepulsed()
+        {
+            myRb.bodyType = RigidbodyType2D.Dynamic;
+            myRb.gravityScale = 0;
+            myCol.isTrigger = true;
+            isOnRepulse = true;
+            yield return new WaitForSeconds(repulseDelay);
+            myRb.velocity = Vector2.zero;
+            myRb.bodyType = RigidbodyType2D.Kinematic;
+            myCol.isTrigger = false;
+            isOnRepulse = false;
+            StopCoroutine(WaitAfterBeingRepulsed());
         }
     }
 }
