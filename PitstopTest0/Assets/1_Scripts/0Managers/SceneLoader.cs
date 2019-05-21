@@ -34,7 +34,6 @@ namespace Pitstop
 
         public void ReloadScene()
         {
-            Time.timeScale = 1;
             SceneManager.LoadScene(activeScene);
         }
 
@@ -93,13 +92,6 @@ namespace Pitstop
             SceneManager.LoadScene(loadingScreenSceneName);
             yield return new WaitForSeconds(loadingDelay);
             SceneManager.LoadScene(sceneToLoad);
-        }
-
-
-        public void MainMenu()
-        {
-            Time.timeScale = 1;
-            SceneManager.LoadScene("00_MENU");
         }
     }
 }

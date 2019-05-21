@@ -36,14 +36,6 @@ namespace Pitstop
         public bool rightClickBeingPressed;
         public bool onRightClickReleased;
 
-        //UI Objects
-        [SerializeField]
-        GameObject Pause_Menu;
-        [SerializeField] float pauseFadeTimer = 1;
-
-        //Animation inputs
-        public Animator anim;
-
         private void Start()
         {
             gameManager = GameManager.Instance;
@@ -93,25 +85,6 @@ namespace Pitstop
             onRightClick = Input.GetKeyDown(KeyCode.Mouse1);
             rightClickBeingPressed = Input.GetKey(KeyCode.Mouse1);
             onRightClickReleased = Input.GetKeyUp(KeyCode.Mouse1);
-
-            //Pause Menu Interaction
-            if (escKey && Pause_Menu.activeSelf)
-            {
-                StopAllCoroutines();
-                Time.timeScale = 1;
-                Pause_Menu.SetActive(false);
-            }
-            else if (escKey)
-            {
-                Pause_Menu.SetActive(true);
-                StartCoroutine(PauseCoroutine());
-            }
-
-            IEnumerator PauseCoroutine()
-            {
-                yield return new WaitForSeconds(pauseFadeTimer);
-                Time.timeScale = 0;
-            }
         }       
     }
 }
