@@ -85,6 +85,6 @@ namespace Pitstop
             onRightClick = Input.GetKeyDown(KeyCode.Mouse1);
             rightClickBeingPressed = Input.GetKey(KeyCode.Mouse1);
             onRightClickReleased = Input.GetKeyUp(KeyCode.Mouse1);
-        }
+        }       
     }
 }
