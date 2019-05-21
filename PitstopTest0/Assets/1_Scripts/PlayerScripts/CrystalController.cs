@@ -49,6 +49,11 @@ namespace Pitstop
         Vector2 crystalShootTarget;
         bool canShoot = false;
 
+        [Header("Sounds")]
+        public AudioSource scanningSound;
+        public AudioSource endOfTheScanSound;
+        public AudioSource rockFallingSound;
+
         private void Start()
         {
             sceneLoader = GameManager.Instance.sceneLoader;
@@ -81,6 +86,8 @@ namespace Pitstop
                 {
                     if (scanRay.collider.gameObject.GetComponent<ScannableObjectBehaviour>().isScannable)
                     {
+                        if (!scanningSound.isPlaying) scanningSound.Play();
+
                         objectHittedBefore = objectHitted;
                         objectHitted = scanRay.transform.gameObject;
 
@@ -106,6 +113,9 @@ namespace Pitstop
                             if (scanProgress == maxScanProgress)
                             {
                                 scannedObject = objectOnScan;
+
+                                if (scanningSound.isPlaying) scanningSound.Stop();
+                                endOfTheScanSound.Play();
                                 
                                 //should be enabled when encountering the first native
                                 if (sceneLoader.activeScene == "3_VILLAGE")
@@ -129,8 +139,11 @@ namespace Pitstop
                         hitting = true;
                         objectOnScan = objectHitted;
                     }
+                    
                 }
+
             }
+            
             //No object hit => DESCAN
             else if (hitting)
             {
@@ -138,7 +151,14 @@ namespace Pitstop
                 StartCoroutine(DeScan());
                 hitting = false;
                 objectOnScan = null;
+
+                if (scanningSound.isPlaying) scanningSound.Stop();
             }
+            else
+            {
+                if (scanningSound.isPlaying) scanningSound.Stop();
+            }
+
 
             //conditions for shoot
             if (canShoot && inputManager.onLeftClick && scannedObject != null && Time.time > fireRate)
@@ -223,6 +243,7 @@ namespace Pitstop
                     return;
 
                 case "ObjectRock":
+                    rockFallingSound.Play();
                     ShootableObject((Vector2)transform.position + crystalShootTarget + new Vector2(0, scannedObject.GetComponent<RockBehaviour>().heightWhereToSpawn), scannedObject.GetComponent<RockBehaviour>().fallSpeed);
                     break;
 

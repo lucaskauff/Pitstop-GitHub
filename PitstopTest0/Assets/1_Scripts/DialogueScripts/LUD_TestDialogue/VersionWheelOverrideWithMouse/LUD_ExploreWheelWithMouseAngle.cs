@@ -67,6 +67,7 @@ namespace Pitstop
 
         public void PickElement()
         {
+
             int actualHandledElement;
 
             actualHandledElement = Mathf.FloorToInt(((angle * buttons.Length) / 360));
@@ -76,7 +77,11 @@ namespace Pitstop
 
         public void HandleElements(int _index)
         {
+            currentValidButton.GetComponentInChildren<Text>().color = new Color(0f, 0f, 0f);
+
             buttons[_index].Select();
+
+            buttons[_index].gameObject.GetComponentInChildren<Text>().color = new Color(0f, 0.95f, 1f);
 
             currentValidButton = buttons[_index].gameObject;
         }

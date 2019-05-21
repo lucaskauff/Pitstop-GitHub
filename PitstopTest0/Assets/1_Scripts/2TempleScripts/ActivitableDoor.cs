@@ -12,10 +12,19 @@ namespace Pitstop
 
         private bool allPressurePlatesOk = false;
 
+        public AudioSource soundOfOpeningDoor;
+        public AudioSource soundOfClosingDoor;
+
         private void Update()
         {
             CheckPressurePlates();
 
+
+            //if(soundOfOpeningDoor.isPlaying) soundOfOpeningDoor.Play();
+
+            
+            if (allPressurePlatesOk) soundOfOpeningDoor.Play();
+            else if (!allPressurePlatesOk) soundOfClosingDoor.Play();
             door1.SetBool("DoorOpen", allPressurePlatesOk);
             if (door2 != null)
             {
