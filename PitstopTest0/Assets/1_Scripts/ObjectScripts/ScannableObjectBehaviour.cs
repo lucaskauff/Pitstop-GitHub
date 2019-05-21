@@ -13,9 +13,14 @@ namespace Pitstop
         public float projectileSpeed = 3;
         public Vector2 targetPos;
 
+
         //public ScanData entity;
 
         public bool col = false;
+
+        [Header("ParametersForDialogueWheel")]      //Add by Luc D.
+        public bool isAWord = false;
+        public int valueOfTheWorld = 0;
 
         private void Update()
         {

@@ -13,11 +13,77 @@ MonoBehaviour:
   m_Name: Main Camera Blends
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: '**ANY CAMERA**'
-    m_To: '**ANY CAMERA**'
+  - m_From: CM vcam1 Player
+    m_To: CM vcam2 AltarMiddleVillage
+    m_Blend:
+      m_Style: 1
+      m_Time: 1.75
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: CM vcam2 AltarMiddleVillage
+    m_To: CM vcam1 Player
+    m_Blend:
+      m_Style: 1
+      m_Time: 1.75
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: CM vcam2 Bridge
+    m_To: CM vcam1 Player
     m_Blend:
       m_Style: 1
       m_Time: 2
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: CM vcam1 Player
+    m_To: CM vcam2 AltarDoor1
+    m_Blend:
+      m_Style: 1
+      m_Time: 4
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: CM vcam2 AltarDoor1
+    m_To: CM vcam1 Player
+    m_Blend:
+      m_Style: 1
+      m_Time: 4
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: CM vcam1 Player
+    m_To: CM vcam2 AltarDoor2
+    m_Blend:
+      m_Style: 1
+      m_Time: 4
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: CM vcam2 AltarDoor2
+    m_To: CM vcam1 Player
+    m_Blend:
+      m_Style: 1
+      m_Time: 4
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

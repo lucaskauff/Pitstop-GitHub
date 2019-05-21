@@ -10,9 +10,11 @@ namespace Pitstop
         public int enemyMaxHealth = 3;
         public int enemyCurrentHealth;
 
+        //Serializable
+        [SerializeField] Animator myAnim = default;
+
         void Start()
         {
-            //enemyCurrentHealth = enemyMaxHealth;
             ResetHealth();
         }
 
@@ -21,6 +23,7 @@ namespace Pitstop
             if (enemyCurrentHealth <= 0)
             {
                 gameObject.SetActive(false);
+                FindObjectOfType<LUD_ScenarioOfTheMiniBossWithTheNative>().EndOfTheFightConcequences();
             }
 
             if (enemyCurrentHealth > enemyMaxHealth)
@@ -31,7 +34,9 @@ namespace Pitstop
 
         public void HurtEnemy(int damageToGive)
         {
+
             enemyCurrentHealth -= damageToGive;
+            myAnim.SetTrigger("Hit");
         }
 
         public void HealEnemy(int healToGive)

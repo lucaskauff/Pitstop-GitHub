@@ -13,7 +13,6 @@ namespace Pitstop
         [SerializeField] Renderer myRend = default;
         [SerializeField] Animator myAnim = default; 
 
-        //Serializable
         [SerializeField] RootBehaviour2 associatedRoot = default;
         [SerializeField] Color outlineColorOnMouseOver = default;
 
@@ -30,9 +29,9 @@ namespace Pitstop
 
         private void Update()
         {
-            if (inputManager.onLeftClick)
+            if (inputManager.onLeftClick && associatedRoot.crystalController.scannedObject != null)
             {
-                if (associatedRoot.crys.scannedObject.tag == "ObjectRoot")
+                if (associatedRoot.crystalController.scannedObject.tag == "ObjectRoot")
                 {
                     markSign = false;
                     canContinue = true;
@@ -64,22 +63,24 @@ namespace Pitstop
         {
             if (associatedRoot.pointSelect)
             {
-                for (int x = 0; x < 3; x++)
+                for (int i = 0; i < associatedRoot.hookpoints.Length; i++)
                 {
-                    if (associatedRoot.hookpoints[x] == null && canContinue == true)
+                    if (associatedRoot.hookpoints[i] == null && canContinue == true)
                     {
-                        associatedRoot.hookpoints[x] = gameObject;
+                        associatedRoot.hookpoints[i] = gameObject;
                         canContinue = false;
                         markSign = true;
                     }
                 }
             }
-
-            if (associatedRoot.crys.scannedObject.name == "ScannableRoot")
+            if (associatedRoot.crystalController.scannedObject != null)
             {
-                outlineColorOnMouseOver = myRend.material.GetColor("_ColorOutline");
-                outlineColorOnMouseOver.a = 255;
-                myRend.material.SetColor("_ColorOutline", outlineColorOnMouseOver);
+                if (associatedRoot.crystalController.scannedObject.tag == "ObjectRoot")
+                {
+                    outlineColorOnMouseOver = myRend.material.GetColor("_ColorOutline");
+                    outlineColorOnMouseOver.a = 255;
+                    myRend.material.SetColor("_ColorOutline", outlineColorOnMouseOver);
+                }
             }
         }
 

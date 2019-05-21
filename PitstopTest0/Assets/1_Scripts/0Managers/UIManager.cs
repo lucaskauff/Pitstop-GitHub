@@ -7,30 +7,29 @@ namespace Pitstop
 {
     public class UIManager : MonoBehaviour
     {
+        //GameManager
         SceneLoader sceneLoader;
 
-        [Header("Crystal UI"), SerializeField]
-        Animator crystalAnim = default;
-        public Image crystalSlot;
-        public Animator crystalSlotCanvasAnim;
+        [Header("Player Components")]
+        [SerializeField] CrystalController crystalController = default;
+        [SerializeField] PlayerHealthManager playerHealthMan = default;
 
-        public Image scanBarFill;
-        public float fillPercentage = 0.821f;
-        public RectTransform aiguille;
-        public float aiguilleRotationSpeed = 1;        
-        public float aiguilleOrientation0 = 40;
-        public float aiguilleOrientation5 = 217;
+        [Header("Crystal UI Elements")]
+        [SerializeField] Animator crystalAnim = default;
+        [SerializeField] Image scanBarFill = default;
+        [SerializeField] Image scanBarSides = default;
+        [SerializeField] Image crystalSlot = default;
 
-        [Header("Player Related"), SerializeField]
-        CrystalController crystalController = default;
-        [SerializeField]
-        PlayerHealthManager playerHealthMan = default;
-        [SerializeField]
-        Animator playerLifes = default;
+        [Header("Player HP Elements")]
+        [SerializeField] Animator playerLife = default;
+        [SerializeField] Image playerLifeBarFill = default;
+
+        [Header("Serializable")]
+        [SerializeField] float waitBeforeResettingFillSeconds = 1;
 
         //Private
-        private Quaternion aiguilleNewRotation;
-        private bool playerLifesAppearedCheck = false;
+        private bool doUpdateCrystalFill = true;
+        private bool playerLifeAppearedCheck = false;
 
         void Start()
         {
@@ -41,61 +40,74 @@ namespace Pitstop
         {
             SpecificScenesEvents();
 
-            ScanProgressEvents();
+            UpdateCrystalUI();
+
+            UpdatePlayerLife();
         }
 
         public void SpecificScenesEvents()
         {
-            switch (sceneLoader.activeScene)
+            if (sceneLoader.activeScene != "1_TEMPLE")
             {
-                case "1_TEMPLE":
-                    break;
+                crystalAnim.SetBool("AlreadyThere", true);
 
-                case "2_FOREST":
-                    crystalAnim.SetBool("CrystalAlreadyThere", true);
+                if (!playerLifeAppearedCheck)
+                {
+                    playerLife.SetTrigger("Appear");
+                    playerLifeAppearedCheck = true;
+                }
+            }
+            else if (sceneLoader.activeScene == "3_VILLAGE")
+            {
+                crystalAnim.SetBool("AlreadyThere", true);
 
-                    if (!playerLifesAppearedCheck)
-                    {
-                        playerLifes.SetTrigger("Appear");
-                        playerLifesAppearedCheck = true;
-                    }
-
-                    playerLifes.SetInteger("PlayerHealth", playerHealthMan.playerCurrentHealth);
-                    break;
-
-                case "2_1_MINIBOSS":
-                    crystalAnim.SetBool("CrystalAlreadyThere", true);
-                    break;
-
-                case "3_VILLAGE":
-                    crystalAnim.SetBool("CrystalAlreadyThere", true);
-                    break;
-
-                case "4_DUNGEON":
-                    crystalAnim.SetBool("CrystalAlreadyThere", true);
-                    break;
+                if (!playerLifeAppearedCheck)
+                {
+                    playerLife.SetTrigger("Disappear");
+                    playerLifeAppearedCheck = true;
+                }
             }
         }
 
-        public void ScanProgressEvents()
+        public void UpdateCrystalUI()
         {
-            aiguilleNewRotation = Quaternion.Euler(0, 0, -(((aiguilleOrientation5 - aiguilleOrientation0) / 5) * crystalController.scanProgress));
-            aiguille.rotation = Quaternion.Lerp(aiguille.rotation, aiguilleNewRotation, Time.time * aiguilleRotationSpeed);
+            if (doUpdateCrystalFill)
+            {
+                float maxScanProgUi = crystalController.maxScanProgress;
+                scanBarFill.fillAmount = crystalController.scanProgress / maxScanProgUi;
+            }
 
-            scanBarFill.fillAmount = (fillPercentage / 5) * crystalController.scanProgress;
+            if (crystalController.scannedObject != null)
+            {
+                scanBarSides.enabled = true;
+            }
+            else
+            {
+                scanBarSides.enabled = false;
+            }
+        }
+
+        public void UpdatePlayerLife()
+        {
+            playerLifeBarFill.fillAmount = playerHealthMan.playerCurrentHealth / playerHealthMan.playerMaxHealth;
         }
 
         public void ChangeImageInCrystalSlot(Sprite sprite)
         {
-            crystalSlot.GetComponent<Image>().color = Color.white;
-            crystalSlot.GetComponent<Image>().sprite = sprite;
-            //crystalSlot.GetComponent<Image>().SetNativeSize();
-            crystalSlotCanvasAnim.SetTrigger("GoBlue");
+            crystalSlot.color = Color.white;
+            crystalSlot.sprite = sprite;
         }
 
         public void MakeUIElementAppear(GameObject whatToReveal)
         {
             whatToReveal.SetActive(true);
+        }
+
+        IEnumerator WaitBeforeResettingCrystalFill()
+        {
+            doUpdateCrystalFill = false;
+            yield return new WaitForSeconds(waitBeforeResettingFillSeconds);
+            doUpdateCrystalFill = true;
         }
     }
 }

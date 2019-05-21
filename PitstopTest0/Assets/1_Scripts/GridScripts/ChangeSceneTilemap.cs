@@ -12,8 +12,9 @@ namespace Pitstop
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.name == "Zayn")
+            if (collision.gameObject.tag == "Player")
             {
+                collision.gameObject.GetComponent<PlayerControllerIso>().ResetSavingPoint();
                 levelChanger.LevelChanging();
             }
         }

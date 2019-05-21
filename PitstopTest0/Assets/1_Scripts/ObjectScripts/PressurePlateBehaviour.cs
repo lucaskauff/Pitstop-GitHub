@@ -6,21 +6,12 @@ namespace Pitstop
 {
     public class PressurePlateBehaviour : MonoBehaviour
     {
-        //My Components
-        Collider2D myCollider;
-        Animator myAnim;
+        [Header("My components")]
+        [SerializeField] Animator myAnim = default;
 
         //Public
-        public bool plateDown = false;
-
-        //Private
-        public GameObject objectOnPlate;
-
-        private void Start()
-        {
-            myCollider = GetComponent<Collider2D>();
-            myAnim = GetComponent<Animator>();
-        }
+        [HideInInspector] public bool plateDown = false;
+        [HideInInspector] public GameObject objectOnPlate;
 
         private void OnTriggerStay2D(Collider2D collision)
         {

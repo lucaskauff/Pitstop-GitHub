@@ -24,17 +24,32 @@ PrefabInstance:
     - target: {fileID: 6706908312033732443, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
       propertyPath: m_Name
-      value: Impulse apple Variant
+      value: Apple
       objectReference: {fileID: 0}
+    - target: {fileID: 6706908312033732445, guid: e92790c8151d11d49b6c61a79fd45716,
+        type: 3}
+      propertyPath: scannableObjectBehaviour
+      value: 
+      objectReference: {fileID: 8174704593899984714}
+    - target: {fileID: 6706908312033732445, guid: e92790c8151d11d49b6c61a79fd45716,
+        type: 3}
+      propertyPath: myAnim
+      value: 
+      objectReference: {fileID: 6078796628596924237}
+    - target: {fileID: 6706908312033732445, guid: e92790c8151d11d49b6c61a79fd45716,
+        type: 3}
+      propertyPath: explosionRange
+      value: 
+      objectReference: {fileID: 8174704593243583062}
     - target: {fileID: 6706908312033732447, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.98
+      value: -9.77
       objectReference: {fileID: 0}
     - target: {fileID: 6706908312033732447, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.15
+      value: -7.75
       objectReference: {fileID: 0}
     - target: {fileID: 6706908312033732447, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
@@ -44,17 +59,17 @@ PrefabInstance:
     - target: {fileID: 6706908312033732447, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6706908312033732447, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6706908312033732447, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6706908312033732447, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
@@ -81,21 +96,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6706908312033732445, guid: e92790c8151d11d49b6c61a79fd45716,
+    - target: {fileID: 6706908312451056196, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
-      propertyPath: scannableObjectBehaviour
-      value: 
-      objectReference: {fileID: 8174704593899984714}
-    - target: {fileID: 6706908312033732445, guid: e92790c8151d11d49b6c61a79fd45716,
-        type: 3}
-      propertyPath: myAnim
-      value: 
+      propertyPath: m_ForceMagnitude
+      value: 5000
       objectReference: {fileID: 0}
-    - target: {fileID: 6706908312033732445, guid: e92790c8151d11d49b6c61a79fd45716,
+    - target: {fileID: 6706908312451056196, guid: e92790c8151d11d49b6c61a79fd45716,
         type: 3}
-      propertyPath: explosionRange
-      value: 
-      objectReference: {fileID: 8174704593243583062}
+      propertyPath: m_ForceVariation
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6706908312451056203, guid: e92790c8151d11d49b6c61a79fd45716,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e92790c8151d11d49b6c61a79fd45716, type: 3}
 --- !u!1 &8174704593899984715 stripped
@@ -116,6 +131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69776203d86a2446837582032e693c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6078796628596924237 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8664330043534061405, guid: e92790c8151d11d49b6c61a79fd45716,
+    type: 3}
+  m_PrefabInstance: {fileID: 3198078104132857872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8174704593243583062 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6706908312451056198, guid: e92790c8151d11d49b6c61a79fd45716,

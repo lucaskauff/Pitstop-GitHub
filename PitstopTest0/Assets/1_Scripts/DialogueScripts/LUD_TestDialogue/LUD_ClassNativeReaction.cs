@@ -99,7 +99,7 @@ namespace Pitstop
             }
             else if (code == "child")
             {
-                Debug.Log("Child as been tested");
+                //Debug.Log("Child as been tested");
                 return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/child_square");
             }
 

@@ -6,10 +6,10 @@ namespace Pitstop
 {
     public class CrystalRecuperation : MonoBehaviour
     {
-        [SerializeField]
-        Animator whatElementShouldAppear = default;
-        [SerializeField]
-        GameObject whatElementShouldDisappear = default;
+        [SerializeField] Animator crystalUIAppear = default;
+        [SerializeField] GameObject scanRange = default;
+        [SerializeField] Animator crystalToGetAnim = default;
+        //[SerializeField] GameObject whatElementShouldDisappear = default;
 
         bool triggerOnceCheck = false;
 
@@ -17,9 +17,14 @@ namespace Pitstop
         {
             if (collision.gameObject.name == "Zayn" && !triggerOnceCheck)
             {
-                whatElementShouldAppear.SetTrigger("Appear");
+                crystalUIAppear.SetTrigger("Appear");
 
-                whatElementShouldDisappear.SetActive(false);
+                scanRange.SetActive(true);
+
+                crystalToGetAnim.SetTrigger("PlayerGet");
+
+                //for blue beam over altar
+                //whatElementShouldDisappear.SetActive(false);
 
                 triggerOnceCheck = true;
             }

@@ -8,35 +8,37 @@ namespace Pitstop
 {
     public class PlayerHealthManager : MonoBehaviour
     {
-        //From GameManager
+        //GameManager
         SceneLoader sceneLoader;
 
-        //My Components
-        SpriteRenderer myRenderer;
-        CinemachineImpulseSource myImpulseSource;
+        [Header("My Components")]
+        //to use on player taking dmg
+        //[SerializeField] Animator myAnim = default;
+        [SerializeField] PlayerControllerIso playerControllerIso = default;
+        [SerializeField] CinemachineImpulseSource myImpulseSource = default;
 
-        //Public
-        public int playerMaxHealth = 3;
-        public int playerCurrentHealth;
+        [Header("Public Variables")]
+        public float playerMaxHealth = 3;
+        public float playerCurrentHealth;
 
-        //Serializable
+        [Header("Serializable")]
+        [SerializeField] Animator theFadeOnDead = default;
         [SerializeField] PostProcessVolume postProRedVignette = default;
-        [SerializeField] float feedbackLength = 0.1f;
+        [SerializeField] float feedbackLength = 0.5f;
         [SerializeField] float maxBloodSize = 1;
-        [SerializeField] float feedbackRatio = 1;
+        [SerializeField] float feedbackSpeed = 1;
+        [SerializeField] float timeOfInvincibility = 1f;
 
+        //Private
         Vignette vignetteLayer = null;
-
         float timer = 0f;
         bool hasToRecover = false;
         bool feedbackLaunched = false;
+        bool isInvincible = false;
 
         void Start()
         {
             sceneLoader = GameManager.Instance.sceneLoader;
-
-            myRenderer = GetComponent<SpriteRenderer>();
-            myImpulseSource = GetComponent<CinemachineImpulseSource>();
 
             playerCurrentHealth = playerMaxHealth;
         }
@@ -45,26 +47,31 @@ namespace Pitstop
         {
             if (playerCurrentHealth <= 0)
             {
-                sceneLoader.ReloadScene();
+                playerControllerIso.canMove = false;
+                theFadeOnDead.SetTrigger("PlayerIsDead");
             }
 
             if (hasToRecover && !feedbackLaunched)
             {
-                StartCoroutine(RecoverFromAttack());
+                StartCoroutine(GotAttacked());
                 feedbackLaunched = true;
             }
             else
             {
-                StopCoroutine(RecoverFromAttack());
+                StopCoroutine(GotAttacked());
                 feedbackLaunched = false;
             }
         }
 
         public void HurtPlayer(int damageToGive)
         {
-            playerCurrentHealth -= damageToGive;
-            postProRedVignette.profile.TryGetSettings(out vignetteLayer);
-            hasToRecover = true;
+            if (!isInvincible)
+            {
+                playerCurrentHealth -= damageToGive;
+                hasToRecover = true;
+
+                StartCoroutine(LaunchInvicibilityMode());
+            }
         }
 
         public void HealPlayer(int healToGive)
@@ -77,14 +84,41 @@ namespace Pitstop
             playerCurrentHealth = playerMaxHealth;
         }
 
-        IEnumerator RecoverFromAttack()
+        //not perfect yet
+        IEnumerator GotAttacked()
         {
-            timer += feedbackRatio * Time.deltaTime;
             myImpulseSource.GenerateImpulse();
+
+            postProRedVignette.profile.TryGetSettings(out vignetteLayer);
             vignetteLayer.intensity.value = Mathf.Lerp(0, maxBloodSize, timer);
+            timer += feedbackSpeed * Time.deltaTime;
+            
+
             yield return new WaitForSeconds(feedbackLength);
+
+            
             vignetteLayer.intensity.value = 0;
+            timer = 0;
             hasToRecover = false;
+        }
+
+        IEnumerator LaunchInvicibilityMode()
+        {
+            isInvincible = true;
+
+            //yield return new WaitForSeconds(timeOfInvincibility);
+
+            int nbrOfStepInInvincibility = 20; //has to be even
+
+            for (int i = 0; i< nbrOfStepInInvincibility; i++)
+            {
+                
+                GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().isVisible;
+
+                yield return new WaitForSeconds(timeOfInvincibility / nbrOfStepInInvincibility);
+            }
+
+            isInvincible = false;
         }
     }
 }
