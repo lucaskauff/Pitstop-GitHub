@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 6667375955699303456}
   - component: {fileID: 6667375955699303458}
   - component: {fileID: 8068176826541340084}
+  - component: {fileID: 3232042171868661921}
+  - component: {fileID: 353179464507767466}
+  - component: {fileID: 7379330656267411739}
   m_Layer: 9
   m_Name: Rock
   m_TagString: ObjectRock
@@ -152,18 +155,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc2ffa471bac9b4e93d0be6c5bb6970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAnim: {fileID: 6667375955699303458}
+  myRend: {fileID: 6667375955699303487}
+  myRb: {fileID: 7379330656267411739}
+  myCol: {fileID: 353179464507767466}
+  myTrigger: {fileID: 6667375955699303484}
   heightWhereToSpawn: 3
   fallSpeed: 6
-  data:
-    associatedIcon: {fileID: 0}
-    scannable: 0
-    fired: 0
-    arrived: 0
-    type: 0
+  isOnRepulse: 0
   impulseDuration: 0.25
   rockDetection: {fileID: 6667375956198307109}
   scannableObjectBehaviour: {fileID: 6667375955699303459}
   playerImpulseSource: {fileID: 8068176826541340084}
+  repulseDelay: 0.8
 --- !u!114 &6667375955699303456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +242,69 @@ MonoBehaviour:
     m_DirectionMode: 0
     m_DissipationMode: 2
     m_DissipationDistance: 25
+--- !u!1773428102 &3232042171868661921
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667375955699303460}
+  m_Enabled: 0
+  m_Weight: 1
+  m_TranslationAtRest: {x: 9.81, y: 12.81, z: 0}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffsets:
+  - {x: 0, y: -0.20100021, z: 0}
+  m_RotationOffsets:
+  - {x: 0, y: 0, z: 0}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 6667375956198307108}
+    weight: 1
+--- !u!70 &353179464507767466
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667375955699303460}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.22}
+  m_Size: {x: 0.64, y: 0.39}
+  m_Direction: 1
+--- !u!50 &7379330656267411739
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667375955699303460}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 250
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &6667375956198307109
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,14 +318,13 @@ GameObject:
   - component: {fileID: 6667375956198307105}
   - component: {fileID: 6667375956198307106}
   - component: {fileID: 6667375956198307107}
-  - component: {fileID: 5282018525016254084}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RockDetection
   m_TagString: ObjectRock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6667375956198307108
 Transform:
   m_ObjectHideFlags: 0
@@ -482,11 +548,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6667375956198307109}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -512,265 +578,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 6667375956198307105}
-    m_ColliderPaths:
-    - - X: 0
-        Y: 1755508
-      - X: -172277
-        Y: 1753394
-      - X: -344139
-        Y: 1747055
-      - X: -515173
-        Y: 1736508
-      - X: -684965
-        Y: 1721777
-      - X: -853107
-        Y: 1702898
-      - X: -1019194
-        Y: 1679917
-      - X: -1182826
-        Y: 1652889
-      - X: -1343608
-        Y: 1621878
-      - X: -1501153
-        Y: 1586961
-      - X: -1655082
-        Y: 1548220
-      - X: -1805024
-        Y: 1505750
-      - X: -1950617
-        Y: 1459652
-      - X: -2091510
-        Y: 1410038
-      - X: -2227366
-        Y: 1357026
-      - X: -2357855
-        Y: 1300746
-      - X: -2482664
-        Y: 1241332
-      - X: -2601492
-        Y: 1178927
-      - X: -2714054
-        Y: 1113683
-      - X: -2820076
-        Y: 1045755
-      - X: -2919305
-        Y: 975308
-      - X: -3011500
-        Y: 902511
-      - X: -3096441
-        Y: 827540
-      - X: -3173923
-        Y: 750576
-      - X: -3243757
-        Y: 671803
-      - X: -3305778
-        Y: 591412
-      - X: -3359834
-        Y: 509596
-      - X: -3405797
-        Y: 426553
-      - X: -3443555
-        Y: 342482
-      - X: -3473016
-        Y: 257586
-      - X: -3494111
-        Y: 172069
-      - X: -3506788
-        Y: 86138
-      - X: -3511017
-        Y: 0
-      - X: -3506788
-        Y: -86139
-      - X: -3494111
-        Y: -172070
-      - X: -3473016
-        Y: -257587
-      - X: -3443554
-        Y: -342483
-      - X: -3405796
-        Y: -426554
-      - X: -3359834
-        Y: -509598
-      - X: -3305777
-        Y: -591414
-      - X: -3243757
-        Y: -671805
-      - X: -3173921
-        Y: -750577
-      - X: -3096440
-        Y: -827541
-      - X: -3011500
-        Y: -902512
-      - X: -2919304
-        Y: -975308
-      - X: -2820076
-        Y: -1045755
-      - X: -2714053
-        Y: -1113683
-      - X: -2601493
-        Y: -1178927
-      - X: -2482665
-        Y: -1241331
-      - X: -2357856
-        Y: -1300745
-      - X: -2227367
-        Y: -1357026
-      - X: -2091512
-        Y: -1410037
-      - X: -1950618
-        Y: -1459651
-      - X: -1805026
-        Y: -1505749
-      - X: -1655085
-        Y: -1548219
-      - X: -1501156
-        Y: -1586960
-      - X: -1343611
-        Y: -1621878
-      - X: -1182830
-        Y: -1652888
-      - X: -1019198
-        Y: -1679916
-      - X: -853112
-        Y: -1702897
-      - X: -684970
-        Y: -1721776
-      - X: -515178
-        Y: -1736507
-      - X: -344145
-        Y: -1747055
-      - X: -172283
-        Y: -1753394
-      - X: -6
-        Y: -1755508
-      - X: 172270
-        Y: -1753394
-      - X: 344132
-        Y: -1747056
-      - X: 515165
-        Y: -1736508
-      - X: 684957
-        Y: -1721778
-      - X: 853099
-        Y: -1702899
-      - X: 1019186
-        Y: -1679918
-      - X: 1182818
-        Y: -1652890
-      - X: 1343599
-        Y: -1621880
-      - X: 1501144
-        Y: -1586963
-      - X: 1655073
-        Y: -1548223
-      - X: 1805015
-        Y: -1505752
-      - X: 1950608
-        Y: -1459655
-      - X: 2091502
-        Y: -1410041
-      - X: 2227357
-        Y: -1357030
-      - X: 2357847
-        Y: -1300750
-      - X: 2482656
-        Y: -1241336
-      - X: 2601484
-        Y: -1178932
-      - X: 2714046
-        Y: -1113687
-      - X: 2820069
-        Y: -1045760
-      - X: 2919298
-        Y: -975313
-      - X: 3011495
-        Y: -902516
-      - X: 3096436
-        Y: -827545
-      - X: 3173918
-        Y: -750581
-      - X: 3243754
-        Y: -671808
-      - X: 3305775
-        Y: -591417
-      - X: 3359832
-        Y: -509601
-      - X: 3405795
-        Y: -426557
-      - X: 3443553
-        Y: -342486
-      - X: 3473015
-        Y: -257589
-      - X: 3494110
-        Y: -172072
-      - X: 3506788
-        Y: -86141
-      - X: 3511017
-        Y: -2
-      - X: 3506789
-        Y: 86136
-      - X: 3494111
-        Y: 172067
-      - X: 3473017
-        Y: 257584
-      - X: 3443555
-        Y: 342481
-      - X: 3405797
-        Y: 426552
-      - X: 3359835
-        Y: 509596
-      - X: 3305778
-        Y: 591412
-      - X: 3243757
-        Y: 671803
-      - X: 3173923
-        Y: 750576
-      - X: 3096441
-        Y: 827541
-      - X: 3011500
-        Y: 902512
-      - X: 2919304
-        Y: 975308
-      - X: 2820075
-        Y: 1045755
-      - X: 2714052
-        Y: 1113683
-      - X: 2601491
-        Y: 1178928
-      - X: 2482662
-        Y: 1241333
-      - X: 2357853
-        Y: 1300747
-      - X: 2227363
-        Y: 1357028
-      - X: 2091507
-        Y: 1410039
-      - X: 1950613
-        Y: 1459653
-      - X: 1805019
-        Y: 1505751
-      - X: 1655077
-        Y: 1548222
-      - X: 1501147
-        Y: 1586962
-      - X: 1343602
-        Y: 1621880
-      - X: 1182819
-        Y: 1652890
-      - X: 1019187
-        Y: 1679918
-      - X: 853099
-        Y: 1702899
-      - X: 684957
-        Y: 1721778
-      - X: 515164
-        Y: 1736508
-      - X: 344130
-        Y: 1747056
-      - X: 172267
-        Y: 1753394
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 0.017227, y: -0.1753394}
@@ -902,29 +710,3 @@ CompositeCollider2D:
       - {x: -0.0172283, y: -0.1753394}
       - {x: -0.0000006, y: -0.1755508}
   m_VertexDistance: 0.0005
---- !u!1773428102 &5282018525016254084
-ParentConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6667375956198307109}
-  m_Enabled: 1
-  m_Weight: 0.25
-  m_TranslationAtRest: {x: 0, y: 0.201, z: 0}
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_TranslationOffsets:
-  - {x: 0, y: 0.20100021, z: 0}
-  m_RotationOffsets:
-  - {x: 0, y: 0, z: 0}
-  m_AffectTranslationX: 1
-  m_AffectTranslationY: 1
-  m_AffectTranslationZ: 1
-  m_AffectRotationX: 1
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 1
-  m_IsContraintActive: 1
-  m_IsLocked: 0
-  m_Sources:
-  - sourceTransform: {fileID: 6667375955699303486}
-    weight: 1

@@ -13,6 +13,7 @@ namespace Pitstop
         [SerializeField] Animator theFadeOnDead = default;
 
         bool delayIsPlaying = false;
+        bool playerReallyFeel = false;
 
         private void Update()
         {
@@ -22,7 +23,7 @@ namespace Pitstop
                 {
                     myCol.isTrigger = true;
                 }
-                else
+                else if (!playerReallyFeel)
                 {
                     myCol.isTrigger = false;
                 }
@@ -33,7 +34,7 @@ namespace Pitstop
                 {
                     myCol.isTrigger = true;
                 }
-                else
+                else if (!playerReallyFeel)
                 {
                     myCol.isTrigger = false;
                 }
@@ -73,6 +74,7 @@ namespace Pitstop
 
         private void HoleConsequence()
         {
+            playerReallyFeel = true;
             playerControllerIso.canMove = false;
             theFadeOnDead.SetTrigger("PlayerIsDead");
         }
