@@ -26,8 +26,10 @@ namespace Pitstop
         {
             if (isFired)
             {
+                
                 if (gameObject.tag != "ObjectRoot")
                 {
+                    
                     Shoot();
                 }
             }
@@ -36,6 +38,8 @@ namespace Pitstop
             {
                 isArrived = true;
                 isFired = false;
+
+                //GetComponentInChildren<AudioSource>().Stop();
             }
         }
 
@@ -49,7 +53,9 @@ namespace Pitstop
 
         public void Shoot()
         {
+            if (!GetComponentInChildren<AudioSource>().isPlaying) GetComponentInChildren<AudioSource>().Play();
             transform.position = Vector2.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
+            
         }
     }
 }

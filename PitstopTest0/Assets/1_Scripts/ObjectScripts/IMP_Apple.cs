@@ -12,6 +12,9 @@ namespace Pitstop
         [SerializeField] Animator myAnim = default;
         [SerializeField] GameObject explosionRange = default;
 
+        public AudioSource soundOfExplosion;
+        public AudioSource soundWhileInTheAir;
+
         private void Start()
         {
             myAnim = GetComponent<Animator>();
@@ -27,12 +30,17 @@ namespace Pitstop
 
         public void ExplosionAnimStart()
         {
+            
             myAnim.SetTrigger("Explosion");
+            
             hasExploded = true;
         }
 
         public void Explode()
         {
+            soundWhileInTheAir.Stop();
+            soundOfExplosion.Play();
+
             explosionRange.SetActive(true);
         }
 
