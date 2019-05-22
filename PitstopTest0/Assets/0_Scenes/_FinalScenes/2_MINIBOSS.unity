@@ -196,7 +196,7 @@ PrefabInstance:
     - target: {fileID: 8702863466639424714, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3530097
+      value: -2.3676639
       objectReference: {fileID: 0}
     - target: {fileID: 8702863466639424714, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
@@ -221,7 +221,7 @@ PrefabInstance:
     - target: {fileID: 8702863466639424714, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000008303091
+      value: 0.000008301925
       objectReference: {fileID: 0}
     - target: {fileID: 8702863466639424714, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
@@ -248,15 +248,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8702863467275572260, guid: a02a9cd6679c08c45853784c05123715,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702863466639424715, guid: a02a9cd6679c08c45853784c05123715,
+        type: 3}
+      propertyPath: m_ForceIntoRT
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8702863466875553468, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6669903
+      value: -0.6523361
       objectReference: {fileID: 0}
     - target: {fileID: 8702863466875553468, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000011050077
+      value: 0.000010805779
       objectReference: {fileID: 0}
     - target: {fileID: 8702863466875553468, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
@@ -266,7 +276,7 @@ PrefabInstance:
     - target: {fileID: 8702863466875553468, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.00007434177
+      value: -0.00007270843
       objectReference: {fileID: 0}
     - target: {fileID: 8702863466875553469, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
@@ -278,16 +288,6 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1633263017}
-    - target: {fileID: 8702863466639424715, guid: a02a9cd6679c08c45853784c05123715,
-        type: 3}
-      propertyPath: m_ForceIntoRT
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8702863467275572260, guid: a02a9cd6679c08c45853784c05123715,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a02a9cd6679c08c45853784c05123715, type: 3}
 --- !u!20 &48118675 stripped
@@ -1160,6 +1160,7 @@ GameObject:
   - component: {fileID: 215414849}
   - component: {fileID: 215414852}
   - component: {fileID: 215414850}
+  - component: {fileID: 215414853}
   m_Layer: 2
   m_Name: Eerick
   m_TagString: Enemy
@@ -1358,6 +1359,7 @@ MonoBehaviour:
   errorMargin: 0.1
   damageDealing: 1
   repulseTime: 1
+  myImpulseSource: {fileID: 215414853}
   playerHasTriggeredNative: 0
   haveToChangeItsSpot: 0
   timeBeforeRageMode: 8
@@ -1367,6 +1369,47 @@ MonoBehaviour:
   timeBeforeRageMode2: 6
   durationOfRageMode2: 0.5
   cooldownDuringRage2: 0.05
+--- !u!114 &215414853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215414844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_AmplitudeGain: 3
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.75
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
 --- !u!1 &234879339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,6 +1558,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239745483}
   m_CullTransparentMesh: 0
+--- !u!4 &260031639 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2751131727974156406, guid: ffdd2361f7c307649ab2e539b057c7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 845168457}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &277116458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8174704593899984719, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
@@ -22209,6 +22258,90 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b0b5e6a0fb741c468f16d1fed24a39e, type: 3}
+--- !u!1 &809056861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 809056862}
+  - component: {fileID: 809056863}
+  m_Layer: 0
+  m_Name: BeforeTheFight_part_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &809056862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809056861}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 260031639}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &809056863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809056861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  interactionButtonNeeded: 0
+  dialogueManager: {fileID: 0}
+  interactionButton: {fileID: 0}
+  dialogueInEnglish:
+    allDialoguePart:
+    - speaker: A Deer?
+      sentence: You...
+    - speaker: A Deer?
+      sentence: Put it back...
+    - speaker: A Deer?
+      sentence: It's our treasure.
+    - speaker: Zayn
+      sentence: Whut? What are you talking about?
+    - speaker: Zayn
+      sentence: Can you explain me what is going on here?
+    - speaker: A Deer?
+      sentence: Our treasure...
+    - speaker: A Deer?
+      sentence: (Is it talking about the crystal?)
+    - speaker: A Deer?
+      sentence: Put...
+    - speaker: A Deer?
+      sentence: It...
+    - speaker: A Deer?
+      sentence: BAAACK!!!
+  dialogueInFrench:
+    allDialoguePart:
+    - speaker: Etranger
+      sentence: '#&@_#!!!!'
+    - speaker: Zayn
+      sentence: "Un cerf ? Avec des pommes sur la t\xEAte ?"
+    - speaker: Un Cerf ?
+      sentence: Aidez...
+    - speaker: Cerf ?
+      sentence: Qu'est-ce que...
+  activationCheck: 0
+  debugging: 0
+  triggerSomethingWhenFinished: 1
+  codeOfTriggeredAction: StartFightMusic
 --- !u!1001 &845168457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22286,6 +22419,241 @@ PrefabInstance:
       propertyPath: dialogueWheelSystem
       value: 
       objectReference: {fileID: 429336176}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInFrench.allDialoguePart.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[2].speaker
+      value: A Deer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[2].sentence
+      value: Help... me...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInFrench.allDialoguePart.Array.data[2].speaker
+      value: Un Cerf ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInFrench.allDialoguePart.Array.data[2].sentence
+      value: Aidez...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: activationCheck
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[3].speaker
+      value: Zayn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[3].sentence
+      value: What the...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInFrench.allDialoguePart.Array.data[3].speaker
+      value: Cerf ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInFrench.allDialoguePart.Array.data[3].sentence
+      value: Qu'est-ce que...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[1].sentence
+      value: (What is this ? A deer with apples on its head?)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInFrench.allDialoguePart.Array.data[1].sentence
+      value: "Un cerf ? Avec des pommes sur la t\xEAte ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[4].speaker
+      value: A Deer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[4].sentence
+      value: Run...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[5].speaker
+      value: Zayn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[5].sentence
+      value: Who are you ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[6].speaker
+      value: A Deer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[6].sentence
+      value: R...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[7].speaker
+      value: A Deer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[7].sentence
+      value: '...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[8].speaker
+      value: Zayn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[8].sentence
+      value: (Is it... possessed or something?)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[9].speaker
+      value: A Deer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[9].sentence
+      value: You...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[10].speaker
+      value: A Deer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[10].sentence
+      value: Put it back...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[11].speaker
+      value: A Deer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[11].sentence
+      value: It's our treasure.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[12].speaker
+      value: Zayn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[12].sentence
+      value: Whut? What are you talking about?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[13].speaker
+      value: Zayn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[13].sentence
+      value: Could you explain me what is going on here?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[14].speaker
+      value: A Deer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[14].sentence
+      value: Our treasure...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[15].speaker
+      value: Zayn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[15].sentence
+      value: (Does it talking about the crystal?)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[16].speaker
+      value: A Deer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[16].sentence
+      value: Put...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[17].speaker
+      value: A Deer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[17].sentence
+      value: It...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[18].speaker
+      value: A Deer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[18].sentence
+      value: BAAACK!!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[19].speaker
+      value: Zayn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: dialogueInEnglish.allDialoguePart.Array.data[19].sentence
+      value: Oh oh...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: triggerSomethingWhenFinished
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997612, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: codeOfTriggeredAction
+      value: StartFightMusic
+      objectReference: {fileID: 0}
     - target: {fileID: 2751131728746054846, guid: ffdd2361f7c307649ab2e539b057c7ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22315,6 +22683,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131728596997614, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: m_Name
+      value: BeforeTheFight_part_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffdd2361f7c307649ab2e539b057c7ca, type: 3}
@@ -23964,7 +24337,7 @@ AudioSource:
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -24564,6 +24937,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8174704593899984717, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
+        type: 3}
+      propertyPath: soundOfExplosion
+      value: 
+      objectReference: {fileID: 304750268}
     - target: {fileID: 8174704593243583062, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
         type: 3}
       propertyPath: m_Layer
@@ -24574,11 +24952,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8174704593899984717, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
-        type: 3}
-      propertyPath: soundOfExplosion
-      value: 
-      objectReference: {fileID: 304750268}
     - target: {fileID: 8174704593243583067, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
         type: 3}
       propertyPath: m_Radius
@@ -24689,6 +25062,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1836668180}
   - component: {fileID: 1836668181}
+  - component: {fileID: 1836668182}
   m_Layer: 0
   m_Name: MusicChill
   m_TagString: Untagged
@@ -24720,11 +25094,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e2275eaea8367c0408ccbabbb7b8bab2, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.104
+  m_audioClip: {fileID: 8300000, guid: 7627f74d9a3f9b84892cda2c0140e757, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.125
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -24806,6 +25180,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1836668182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836668179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ea3091ded03e64e87931959c397dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 1557290759}
+  fightMusic: {fileID: 1539912099}
+  timeOffadeOut: 2
+  timeOffadeIn: 2
+  nextDialogueTrigger: {fileID: 809056863}
 --- !u!1 &1884813229
 GameObject:
   m_ObjectHideFlags: 0
@@ -25332,22 +25723,22 @@ PrefabInstance:
     - target: {fileID: 2510001323631958657, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2510001323631958657, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2510001323770926924, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2510001323770926924, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2510001323338571159, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
