@@ -126,11 +126,21 @@ namespace Pitstop
             }
 
             string nameOfTheCurrentSpeaker = namesOfSpeakers.Dequeue();
+
+
+
             string sentence = sentences.Dequeue();
 
             //Displays letter by letter
             StopAllCoroutines();
+
             nameText.GetComponent<TextMeshProUGUI>().text = nameOfTheCurrentSpeaker;
+
+            /*
+            if (nameOfTheCurrentSpeaker == "Deer?" || nameOfTheCurrentSpeaker == "Cerf ?") nameText.GetComponent<TextMeshProUGUI>().color = new Color(1f, 0f, 0.0902f);
+            else nameText.GetComponent<TextMeshProUGUI>().color = new Color(0.2862f, 0.9686f, 1f);
+            */
+
             StartCoroutine(TypeSentence(sentence));
         }
 

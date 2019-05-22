@@ -12,6 +12,7 @@ namespace Pitstop
         [SerializeField] float speedOfEscape = 4f;
         [SerializeField] float timeBeforeEscaping = 0.5f;
         [SerializeField] bool isFlyingAway = false;
+        [SerializeField] Collider2D attentionCollider = default;
 
         [Header("Return to center")]
         public bool isReturningFromForest = false;
@@ -61,6 +62,7 @@ namespace Pitstop
                     isReturnedInTheCenter = true;
                     FindObjectOfType<DialogueManager>().codeOfTheLastTriggeringSentence = "";
 
+                    attentionCollider.enabled = true;
                     GetComponent<Collider2D>().enabled = true;
                     
 
@@ -80,6 +82,7 @@ namespace Pitstop
             yield return new WaitForSeconds(timeBeforeEscaping);
             isFlyingAway = true;
             GetComponent<Collider2D>().enabled = false;
+            attentionCollider.enabled = false;
         }
     }
 }

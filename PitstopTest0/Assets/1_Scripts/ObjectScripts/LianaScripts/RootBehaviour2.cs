@@ -49,9 +49,16 @@ namespace Pitstop
         Vector2 appleTargetPos;
         Vector2 previousTargetpos;
 
+        //SoundManagement
+        AudioSource soundOfPilarSelection;
+        float originalPitch;
+
+
         private void Start()
         {
             inputManager = GameManager.Instance.inputManager;
+            soundOfPilarSelection = GameObject.FindGameObjectWithTag("SoundLianaSelection").GetComponent<AudioSource>();
+            originalPitch = soundOfPilarSelection.pitch;
 
             numberOfHookpointsOnStart = hookpoints.Length;
 
@@ -79,6 +86,10 @@ namespace Pitstop
         public void ResetHookpoints()
         {
             hookpoints = new GameObject[numberOfHookpointsOnStart];
+
+            soundOfPilarSelection.pitch = originalPitch;
+            
+
             trips = new RaycastHit2D[numberOfHookpointsOnStart];
             raycastsOkay = false;
             impactAngleSet = false;
@@ -158,6 +169,8 @@ namespace Pitstop
                 {
                     if (trips[i].collider != null && trips[i].collider.gameObject.tag != "HookPoint" && i >= 1)
                     {
+                        Debug.Log(trips[i].collider.gameObject.name);
+
                         if (trips[i].collider.gameObject.tag == "Player")
                         {
                             StartCoroutine(PlayerBounce(hookpoints[i-1].transform.position, hookpoints[i].transform.position, trips[i].collider.gameObject.transform.position));
@@ -171,6 +184,12 @@ namespace Pitstop
                             StartCoroutine(HammerheadBounce(trips[i].collider.gameObject));
                         }
                         else if (trips[i].collider.gameObject.name == "Eerick")
+                        {
+                            myLineRend.enabled = false;
+                            mark = true;
+                            ResetHookpoints();
+                        }
+                        else if (trips[i].collider.gameObject.tag == "Arrow")
                         {
                             myLineRend.enabled = false;
                             mark = true;
