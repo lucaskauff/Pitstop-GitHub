@@ -59,6 +59,8 @@ namespace Pitstop
 
             transform.position = positionPoints[0].position;
 
+            //tp toi au starting point
+
             storedHealth = enemyHealthManager.enemyMaxHealth;
             goBackToFightSpeedStored = goBackToFightSpeed;
 
