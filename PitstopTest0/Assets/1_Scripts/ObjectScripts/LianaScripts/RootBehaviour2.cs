@@ -49,9 +49,14 @@ namespace Pitstop
         Vector2 appleTargetPos;
         Vector2 previousTargetpos;
 
+        //SoundManagement
+        AudioSource soundOfPilarSelection;
+
+
         private void Start()
         {
             inputManager = GameManager.Instance.inputManager;
+            soundOfPilarSelection = GameObject.FindGameObjectWithTag("SoundLianaSelection").GetComponent<AudioSource>();
 
             numberOfHookpointsOnStart = hookpoints.Length;
 
@@ -79,6 +84,10 @@ namespace Pitstop
         public void ResetHookpoints()
         {
             hookpoints = new GameObject[numberOfHookpointsOnStart];
+
+            soundOfPilarSelection.pitch = 1f;
+            
+
             trips = new RaycastHit2D[numberOfHookpointsOnStart];
             raycastsOkay = false;
             impactAngleSet = false;
