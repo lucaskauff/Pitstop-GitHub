@@ -13,6 +13,20 @@ namespace Pitstop
         [HideInInspector] public bool plateDown = false;
         [HideInInspector] public GameObject objectOnPlate;
 
+        //Sound
+        AudioSource soundPressurePlate;
+
+        private void Start()
+        {
+            soundPressurePlate = GameObject.FindGameObjectWithTag("SoundPressurePlate").GetComponent<AudioSource>();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "ObjectRock") soundPressurePlate.Play();
+        }
+
+
         private void OnTriggerStay2D(Collider2D collision)
         {
             if (objectOnPlate != null && collision.gameObject != objectOnPlate)
@@ -34,6 +48,7 @@ namespace Pitstop
             if (collision.gameObject == objectOnPlate)
             {
                 objectOnPlate = null;
+                soundPressurePlate.Play();
             }
         }
 
@@ -42,10 +57,13 @@ namespace Pitstop
             if (objectOnPlate == null)
             {
                 plateDown = false;
+
+                
             }
             else
             {
                 plateDown = true;
+                
             }
 
             myAnim.SetBool("PlateDown", plateDown);
