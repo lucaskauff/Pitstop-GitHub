@@ -22,9 +22,13 @@ namespace Pitstop
         //Private
         bool canContinue = true;
 
+        //SoundManagement
+        AudioSource soundOfSelection;
+
         private void Start()
         {
             inputManager = GameManager.Instance.inputManager;
+            soundOfSelection = GameObject.FindGameObjectWithTag("SoundLianaSelection").GetComponent<AudioSource>();
         }
 
         private void Update()
@@ -68,6 +72,10 @@ namespace Pitstop
                     if (associatedRoot.hookpoints[i] == null && canContinue == true)
                     {
                         associatedRoot.hookpoints[i] = gameObject;
+
+                        soundOfSelection.pitch += 0.2f;
+                        soundOfSelection.Play();
+
                         canContinue = false;
                         markSign = true;
                     }
