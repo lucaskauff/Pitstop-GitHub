@@ -17,7 +17,7 @@ namespace Pitstop
         [SerializeField] Color outlineColorOnMouseOver = default;
 
         //Public
-        [HideInInspector] public bool markSign = false;
+        public bool markSign = false;
 
         //Private
         bool canContinue = true;
