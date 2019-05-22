@@ -169,6 +169,8 @@ namespace Pitstop
                 {
                     if (trips[i].collider != null && trips[i].collider.gameObject.tag != "HookPoint" && i >= 1)
                     {
+                        Debug.Log(trips[i].collider.gameObject.name);
+
                         if (trips[i].collider.gameObject.tag == "Player")
                         {
                             StartCoroutine(PlayerBounce(hookpoints[i-1].transform.position, hookpoints[i].transform.position, trips[i].collider.gameObject.transform.position));
@@ -182,6 +184,12 @@ namespace Pitstop
                             StartCoroutine(HammerheadBounce(trips[i].collider.gameObject));
                         }
                         else if (trips[i].collider.gameObject.name == "Eerick")
+                        {
+                            myLineRend.enabled = false;
+                            mark = true;
+                            ResetHookpoints();
+                        }
+                        else if (trips[i].collider.gameObject.tag == "Arrow")
                         {
                             myLineRend.enabled = false;
                             mark = true;

@@ -21,10 +21,10 @@ namespace Pitstop
 
         //Serializable
         [SerializeField] float impulseDuration = default;
-        [SerializeField] GameObject rockDetection = default;
         [SerializeField] ScannableObjectBehaviour scannableObjectBehaviour = default;
         [SerializeField] CinemachineImpulseSource playerImpulseSource = default;
         [SerializeField] float repulseDelay = 1f;
+        [SerializeField] float newMass = 250f;
 
         //Private
         private bool impulseGenerated = false;
@@ -52,14 +52,12 @@ namespace Pitstop
                     fallCheck = true;
                 }
 
-                //rockDetection.SetActive(false);
                 myCol.enabled = false;
                 myTrigger.enabled = false;
                 return;
             }
             else
             {
-                //rockDetection.SetActive(true);
                 myCol.enabled = true;
                 myTrigger.enabled = true;
             }
@@ -100,6 +98,7 @@ namespace Pitstop
         IEnumerator WaitAfterBeingRepulsed()
         {
             myRb.bodyType = RigidbodyType2D.Dynamic;
+            myRb.mass = newMass;
             myRb.gravityScale = 0;
             myCol.isTrigger = true;
             isOnRepulse = true;
