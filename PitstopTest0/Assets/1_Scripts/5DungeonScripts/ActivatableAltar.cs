@@ -18,6 +18,8 @@ namespace Pitstop
         [SerializeField] CinemachineImpulseSource associatedDoorImpulseSource = default;
         [SerializeField] Transform doorPointer = default;
         [SerializeField] Animator additionnalDoor = default;
+        [SerializeField] bool needsPressurePlate = false;
+        [SerializeField] PressurePlateBehaviour thePressurePlate = default;
 
         [HideInInspector] public bool isActivatable = false;
         [HideInInspector] public bool doorIsOpened = false;
@@ -35,6 +37,11 @@ namespace Pitstop
             {
                 if (interactionButton.activeInHierarchy && inputManager.interactionButton)
                 {
+                    if (needsPressurePlate && !thePressurePlate.plateDown)
+                    {
+                        return;
+                    }
+
                     vCamAssociatedDoor.SetActive(true);
                     vCamPlayer.SetActive(false);
                     playerControllerIso.canMove = false;
