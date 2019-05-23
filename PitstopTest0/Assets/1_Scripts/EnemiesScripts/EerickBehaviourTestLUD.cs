@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 namespace Pitstop
 {
@@ -20,6 +21,7 @@ namespace Pitstop
         [SerializeField] float errorMargin = 0.5f;
         [SerializeField] int damageDealing = 1;
         [SerializeField] float repulseTime = 1f;
+        [SerializeField] CinemachineImpulseSource myImpulseSource = default;
 
         bool fightCanStart = false;
         public bool playerHasTriggeredNative = false;
@@ -58,8 +60,7 @@ namespace Pitstop
 
 
             transform.position = positionPoints[0].position;
-
-            //tp toi au starting point
+            
 
             storedHealth = enemyHealthManager.enemyMaxHealth;
             goBackToFightSpeedStored = goBackToFightSpeed;
@@ -78,6 +79,8 @@ namespace Pitstop
                     fightCanStart = true;
                     StartCoroutine(RageManagement());
                 }
+
+
             }
             else
             {
@@ -231,6 +234,7 @@ namespace Pitstop
                 yield return new WaitForSeconds(timeBeforeRageMode2);
 
                 cooldown = cooldownDuringRage2;
+                myImpulseSource.GenerateImpulse();
 
                 yield return new WaitForSeconds(durationOfRageMode2);
 
@@ -243,6 +247,7 @@ namespace Pitstop
                 yield return new WaitForSeconds(timeBeforeRageMode);
 
                 cooldown = cooldownDuringRage;
+                myImpulseSource.GenerateImpulse();
 
                 yield return new WaitForSeconds(durationOfRageMode);
 

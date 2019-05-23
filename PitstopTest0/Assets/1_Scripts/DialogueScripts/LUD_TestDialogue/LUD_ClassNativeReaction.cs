@@ -47,7 +47,7 @@ namespace Pitstop
         {
             if (code == "?")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/interrogation_square_big");
+                return Resources.Load<Sprite>("Celia_Signs/celia_interrogation_with_outline");
             }
             else if (code == "north")
             {
@@ -67,40 +67,48 @@ namespace Pitstop
             }
             else if (code == "me")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/me_square_big");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/me_square_big");
+                return Resources.Load<Sprite>("Celia_Signs/celia_me_with_outline"); ;
             }
             else if (code == "you")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/you_square_big");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/you_square_big")
+                return Resources.Load<Sprite>("Celia_Signs/celia_you_with_outline"); ;
             }
             else if (code == "see")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/see_square_big");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/see_square_big");
+                return Resources.Load<Sprite>("Celia_Signs/celia_see_with_outline");
             }
             else if (code == "photo")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/photo_square_big");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/photo_square_big");
+                return Resources.Load<Sprite>("Celia_Signs/celia_photo_with_outline"); ;
             }
             else if (code == "gniack")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/gniack_square_big");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/gniack_square_big");
+                return Resources.Load<Sprite>("Celia_Signs/celia_angry_with_outline"); ;
             }
             else if (code == "no")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/no_square_big");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/no_square_big");
+                return Resources.Load<Sprite>("Celia_Signs/celia_no_with_outline"); ;
             }
             else if (code == "repair")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/repair_square");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/repair_square");
+                return Resources.Load<Sprite>("Celia_Signs/celia_repair_with_outline"); ;
             }
             else if (code == "danger")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/danger_square_big");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/danger_square_big");
+                return Resources.Load<Sprite>("Celia_Signs/celia_danger_with_outline"); ;
             }
             else if (code == "child")
             {
-                //Debug.Log("Child as been tested");
-                return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/child_square");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/CrappySigns(by_Luc)/child_square");
+                return Resources.Load<Sprite>("Celia_Signs/celia_child_with_outline"); ;
             }
 
 

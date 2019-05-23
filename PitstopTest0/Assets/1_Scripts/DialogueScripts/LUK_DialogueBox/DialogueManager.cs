@@ -35,6 +35,10 @@ namespace Pitstop
         bool willtheCurrentSentencesTriggeredSomethingWhenFinished = false;
         string memoryForTheTriggerCode = null;
 
+        [Header("Differents Skins")]
+        [SerializeField] Sprite blueSprite = default;
+        [SerializeField] Sprite redSprite = default;
+
         void Start()
         {
             inputManager = GameManager.Instance.inputManager;
@@ -136,10 +140,17 @@ namespace Pitstop
 
             nameText.GetComponent<TextMeshProUGUI>().text = nameOfTheCurrentSpeaker;
 
-            /*
-            if (nameOfTheCurrentSpeaker == "Deer?" || nameOfTheCurrentSpeaker == "Cerf ?") nameText.GetComponent<TextMeshProUGUI>().color = new Color(1f, 0f, 0.0902f);
-            else nameText.GetComponent<TextMeshProUGUI>().color = new Color(0.2862f, 0.9686f, 1f);
-            */
+
+            if (nameOfTheCurrentSpeaker == "A Deer?" || nameOfTheCurrentSpeaker == "Un Cerf ?" || nameOfTheCurrentSpeaker == "???")
+            {
+                nameText.GetComponent<TextMeshProUGUI>().color = new Color(1f, 0f, 0.0902f);
+                diaBox.gameObject.GetComponent<Image>().sprite = redSprite;
+            }
+            else
+            {
+                nameText.GetComponent<TextMeshProUGUI>().color = new Color(0.2862f, 0.9686f, 1f);
+                diaBox.gameObject.GetComponent<Image>().sprite = blueSprite;
+            }
 
             StartCoroutine(TypeSentence(sentence));
         }
