@@ -18,6 +18,9 @@ namespace Pitstop
         public float heightWhereToSpawn;
         public float fallSpeed;
         public bool isOnRepulse = false;
+        public bool lianaRepulse = false;        
+        public Vector2 newTarget;
+        public float projSpeed = 1;
 
         //Serializable
         [SerializeField] float impulseDuration = default;
@@ -60,6 +63,11 @@ namespace Pitstop
             {
                 myCol.enabled = true;
                 myTrigger.enabled = true;
+
+                if (lianaRepulse)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, newTarget, projSpeed * Time.deltaTime);
+                }
             }
 
             if (scannableObjectBehaviour.isArrived && !arrivalCheck)
