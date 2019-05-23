@@ -37,10 +37,6 @@ namespace Pitstop
             {
                 if (interactionButton.activeInHierarchy && inputManager.interactionButton)
                 {
-                    if (needsPressurePlate && !thePressurePlate.plateDown)
-                    {
-                        return;
-                    }
 
                     vCamAssociatedDoor.SetActive(true);
                     vCamPlayer.SetActive(false);
@@ -57,7 +53,12 @@ namespace Pitstop
             else if ((Vector2)mainCam.transform.position == (Vector2)doorPointer.position && !triggerDoorOpeningCheck)
             {
                 associatedDoorAnim.SetTrigger("OpenTheDoor");
-                associatedDoorImpulseSource.GenerateImpulse();
+
+                if (associatedDoorImpulseSource != null)
+                {
+                    associatedDoorImpulseSource.GenerateImpulse();
+                }
+
                 triggerDoorOpeningCheck = true;
             }
         }
@@ -66,6 +67,14 @@ namespace Pitstop
         {
             if (collision.gameObject.tag == "Player" && !triggerOnceCheck)
             {
+                if (needsPressurePlate)
+                {
+                    if (!thePressurePlate.plateDown)
+                    {
+                        return;
+                    }
+                }
+
                 interactionButton.SetActive(true);
             }
         }
