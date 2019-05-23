@@ -31,7 +31,7 @@ namespace Pitstop
                     }
                     else
                     {
-                        if (valueOfWord == 41) crystalButtonInDialogueWheel.GetComponentInChildren<Text>().text = "Réparer";
+                        if (valueOfWord == 41) crystalButtonInDialogueWheel.GetComponentInChildren<Text>().text = "Reparer";
                         if (valueOfWord == 43) crystalButtonInDialogueWheel.GetComponentInChildren<Text>().text = "Danger";
                         if (valueOfWord == 47) crystalButtonInDialogueWheel.GetComponentInChildren<Text>().text = "Enfant";
                     }

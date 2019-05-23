@@ -196,12 +196,12 @@ PrefabInstance:
     - target: {fileID: 8702863466639424714, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3676639
+      value: -2.3690505
       objectReference: {fileID: 0}
     - target: {fileID: 8702863466639424714, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.050000012
+      value: 0.05000049
       objectReference: {fileID: 0}
     - target: {fileID: 8702863466639424714, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
@@ -221,7 +221,7 @@ PrefabInstance:
     - target: {fileID: 8702863466639424714, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000008301925
+      value: 0.00000830134
       objectReference: {fileID: 0}
     - target: {fileID: 8702863466639424714, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
@@ -261,12 +261,12 @@ PrefabInstance:
     - target: {fileID: 8702863466875553468, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6523361
+      value: -0.6509495
       objectReference: {fileID: 0}
     - target: {fileID: 8702863466875553468, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000010805779
+      value: 0.000010305212
       objectReference: {fileID: 0}
     - target: {fileID: 8702863466875553468, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
@@ -276,7 +276,7 @@ PrefabInstance:
     - target: {fileID: 8702863466875553468, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.00007270843
+      value: -0.00007255355
       objectReference: {fileID: 0}
     - target: {fileID: 8702863466875553469, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
@@ -22317,27 +22317,43 @@ MonoBehaviour:
     - speaker: Zayn
       sentence: Whut? What are you talking about?
     - speaker: Zayn
-      sentence: Can you explain me what is going on here?
+      sentence: The crystal?
     - speaker: A Deer?
       sentence: Our treasure...
-    - speaker: A Deer?
-      sentence: (Is it talking about the crystal?)
+    - speaker: Zayn
+      sentence: (Yup... I think it wants the crystal?)
     - speaker: A Deer?
       sentence: Put...
     - speaker: A Deer?
       sentence: It...
     - speaker: A Deer?
       sentence: BAAACK!!!
+    - speaker: Zayn
+      sentence: You want it? So come at me!
   dialogueInFrench:
     allDialoguePart:
-    - speaker: Etranger
-      sentence: '#&@_#!!!!'
-    - speaker: Zayn
-      sentence: "Un cerf ? Avec des pommes sur la t\xEAte ?"
     - speaker: Un Cerf ?
-      sentence: Aidez...
-    - speaker: Cerf ?
-      sentence: Qu'est-ce que...
+      sentence: Toi...
+    - speaker: Un Cerf ?
+      sentence: Rend le nous...
+    - speaker: Un Cerf ?
+      sentence: "C'est notre tr\xE9sor."
+    - speaker: Zayn
+      sentence: Hein ? De quoi tu parles ?
+    - speaker: Zayn
+      sentence: De ce cristal ?
+    - speaker: Un Cerf ?
+      sentence: "Notre tr\xE9sor..."
+    - speaker: Zayn
+      sentence: (Yeeep... Je pense qu'il parle du cristal.)
+    - speaker: Un Cerf ?
+      sentence: Rend...
+    - speaker: Un Cerf ?
+      sentence: Le...
+    - speaker: Un Cerf ?
+      sentence: NOOOUS !!!
+    - speaker: Zayn
+      sentence: Tu le veux ? Bah viens le chercher !
   activationCheck: 0
   debugging: 0
   triggerSomethingWhenFinished: 1
@@ -22727,6 +22743,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PackOfSoundNature
       objectReference: {fileID: 0}
+    - target: {fileID: 9100323399579231867, guid: 7a3acf9cdf4cd4647bce02aa88cfd277,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 9100323399542723440, guid: 7a3acf9cdf4cd4647bce02aa88cfd277,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22782,15 +22803,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9100323399579231867, guid: 7a3acf9cdf4cd4647bce02aa88cfd277,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 9100323399351767364, guid: 7a3acf9cdf4cd4647bce02aa88cfd277,
         type: 3}
       propertyPath: m_Volume
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100323399351767364, guid: 7a3acf9cdf4cd4647bce02aa88cfd277,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100323399351767364, guid: 7a3acf9cdf4cd4647bce02aa88cfd277,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100323399351767364, guid: 7a3acf9cdf4cd4647bce02aa88cfd277,
+        type: 3}
+      propertyPath: Loop
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a3acf9cdf4cd4647bce02aa88cfd277, type: 3}
@@ -24224,16 +24255,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PointsInLevel
       objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.14
-      objectReference: {fileID: 0}
     - target: {fileID: 3556835858144363793, guid: aaae4f4779dd9644fa2811e5ecbc686f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24288,6 +24309,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 637199398959195561, guid: aaae4f4779dd9644fa2811e5ecbc686f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaae4f4779dd9644fa2811e5ecbc686f, type: 3}
@@ -24937,11 +24968,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8174704593899984717, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
-        type: 3}
-      propertyPath: soundOfExplosion
-      value: 
-      objectReference: {fileID: 304750268}
     - target: {fileID: 8174704593243583062, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
         type: 3}
       propertyPath: m_Layer
@@ -24967,6 +24993,11 @@ PrefabInstance:
       propertyPath: m_ForceVariation
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8174704593899984717, guid: 5b0b5e6a0fb741c468f16d1fed24a39e,
+        type: 3}
+      propertyPath: soundOfExplosion
+      value: 
+      objectReference: {fileID: 304750268}
     - target: {fileID: 160193487, guid: 5b0b5e6a0fb741c468f16d1fed24a39e, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -25194,7 +25225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1557290759}
   fightMusic: {fileID: 1539912099}
-  timeOffadeOut: 2
+  timeOffadeOut: 4
   timeOffadeIn: 2
   nextDialogueTrigger: {fileID: 809056863}
 --- !u!1 &1884813229
@@ -25442,6 +25473,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zayn
       objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint.Array.data[0]
+      value: 
+      objectReference: {fileID: 1556662621}
+    - target: {fileID: 8558634675562326383, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: theFadeOnDead
+      value: 
+      objectReference: {fileID: 1122524067}
+    - target: {fileID: 8558634675562326383, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: postProRedVignette
+      value: 
+      objectReference: {fileID: 209529670}
     - target: {fileID: 8827798457674550477, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25497,21 +25543,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint.Array.data[0]
-      value: 
-      objectReference: {fileID: 1556662621}
-    - target: {fileID: 8558634675562326383, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: theFadeOnDead
-      value: 
-      objectReference: {fileID: 1122524067}
-    - target: {fileID: 8558634675562326383, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: postProRedVignette
-      value: 
-      objectReference: {fileID: 209529670}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da7a6d321a067ed49854b9c1c18766bc, type: 3}
 --- !u!1001 &2004457078
@@ -26100,6 +26131,24 @@ PrefabInstance:
       objectReference: {fileID: 3466213904368604523}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a5bb14240866e34d814a400c8470749, type: 3}
+--- !u!1 &2117843838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9100323399351767366, guid: 7a3acf9cdf4cd4647bce02aa88cfd277,
+    type: 3}
+  m_PrefabInstance: {fileID: 915478607}
+  m_PrefabAsset: {fileID: 0}
+--- !u!168 &2117843841
+AudioEchoFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117843838}
+  m_Enabled: 1
+  m_Delay: 10
+  m_DecayRatio: 0.6
+  m_WetMix: 1
+  m_DryMix: 1
 --- !u!1 &2139848931
 GameObject:
   m_ObjectHideFlags: 0

@@ -234,6 +234,7 @@ namespace Pitstop
                 yield return new WaitForSeconds(timeBeforeRageMode2);
 
                 cooldown = cooldownDuringRage2;
+                myImpulseSource.GenerateImpulse();
 
                 yield return new WaitForSeconds(durationOfRageMode2);
 

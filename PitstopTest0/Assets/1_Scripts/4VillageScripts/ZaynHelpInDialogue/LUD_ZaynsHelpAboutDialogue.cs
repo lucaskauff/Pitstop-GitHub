@@ -8,6 +8,7 @@ namespace Pitstop
     public class LUD_ZaynsHelpAboutDialogue : MonoBehaviour
     {
         bool isLanguageOfTheGameenglish;
+        [SerializeField] GameManager gameManager = default;
 
         [Header("Dialogue Wheels Systems")]
         [SerializeField] GameObject dialogueSystemEnglish = default;
@@ -42,24 +43,19 @@ namespace Pitstop
         // Start is called before the first frame update
         void Start()
         {
-            isLanguageOfTheGameenglish = FindObjectOfType<GameManager>().languageSetToEnglish;
+            gameManager = FindObjectOfType<GameManager>();
+            isLanguageOfTheGameenglish = gameManager.languageSetToEnglish;
 
-            if (isLanguageOfTheGameenglish)
-            {
-                dialogueSystemEnglish.SetActive(true);
-                dialogueSystemFrench.SetActive(false);
-            }
-            else
-            {
-                dialogueSystemEnglish.SetActive(false);
-                dialogueSystemFrench.SetActive(true);
-            }
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-            
+            isLanguageOfTheGameenglish = gameManager.languageSetToEnglish;
+
+            CheckAndChangeLanguage();
+
             if (nbrOfInterrogation >= minNbrOfInterrogationForTriggerFourthHelp)
             {
                fourthDialogueOfHelps.TriggerDialogueDirectly();
@@ -70,26 +66,40 @@ namespace Pitstop
             {
                 thirdDialogueOfHelps.TriggerDialogueDirectly();
 
-                if (isLanguageOfTheGameenglish) textGniackEn.GetComponent<Text>().text = "To eat";
-                else textGniackFr.GetComponent<Text>().text = "Manger";
+                textGniackEn.GetComponent<Text>().text = "To eat";
+                textGniackFr.GetComponent<Text>().text = "Manger";
             }
             else if (nbrOfInterrogation >= minNbrOfInterrogationForTriggerSecondHelp)
             {
                 secondDialogueOfHelps.TriggerDialogueDirectly();
 
-                if (isLanguageOfTheGameenglish) textSeeEn.GetComponent<Text>().text = "To See";
-                else textSeeFr.GetComponent<Text>().text = "Voir";
+                textSeeEn.GetComponent<Text>().text = "To See";
+                textSeeFr.GetComponent<Text>().text = "Voir";
             }
             else if (nbrOfInterrogation>=minNbrOfInterrogationForTriggerFirstHelp)
             {
                 firstDialogueOfHelps.TriggerDialogueDirectly();
 
-                if (isLanguageOfTheGameenglish) textMeEn.GetComponent<Text>().text = "Me";
-                else textMeFr.GetComponent<Text>().text = "Moi";
-                if (isLanguageOfTheGameenglish) textYouEn.GetComponent<Text>().text = "You";
-                else textYouFr.GetComponent<Text>().text = "Toi";
+                textMeEn.GetComponent<Text>().text = "Me";
+                textMeFr.GetComponent<Text>().text = "Moi";
+                textYouEn.GetComponent<Text>().text = "You";
+                textYouFr.GetComponent<Text>().text = "Toi";
             }
             
+        }
+
+        void CheckAndChangeLanguage()
+        {
+            if (isLanguageOfTheGameenglish)
+            {
+                dialogueSystemEnglish.SetActive(true);
+                dialogueSystemFrench.SetActive(false);
+            }
+            else
+            {
+                dialogueSystemEnglish.SetActive(false);
+                dialogueSystemFrench.SetActive(true);
+            }
         }
     }
 }

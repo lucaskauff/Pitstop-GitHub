@@ -40,7 +40,9 @@ namespace Pitstop
         IEnumerator MusicTransition()
         {
             float nbrOfStep = 20f;
-            
+
+            //TRANSITION ONE AFTER AN OTHER
+            /*
             for (int i=0 ; i<nbrOfStep ; i++)
             {
                 GetComponent<AudioSource>().volume -= originalVolumeOfChillMusic / nbrOfStep;
@@ -68,6 +70,26 @@ namespace Pitstop
 
             //nextDialogueTrigger.TriggerDialogueDirectly();
             //yield return null;
+            */
+
+
+            //TRANSITION A THE SAME TIME\\
+            fightMusic.volume = 0f;
+            fightMusic.mute = false;
+
+            for (int i = 0; i < nbrOfStep; i++)
+            {
+                GetComponent<AudioSource>().volume -= originalVolumeOfChillMusic / nbrOfStep;
+                fightMusic.volume += originalVolumeOfFightMusic / nbrOfStep;
+                yield return new WaitForSeconds(timeOffadeOut / nbrOfStep);
+                
+            }
+
+            GetComponent<AudioSource>().volume = 0f;
+            GetComponent<AudioSource>().Stop();
+
+            fightMusic.volume = originalVolumeOfFightMusic;
+            
 
         }
     }
