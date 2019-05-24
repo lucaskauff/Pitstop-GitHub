@@ -1,5 +1,105 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &809056861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 809056862}
+  - component: {fileID: 809056863}
+  m_Layer: 0
+  m_Name: BeforeTheFight_part_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &809056862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809056861}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2751131727974156406}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &809056863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809056861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  interactionButtonNeeded: 0
+  dialogueManager: {fileID: 0}
+  interactionButton: {fileID: 0}
+  dialogueInEnglish:
+    allDialoguePart:
+    - speaker: A Deer?
+      sentence: You...
+    - speaker: A Deer?
+      sentence: Put it back...
+    - speaker: A Deer?
+      sentence: It's our treasure.
+    - speaker: Zayn
+      sentence: Whut? What are you talking about?
+    - speaker: Zayn
+      sentence: The crystal?
+    - speaker: A Deer?
+      sentence: Our treasure...
+    - speaker: Zayn
+      sentence: (Yup... I think it wants the crystal?)
+    - speaker: A Deer?
+      sentence: Put...
+    - speaker: A Deer?
+      sentence: It...
+    - speaker: A Deer?
+      sentence: BAAACK!!!
+    - speaker: Zayn
+      sentence: You want it? So come at me!
+  dialogueInFrench:
+    allDialoguePart:
+    - speaker: Un Cerf ?
+      sentence: Toi...
+    - speaker: Un Cerf ?
+      sentence: Rend le nous...
+    - speaker: Un Cerf ?
+      sentence: "C'est notre tr\xE9sor."
+    - speaker: Zayn
+      sentence: Hein ? De quoi tu parles ?
+    - speaker: Zayn
+      sentence: De ce cristal ?
+    - speaker: Un Cerf ?
+      sentence: "Notre tr\xE9sor..."
+    - speaker: Zayn
+      sentence: (Yeeep... Je pense qu'il parle du cristal.)
+    - speaker: Un Cerf ?
+      sentence: Rend...
+    - speaker: Un Cerf ?
+      sentence: Le...
+    - speaker: Un Cerf ?
+      sentence: NOOOUS !!!
+    - speaker: Zayn
+      sentence: Tu le veux ? Bah viens le chercher !
+  activationCheck: 0
+  debugging: 0
+  triggerSomethingWhenFinished: 1
+  codeOfTriggeredAction: 
 --- !u!1 &2751131727974156407
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,6 +130,7 @@ Transform:
   - {fileID: 2751131728596997613}
   - {fileID: 2751131729250399917}
   - {fileID: 2751131729062756038}
+  - {fileID: 809056862}
   m_Father: {fileID: 2751131729104912871}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -448,7 +549,7 @@ GameObject:
   - component: {fileID: 2751131728596997613}
   - component: {fileID: 2751131728596997612}
   m_Layer: 0
-  m_Name: NativeSaySomethingNotUnderstandable
+  m_Name: BeforeTheFight_part_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -490,17 +591,35 @@ MonoBehaviour:
     - speaker: Stranger
       sentence: '#&@_#!!!!'
     - speaker: Zayn
+      sentence: (What is this ? A deer with apples on its head?)
+    - speaker: A Deer?
+      sentence: Help... me...
+    - speaker: Zayn
       sentence: What the...
+    - speaker: A Deer?
+      sentence: Run...
+    - speaker: Zayn
+      sentence: Who are you ?
+    - speaker: A Deer?
+      sentence: R...
+    - speaker: A Deer?
+      sentence: '...'
+    - speaker: Zayn
+      sentence: (Is it... possessed or something?)
   dialogueInFrench:
     allDialoguePart:
     - speaker: Etranger
       sentence: '#&@_#!!!!'
     - speaker: Zayn
-      sentence: Hein ? Qu'est-ce que...
+      sentence: "Un cerf ? Avec des pommes sur la t\xEAte ?"
+    - speaker: Un Cerf ?
+      sentence: Aidez...
+    - speaker: Cerf ?
+      sentence: Qu'est-ce que...
   activationCheck: 0
   debugging: 0
-  triggerSomethingWhenFinished: 0
-  codeOfTriggeredAction: 
+  triggerSomethingWhenFinished: 1
+  codeOfTriggeredAction: StartFightMusic
 --- !u!1 &2751131728635930623
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +727,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2751131728746054847}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.16, y: -0.69, z: 0}
+  m_LocalPosition: {x: 0.13, y: -0.69, z: 0}
   m_LocalScale: {x: 1.1999999, y: 1.1999999, z: 1}
   m_Children:
   - {fileID: 2751131730068873569}
@@ -808,6 +927,7 @@ MonoBehaviour:
   speedOfEscape: 4
   timeBeforeEscaping: 0.5
   isFlyingAway: 0
+  attentionCollider: {fileID: 2751131730068873575}
   isReturningFromForest: 0
   whereTheNativeComeBack: {fileID: 2751131730113620390}
   speedOfReturning: 4
@@ -1236,7 +1356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2751131729146656839
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2081,7 +2201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2751131730113620391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.46, y: -0.97, z: 0}
+  m_LocalPosition: {x: -0.13, y: -0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2751131729146656839}
