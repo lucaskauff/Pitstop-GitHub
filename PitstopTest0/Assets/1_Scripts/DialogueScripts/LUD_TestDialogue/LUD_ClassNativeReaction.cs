@@ -78,7 +78,7 @@ namespace Pitstop
             else if (code == "see")
             {
                 //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/see_square_big");
-                return Resources.Load<Sprite>("Celia_Signs/celia_see_with_outline");
+                return Resources.Load<Sprite>("Celia_Signs/celia_see_with_outline_2");
             }
             else if (code == "photo")
             {
@@ -88,12 +88,12 @@ namespace Pitstop
             else if (code == "gniack")
             {
                 //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/gniack_square_big");
-                return Resources.Load<Sprite>("Celia_Signs/celia_angry_with_outline"); ;
+                return Resources.Load<Sprite>("Celia_Signs/celia_eat_with_outline"); ;
             }
             else if (code == "no")
             {
                 //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/no_square_big");
-                return Resources.Load<Sprite>("Celia_Signs/celia_no_with_outline"); ;
+                return Resources.Load<Sprite>("Celia_Signs/celia_no_with_outline_intern"); ;
             }
             else if (code == "repair")
             {
@@ -103,7 +103,7 @@ namespace Pitstop
             else if (code == "danger")
             {
                 //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/danger_square_big");
-                return Resources.Load<Sprite>("Celia_Signs/celia_danger_with_outline"); ;
+                return Resources.Load<Sprite>("Celia_Signs/celia_danger_with_outline_intern"); ;
             }
             else if (code == "child")
             {

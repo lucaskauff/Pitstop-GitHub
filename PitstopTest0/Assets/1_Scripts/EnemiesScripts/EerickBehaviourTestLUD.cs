@@ -96,7 +96,10 @@ namespace Pitstop
                 //LostHealthConsequence();
 
                 ChangeSpotIfNeeded();
+
+                if (Input.GetKey(KeyCode.K) && (Input.GetKey(KeyCode.I) && (Input.GetKey(KeyCode.L)))) enemyHealthManager.enemyCurrentHealth = 0;
                 
+            
             }
         }
 
@@ -201,10 +204,12 @@ namespace Pitstop
         
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "ObjectApple" && !isBeingRepulsed)
+            
+            if (collision.gameObject.tag == "ExplosionZoneApple" && !isBeingRepulsed)
             {
                 StartCoroutine(ComeOnAndFly());
             }
+            
         }
 
         IEnumerator ProjectileCooldown()

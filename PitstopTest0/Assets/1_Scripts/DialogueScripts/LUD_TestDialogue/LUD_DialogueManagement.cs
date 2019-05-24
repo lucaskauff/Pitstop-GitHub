@@ -13,7 +13,7 @@ namespace Pitstop
         //[SerializeField] Image[] displayedSentence = default;
         public bool isDialogueWheelActive = false;
 
-
+        //InputManager inputManager = default;
 
         [Header("Sentence Parameters")]
 
@@ -30,8 +30,9 @@ namespace Pitstop
 
         void Start()
         {
-
             sentence.Clear();
+
+            //inputManager = FindObjectOfType<InputManager>();
         }
 
 
@@ -163,7 +164,7 @@ namespace Pitstop
             else if (value == 23)
             {
                 //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/see_square_big");
-                return Resources.Load<Sprite>("Celia_Signs/celia_see_with_outline");
+                return Resources.Load<Sprite>("Celia_Signs/celia_see_with_outline_2");
             }
             else if (value == 29)
             {
@@ -173,12 +174,12 @@ namespace Pitstop
             else if (value == 31)
             {
                 //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/gniack_square_big");
-                return Resources.Load<Sprite>("Celia_Signs/celia_angry_with_outline");
+                return Resources.Load<Sprite>("Celia_Signs/celia_eat_with_outline");
             }
             else if (value == 37)
             {
                 //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/no_square_big");
-                return Resources.Load<Sprite>("Celia_Signs/celia_no_with_outline");
+                return Resources.Load<Sprite>("Celia_Signs/celia_no_with_outline_intern");
             }
             else if (value == 41)
             {
@@ -188,7 +189,7 @@ namespace Pitstop
             else if (value == 43)
             {
                 //return Resources.Load<Sprite>("LUD_Sprites_Word/Big_Square_Sprites/danger_square_big");
-                return Resources.Load<Sprite>("Celia_Signs/celia_danger_with_outline");
+                return Resources.Load<Sprite>("Celia_Signs/celia_danger_with_outline_intern");
             }
             else if (value == 47)
             {
