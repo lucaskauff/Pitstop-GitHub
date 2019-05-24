@@ -21,6 +21,7 @@ namespace Pitstop
         public bool lianaRepulse = false;        
         public Vector2 newTarget;
         public float projSpeed = 1;
+        public bool shouldGenerateImpulse = true;
 
         //Serializable
         [SerializeField] float impulseDuration = default;
@@ -85,7 +86,10 @@ namespace Pitstop
                 return;
             }
 
-            StartCoroutine(CameraShake());
+            if (shouldGenerateImpulse)
+            {
+                StartCoroutine(CameraShake());
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

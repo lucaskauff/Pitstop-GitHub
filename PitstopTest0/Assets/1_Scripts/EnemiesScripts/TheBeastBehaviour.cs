@@ -18,19 +18,24 @@ namespace Pitstop
         [SerializeField] DialogueManager dialogueManager = default;
         [SerializeField] GameObject triggerFightDirectly = default;
         [SerializeField] GameObject bossFightDialogue = default;
-        [SerializeField] GameObject hammerheadToSpawn = default;
         [SerializeField] GameObject[] thingsToSpawn = default;
+        [SerializeField] GameObject hammerheadToSpawn = default;
         [SerializeField] Transform[] spawnPoints = default;
         [SerializeField] int damageDealing = 1;
         [SerializeField] float radiusAroundBeast = 3;
         [SerializeField] float heightForSpawnedObjects = 5;
         [SerializeField] float objectsFallSpeed = 3;
         [SerializeField] float secondsToWaitAfterRocksSpawn = 8;
+        [SerializeField] float secondsToWaitOnRageMode = 4;
+        [SerializeField] float timePassedStayingVulnerable = 10;
 
         public GameObject[] spawnedObjectsOnScene;
-        bool fightCanStart = false;
+        public GameObject[] hammerheadsOnScene;
+        public bool isOnGround = false;
 
-        bool rocksHaveBeenSpawned = false;
+        bool fightCanStart = false;
+        bool objectsHaveBeenSpawned = false;
+        public bool canSpawnHammerheads = false;
 
         //ON THIS VERSION, BEAST WAKES UP AFTER DIALOGUE !
 
@@ -50,8 +55,6 @@ namespace Pitstop
             }
             else if (startBossFightDirectly)
             {
-                //bossFightDialogue.SetActive(false);
-
                 WakeUp();
             }
 
@@ -63,7 +66,7 @@ namespace Pitstop
 
         void BossFightRoutines()
         {
-            if (!rocksHaveBeenSpawned)
+            if (!objectsHaveBeenSpawned)
             {
                 StopCoroutine(SlapFloor());
                 myAnim.SetTrigger("HitFloor");
@@ -87,20 +90,35 @@ namespace Pitstop
             {
                 myImpulseSource.GenerateImpulse();
 
-                if (spawnedObjectsOnScene[i] != null)
-                {
-                    Destroy(spawnedObjectsOnScene[i]);
-                }
+                canSpawnHammerheads = CanSpawnHammerHead(hammerheadsOnScene);
 
                 spawnPoints[i].position = Random.insideUnitCircle * radiusAroundBeast + (Vector2)transform.position;
                 Vector2 spawnPosHeight = spawnPoints[i].position + new Vector3(0, heightForSpawnedObjects, 0);
                 int randomNumberForSpawn = Mathf.RoundToInt(Random.Range(0, thingsToSpawn.Length));
 
-                spawnedObjectsOnScene[i] = Instantiate(thingsToSpawn[randomNumberForSpawn], spawnPosHeight, thingsToSpawn[randomNumberForSpawn].transform.rotation);
+                if (!canSpawnHammerheads)
+                {
+                    hammerheadsOnScene = new GameObject[spawnPoints.Length];
+
+                    if (spawnedObjectsOnScene[i] != null)
+                    {
+                        Destroy(spawnedObjectsOnScene[i]);
+                    }
+
+                    spawnedObjectsOnScene[i] = Instantiate(thingsToSpawn[randomNumberForSpawn], spawnPosHeight, thingsToSpawn[randomNumberForSpawn].transform.rotation);
+                }
+                else
+                {
+                    StopCoroutine(SlapFloor());
+                    spawnedObjectsOnScene[i] = Instantiate(hammerheadToSpawn, spawnPoints[i].position, thingsToSpawn[randomNumberForSpawn].transform.rotation);
+                    hammerheadsOnScene[i] = spawnedObjectsOnScene[i];
+                    objectsHaveBeenSpawned = true;
+                }
 
                 switch (spawnedObjectsOnScene[i].tag)
                 {
                     case "ObjectRock":
+                        spawnedObjectsOnScene[i].GetComponent<RockBehaviour>().shouldGenerateImpulse = false;
                         spawnedObjectsOnScene[i].GetComponent<ScannableObjectBehaviour>().targetPos = spawnPoints[i].position;
                         spawnedObjectsOnScene[i].GetComponent<ScannableObjectBehaviour>().projectileSpeed = objectsFallSpeed;
                         spawnedObjectsOnScene[i].GetComponent<ScannableObjectBehaviour>().isScannable = false;
@@ -119,8 +137,26 @@ namespace Pitstop
                         spawnedObjectsOnScene[i].GetComponent<HookPointBehaviour>().fallSpeed = objectsFallSpeed;
                         spawnedObjectsOnScene[i].GetComponent<HookPointBehaviour>().spawnedByBeast = true;
                         break;
+
+                    case "Enemy":
+                        spawnedObjectsOnScene[i].SetActive(true);
+                        //spawnedObjectsOnScene[i].GetComponent<GorillaBehaviour>().target = spawnPoints[i].gameObject;
+                        break;
                 }
             }
+        }
+
+        private bool CanSpawnHammerHead(GameObject[] _goArray)
+        {
+            for (int i = 0; i < _goArray.Length; i++)
+            {
+                if (_goArray[i] != null)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -133,18 +169,40 @@ namespace Pitstop
             {
                 if (collision.gameObject.GetComponent<GorillaBehaviour>().isBeingRepulsed)
                 {
-                    myHealthManager.HurtEnemy(1);
+                    if (!isOnGround)
+                    {
+                        isOnGround = true;
+                        StartCoroutine(WaitBeforeGettingUp());
+                    }
+                    else
+                    {
+                        myHealthManager.HurtEnemy(1);
+                        isOnGround = false;
+                        StopCoroutine(WaitBeforeGettingUp());
+                        //myAnim.SetTrigger("RealHit");
+                    }
+
+                    myAnim.SetBool("FirstHit", isOnGround);
+                    Destroy(collision.gameObject);
                 }
             }
         }
 
         IEnumerator SlapFloor()
         {
-            rocksHaveBeenSpawned = true;
+            objectsHaveBeenSpawned = true;
 
             yield return new WaitForSeconds(secondsToWaitAfterRocksSpawn);
 
-            rocksHaveBeenSpawned = false;
+            objectsHaveBeenSpawned = false;
+        }
+
+        IEnumerator WaitBeforeGettingUp()
+        {
+            yield return new WaitForSeconds(timePassedStayingVulnerable);
+            isOnGround = false;
+            myAnim.SetBool("FirstHit", isOnGround);
+            StopCoroutine(WaitBeforeGettingUp());
         }
     }
 }
