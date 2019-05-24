@@ -43,6 +43,7 @@ namespace Pitstop
                 {
                     //should disappear in the woods
                     //gameObject.SetActive(false);
+                    myAnim.SetTrigger("Disappear");
                     return;
                 }
 
