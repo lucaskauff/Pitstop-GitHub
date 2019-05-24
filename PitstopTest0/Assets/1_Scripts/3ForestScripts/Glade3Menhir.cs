@@ -8,6 +8,7 @@ namespace Pitstop
     {
         [SerializeField] Animator myAnim = default;
         [SerializeField] GameObject associatedHole = default;
+        [SerializeField] Animator dust = default;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -22,6 +23,7 @@ namespace Pitstop
         public void BridgeIsFormed()
         {
             associatedHole.SetActive(false);
+            dust.SetTrigger("Wush");
         }
     }
 }
