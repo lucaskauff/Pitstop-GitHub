@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69776203d86a2446837582032e693c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  associatedIcon: {fileID: 21300004, guid: 3f3a8fcabd52e8c49b64c1606d97ef45, type: 3}
+  associatedIcon: {fileID: 21300000, guid: 0e27a167e6e2946439ebd524944e709b, type: 3}
   isScannable: 1
   isFired: 0
   isArrived: 0
@@ -297,8 +297,10 @@ MonoBehaviour:
   heightWhereToSpawn: 3
   fallSpeed: 6
   isOnRepulse: 0
+  lianaRepulse: 0
+  newTarget: {x: 0, y: 0}
+  projSpeed: 1
   impulseDuration: 0.25
-  rockDetection: {fileID: 6667375956198307109}
   scannableObjectBehaviour: {fileID: 6667375955699303459}
   playerImpulseSource: {fileID: 8068176826541340084}
   repulseDelay: 0.8

@@ -13,7 +13,6 @@ namespace Pitstop
         {
             if (collision.gameObject.tag == "Player")
             {
-                theBeastBehaviour.WakeUp();
                 theBeastBehaviour.startBossFightDirectly = true;
                 Destroy(dialogueTriggerOnEntering);
                 Destroy(gameObject);
