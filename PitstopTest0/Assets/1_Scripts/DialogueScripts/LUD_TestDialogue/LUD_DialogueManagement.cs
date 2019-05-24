@@ -132,22 +132,26 @@ namespace Pitstop
         {
             if (value == 5)
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Nord");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Nord");
+                return Resources.Load<Sprite>("Celia_Signs_Hands/celia_nord_outline");
             }
 
             else if (value == 7)
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Est");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Est");
+                return Resources.Load<Sprite>("Celia_Signs_Hands/celia_east_outline");
             }
 
             else if (value == 13)
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Sud");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Sud");
+                return Resources.Load<Sprite>("Celia_Signs_Hands/celia_south_outline");
             }
 
             else if (value == 11)
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Ouest");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Ouest");
+                return Resources.Load<Sprite>("Celia_Signs_Hands/celia_west_outline");
             }
 
             else if (value == 17)

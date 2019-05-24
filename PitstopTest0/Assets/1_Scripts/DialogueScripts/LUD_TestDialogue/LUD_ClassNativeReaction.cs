@@ -51,19 +51,22 @@ namespace Pitstop
             }
             else if (code == "north")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Nord");
+                return Resources.Load<Sprite>("Celia_Signs_Hands/celia_nord_outline");
             }
             else if (code == "south")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Sud");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Sud");
+                return Resources.Load<Sprite>("Celia_Signs_Hands/celia_south_outline");
             }
             else if (code == "east")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Est");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Est");
+                return Resources.Load<Sprite>("Celia_Signs_Hands/celia_east_outline");
             }
             else if (code == "west")
             {
-                return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Ouest");
+                //return Resources.Load<Sprite>("LUD_Sprites_Word/Main_Ouest");
+                return Resources.Load<Sprite>("Celia_Signs_Hands/celia_west_outline");
             }
             else if (code == "me")
             {

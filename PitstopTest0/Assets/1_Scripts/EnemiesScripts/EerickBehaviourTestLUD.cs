@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 
 namespace Pitstop
@@ -29,7 +30,6 @@ namespace Pitstop
         bool waitForCooldown = false;
         GameObject cloneProj;
 
-        int storedHealth;
         bool backToFightPosSet = false;
         Transform backToFightPos;
         float goBackToFightSpeedStored;
@@ -52,6 +52,15 @@ namespace Pitstop
 
         bool secondPhaseTriggered = false;
 
+        [Header("Health")]
+        [SerializeField] GameObject healthBar = default;
+        [SerializeField] Image healthGauje = default;
+        [SerializeField] Image secondHealthGauje = default;
+        int storedHealth;
+        [SerializeField] float timeBeforeSecondBarGoDown = 0.5f;
+        [SerializeField] float timeForSecondHealthBarToGoDown = 0.3f;
+        bool hasTheGoDownBeenTriggered = false;
+
 
         private void Start()
         {
@@ -60,7 +69,7 @@ namespace Pitstop
 
 
             transform.position = positionPoints[0].position;
-            
+
 
             storedHealth = enemyHealthManager.enemyMaxHealth;
             goBackToFightSpeedStored = goBackToFightSpeed;
@@ -72,62 +81,58 @@ namespace Pitstop
 
         private void Update()
         {
-            if (!fightCanStart)
+            if (target.canMove)
             {
-                if (target.canMove && playerHasTriggeredNative)
+
+                if (!fightCanStart)
                 {
-                    fightCanStart = true;
-                    StartCoroutine(RageManagement());
+                    if (playerHasTriggeredNative)
+                    {
+                        fightCanStart = true;
+                        StartCoroutine(RageManagement());
+                        healthBar.SetActive(true);
+                    }
                 }
-
-
-            }
-            else
-            {
-                if (enemyHealthManager.enemyCurrentHealth <= enemyHealthManager.enemyMaxHealth / 2 && !secondPhaseTriggered)
+                else
                 {
-                    secondPhaseTriggered = true;
-                    //anim de 2eme phase
+                    if (enemyHealthManager.enemyCurrentHealth <= enemyHealthManager.enemyMaxHealth / 2 && !secondPhaseTriggered)
+                    {
+                        secondPhaseTriggered = true;
+                        //anim de 2eme phase
+
+                    }
+
+                    ThrowProjAtTarget();
+
+                    //LostHealthConsequence();
+
+                    ChangeSpotIfNeeded();
+
+                    if (Input.GetKey(KeyCode.K) && (Input.GetKey(KeyCode.I) && (Input.GetKey(KeyCode.L)))) enemyHealthManager.enemyCurrentHealth = 0;
+
 
                 }
-
-                ThrowProjAtTarget();
-
-                //LostHealthConsequence();
-
-                ChangeSpotIfNeeded();
-
-                if (Input.GetKey(KeyCode.K) && (Input.GetKey(KeyCode.I) && (Input.GetKey(KeyCode.L)))) enemyHealthManager.enemyCurrentHealth = 0;
-                
-            
             }
         }
 
 
-            
+
         void ChangeSpotIfNeeded()
         {
-            if (haveToChangeItsSpot || enemyHealthManager.enemyCurrentHealth < storedHealth)   
+            if (haveToChangeItsSpot || enemyHealthManager.enemyCurrentHealth < storedHealth)
             {
+
+                if (!hasTheGoDownBeenTriggered && enemyHealthManager.enemyCurrentHealth < storedHealth) StartCoroutine(ModifyHealthBar());
+                //StartCoroutine(ModifyHealthBar());
+
 
                 if (!backToFightPosSet)
                 {
                     myRb.velocity = Vector2.zero;
                     goBackToFightSpeed = goBackToFightSpeedStored;
-
-                    /*
-                    //CHANGE OF INDEX MODIFICATOR\\
-                    int modificator = Random.Range(-1, 2);  //the maximum is exclusive if the random.range pick an integer
-                    while (modificator == 0) modificator = Random.Range(-1, 2);       //so only have -1 or +1
                     
-                    indexOfTargetedPosition += modificator;
 
-                    if (indexOfTargetedPosition < 0) indexOfTargetedPosition = positionPoints.Length - 1;
-                    else if (indexOfTargetedPosition > positionPoints.Length - 1) indexOfTargetedPosition = 0;
-                    //----\\
-                    */
-
-                    //NEW DESTINATION DEPENDS ON THE DISTANCE TO THE PLAYER\\
+                    //NEW DESTINATION DEPENDS ON THE DISTANCE TO THE POTENTIAL POINTS\\
 
                     int superiorIndex = indexOfTargetedPosition + 1;
                     if (superiorIndex > positionPoints.Length - 1) superiorIndex = 0;
@@ -144,7 +149,7 @@ namespace Pitstop
                         indexOfTargetedPosition = superiorIndex;
                     }
 
-                        
+
 
                     //---\\
 
@@ -157,7 +162,7 @@ namespace Pitstop
 
                 if (transform.position == positionPoints[indexOfTargetedPosition].position)
                 {
-                    
+
                     backToFightPosSet = false;
                     haveToChangeItsSpot = false;
                     storedHealth = enemyHealthManager.enemyCurrentHealth;
@@ -165,7 +170,7 @@ namespace Pitstop
 
             }
         }
-        
+
 
 
 
@@ -201,15 +206,15 @@ namespace Pitstop
 
         }
 
-        
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            
+
             if (collision.gameObject.tag == "ExplosionZoneApple" && !isBeingRepulsed)
             {
                 StartCoroutine(ComeOnAndFly());
             }
-            
+
         }
 
         IEnumerator ProjectileCooldown()
@@ -260,7 +265,30 @@ namespace Pitstop
 
                 StartCoroutine(RageManagement());
             }
+
+        }
+
+        IEnumerator ModifyHealthBar()
+        {
+            hasTheGoDownBeenTriggered = true;
+
+            healthGauje.fillAmount = (enemyHealthManager.enemyCurrentHealth / (float) enemyHealthManager.enemyMaxHealth);
+
+            yield return new WaitForSeconds(timeBeforeSecondBarGoDown);
+
+            float stepInAnimation = 20f;
             
+            for (int i = 0;i< stepInAnimation;i++)
+            {
+                secondHealthGauje.fillAmount = (healthGauje.fillAmount / (float)enemyHealthManager.enemyMaxHealth) + (   ((float)enemyHealthManager.enemyMaxHealth*(stepInAnimation-i))   /   ((float)enemyHealthManager.enemyMaxHealth*stepInAnimation)   );
+                Debug.Log((enemyHealthManager.enemyCurrentHealth / (float)enemyHealthManager.enemyMaxHealth) + (((float)enemyHealthManager.enemyMaxHealth * (stepInAnimation - i)) / ((float)enemyHealthManager.enemyMaxHealth * stepInAnimation)));
+                yield return new WaitForSeconds(timeForSecondHealthBarToGoDown / stepInAnimation);
+            }
+            
+            secondHealthGauje.fillAmount = (enemyHealthManager.enemyCurrentHealth / (float)enemyHealthManager.enemyMaxHealth);
+
+            hasTheGoDownBeenTriggered = false;
+
         }
     }
 }
