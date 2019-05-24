@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69776203d86a2446837582032e693c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  associatedIcon: {fileID: 21300000, guid: 6b55f6bab0d47714c870cb0a4c9f3449, type: 3}
+  associatedIcon: {fileID: 21300000, guid: 6a0d53bbf89254540bd9d14becb233c7, type: 3}
   isScannable: 1
   isFired: 0
   isArrived: 0
@@ -194,8 +194,14 @@ MonoBehaviour:
   mark: 0
   player: {fileID: 0}
   crystalController: {fileID: 0}
-  bounceTime: 1.5
-  bounceAmount: 4
+  bounceTimeApple: 1
+  bounceTimePlayer: 1
+  bounceTimeHammerhead: 1
+  bounceTimeRock: 2
+  bounceAmountApple: 1
+  bounceAmountPlayer: 1
+  bounceAmountHammerhead: 1
+  bounceAmountRock: 3
   decalageY: 0.3
   layerLiana:
     serializedVersion: 2
