@@ -35,7 +35,7 @@ namespace Pitstop
         public void HurtEnemy(int damageToGive)
         {
             enemyCurrentHealth -= damageToGive;
-            myAnim.SetTrigger("Hit");
+            //myAnim.SetTrigger("Hit");
         }
 
         public void HealEnemy(int healToGive)
