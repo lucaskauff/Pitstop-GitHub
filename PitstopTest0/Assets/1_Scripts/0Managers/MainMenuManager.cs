@@ -18,6 +18,24 @@ namespace Pitstop
             sceneLoader = GameManager.Instance.sceneLoader;
         }
 
+        private void Update()
+        {
+            if (gameManager.languageSetToEnglish)
+            {
+                foreach (var text in mainMenuTexts)
+                {
+                    text.ChangeTextLanguageTo("English");
+                }
+            }
+            else
+            {
+                foreach (var text in mainMenuTexts)
+                {
+                    text.ChangeTextLanguageTo("French");
+                }
+            }
+        }
+
         public void Play()
         {
             sceneLoader.LoadNewScene(nextSceneToLoad);
@@ -29,19 +47,23 @@ namespace Pitstop
             {
                 gameManager.languageSetToEnglish = false;
 
+                /*
                 foreach (var text in mainMenuTexts)
                 {
                     text.ChangeTextLanguageTo(language);
                 }
+                */
             }
             else if (language == "English" && !gameManager.languageSetToEnglish)
             {
                 gameManager.languageSetToEnglish = true;
 
+                /*
                 foreach (var text in mainMenuTexts)
                 {
                     text.ChangeTextLanguageTo(language);
                 }
+                */
             }
         }
 
