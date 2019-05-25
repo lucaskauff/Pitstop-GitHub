@@ -1014,7 +1014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &82441166
 Transform:
   m_ObjectHideFlags: 0
@@ -15383,6 +15383,10 @@ PrefabInstance:
     - target: {fileID: 1360985367, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
       propertyPath: m_Name
       value: CamTransCrystalAltarRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360985367, guid: 6987ab44b876e8640b1f1ebf75745a5c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2134985404494384207, guid: 6987ab44b876e8640b1f1ebf75745a5c,
         type: 3}
@@ -30040,6 +30044,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8702863466875553468, guid: a02a9cd6679c08c45853784c05123715,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 5.456968e-12
+      objectReference: {fileID: 0}
     - target: {fileID: 2860859272907061407, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30068,6 +30077,11 @@ PrefabInstance:
     - target: {fileID: 8702863466875553469, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 234583967}
+    - target: {fileID: 8702863466875553469, guid: a02a9cd6679c08c45853784c05123715,
+        type: 3}
+      propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 234583967}
     m_RemovedComponents: []

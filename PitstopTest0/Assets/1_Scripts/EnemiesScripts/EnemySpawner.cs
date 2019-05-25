@@ -15,6 +15,7 @@ namespace Pitstop
             theSpawnedThing = (GameObject)Instantiate(whatToSpawn, transform.position, whatToSpawn.transform.rotation);
             theSpawnedThing.SetActive(true);
             theSpawnedThing.GetComponent<GorillaBehaviour>().target = targetOfSpawnedThing;
+            //theSpawnedThing.GetComponent<GorillaBehaviour>().canMove = true;
         }
     }
 }
