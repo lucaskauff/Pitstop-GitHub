@@ -41,6 +41,11 @@ namespace Pitstop
             sceneLoader.LoadNewScene(nextSceneToLoad);
         }
 
+        public void LoadParticularScene(string sceneToLoad)
+        {
+            sceneLoader.LoadNewScene(sceneToLoad);
+        }
+
         public void ChangeLanguageTo(string language)
         {
             if (language == "French" && gameManager.languageSetToEnglish)
