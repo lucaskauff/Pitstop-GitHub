@@ -8,7 +8,6 @@ namespace Pitstop
     {
         [SerializeField] TheBeastBehaviour theBeastBehaviour = default;
         [SerializeField] GameObject dialogueTriggerOnEntering = default;
-        //[SerializeField] Animator energeticBarrierAnimator = default;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

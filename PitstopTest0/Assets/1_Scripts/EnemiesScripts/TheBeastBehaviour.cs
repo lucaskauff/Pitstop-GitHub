@@ -18,6 +18,7 @@ namespace Pitstop
         [SerializeField] DialogueManager dialogueManager = default;
         [SerializeField] GameObject triggerFightDirectly = default;
         [SerializeField] GameObject bossFightDialogue = default;
+        [SerializeField] Animator energeticBarrier = default;
         [SerializeField] GameObject[] thingsToSpawn = default;
         [SerializeField] GameObject hammerheadToSpawn = default;
         [SerializeField] Transform[] spawnPoints = default;
@@ -52,10 +53,12 @@ namespace Pitstop
                 bossFightDialogue.SetActive(false);
 
                 WakeUp();
+                energeticBarrier.SetTrigger("CloseTheDoor");
             }
             else if (startBossFightDirectly)
             {
                 WakeUp();
+                energeticBarrier.SetTrigger("CloseTheDoor");
             }
 
             if (fightCanStart)
