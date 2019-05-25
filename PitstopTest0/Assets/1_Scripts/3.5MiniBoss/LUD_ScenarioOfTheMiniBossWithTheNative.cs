@@ -12,10 +12,17 @@ namespace Pitstop
         [SerializeField] DialogueManager dialogueManager = default;
         [SerializeField] GameObject dialogueWheelSystem = default;
 
-        private bool isDialogueWheelAppeared = false;
+        bool isDialogueWheelAppeared = false;
+        bool hasThePlayerOpenedOnceTheWheel = false;
+        InputManager inputManager;
 
         [SerializeField] GameObject native = default;
         [SerializeField] GameObject openingDialogueWheelTutorial = default;
+
+        private void Start()
+        {
+            inputManager = FindObjectOfType<InputManager>();
+        }
 
         private void Update()
         {
@@ -35,7 +42,7 @@ namespace Pitstop
                     isDialogueWheelAppeared = true;
                 }
                 
-                if (native.GetComponentInChildren<LUD_DetectionTriggeredByAttention>().isThePlayerNear)
+                if (native.GetComponentInChildren<LUD_DetectionTriggeredByAttention>().isThePlayerNear && !hasThePlayerOpenedOnceTheWheel)
                 {
                     openingDialogueWheelTutorial.SetActive(true);
                 }
@@ -44,7 +51,7 @@ namespace Pitstop
                     openingDialogueWheelTutorial.SetActive(false);
                 }
 
-                
+                if (inputManager.displayDialogueWheelKey) hasThePlayerOpenedOnceTheWheel = true;
 
             }
         }
