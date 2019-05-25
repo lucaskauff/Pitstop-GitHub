@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1636653524716816982}
   - component: {fileID: 1636653524716816983}
   - component: {fileID: 1636653524716817002}
+  - component: {fileID: 4466458171381732132}
   m_Layer: 9
   m_Name: Hammerhead
   m_TagString: Enemy
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1052579953
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c2d9174d627e24142adbab34d6db0606, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db03cac56202e7147b28fe01135bad84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!50 &1636653524716817001
 Rigidbody2D:
   serializedVersion: 4
@@ -121,8 +122,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.2}
+    oldSize: {x: 1.25, y: 1.25}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -147,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRb: {fileID: 1636653524716817001}
+  myAnim: {fileID: 4466458171381732132}
   viewRangeRad: 5
   damageDealing: 1
   walkSpeed: 1
@@ -165,6 +167,9 @@ MonoBehaviour:
   isArrived: 0
   targetPos: {x: 0, y: 0, z: 0}
   isBeingRepulsed: 0
+  moveInput: {x: 0, y: 0}
+  lastMove: {x: 0, y: 0}
+  isMoving: 0
 --- !u!114 &1636653524716817002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +184,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMaxHealth: 5
   enemyCurrentHealth: 0
+  myAnim: {fileID: 0}
+--- !u!95 &4466458171381732132
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636653524716816980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31e55d3094eafa0449f0b62f9c8fd3cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1636653526108839791
 GameObject:
   m_ObjectHideFlags: 0

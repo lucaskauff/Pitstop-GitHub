@@ -6,6 +6,7 @@ namespace Pitstop
 {
     public class HHRelai : MonoBehaviour
     {
+        [SerializeField] bool isFinalRelay = false;
         [SerializeField] GameObject nextPoint = default;
 
         GorillaBehaviour gorillaBehaviour;
@@ -14,6 +15,11 @@ namespace Pitstop
         {
             if (collision.gameObject.name == "Hammerhead(Clone)")
             {
+                if (isFinalRelay)
+                {
+                    Destroy(collision.gameObject);
+                }
+
                 gorillaBehaviour = collision.gameObject.GetComponent<GorillaBehaviour>();
                 gorillaBehaviour.target = nextPoint;
                 gorillaBehaviour.targetPos = nextPoint.transform.position;

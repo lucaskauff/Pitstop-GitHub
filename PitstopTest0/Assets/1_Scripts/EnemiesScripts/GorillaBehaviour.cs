@@ -8,8 +8,7 @@ namespace Pitstop
     {
         [Header("My components")]
         [SerializeField] Rigidbody2D myRb = default;
-        //waiting for anims
-        //[SerializeField] Animator myAnim = default;
+        [SerializeField] Animator myAnim = default;
 
         //Serializable
         [SerializeField] float viewRangeRad = default;
@@ -54,8 +53,17 @@ namespace Pitstop
         //
         public bool isBeingRepulsed = false;
 
+        //Animation variables
+        public Vector2 moveInput;
+        public Vector2 lastMove;
+        public bool isMoving = false;
+
         void Start()
         {
+            lastMove = new Vector2(-1, -1);
+            myAnim.SetFloat("LastMoveX", lastMove.x);
+            myAnim.SetFloat("LastMoveY", lastMove.y);
+
             viewRange.localScale *= viewRangeRad;
             originalRushTime = rushTime;
             originalStunTime = stunTime;
@@ -75,16 +83,23 @@ namespace Pitstop
 
         void Update()
         {
+            Animations();
+
             if (!canMove)
             {
+                isMoving = false;
                 return;
             }
             else if (isBeingRepulsed)
             {
+                isMoving = false;
+
                 StartCoroutine(WaitDuringRepulsion());
             }
             else if (isArrived)
             {
+                isMoving = false;
+
                 myRb.velocity = Vector2.zero;
 
                 if (!stunCheck)
@@ -114,6 +129,8 @@ namespace Pitstop
             }
             else
             {
+                isMoving = true;
+
                 if (target == null)
                 {
                     if (isWalking)
@@ -199,8 +216,14 @@ namespace Pitstop
                     }
 
                     transform.position = Vector2.MoveTowards(transform.position, targetPos, rushSpeed * Time.deltaTime);
+                    moveInput = targetPos - transform.position;
 
-                    if (col || this.transform.position == targetPos || rushTime <= 0)
+                    if (transform.position != targetPos)
+                    {
+                        lastMove = moveInput;
+                    }
+
+                    if (col || transform.position == targetPos || rushTime <= 0)
                     {
                         isArrived = true;
                         //isFleeing = false;
@@ -234,6 +257,15 @@ namespace Pitstop
                 StopCoroutine(WaitDuringRepulsion());
                 isBeingRepulsed = true;
             }
+        }
+
+        public void Animations()
+        {
+            myAnim.SetBool("IsMoving", isMoving);
+            myAnim.SetFloat("LastMoveX", lastMove.x);
+            myAnim.SetFloat("LastMoveY", lastMove.y);
+            myAnim.SetFloat("MoveX", moveInput.x);
+            myAnim.SetFloat("MoveY", moveInput.y);
         }
 
         IEnumerator RushTimeDecount()
