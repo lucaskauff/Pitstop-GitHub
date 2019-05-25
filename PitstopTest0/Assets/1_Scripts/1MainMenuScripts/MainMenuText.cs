@@ -8,8 +8,8 @@ namespace Pitstop
     public class MainMenuText : MonoBehaviour
     {
         [SerializeField] TextMeshProUGUI ownText = default;
-        [SerializeField] string englishText = null;
-        [SerializeField] string frenchText = null;
+        [SerializeField, TextArea(1, 10)] string englishText = null;
+        [SerializeField, TextArea(1, 10)] string frenchText = null;
 
         public void ChangeTextLanguageTo(string language)
         {

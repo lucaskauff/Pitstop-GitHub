@@ -19,6 +19,7 @@ namespace Pitstop
         public Vector2 moveInput;
         public Vector2 lastMove;
         public bool isMoving = false;
+        public bool[] noStopPoints; 
 
         private void Start()
         {
@@ -48,6 +49,11 @@ namespace Pitstop
                 }
 
                 myColl.enabled = true;
+
+                if (noStopPoints[moveIndex])
+                {
+                    moveIndex += 1;
+                }
             }
             else
             {
