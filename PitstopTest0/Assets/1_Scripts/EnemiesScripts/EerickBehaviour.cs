@@ -10,7 +10,7 @@ namespace Pitstop
         [SerializeField] Rigidbody2D myRb = default;
         [SerializeField] EnemyHealthManager enemyHealthManager = default;
 
-        [SerializeField] Transform[] positionPoints;
+        [SerializeField] Transform[] positionPoints = default;
         [SerializeField] PlayerControllerIso target = default;
         [SerializeField] GameObject projectile = default;
         [SerializeField] Transform fromWhereTheApplesAreShot = default;

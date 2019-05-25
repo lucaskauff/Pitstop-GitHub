@@ -12,7 +12,7 @@ namespace Pitstop
         [SerializeField] Rigidbody2D myRb = default;
         [SerializeField] EnemyHealthManager enemyHealthManager = default;
 
-        [SerializeField] Transform[] positionPoints;
+        [SerializeField] Transform[] positionPoints = default;
         [SerializeField] PlayerControllerIso target = default;
         [SerializeField] GameObject projectile = default;
         [SerializeField] Transform fromWhereTheApplesAreShot = default;
@@ -263,10 +263,13 @@ namespace Pitstop
             {
                 yield return new WaitForSeconds(timeBeforeRageMode2);
 
-                soundShout.Play();
+
+                
 
                 cooldown = cooldownDuringRage2;
                 myImpulseSource.GenerateImpulse();
+
+                soundShout.Play();
 
                 yield return new WaitForSeconds(durationOfRageMode2);
 
