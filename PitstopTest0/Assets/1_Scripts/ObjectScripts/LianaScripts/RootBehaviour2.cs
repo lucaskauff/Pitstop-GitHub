@@ -25,9 +25,11 @@ namespace Pitstop
         [SerializeField] float bounceTimeApple = 1;
         [SerializeField] float bounceTimePlayer = 1;
         [SerializeField] float bounceTimeHammerhead = 1;
+        [SerializeField] float bounceTimeRock = 2;
         [SerializeField] float bounceAmountApple = 1;
         [SerializeField] float bounceAmountPlayer = 1;
         [SerializeField] float bounceAmountHammerhead = 1;
+        [SerializeField] float bounceAmountRock = 3;
         [SerializeField] float decalageY = 0.5f;
         [SerializeField] LayerMask layerLiana = default;
         [SerializeField] Transform actualThreat = default;
@@ -189,11 +191,25 @@ namespace Pitstop
                             mark = true;
                             ResetHookpoints();
                         }
+                        //this doesnt work ?!?
                         else if (trips[i].collider.gameObject.tag == "Arrow")
                         {
                             myLineRend.enabled = false;
                             mark = true;
                             ResetHookpoints();
+                        }
+                        else if (trips[i].collider.gameObject.tag == "ObjectRock")
+                        {
+                            /*
+                            myLineRend.enabled = false;
+                            mark = true;
+
+                            trips[i].collider.gameObject.GetComponent<RockBehaviour>().newTarget = (Random.insideUnitCircle * errorMargin) + (Vector2)actualThreat.position;
+                            trips[i].collider.gameObject.GetComponent<RockBehaviour>().projSpeed = bounceAmountRock;
+                            trips[i].collider.gameObject.GetComponent<RockBehaviour>().lianaRepulse = true;
+
+                            ResetHookpoints();*/
+                            StartCoroutine(RockBounce(trips[i].collider.gameObject));
                         }
                     }
                 }
@@ -369,6 +385,22 @@ namespace Pitstop
             hammerhead.GetComponent<GorillaBehaviour>().rushSpeed = -hammerhead.GetComponent<GorillaBehaviour>().rushSpeed * bounceAmountHammerhead;
             yield return new WaitForSeconds(bounceTimeHammerhead);
             hammerhead.GetComponent<GorillaBehaviour>().rushSpeed = originalHammerheadRushSpeed;
+            ResetHookpoints();
+        }
+
+        IEnumerator RockBounce(GameObject rock)
+        {
+            myLineRend.enabled = false;
+            mark = true;
+
+            rock.GetComponent<RockBehaviour>().newTarget = (Random.insideUnitCircle * errorMargin) + (Vector2)actualThreat.position;
+            rock.GetComponent<RockBehaviour>().projSpeed = bounceAmountRock;
+            rock.GetComponent<RockBehaviour>().lianaRepulse = true;
+
+            yield return new WaitForSeconds(bounceTimeRock);
+
+            rock.GetComponent<RockBehaviour>().lianaRepulse = false;
+
             ResetHookpoints();
         }
     }

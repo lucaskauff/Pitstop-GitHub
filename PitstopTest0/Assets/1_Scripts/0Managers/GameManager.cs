@@ -15,6 +15,9 @@ namespace Pitstop
 
         public bool languageSetToEnglish = true;
 
+        public float musicVolume = 1;
+        public float sfxVolume = 1;
+
         void Awake()
         {
             sceneLoader = GetComponent<SceneLoader>();

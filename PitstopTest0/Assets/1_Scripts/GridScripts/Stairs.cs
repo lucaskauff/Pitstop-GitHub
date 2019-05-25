@@ -20,7 +20,9 @@ namespace Pitstop
             if (collision.gameObject.name == "Zayn" && collision.gameObject.GetComponent<PlayerControllerIso>().isMoving)
             {
                 collision.gameObject.GetComponent<PlayerControllerIso>().isometricRatio = stairsIsometricRatio;
-                myImpulseSource.GenerateImpulse();
+
+                //If we want the impulse : decomment following line
+                //myImpulseSource.GenerateImpulse();
             }
         }
 

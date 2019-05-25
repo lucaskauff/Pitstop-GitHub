@@ -18,6 +18,9 @@ namespace Pitstop
 
         //Public
         public bool markSign = false;
+        public bool spawnedByBeast = false;
+        public Vector2 targetPos;
+        public float fallSpeed;
 
         //Private
         bool canContinue = true;
@@ -33,6 +36,19 @@ namespace Pitstop
 
         private void Update()
         {
+            //Beast spawning this hookpoint
+            if (spawnedByBeast)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetPos, fallSpeed * Time.deltaTime);
+
+                if ((Vector2)transform.position == targetPos)
+                {
+                    spawnedByBeast = false;
+                }
+
+                return;
+            }
+
             if (inputManager.onLeftClick && associatedRoot.crystalController.scannedObject != null)
             {
                 if (associatedRoot.crystalController.scannedObject.tag == "ObjectRoot")
