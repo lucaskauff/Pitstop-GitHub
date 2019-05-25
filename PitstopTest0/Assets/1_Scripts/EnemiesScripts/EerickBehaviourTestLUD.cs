@@ -61,6 +61,16 @@ namespace Pitstop
         [SerializeField] float timeForSecondHealthBarToGoDown = 0.3f;
         bool hasTheGoDownBeenTriggered = false;
 
+        [Header("Sounds")]
+        [SerializeField] AudioSource soundDeerRegular = default;
+        [SerializeField] AudioSource soundShout = default;
+
+        [Header ("Animations")]
+        [SerializeField] Animator myAnim = default;
+        public Vector2 moveInput;
+        public Vector2 lastMove;
+        public bool isMoving = false;
+
 
         private void Start()
         {
@@ -76,7 +86,10 @@ namespace Pitstop
 
             //StartCoroutine(RageManagement());
 
-
+            //orientation of the sprite on Start
+            lastMove = new Vector2(-1, 0);
+            myAnim.SetFloat("LastMoveX", lastMove.x);
+            myAnim.SetFloat("LastMoveY", lastMove.y);
         }
 
         private void Update()
@@ -95,6 +108,9 @@ namespace Pitstop
                 }
                 else
                 {
+                    Animations();
+
+
                     if (enemyHealthManager.enemyCurrentHealth <= enemyHealthManager.enemyMaxHealth / 2 && !secondPhaseTriggered)
                     {
                         secondPhaseTriggered = true;
@@ -158,12 +174,16 @@ namespace Pitstop
                 }
 
                 transform.position = Vector2.MoveTowards(transform.position, positionPoints[indexOfTargetedPosition].position, goBackToFightSpeed * Time.deltaTime);   //mettre dans l'Update directement
-                Debug.DrawLine(transform.position, positionPoints[indexOfTargetedPosition].position, Color.black);
+                moveInput = positionPoints[indexOfTargetedPosition].position - transform.position;
+                lastMove = moveInput;
+                isMoving = true;
+                //Debug.DrawLine(transform.position, positionPoints[indexOfTargetedPosition].position, Color.black);
 
                 if (transform.position == positionPoints[indexOfTargetedPosition].position)
                 {
 
                     backToFightPosSet = false;
+                    isMoving = false;
                     haveToChangeItsSpot = false;
                     storedHealth = enemyHealthManager.enemyCurrentHealth;
                 }
@@ -243,6 +263,8 @@ namespace Pitstop
             {
                 yield return new WaitForSeconds(timeBeforeRageMode2);
 
+                soundShout.Play();
+
                 cooldown = cooldownDuringRage2;
                 myImpulseSource.GenerateImpulse();
 
@@ -255,6 +277,8 @@ namespace Pitstop
             else
             {
                 yield return new WaitForSeconds(timeBeforeRageMode);
+
+                soundDeerRegular.Play();
 
                 cooldown = cooldownDuringRage;
                 myImpulseSource.GenerateImpulse();
@@ -280,8 +304,8 @@ namespace Pitstop
             
             for (int i = 0;i< stepInAnimation;i++)
             {
-                secondHealthGauje.fillAmount = (healthGauje.fillAmount / (float)enemyHealthManager.enemyMaxHealth) + (   ((float)enemyHealthManager.enemyMaxHealth*(stepInAnimation-i))   /   ((float)enemyHealthManager.enemyMaxHealth*stepInAnimation)   );
-                Debug.Log((enemyHealthManager.enemyCurrentHealth / (float)enemyHealthManager.enemyMaxHealth) + (((float)enemyHealthManager.enemyMaxHealth * (stepInAnimation - i)) / ((float)enemyHealthManager.enemyMaxHealth * stepInAnimation)));
+                secondHealthGauje.fillAmount -= 1 / ((float)enemyHealthManager.enemyMaxHealth * stepInAnimation);
+
                 yield return new WaitForSeconds(timeForSecondHealthBarToGoDown / stepInAnimation);
             }
             
@@ -290,5 +314,16 @@ namespace Pitstop
             hasTheGoDownBeenTriggered = false;
 
         }
+
+
+        public void Animations()
+        {
+            myAnim.SetBool("IsMoving", isMoving);
+            myAnim.SetFloat("LastMoveX", lastMove.x);
+            myAnim.SetFloat("LastMoveY", lastMove.y);
+            myAnim.SetFloat("MoveX", moveInput.x);
+            myAnim.SetFloat("MoveY", moveInput.y);
+        }
+
     }
 }
