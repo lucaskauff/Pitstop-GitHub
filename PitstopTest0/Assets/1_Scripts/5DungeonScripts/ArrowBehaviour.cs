@@ -6,6 +6,8 @@ namespace Pitstop
 {
     public class ArrowBehaviour : MonoBehaviour
     {
+        [SerializeField] bool hurtPlayerOnCollision = false;
+
         public Transform target = default;
         [SerializeField] float projSpeed = 2;
 
@@ -24,6 +26,14 @@ namespace Pitstop
             if (collision.gameObject.name == "ArrowDestroyer")
             {
                 Destroy(gameObject);
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "Player" && hurtPlayerOnCollision)
+            {
+                collision.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(1);
             }
         }
     }
