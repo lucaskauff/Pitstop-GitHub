@@ -15,6 +15,7 @@ namespace Pitstop
         [SerializeField] float slowDownLength = 5f;
 
         float hammerheadOriginalRushSpeed;
+        bool triggerOnlyOnceCheck = false;
 
         public GorillaBehaviour hHGlade2Beh = null;
         bool hHStill = false;
@@ -57,13 +58,18 @@ namespace Pitstop
                 hammerheadOriginalRushSpeed = hHGlade2Beh.rushSpeed;
 
                 //it is buggy
-                StartCoroutine(SlowingTheHammerheadDown());
-                //hHGlade2Beh.rushSpeed = hammerheadSlowSpeed;
+                if (!triggerOnlyOnceCheck)
+                {
+                    StartCoroutine(SlowingTheHammerheadDown());
+                    triggerOnlyOnceCheck = true;
+                }
             }
         }
 
         public void HammerheadIsOutOfGlade()
         {
+            StopCoroutine(SlowingTheHammerheadDown());
+            hHGlade2Beh.rushSpeed = hammerheadOriginalRushSpeed;
             hHGlade2Beh.target = targetForHammerHeadOutsideG2;
             hHGlade2Beh.isFleeing = true;
         }
