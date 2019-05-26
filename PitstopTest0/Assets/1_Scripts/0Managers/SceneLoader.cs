@@ -47,11 +47,15 @@ namespace Pitstop
         {
             switch (sceneToLoadName)
             {
-                /* probably won't have a name
-                case "0_PROLOGUE":
-                    if (gameManager.languageSetToEnglish) nextScene = "PROLOGUE";
+                case "00_MENU":
+                    if (gameManager.languageSetToEnglish) nextScene = "Main Menu";
+                    else nextScene = "Menu principal";
                     break;
-                */
+
+                case "0_PROLOGUE":
+                    if (gameManager.languageSetToEnglish) nextScene = "Prologue";
+                    else nextScene = "Prologue";
+                    break;
 
                 case "1_TEMPLE":
                     if (gameManager.languageSetToEnglish) nextScene = "Act I : False Start";
@@ -78,11 +82,10 @@ namespace Pitstop
                     else nextScene = "Acte V : Sprint final";
                     break;
 
-                    /* probably won't have a name
-                    case "5_EPILOGUE":
-                        nextScene = "EPILOGUE";
-                        break;
-                    */
+                case "5_EPILOGUE":
+                    if (gameManager.languageSetToEnglish) nextScene = "Epilogue";
+                    else nextScene = "Epilogue";
+                    break;
             }
         }
 

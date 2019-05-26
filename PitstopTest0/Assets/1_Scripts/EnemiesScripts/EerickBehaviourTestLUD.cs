@@ -246,6 +246,11 @@ namespace Pitstop
 
         }
 
+        public void IAmDead()
+        {
+            Destroy(gameObject);
+        }
+
         IEnumerator ProjectileCooldown()
         {
             waitForCooldown = true;

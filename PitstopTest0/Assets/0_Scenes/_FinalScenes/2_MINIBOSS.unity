@@ -21697,6 +21697,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &823155459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2751131729749074822, guid: ffdd2361f7c307649ab2e539b057c7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 845168457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &823155463
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823155459}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eece380a5042d584d9b5b895cf960b4f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &845168457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21774,6 +21799,57 @@ PrefabInstance:
       propertyPath: dialogueWheelSystem
       value: 
       objectReference: {fileID: 8718004804266779185}
+    - target: {fileID: 2751131729146656832, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131729749074821, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 71.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131729749074821, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 28.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131729749074821, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131729749074821, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131729749074821, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131729749074822, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131729749074820, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2bf7635ab97840d4784e5d3306291462,
+        type: 3}
+    - target: {fileID: 2751131729749074820, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751131729854731132, guid: ffdd2361f7c307649ab2e539b057c7ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffdd2361f7c307649ab2e539b057c7ca, type: 3}
 --- !u!4 &863288242 stripped
@@ -24077,7 +24153,7 @@ MonoBehaviour:
   endingAngle: 210
   speed: 0.5
   center: {fileID: 1064348560}
-  radius: 122
+  radius: 120
   delay: 2
 --- !u!95 &1810290978
 Animator:
@@ -25668,7 +25744,7 @@ PrefabInstance:
     - target: {fileID: 8718004804266779185, guid: fe8c87971709b774380a83b0408512d1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 905637735908719168, guid: fe8c87971709b774380a83b0408512d1,
         type: 3}
@@ -25703,7 +25779,7 @@ PrefabInstance:
     - target: {fileID: 2207793762072487496, guid: fe8c87971709b774380a83b0408512d1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2570573532545896004, guid: fe8c87971709b774380a83b0408512d1,
         type: 3}
@@ -25859,6 +25935,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767105525534655099, guid: fe8c87971709b774380a83b0408512d1,
+        type: 3}
+      propertyPath: m_Name
+      value: Center
       objectReference: {fileID: 0}
     - target: {fileID: 8483943011707752642, guid: fe8c87971709b774380a83b0408512d1,
         type: 3}
