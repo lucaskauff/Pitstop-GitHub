@@ -3102,7 +3102,9 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 181037874}
     m_ColliderPaths:
-    - - X: 10168911
+    - - X: 8287567
+        Y: 2435708
+      - X: 10168911
         Y: 8888125
       - X: 8025394
         Y: 9842172
@@ -3114,7 +3116,8 @@ CompositeCollider2D:
         Y: -253867
   m_CompositePaths:
     m_Paths:
-    - - {x: 1.0168911, y: 0.8888125}
+    - - {x: 0.8287567, y: 0.2435708}
+      - {x: 1.0168911, y: 0.8888125}
       - {x: 0.8025394, y: 0.9842172}
       - {x: -0.8312229, y: 0.9121089}
       - {x: -0.9573654, y: 0.0717792}
@@ -3166,7 +3169,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.0168911, y: 1.3488126}
+    - - {x: 0.82875675, y: 0.70357084}
+      - {x: 1.0168911, y: 1.3488126}
       - {x: 0.80253947, y: 1.4442172}
       - {x: -0.8312229, y: 1.3721089}
       - {x: -0.9573654, y: 0.5317793}
@@ -5365,6 +5369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSlider: {fileID: 2055868364}
+  amount: 1
 --- !u!114 &408295058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5378,6 +5383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSlider: {fileID: 2055868364}
+  amount: 1
 --- !u!114 &408295059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5391,6 +5397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSlider: {fileID: 2055868364}
+  amount: 1
 --- !u!1 &427649270
 GameObject:
   m_ObjectHideFlags: 0
@@ -6247,7 +6254,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1052579953
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2e36dd00c4f8faf4aae7f040e3251c82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7265,6 +7272,153 @@ PolygonCollider2D:
       - {x: 14.851527, y: -14.18327}
       - {x: 15.696004, y: -13.770989}
       - {x: 13.725531, y: -12.806221}
+--- !u!1 &645357803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645357804}
+  - component: {fileID: 645357806}
+  - component: {fileID: 645357805}
+  m_Layer: 0
+  m_Name: FirstDialogueTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &645357804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645357803}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1892217234}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &645357805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645357803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  interactionButtonNeeded: 0
+  dialogueManager: {fileID: 2055868362}
+  interactionButton: {fileID: 0}
+  dialogueInEnglish:
+    allDialoguePart:
+    - speaker: Ellya
+      sentence: 'You took your time !
+
+        I waited here for like...'
+    - speaker: Ellya
+      sentence: Two weeks !!
+    - speaker: Zayn
+      sentence: 'Two days at maximum, but
+
+        there''s something important
+
+        I must tell you about !'
+    - speaker: Zayn
+      sentence: 'We have to get out of
+
+        here as soon as...'
+    - speaker: Ellya
+      sentence: 'Yeah yeah I know all of that.
+
+        The natives, this beast sleeping
+
+        next to me...
+
+        Blablabla.'
+    - speaker: Ellya
+      sentence: 'I already bested it.
+
+        But I think it is up for
+
+        another round.'
+    - speaker: Ellya
+      sentence: 'Delock that energetic barrier
+
+        ASAP and help me making it sleep forever.'
+  dialogueInFrench:
+    allDialoguePart:
+    - speaker: Ellya
+      sentence: 'C''est pas trop tot !
+
+        J''ai attendu quelque chose
+
+        comme...'
+    - speaker: Ellya
+      sentence: Deux semaines !!
+    - speaker: Zayn
+      sentence: "Tu chipotes. Deux jours \nmaximum, mais il y a plus\nimportant !"
+    - speaker: Ellya
+      sentence: 'On doit se barrer au plus vite,
+
+        un monstre terrifiant va...'
+    - speaker: Ellya
+      sentence: "Oui je suis au courant, merci.\nIl m'a donn\xE9 du fil a retordre\nd'ailleurs
+        le bestiau."
+    - speaker: Ellya
+      sentence: 'Et pour le moment il dort,
+
+        mais je suis convaincue
+
+        qu''il en veut encore.'
+    - speaker: Ellya
+      sentence: 'Fais le tour et allons le latter
+
+        pour toujours.'
+  activationCheck: 0
+  debugging: 0
+  triggerSomethingWhenFinished: 0
+  codeOfTriggeredAction: 
+--- !u!60 &645357806
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645357803}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.5536127, y: -1.1667166}
+      - {x: -2.7726822, y: -2.8640614}
+      - {x: 3.6744654, y: -2.6859956}
+      - {x: 1.0680027, y: -1.349494}
 --- !u!1 &657167289
 GameObject:
   m_ObjectHideFlags: 0
@@ -7650,9 +7804,9 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 11.4197445, y: 13.465511}
-      - {x: 12.945618, y: 14.34042}
-      - {x: 14.986808, y: 13.299968}
-      - {x: 16.02934, y: 13.863695}
+      - {x: 12.858437, y: 14.301672}
+      - {x: 15.064302, y: 13.222472}
+      - {x: 16.213392, y: 13.815261}
       - {x: 18.919935, y: 12.5596075}
       - {x: 16.274559, y: 11.104639}
 --- !u!114 &691368127
@@ -8796,6 +8950,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &819130304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1360985367, guid: 6987ab44b876e8640b1f1ebf75745a5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1071683848}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &819130305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819130304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  interactionButtonNeeded: 0
+  dialogueManager: {fileID: 2055868362}
+  interactionButton: {fileID: 0}
+  dialogueInEnglish:
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: '(This temple looks like the one
+
+        I landed in before.
+
+        But no weird crystal here...)'
+  dialogueInFrench:
+    allDialoguePart:
+    - speaker: Zayn
+      sentence: '(Ca ressemble vachement
+
+        au temple dans lequel j''ai atteri
+
+        il y a un moment.
+
+        Mais pas de crystal ici...)'
+  activationCheck: 0
+  debugging: 0
+  triggerSomethingWhenFinished: 0
+  codeOfTriggeredAction: 
 --- !u!1001 &822132419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14782,7 +14981,7 @@ SpriteMask:
   m_FrontSortingLayer: 4
   m_BackSortingLayer: 4
   m_FrontSortingOrder: 2
-  m_BackSortingOrder: 0
+  m_BackSortingOrder: -2
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 1
 --- !u!1001 &1018592560
@@ -27451,6 +27650,91 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
+      value: 1.406456
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].y
+      value: -0.27835274
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
+      value: -0.4142685
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
+      value: 0.6199236
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].y
+      value: 0.6199236
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].x
+      value: -0.4142685
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
+      value: 0.6934948
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: -0.46105766
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
+      value: 0.20457268
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: -1.4365625
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: 0.5328579
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: -0.7841749
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 1.4916058
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: -0.29964066
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].x
+      value: 1.406456
+      objectReference: {fileID: 0}
+    - target: {fileID: 279183564682067146, guid: 1770fabc6b4aefb41b063035b4af19b5,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
+      value: -0.27835274
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1770fabc6b4aefb41b063035b4af19b5, type: 3}
 --- !u!1 &1105028464
@@ -29954,16 +30238,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7500307532990887860, guid: a02a9cd6679c08c45853784c05123715,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6138693965027979614, guid: a02a9cd6679c08c45853784c05123715,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8702863466639424713, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_Name
@@ -30022,6 +30296,16 @@ PrefabInstance:
     - target: {fileID: 8702863466639424714, guid: a02a9cd6679c08c45853784c05123715,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500307532990887860, guid: a02a9cd6679c08c45853784c05123715,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138693965027979614, guid: a02a9cd6679c08c45853784c05123715,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8702863467275572260, guid: a02a9cd6679c08c45853784c05123715,
@@ -33986,7 +34270,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1052579953
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 937ffe223e79a3c49bc71f2a5231c7d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -35144,8 +35428,28 @@ MonoBehaviour:
   interactionButton: {fileID: 0}
   dialogueInEnglish:
     allDialoguePart:
-    - speaker: ???
-      sentence: Omae wo shinderu
+    - speaker: The Beast
+      sentence: 'You... shouldn''t have landed
+
+        on this island. It is mine...'
+    - speaker: The Beast
+      sentence: 'I control, I eat, I corrupt
+
+        everything here !!!'
+    - speaker: The Beast
+      sentence: 'Soon this world will be
+
+        MIIIIIIIIIIN'
+    - speaker: Ellya
+      sentence: 'Keep cool dog.
+
+        Will soon be over.'
+    - speaker: Zayn
+      sentence: 'Well met you sick...
+
+        thing !'
+    - speaker: The Beast
+      sentence: 'How '
   dialogueInFrench:
     allDialoguePart:
     - speaker: ???
@@ -35674,6 +35978,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1892217234}
+  - component: {fileID: 1892217237}
+  - component: {fileID: 1892217236}
+  - component: {fileID: 1892217235}
+  - component: {fileID: 1892217238}
   m_Layer: 0
   m_Name: Ellya
   m_TagString: Untagged
@@ -35689,12 +35997,143 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892217233}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.62, y: 1.77, z: 0}
+  m_LocalPosition: {x: -3.77, y: 4.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 645357804}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1892217235
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892217233}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.2}
+    oldSize: {x: 1.5625, y: 1.5625}
+    newSize: {x: 7.8125, y: 7.8125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.17391825, y: 0.19753695}
+      - {x: -0.103127, y: 0.27431774}
+      - {x: -0.35582113, y: 0.09961653}
+      - {x: 0.08603001, y: -0.04838705}
+      - {x: 0.30826235, y: 0.044290543}
+--- !u!95 &1892217236
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892217233}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a1fc00b5e61ab9469498f21f42e2193, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &1892217237
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892217233}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1052579953
+  m_SortingLayer: 4
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: d07f98acaa5910248942b7ba3c999007, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.8125, y: 7.8125}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 1
+--- !u!114 &1892217238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892217233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc472ceb7171a6049b103a3c94f03fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyActivatableOnce: 1
+  triggerDialogueOnStart: 0
+  interactionButtonNeeded: 0
+  dialogueManager: {fileID: 2055868362}
+  interactionButton: {fileID: 0}
+  dialogueInEnglish:
+    allDialoguePart:
+    - speaker: Ellya
+      sentence: 'What are you waiting for ?
+
+        Go kick the **** out of it.'
+  dialogueInFrench:
+    allDialoguePart:
+    - speaker: Ellya
+      sentence: 'T''attends quoi ?
+
+        Va te battre comme un homme.'
+  activationCheck: 0
+  debugging: 0
+  triggerSomethingWhenFinished: 0
+  codeOfTriggeredAction: 
 --- !u!1 &1903906197
 GameObject:
   m_ObjectHideFlags: 0
@@ -36321,6 +36760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSlider: {fileID: 2055868364}
+  amount: 1
 --- !u!114 &1938269473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36334,6 +36774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSlider: {fileID: 2055868364}
+  amount: 1
 --- !u!114 &1938269474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36347,6 +36788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSlider: {fileID: 2055868364}
+  amount: 1
 --- !u!1 &1945430330
 GameObject:
   m_ObjectHideFlags: 0
@@ -37610,6 +38052,12 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 234583966}
+    - target: {fileID: 5295134211186563096, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: whiteSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e8ceafb5a5a4d304586d0bfc67a1738b,
+        type: 3}
     - target: {fileID: 3570546493296195888, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38160,6 +38608,11 @@ PrefabInstance:
     - target: {fileID: 6667375955699303486, guid: 267f460faa38bed4798f1395a2a448d8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6667375956198307109, guid: 267f460faa38bed4798f1395a2a448d8,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6667375956198307107, guid: 267f460faa38bed4798f1395a2a448d8,
@@ -39451,11 +39904,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[127].Y
       value: 1753394
-      objectReference: {fileID: 0}
-    - target: {fileID: 6667375956198307109, guid: 267f460faa38bed4798f1395a2a448d8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 267f460faa38bed4798f1395a2a448d8, type: 3}
