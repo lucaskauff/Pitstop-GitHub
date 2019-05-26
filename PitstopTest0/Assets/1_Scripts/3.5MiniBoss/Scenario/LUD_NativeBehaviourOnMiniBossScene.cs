@@ -77,8 +77,10 @@ namespace Pitstop
 
         }
 
-        IEnumerator WaitBeforeFlyingAway()
+        public IEnumerator WaitBeforeFlyingAway()
         {
+            Debug.Log("Native gets out");
+
             yield return new WaitForSeconds(timeBeforeEscaping);
             isFlyingAway = true;
             GetComponent<Collider2D>().enabled = false;

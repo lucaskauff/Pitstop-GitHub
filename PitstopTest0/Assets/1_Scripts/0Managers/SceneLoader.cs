@@ -54,28 +54,28 @@ namespace Pitstop
                 */
 
                 case "1_TEMPLE":
-                    if (gameManager.languageSetToEnglish) nextScene = "Act I : TEMPLE";
-                    else nextScene = "Acte I : TEMPLE";
+                    if (gameManager.languageSetToEnglish) nextScene = "Act I : False Start";
+                    else nextScene = "Acte I : Faux-depart";
                     break;
 
                 case "2_FOREST":
-                    if (gameManager.languageSetToEnglish) nextScene = "Act II : FOREST";
-                    else nextScene = "Acte II : FORET";
+                    if (gameManager.languageSetToEnglish) nextScene = "Act II : Back on the track";
+                    else nextScene = "Acte II : Retour sur la piste";
                     break;
 
                 case "2_MINIBOSS":
-                    if (gameManager.languageSetToEnglish) nextScene = "Act III : MINIBOSS";
-                    else nextScene = "Acte III : MINIBOSS";
+                    if (gameManager.languageSetToEnglish) nextScene = "Act III : Tight Turn";
+                    else nextScene = "Acte III : Virage tendu";
                     break;
 
                 case "3_VILLAGE":
-                    if (gameManager.languageSetToEnglish) nextScene = "Act IV : VILLAGE";
-                    else nextScene = "Acte IV : VILLAGE";
+                    if (gameManager.languageSetToEnglish) nextScene = "Act IV : Run-off";
+                    else nextScene = "Acte IV : Zone degagee";
                     break;
 
                 case "4_DUNGEON":
-                    if (gameManager.languageSetToEnglish) nextScene = "Act V : TERRITORY OF THE BEAST";
-                    else nextScene = "Acte V : TERRITOIRE DE LA BETE";
+                    if (gameManager.languageSetToEnglish) nextScene = "Act V : Pole position";
+                    else nextScene = "Acte V : Sprint final";
                     break;
 
                     /* probably won't have a name
