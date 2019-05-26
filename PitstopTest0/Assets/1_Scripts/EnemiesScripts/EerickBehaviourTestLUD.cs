@@ -24,8 +24,9 @@ namespace Pitstop
         [SerializeField] float repulseTime = 1f;
         [SerializeField] CinemachineImpulseSource myImpulseSource = default;
 
-        bool fightCanStart = false;
+        public bool fightCanStart = false;
         public bool playerHasTriggeredNative = false;
+        public bool playerReloadedScene = false;
 
         bool waitForCooldown = false;
         GameObject cloneProj;
@@ -100,6 +101,12 @@ namespace Pitstop
                 if (!fightCanStart)
                 {
                     if (playerHasTriggeredNative)
+                    {
+                        fightCanStart = true;
+                        StartCoroutine(RageManagement());
+                        healthBar.SetActive(true);
+                    }
+                    else if (playerReloadedScene)
                     {
                         fightCanStart = true;
                         StartCoroutine(RageManagement());
@@ -207,6 +214,8 @@ namespace Pitstop
                 cloneProj.GetComponent<ScannableObjectBehaviour>().isScannable = false;
                 cloneProj.GetComponent<ScannableObjectBehaviour>().isFired = true;
 
+                myAnim.SetTrigger("ThrowApple");
+
                 StartCoroutine(ProjectileCooldown());
             }
         }
@@ -235,6 +244,11 @@ namespace Pitstop
                 StartCoroutine(ComeOnAndFly());
             }
 
+        }
+
+        public void IAmDead()
+        {
+            Destroy(gameObject);
         }
 
         IEnumerator ProjectileCooldown()

@@ -39,6 +39,7 @@ namespace Pitstop
         [SerializeField] Sprite blueSprite = default;
         [SerializeField] Sprite redSprite = default;
         [SerializeField] Sprite greenSprite = default;
+        [SerializeField] Sprite whiteSprite = default;
 
         void Start()
         {
@@ -151,6 +152,11 @@ namespace Pitstop
             {
                 nameText.GetComponent<TextMeshProUGUI>().color = new Color(0.2f, 0.3843f, 0.2431f);
                 diaBox.gameObject.GetComponent<Image>().sprite = greenSprite;
+            }
+            else if (nameOfTheCurrentSpeaker == "Ellya")
+            {
+                nameText.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1);
+                diaBox.gameObject.GetComponent<Image>().sprite = whiteSprite;
             }
             else
             {

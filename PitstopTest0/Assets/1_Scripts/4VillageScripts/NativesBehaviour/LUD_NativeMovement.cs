@@ -17,29 +17,30 @@ namespace Pitstop
 
         public float distanceMaxToTriggeredArrival = 0.2f;
 
+        //Animation variables
+        [SerializeField] Animator myAnim = default;
+        public Vector2 moveInput;
+        public Vector2 lastMove;
+        public bool isMoving = false;
 
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
         void Update()
         {
-            
+            Animations();
+
             if (GetComponent<LUD_NativeHeartheSentence>().isCaptivated)
             {
 
                 if (speedMultiplier > 0) speedMultiplier -= speedDropOfSpeedMultiplier * Time.deltaTime;
                 if (speedMultiplier < 0) speedMultiplier = 0;
-                                                                                                                                
+                isMoving = false;
+
             }
             else
             {
                 if (speedMultiplier < 1) speedMultiplier += speedDropOfSpeedMultiplier * Time.deltaTime;
                 if (speedMultiplier > 1) speedMultiplier = 1;
+                isMoving = true;
+
             }
             
 
@@ -50,6 +51,8 @@ namespace Pitstop
             if (canMove)
             {
                 this.transform.position += relativePositionToCurrentObjective * walkingSpeedOfTheNative * Time.deltaTime * speedMultiplier;
+                moveInput = relativePositionToCurrentObjective;
+                lastMove = moveInput;
 
                 if ((pointsOfThePath[indexInPointOfThPath].position - this.transform.position).magnitude <= distanceMaxToTriggeredArrival)
                 {
@@ -63,8 +66,19 @@ namespace Pitstop
                     }
                 }
             }
+            else
+            {
+                //isMoving = false;
+            }
+        }
 
-
+        public void Animations()
+        {
+            myAnim.SetBool("IsMoving", isMoving);
+            myAnim.SetFloat("LastMoveX", lastMove.x);
+            myAnim.SetFloat("LastMoveY", lastMove.y);
+            myAnim.SetFloat("MoveX", moveInput.x);
+            myAnim.SetFloat("MoveY", moveInput.y);
         }
     }
 }

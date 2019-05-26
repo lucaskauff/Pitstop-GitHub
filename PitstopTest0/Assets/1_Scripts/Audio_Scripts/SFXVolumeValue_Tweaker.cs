@@ -14,6 +14,9 @@ namespace Pitstop
         private AudioSource audioSrc;
         private float sfxVolume = 1f;
         public Slider sfxSlider;
+
+        [SerializeField, Range(0, 1)] float amount = 1;
+
         void Start()
         {
             gameManager = GameManager.Instance;
@@ -23,7 +26,7 @@ namespace Pitstop
 
         void Update()
         {
-            audioSrc.volume = gameManager.sfxVolume;
+            audioSrc.volume = gameManager.sfxVolume * amount;
             sfxSlider.value = gameManager.sfxVolume;
         }
 

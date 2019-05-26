@@ -48,6 +48,7 @@ namespace Pitstop
         Vector2 crystalScanTarget;
         Vector2 crystalShootTarget;
         bool canShoot = false;
+        [HideInInspector] public bool canScan = true;
 
         [Header("Sounds")]
         public AudioSource scanningSound;
@@ -60,10 +61,20 @@ namespace Pitstop
             inputManager = GameManager.Instance.inputManager;
 
             circularRange.transform.localScale *= maxScanRange;
+
+            if (sceneLoader.activeScene == "1_TEMPLE")
+            {
+                canScan = false;
+            }
         }
 
         void Update()
         {
+            if (!canScan)
+            {
+                return;
+            }
+
             playerPosGround = circularRange.transform.position;
             cursorPos = inputManager.cursorPosition;
             crystalDirection = cursorPos - playerPosGround;
