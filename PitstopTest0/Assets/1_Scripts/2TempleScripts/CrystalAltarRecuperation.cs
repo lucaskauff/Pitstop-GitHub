@@ -10,6 +10,7 @@ namespace Pitstop
         [SerializeField] GameObject scanRange = default;
         [SerializeField] Animator crystalToGetAnim = default;
         //[SerializeField] GameObject whatElementShouldDisappear = default;
+        [SerializeField] CrystalController crystalController = default;
 
         [HideInInspector] public bool triggerOnceCheck = false;
 
@@ -25,6 +26,8 @@ namespace Pitstop
 
                 //for blue beam over altar
                 //whatElementShouldDisappear.SetActive(false);
+
+                crystalController.canScan = true;
 
                 triggerOnceCheck = true;
             }

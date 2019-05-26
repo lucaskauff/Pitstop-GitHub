@@ -9103,6 +9103,7 @@ MonoBehaviour:
   crystalUIAppear: {fileID: 110341481}
   scanRange: {fileID: 247277589}
   crystalToGetAnim: {fileID: 750495537}
+  crystalController: {fileID: 1754758191127585752}
   triggerOnceCheck: 0
 --- !u!1 &1892421266
 GameObject:
@@ -11517,36 +11518,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -132.99998
       objectReference: {fileID: 0}
-    - target: {fileID: 8708527568053923395, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4218693372667420177, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8180813165216432943, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -74
-      objectReference: {fileID: 0}
-    - target: {fileID: 7610413465009850503, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -74
-      objectReference: {fileID: 0}
-    - target: {fileID: 126750204072520945, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -73.099976
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925720852241750178, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -73.099976
-      objectReference: {fileID: 0}
     - target: {fileID: 2510001323770926924, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -11646,6 +11617,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708527568053923395, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4218693372667420177, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180813165216432943, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -74
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610413465009850503, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925720852241750178, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -73.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 126750204072520945, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -73.099976
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e29aff139fb3e5c45851dd5025b6bf5b, type: 3}
@@ -18766,16 +18767,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zayn
       objectReference: {fileID: 0}
-    - target: {fileID: 8453608899426083321, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3005677076167443419, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 8827798457674550477, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18831,41 +18822,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint.Array.data[0]
-      value: 
-      objectReference: {fileID: 658678499}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: sceneStartingPoint.Array.data[0]
-      value: 
-      objectReference: {fileID: 658678499}
     - target: {fileID: 8453608900050335717, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: rockFallingSound
       value: 
       objectReference: {fileID: 963448211}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint.Array.data[0]
+      value: 
+      objectReference: {fileID: 658678499}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827798457674550474, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: sceneStartingPoint.Array.data[0]
+      value: 
+      objectReference: {fileID: 658678499}
+    - target: {fileID: 8000820858692480709, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4411585275572433417, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_RootOrder
@@ -18875,7 +18871,12 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 8000820858692480709, guid: da7a6d321a067ed49854b9c1c18766bc,
+    - target: {fileID: 3005677076167443419, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8453608899426083321, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -18913,7 +18914,7 @@ PrefabInstance:
     - target: {fileID: 8453608899426083327, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.078431375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8453608899426083326, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
@@ -20296,7 +20297,7 @@ PrefabInstance:
     - target: {fileID: 9127097305669116841, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9127097305669116842, guid: 53fb7d921a5320c48b94fcaeb3915f1d,
         type: 3}
