@@ -29,6 +29,10 @@ namespace Pitstop
         [SerializeField] CinemachineImpulseSource playerImpulseSource = default;
         [SerializeField] float repulseDelay = 1f;
         [SerializeField] float newMass = 250f;
+        [SerializeField] Transform cheatTransform = default;
+        [SerializeField] float cheatSpeed = default;
+        [SerializeField] bool isCheating = false;
+        [SerializeField] string cheatingApple = null;
 
         //Private
         private bool impulseGenerated = false;
@@ -75,6 +79,11 @@ namespace Pitstop
             {
                 RockApparition();
             }
+
+            if (isCheating)
+            {
+                TheCheat();
+            }
         }
 
         void RockApparition()
@@ -96,7 +105,29 @@ namespace Pitstop
         {
             if (collision.gameObject.tag == "ObjectApple")
             {
-                StartCoroutine(WaitAfterBeingRepulsed());
+                if (cheatTransform == null)
+                {
+                    StartCoroutine(WaitAfterBeingRepulsed());
+                }
+                else if (collision.gameObject.name == cheatingApple)
+                {
+                    isCheating = true;
+                }
+            }
+        }
+
+        private void TheCheat()
+        {
+            myCol.isTrigger = true;
+            isOnRepulse = true;
+
+            transform.position = Vector2.MoveTowards(transform.position, cheatTransform.transform.position, cheatSpeed * Time.deltaTime);
+
+            if (transform.position == cheatTransform.transform.position)
+            {
+                myCol.isTrigger = false;
+                isOnRepulse = false;
+                isCheating = false;
             }
         }
 
