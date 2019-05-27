@@ -173,14 +173,21 @@ MonoBehaviour:
   dialogueInEnglish:
     allDialoguePart:
     - speaker: Zayn
-      sentence: (It seems that something happened... Or someone ?)
+      sentence: '(It seems that something
+
+        happened... Or someone ?)'
     - speaker: Zayn
       sentence: (The rest is unreadable...)
   dialogueInFrench:
     allDialoguePart:
     - speaker: Zayn
-      sentence: (Il semblerait que quelque chose soit arrive a cette civilisation...
-        A moins que ce ne soit quelqu'un.)
+      sentence: '(Il semblerait que quelque
+
+        chose soit arrive a cette
+
+        civilisation... A moins que
+
+        ce ne soit quelqu''un.)'
     - speaker: Zayn
       sentence: (Le reste est illisible...)
   activationCheck: 0
@@ -1874,11 +1881,15 @@ MonoBehaviour:
   dialogueInEnglish:
     allDialoguePart:
     - speaker: Zayn
-      sentence: (It might lead to the rest of the temple...)
+      sentence: '(It might lead to the rest
+
+        of the temple...)'
   dialogueInFrench:
     allDialoguePart:
     - speaker: Zayn
-      sentence: (Ca devait mener au reste du temple...)
+      sentence: '(Ca devait mener au reste
+
+        du temple...)'
   activationCheck: 0
   debugging: 0
   triggerSomethingWhenFinished: 0
@@ -3016,7 +3027,9 @@ MonoBehaviour:
   dialogueInFrench:
     allDialoguePart:
     - speaker: Zayn
-      sentence: (Bouche...)
+      sentence: '(Je ne peux clairement
+
+        pas passer par la...)'
   activationCheck: 0
   debugging: 0
   triggerSomethingWhenFinished: 0
@@ -7506,20 +7519,32 @@ MonoBehaviour:
   dialogueInEnglish:
     allDialoguePart:
     - speaker: Zayn
-      sentence: (Strange fresco... I think it portray a really advanced civilization.)
+      sentence: '(Strange fresco...
+
+        I think it portray a really
+
+        advanced civilization.)'
     - speaker: Zayn
-      sentence: (This object... that looks like a crystal. It's really enhanced on
-        this representation.)
+      sentence: '(This object... that looks like
+
+        a crystal. It''s really enhanced
+
+        on this representation.)'
     - speaker: Zayn
-      sentence: (Crap... if only Ellya was here. She is the one who knows about that
-        kind of stuff.)
+      sentence: "(Crap... if only Ellya was here.\nShe is the one who knows \nabout
+        that kind of stuff.)"
   dialogueInFrench:
     allDialoguePart:
     - speaker: Zayn
-      sentence: (Quelle etrange fresque... On dirait qu'elle depeint une civilisation
-        tres avancee.)
+      sentence: '(Quelle etrange fresque...
+
+        On dirait qu''elle depeint une
+
+        civilisation tres avancee.)'
     - speaker: Zayn
-      sentence: '(Et cet objet... cette sorte de cristal.
+      sentence: '(Et cet objet...
+
+        Cette sorte de cristal.
 
         Il est tres mis en valeur
 
@@ -7527,8 +7552,11 @@ MonoBehaviour:
     - speaker: Zayn
       sentence: (...)
     - speaker: Zayn
-      sentence: (Si seulement Ellya etait la. C'est elle l'expert pour ce genre de
-        trucs.)
+      sentence: '(Si seulement Ellya etait la.
+
+        C''est elle l''expert pour
+
+        ce genre de trucs.)'
   activationCheck: 0
   debugging: 0
   triggerSomethingWhenFinished: 0
@@ -8635,7 +8663,11 @@ MonoBehaviour:
   dialogueInEnglish:
     allDialoguePart:
     - speaker: Zayn
-      sentence: (It looks to unstable. Climbing would be too dangerous.)
+      sentence: '(It looks too unstable.
+
+        Climbing would be too
+
+        dangerous.)'
     - speaker: Zayn
       sentence: (...)
     - speaker: Zayn
@@ -8728,7 +8760,9 @@ MonoBehaviour:
   dialogueInEnglish:
     allDialoguePart:
     - speaker: Zayn
-      sentence: What's this blue glowing stuff? A crystal?
+      sentence: 'What''s this blue glowing stuff?
+
+        A crystal?'
   dialogueInFrench:
     allDialoguePart:
     - speaker: Zayn
@@ -10336,7 +10370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08756ffc2654e3545b4af8e1127d3c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 30
+  delay: 3
   textToShow: {fileID: 643502384}
 --- !u!19719996 &1964940967
 TilemapCollider2D:
@@ -11618,21 +11652,6 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 8291712205227745966, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2125739437}
-    - target: {fileID: 8291712205227745966, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetVolume
-      objectReference: {fileID: 0}
-    - target: {fileID: 271347186114638776, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8708527568053923395, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
       propertyPath: m_RootOrder
@@ -11642,16 +11661,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4255425260065187875, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -46
-      objectReference: {fileID: 0}
-    - target: {fileID: 8974739655732680213, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 27.071045
       objectReference: {fileID: 0}
     - target: {fileID: 8180813165216432943, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
@@ -11667,6 +11676,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -46.02899
+      objectReference: {fileID: 0}
+    - target: {fileID: 126750204072520945, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -73.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 271347186114638776, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255425260065187875, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8974739655732680213, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 27.071045
       objectReference: {fileID: 0}
     - target: {fileID: 2572108272380951844, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
@@ -11708,6 +11737,16 @@ PrefabInstance:
       propertyPath: m_havePropertiesChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8291712205227745966, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2125739437}
+    - target: {fileID: 8291712205227745966, guid: e29aff139fb3e5c45851dd5025b6bf5b,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 2336980065833030600, guid: e29aff139fb3e5c45851dd5025b6bf5b,
         type: 3}
       propertyPath: m_isInputParsingRequired
@@ -11747,11 +11786,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_havePropertiesChanged
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 126750204072520945, guid: e29aff139fb3e5c45851dd5025b6bf5b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -73.099976
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e29aff139fb3e5c45851dd5025b6bf5b, type: 3}
@@ -12187,7 +12221,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -18962,11 +18996,6 @@ PrefabInstance:
       propertyPath: sceneStartingPoint.Array.data[0]
       value: 
       objectReference: {fileID: 658678499}
-    - target: {fileID: 8000820858692480709, guid: da7a6d321a067ed49854b9c1c18766bc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4411585275572433417, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
       propertyPath: m_RootOrder
@@ -18980,6 +19009,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000820858692480709, guid: da7a6d321a067ed49854b9c1c18766bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8453608899426083321, guid: da7a6d321a067ed49854b9c1c18766bc,
         type: 3}
