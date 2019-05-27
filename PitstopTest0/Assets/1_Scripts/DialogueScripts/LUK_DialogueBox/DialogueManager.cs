@@ -143,7 +143,7 @@ namespace Pitstop
             nameText.GetComponent<TextMeshProUGUI>().text = nameOfTheCurrentSpeaker;
 
 
-            if (nameOfTheCurrentSpeaker == "A Deer?" || nameOfTheCurrentSpeaker == "Un Cerf ?" || nameOfTheCurrentSpeaker == "???")
+            if (nameOfTheCurrentSpeaker == "A Deer?" || nameOfTheCurrentSpeaker == "Un Cerf ?" || nameOfTheCurrentSpeaker == "???" || nameOfTheCurrentSpeaker == "The Beast" || nameOfTheCurrentSpeaker == "La Bete")
             {
                 nameText.GetComponent<TextMeshProUGUI>().color = new Color(1f, 0f, 0.0902f);
                 diaBox.gameObject.GetComponent<Image>().sprite = redSprite;

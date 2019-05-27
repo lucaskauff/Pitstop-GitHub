@@ -26,10 +26,13 @@ namespace Pitstop
                 {
                     myAnim.SetTrigger("Die");
                 }
+                else if (gameObject.name == "TheBeast")
+                {
+                    return;
+                }
                 else
                 {
                     gameObject.SetActive(false);
-
                 }
 
                 FindObjectOfType<LUD_ScenarioOfTheMiniBossWithTheNative>().EndOfTheFightConcequences();
