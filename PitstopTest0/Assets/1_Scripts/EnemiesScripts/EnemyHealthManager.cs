@@ -22,7 +22,16 @@ namespace Pitstop
         {
             if (enemyCurrentHealth <= 0)
             {
-                gameObject.SetActive(false);
+                if (gameObject.name == "Eerick")
+                {
+                    myAnim.SetTrigger("Die");
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+
+                }
+
                 FindObjectOfType<LUD_ScenarioOfTheMiniBossWithTheNative>().EndOfTheFightConcequences();
             }
 

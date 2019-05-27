@@ -44,8 +44,10 @@ namespace Pitstop
             }
         }
 
-        IEnumerator MusicTransition()
+        public IEnumerator MusicTransition()
         {
+            Debug.Log("Music transition");
+
             float nbrOfStep = 20f;
 
             //TRANSITION ONE AFTER AN OTHER
