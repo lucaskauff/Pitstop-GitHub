@@ -300,6 +300,7 @@ MonoBehaviour:
   lianaRepulse: 0
   newTarget: {x: 0, y: 0}
   projSpeed: 1
+  shouldGenerateImpulse: 1
   impulseDuration: 0.25
   scannableObjectBehaviour: {fileID: 6667375955699303459}
   playerImpulseSource: {fileID: 8068176826541340084}
@@ -352,7 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
-    m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_RawSignal: {fileID: 11400000, guid: 7bd0faaf64960514ea86a1a2b2cda168, type: 2}
     m_AmplitudeGain: 0.25
     m_FrequencyGain: 1.04
     m_RepeatMode: 0

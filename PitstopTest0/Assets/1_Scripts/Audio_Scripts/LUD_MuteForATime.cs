@@ -8,14 +8,14 @@ namespace Pitstop
     {
         [SerializeField] float muteTime = 1f;
         
-        // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
-            
+            StartCoroutine(MuteTime());
         }
 
         IEnumerator MuteTime()
         {
+            Debug.Log("blbl");
             GetComponent<AudioSource>().mute = true;
             yield return new WaitForSeconds(muteTime);
             GetComponent<AudioSource>().mute = false;

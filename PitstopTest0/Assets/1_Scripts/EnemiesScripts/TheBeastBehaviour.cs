@@ -29,6 +29,7 @@ namespace Pitstop
         [SerializeField] float secondsToWaitAfterRocksSpawn = 8;
         [SerializeField] float secondsToWaitOnRageMode = 4;
         [SerializeField] float timePassedStayingVulnerable = 10;
+        [SerializeField] ChangeSceneTilemap changeSceneTilemap = default;
 
         public GameObject[] spawnedObjectsOnScene;
         public GameObject[] hammerheadsOnScene;
@@ -47,6 +48,15 @@ namespace Pitstop
 
         private void Update()
         {
+            if (myHealthManager.enemyCurrentHealth > 0)
+            {
+                changeSceneTilemap.active = false;
+            }
+            else
+            {
+                changeSceneTilemap.active = true;
+            }
+
             if (dialogueManager.codeOfTheLastTriggeringSentence == "Start Boss Fight")
             {
                 triggerFightDirectly.SetActive(false);
@@ -99,6 +109,16 @@ namespace Pitstop
                 Vector2 spawnPosHeight = spawnPoints[i].position + new Vector3(0, heightForSpawnedObjects, 0);
                 int randomNumberForSpawn = Mathf.RoundToInt(Random.Range(0, thingsToSpawn.Length));
 
+                hammerheadsOnScene = new GameObject[spawnPoints.Length];
+
+                if (spawnedObjectsOnScene[i] != null)
+                {
+                    Destroy(spawnedObjectsOnScene[i]);
+                }
+
+                spawnedObjectsOnScene[i] = Instantiate(thingsToSpawn[randomNumberForSpawn], spawnPosHeight, thingsToSpawn[randomNumberForSpawn].transform.rotation);
+
+                /*
                 if (!canSpawnHammerheads)
                 {
                     hammerheadsOnScene = new GameObject[spawnPoints.Length];
@@ -117,6 +137,7 @@ namespace Pitstop
                     hammerheadsOnScene[i] = spawnedObjectsOnScene[i];
                     objectsHaveBeenSpawned = true;
                 }
+                */
 
                 switch (spawnedObjectsOnScene[i].tag)
                 {
@@ -124,7 +145,7 @@ namespace Pitstop
                         spawnedObjectsOnScene[i].GetComponent<RockBehaviour>().shouldGenerateImpulse = false;
                         spawnedObjectsOnScene[i].GetComponent<ScannableObjectBehaviour>().targetPos = spawnPoints[i].position;
                         spawnedObjectsOnScene[i].GetComponent<ScannableObjectBehaviour>().projectileSpeed = objectsFallSpeed;
-                        spawnedObjectsOnScene[i].GetComponent<ScannableObjectBehaviour>().isScannable = false;
+                        spawnedObjectsOnScene[i].GetComponent<ScannableObjectBehaviour>().isScannable = true;
                         spawnedObjectsOnScene[i].GetComponent<ScannableObjectBehaviour>().isFired = true;
                         break;
 
@@ -179,15 +200,51 @@ namespace Pitstop
                     }
                     else
                     {
-                        myHealthManager.HurtEnemy(1);
+                        myHealthManager.HurtEnemy(4);
                         isOnGround = false;
                         StopCoroutine(WaitBeforeGettingUp());
-                        //myAnim.SetTrigger("RealHit");
                     }
 
                     myAnim.SetBool("FirstHit", isOnGround);
                     Destroy(collision.gameObject);
                 }
+            }
+            else if (collision.gameObject.tag == "ObjectRock")
+            {
+                if (!isOnGround)
+                {
+                    isOnGround = true;
+                    StartCoroutine(WaitBeforeGettingUp());
+                }
+                else
+                {
+                    myHealthManager.HurtEnemy(4);
+                    isOnGround = false;
+                    StopCoroutine(WaitBeforeGettingUp());
+                }
+
+                myAnim.SetBool("FirstHit", isOnGround);
+                Destroy(collision.gameObject);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "ObjectApple")
+            {
+                if (!isOnGround)
+                {
+                    isOnGround = true;
+                    StartCoroutine(WaitBeforeGettingUp());
+                }
+                else
+                {
+                    myHealthManager.HurtEnemy(1);
+                    isOnGround = false;
+                    StopCoroutine(WaitBeforeGettingUp());
+                }
+
+                myAnim.SetBool("FirstHit", isOnGround);
             }
         }
 
