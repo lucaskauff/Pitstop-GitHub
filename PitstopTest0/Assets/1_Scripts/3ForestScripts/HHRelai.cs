@@ -21,8 +21,13 @@ namespace Pitstop
                 }
 
                 gorillaBehaviour = collision.gameObject.GetComponent<GorillaBehaviour>();
-                gorillaBehaviour.target = nextPoint;
-                gorillaBehaviour.targetPos = nextPoint.transform.position;
+
+                if (!isFinalRelay)
+                {
+                    gorillaBehaviour.target = nextPoint;
+                    gorillaBehaviour.targetPos = nextPoint.transform.position;
+                }
+
                 gorillaBehaviour.isFleeing = true;
             }
         }

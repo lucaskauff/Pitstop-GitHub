@@ -11,6 +11,7 @@ namespace Pitstop
         [SerializeField] Transform targetForHammerHeadInsideG2 = default;
         [SerializeField] GameObject targetForHammerHeadOutsideG2 = default;
         [SerializeField] EnemySpawner enemySpawner = default;
+        [SerializeField] Animator theFade = default;
         [SerializeField] float hammerheadSlowSpeed = 1f;
         [SerializeField] float slowDownLength = 5f;
 
@@ -81,7 +82,7 @@ namespace Pitstop
 
             if (!hHGlade2Beh.isFleeing)
             {
-                sceneLoader.ReloadScene();
+                theFade.SetTrigger("PlayerIsDead");
             }
 
             hHGlade2Beh.rushSpeed = hammerheadOriginalRushSpeed;
